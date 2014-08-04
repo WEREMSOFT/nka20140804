@@ -15,7 +15,10 @@
   
 </head>
 
-<body>    
+<body>
+<ons-modal var="modal" ng-controller="LoginController">
+  <ons-button modifier="normal" ng-click="login()">Login</ons-button>
+</ons-modal>    
 <ons-sliding-menu
                   above-page="tabbar.html"
                   behind-page="menu.html"       
@@ -44,6 +47,11 @@
       label="Contacto"
       icon="comments-o"
       page="page3.html">
+    </ons-tabbar-item>
+     <ons-tabbar-item
+      label="Login"
+      icon="plus"
+      ng-click="modal.show();">
     </ons-tabbar-item>
     <ons-tabbar-item
       label="Mas"
@@ -160,7 +168,7 @@
 
       <ons-row style="margin-top: 100px;">
         <ons-col align="center">
-          <ons-button modifier="light" ng-click="ons.navigator.popPage();">Pop Page</ons-button>
+          <ons-button modifier="normal" ng-click="ons.navigator.popPage();">Pop Page</ons-button>
         </ons-col>
       </ons-row>
 
@@ -178,6 +186,9 @@
       </ons-list-item>
     </ons-list>
   </script>
+
+
+
   <script src="lib/onsen/js/angular/angular.js"></script>    
   <script src="lib/onsen/js/onsenui.js"></script>    
 
