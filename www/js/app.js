@@ -33,9 +33,6 @@
                 data: '[Login][login]=' + $email + '&[Login][password]=' + $pass + '&',
             });
 
-
-
-
             // Store the data-dump of the FORM scope.
             request.success(
                 function(html) {
@@ -44,6 +41,24 @@
                     console.log(html);
                 }
             );
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(
+                function(html) {
+                    this.debugText = html;
+                    console.log(html);
+                }
+            );
+
+            // Store the data-dump of the FORM scope.
+            request.error(
+                function(data, status, headers, config) {
+                    this.debugText = data;
+                    console.log(html);
+                }
+            );
+            
 
 
         }
