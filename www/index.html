@@ -17,7 +17,12 @@
 
 <body>
 <ons-modal var="modal" ng-controller="LoginController">
-  <ons-button modifier="normal" ng-click="login()">Login</ons-button>
+  <section style="padding: 0 8px 8px">
+    <ons-button modifier="normal" ng-click="login()">Login</ons-button>
+  </section>
+  <section style="padding: 0 8px 8px">
+        <textarea class="textarea" ng-model="debugText" placeholder="Type here" style="width: 100%; height: 100px;"></textarea>
+      </section>
 </ons-modal>    
 <ons-sliding-menu
                   above-page="tabbar.html"
