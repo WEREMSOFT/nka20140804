@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <title>Naka Outdoors</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+
+
+  
+</head>
+
+<body>    
+<ons-sliding-menu
+                  above-page="tabbar.html"
+                  behind-page="menu.html"       
+                  side="left"
+                  max-slide-distance="250px"
+                  var="menu">
+</ons-sliding-menu>
+
+
+ <script type="text/ons-template" id="tabbar.html">
+ <ons-tabbar>
+    <ons-tabbar-item
+      active="true"
+      label="Home"
+      icon="home"
+      page="page1.html">
+    </ons-tabbar-item>
+
+    <ons-tabbar-item
+      label="Buscar"
+      icon="search"
+      page="page2.html">
+    </ons-tabbar-item>
+
+    <ons-tabbar-item
+      label="Contacto"
+      icon="comments-o"
+      page="page3.html">
+    </ons-tabbar-item>
+    <ons-tabbar-item
+      label="Mas"
+      icon="plus"
+      ng-click="menu.toggleMenu()">
+    </ons-tabbar-item>
+  </ons-tabbar>
+ </script>
+  
+
+  <script type="text/ons-template" id="page1.html">
+ <ons-page>
+
+<ons-navigator>
+
+
+    <ons-page style="background-color: #f9f9f9">
+      <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+      </div>
+        <div class="center"><img style="margin-top: 4px;" src="imgs/logo_original_png.png"></div>
+      </ons-toolbar>
+
+      <ons-list ng-controller="MasterController">
+        <ons-list-item modifier="chevron" ng-repeat="item in items" ng-click="showDetail($index)">
+          <ons-row>
+            <ons-col width="38px"> 
+              <ons-icon icon="{{item.icon}}" fixed-width="true" style="color: #999"></ons-icon>
+            </ons-col>
+            <ons-col class="left">
+              {{item.title}}
+            </ons-col>
+          </ons-row>                          
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-navigator>
+    </ons-page>
+  </script>
+
+  <script type="text/ons-template" id="page2.html">
+     
+    <ons-navigator>
+      <ons-page>
+        <ons-toolbar>
+          <div class="center">Page 1</div>
+        </ons-toolbar>
+
+        <ons-row style="margin-top: 100px;">
+          <ons-col align="center">
+            <ons-button modifier="light" ng-click="ons.navigator.pushPage('page4.html')">
+              Push New Page
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+
+      </ons-page>
+    </ons-navigator>
+  </script>
+
+ <script type="text/ons-template" id="detail.html">
+    <ons-page ng-controller="DetailController" style="background-color: #f9f9f9;">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Details</div>
+      </ons-toolbar>
+
+      <br>
+      <ons-list>
+        <ons-list-header>Item Information</ons-list-header>
+        <ons-list-item><strong>{{item.title}}</strong></ons-list-item>
+        <ons-list-item>
+          <ons-row>
+            <ons-col width="38px"><ons-icon icon="{{item.icon}}" fixed-width="true" style="color: #999"></ons-icon></ons-col>
+            <ons-col>{{item.description}}</ons-col>
+          </ons-row>
+      </ons-list>
+    </ons-page>
+  </script>
+
+
+  <script type="text/ons-template" id="page3.html">
+    <ons-page  ng-controller="ContactController as ContactCtrl">
+      <ons-toolbar>
+        <div class="center">Contacto</div>
+      </ons-toolbar>
+
+      <ons-row style="margin-top: 100px;">
+          <ons-col align="center">
+            <ons-button modifier="light" ng-click="callSucursal()">
+              Sucursal Vicente Lopez
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+        <ons-row style="margin-top: 10px;">
+          <ons-col align="center">
+            <ons-button modifier="light" ng-click="callSucursal()">
+              Sucursal Capital Federal
+            </ons-button>
+          </ons-col>
+        </ons-row>
+    </ons-page>
+  </script>
+
+  <script type="text/ons-template" id="page4.html">
+    <ons-page class="center">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">New Page</div>
+      </ons-toolbar>
+
+      <ons-row style="margin-top: 100px;">
+        <ons-col align="center">
+          <ons-button modifier="light" ng-click="ons.navigator.popPage();">Pop Page</ons-button>
+        </ons-col>
+      </ons-row>
+
+       
+
+    </ons-page>
+  </script>
+   <script type="text/ons-template" id="menu.html">
+    <ons-list>
+      <ons-list-item modifier="chevron" onclick="menu.setAbovePage('page1.html', {closeMenu: true})">
+        page1.html
+      </ons-list-item>
+      <ons-list-item modifier="chevron" onclick="menu.setAbovePage('page2.html', {closeMenu: true})">
+        page2.html
+      </ons-list-item>
+    </ons-list>
+  </script>
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script> 
+</body>
+</html>
