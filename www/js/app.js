@@ -20,8 +20,12 @@
 
     module.controller('LoginController', function($scope, $http) {
         this.scope = $scope;
+        console.log(globalVariable);
+        globalVariable = this;
+        console.log(globalVariable);
 
         $scope.login = function() {
+            this.debugText = "enviando...";
             var $email = 'pablo.weremczuk@gmail.com';
             var $pass = '26825782';
             var request = $http({
@@ -33,34 +37,23 @@
                 data: '[Login][login]=' + $email + '&[Login][password]=' + $pass + '&',
             });
 
+
             // Store the data-dump of the FORM scope.
-            request.success(
-                function(html) {
-                    this.debugText = html;
-                    this.scope.$apply();
-                    console.log(html);
-                }
-            );
+            request.success(this.httpSuccess);
 
 
             // Store the data-dump of the FORM scope.
-            request.success(
-                function(html) {
-                    this.debugText = html;
-                    console.log(html);
-                }
-            );
+            request.error(this.httpError);
 
-            // Store the data-dump of the FORM scope.
-            request.error(
-                function(data, status, headers, config) {
-                    this.debugText = data;
-                    console.log(html);
-                }
-            );
-            
+        }
 
+        $scope.httpError = function(data, status, headers, config) {
+            console.log(globalVariable.scope.debugText);
+            globalVariable.scope.debugText = "error " + status;
+        }
 
+        $scope.httpSuccess = function(html) {
+            globalVariable.scope.debugText = "Exito!: " + html;
         }
     });
 
@@ -174,4 +167,6 @@
             //window.open('tel:45239431', '_new');
         }
     });
+
+    var globalVariable = null;
 })();
