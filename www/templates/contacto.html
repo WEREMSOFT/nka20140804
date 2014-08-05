@@ -1,0 +1,38 @@
+    <ons-page  ng-controller="ContactController as ContactCtrl">
+      <ons-toolbar>
+        <div class="center">Contacto</div>
+      </ons-toolbar>
+
+      <ons-row style="margin-top: 100px;">
+          <ons-col align="center">
+            <ons-button modifier="normal" ng-click="callSucursal(cods_sucursal.VICENTE_LOPEZ)">
+              <ons-icon icon="phone"></ons-icon> Sucursal Vicente Lopez
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+        <ons-row style="margin-top: 10px;">
+          <ons-col align="center">
+            <ons-button modifier="light" ng-click="emailSucursal(cods_sucursal.VICENTE_LOPEZ)">
+              <ons-icon icon="envelope-o"></ons-icon> Sucursal Vicente Lopez
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+        <ons-row style="margin-top: 20px;">
+          <ons-col align="center">
+            <ons-button modifier="normal" ng-click="callSucursal(cods_sucursal.CAPITAL)">
+              <ons-icon icon="phone"></ons-icon>Sucursal Capital Federal
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+        <ons-row style="margin-top: 10px;">
+          <ons-col align="center">
+            <ons-button modifier="light" ng-click="emailSucursal(cods_sucursal.CAPITAL)">
+              <ons-icon icon="envelope-o"></ons-icon> Sucursal Capital Federal
+            </ons-button>
+          </ons-col>
+        </ons-row>
+
+    </ons-page>

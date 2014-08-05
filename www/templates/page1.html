@@ -1,0 +1,28 @@
+ <ons-page>
+
+<ons-navigator>
+
+
+    <ons-page style="background-color: #f9f9f9">
+      <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+      </div>
+        <div class="center"><img style="margin-top: 4px;" src="imgs/logo_original_png.png"></div>
+      </ons-toolbar>
+
+      <ons-list ng-controller="MasterController">
+        <ons-list-item modifier="chevron" ng-repeat="item in items" ng-click="showDetail($index)">
+          <ons-row>
+            <ons-col width="38px"> 
+              <ons-icon icon="{{item.icon}}" fixed-width="true" style="color: #999"></ons-icon>
+            </ons-col>
+            <ons-col class="left">
+              {{item.title}}
+            </ons-col>
+          </ons-row>                          
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-navigator>
+    </ons-page>
