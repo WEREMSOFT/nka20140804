@@ -62,7 +62,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            globalVariable.scope.debugText = "Exito!: " + headers;
+            globalVariable.scope.debugText = "Exito!: " + data;
         }
     });
 
