@@ -161,7 +161,45 @@
         return data;
     });
 
-
+    module.controller('GridMenuHomeController', function($scope) {
+        $scope.items = [{
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "templates/page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }, {
+            title: "Equipo de escalada",
+            icon: "search",
+            page: "page1.html"
+        }];
+    });
 
     module.controller('ContactController', function($scope) {
         $scope.cods_sucursal = {
@@ -193,6 +231,10 @@
                     break;
             }
         }
+    });
+
+    module.controller('ContactFormController', function($scope) {
+        
     });
 
     var globalVariable = null;

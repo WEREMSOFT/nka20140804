@@ -9,18 +9,18 @@
     <ons-tabbar-item
       label="Buscar"
       icon="search"
-      page="templates/page2.html">
+      ng-click="ons.navigator.pushPage('templates/page2.html')">
     </ons-tabbar-item>
 
     <ons-tabbar-item
       label="Contacto"
       icon="phone"
-      page="templates/contacto.html">
+      ng-click="ons.navigator.pushPage('templates/contacto.html')">
     </ons-tabbar-item>
      <ons-tabbar-item
       label="Login"
       icon="user"
-      ng-click="modal.show();">
+      ng-click="ons.navigator.pushPage('templates/login.html')">
     </ons-tabbar-item>
     <ons-tabbar-item
       label="Mas"

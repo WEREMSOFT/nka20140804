@@ -7,15 +7,10 @@
         <div class="center"><img style="margin-top: 4px;" src="imgs/logo_original_png.png"></div>
       </ons-toolbar>
 			
-		  <ons-row style="margin-top: 100px;">
+		  <ons-row style="margin-top: 0px;">
           <ons-col align="center">
-            <ons-button modifier="light" ng-click="ons.navigator.pushPage('templates/page4.html')">
-              Push New Page
-            </ons-button>
+            <div  class="grid-menu-scroller" ng-include="'templates/gridmenu.html'"></div>
           </ons-col>
         </ons-row>
-
-
-
       </ons-page>
     </ons-navigator>
