@@ -1,18 +1,8 @@
-<ons-modal var="modalLogin" ng-controller="ContactFormController">
-    <div class="margin-little">
-        <input type="text" class="text-input--underbar width-half" placeholder="First" value="">
-        <input type="text" class="text-input--underbar width-half" placeholder="Last" value="" style="border-width-left: 1px">
-    </div>
-    <div class="margin-little">
-        <input type="text" class="text-input--underbar width-full" placeholder="Email" value="">
-    </div>
-    <div class="margin-little">
-        <input type="password" class="text-input--underbar width-full" placeholder="Password" value="">
-    </div>
-    <div class="lucent">
-        <p class="note">Password - 6 characters or more</p>
-    </div>
-    <div class="vspc margin-little">
-        <button class="button--large--cta">Sign up</button>
-    </div>
-</ons-modal>
+<ons-modal var="modalContacto" ng-controller="ContactFormController">
+  <section style="padding: 0 8px 8px">
+    <ons-button modifier="normal" ng-click="sendContact()">Contactar</ons-button>
+  </section>
+  <section style="padding: 0 8px 8px">
+        <textarea class="textarea" ng-model="debugText" placeholder="Type here" style="width: 100%; height: 100px;"></textarea>
+      </section>
+</ons-modal> 

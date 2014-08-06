@@ -18,6 +18,54 @@
         }
     });
 
+    module.controller('ContactFormController', function($scope, $http) {
+        this.scope = $scope;
+        console.log("->" + globalVariable);
+        globalVariable = this;
+        console.log("->" + globalVariable);
+
+        $scope.test = function(){
+            console.log("testando");
+        }
+
+        $scope.sendContact = function() {
+            this.debugText = "enviando...";
+            var nombre = "werem";
+            var telefono = "726768726872";
+            var ubicacion = "VICENTE LOPEZ";
+            var email = 'werem@yopmail.com';
+            var consulta = "texto de la consulta";
+            var hashMail = "bdfdd68e313ed7b27afd2c82d37fd8f65d9d21c7";
+            var hashAnt = "04ee83e501cba614fbb591e2d31460ca745cc11c";
+            var request = $http({
+                method: "post",
+                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: '[Contacto][nombre]=' + nombre + '&[Contacto][liam]=' + email +'&[Contacto][telefono]=' + telefono + '&[Contacto][ubicacion]=' + ubicacion + '&[Contacto][consulta]=' + consulta +'&[Contacto][mail]=' + hashMail +'&[Contacto][maps]=&' + '&[Contacto][ant]=' + hashAnt + '&[Contacto][url]=contactos&',
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
+
+        }
+
+        $scope.httpError = function(data, status, headers, config) {
+            console.log(globalVariable.scope.debugText);
+            globalVariable.scope.debugText = "error " + status;
+        }
+
+        $scope.httpSuccess = function(data, status, headers, config) {
+            globalVariable.scope.debugText = "Exito!: " + headers;
+        }
+    });
+
     module.controller('LoginController', function($scope, $http) {
         this.scope = $scope;
         console.log(globalVariable);
@@ -233,9 +281,7 @@
         }
     });
 
-    module.controller('ContactFormController', function($scope) {
-        
-    });
+    
 
     var globalVariable = null;
 })();
