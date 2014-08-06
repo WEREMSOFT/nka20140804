@@ -43,7 +43,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                data: '_method=POST&[Contacto][nombre]=' + nombre + '&[Contacto][liam]=' + email +'&[Contacto][telefono]=' + telefono + '&[Contacto][ubicacion]=' + ubicacion + '&[Contacto][consulta]=' + consulta +'&[Contacto][mail]=' + hashMail +'&[Contacto][maps]=&' + '&[Contacto][ant]=' + hashAnt + '&[Contacto][url]=contactos&',
+                data: '_method=POST&data[Contacto][nombre]=' + nombre + '&data[Contacto][liam]=' + email +'&data[Contacto][telefono]=' + telefono + '&data[Contacto][ubicacion]=' + ubicacion + '&data[Contacto][consulta]=' + consulta +'&data[Contacto][mail]=' + hashMail +'&data[Contacto][maps]=&' + '&data[Contacto][ant]=' + hashAnt + '&data[Contacto][url]=contactos&',
             });
 
 
