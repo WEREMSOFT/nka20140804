@@ -1,8 +1,21 @@
-<div class="main-image-wrapper">
-    <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
-</div>
-<input type="email" class="text-input--underbar" placeholder="Email" value="">
-<input type="password" type="text" class="text-input--underbar" placeholder="Password" value="">
-<br>
-<button class="button login-button" ng-click="ons.navigator.popPage()">Log in</button>
-<br>
+  <ons-page>
+
+     <div ng-include="'templates/header.html'"></div>
+
+    <ons-row style="margin-top: 100px;">
+      <ons-col align="center">
+        <div class="main-image-wrapper">
+		    <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
+		</div>
+		<input type="email" class="text-input--underbar" placeholder="Email" value="">
+		<input type="password" type="text" class="text-input--underbar" placeholder="Password" value="">
+		<br>
+		<button class="button login-button" ng-click="ons.navigator.popPage()">Log in</button>
+		<br>
+      </ons-col>
+    </ons-row>
+
+  </ons-page>
+
+
+
