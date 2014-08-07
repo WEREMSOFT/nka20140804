@@ -44,14 +44,14 @@
 
 
             // Store the data-dump of the FORM scope.
-            request.success(this.httpSuccess);
+            request.success(this.httpGetHashSuccess);
 
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
         }
 
-        this.httpGetHashSuccess = function(data){
+        $scope.httpGetHashSuccess = function(data){
         	var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
         	$scope.hashMail = arrTemp[1].split('"')[0];
         	$scope.hashLast = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
