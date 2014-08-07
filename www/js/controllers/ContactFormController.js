@@ -67,7 +67,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            ons.navigator.popPage();
+            $scope.modalAlert.show();
         }
     });
 

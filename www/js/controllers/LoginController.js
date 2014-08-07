@@ -15,7 +15,8 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                data: '[Login][login]=' + $email + '&[Login][password]=' + $pass + '&',
+
+                data: '_method=POST&data[Login][login]=' + $email + '&data[Login][password]=' + $pass + '&',
             });
 
 
@@ -29,12 +30,41 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            $scope.debugText = "error " + status;
+            $scope.debugText = "error " + data;
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            $scope.debugText = "Exito!: " + headers;
+            $scope.debugText = "Exito!: " + data;
+            $scope.getUserDetails();
         }
+
+        $scope.getUserDetails = function()
+        {
+            this.debugText = "Obteniendo detalles del usuario...";
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/client/dashboards/index',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpGetUserDetailsSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpGetUserDetailsError);
+        }
+
+         $scope.httpGetUserDetailsError = function(data, status, headers, config) {
+            $scope.debugText = "error " + data;
+        }
+
+        $scope.httpGetUserDetailsSuccess = function(data, status, headers, config) {
+            $scope.debugText = "Exito!: " + data;
+        }
+
     });
 
 })();

@@ -2,56 +2,34 @@
            <div ng-include="'templates/header.html'"></div>
 
   <ons-row  style="margin-top: 100px;">
-    <ons-col></ons-col>
     <ons-col align="center">
+        <div style="text-align: center" class="content-padded">
       <ons-button modifier="large" ng-click="callSucursal(cods_sucursal.VICENTE_LOPEZ)">
               <ons-icon icon="phone"></ons-icon> Sucursal Vicente Lopez
             </ons-button>
       </ons-col>
-    <ons-col></ons-col>
+      </div>
   </ons-row>  
 
   <ons-row  style="margin-top: 10px;">
-    <ons-col></ons-col>
     <ons-col align="center">
+    <div style="text-align: center" class="content-padded">
        <ons-button modifier="large" ng-click="callSucursal(cods_sucursal.CAPITAL)">
               <ons-icon icon="phone"></ons-icon>Sucursal Capital Federal
             </ons-button>
+        </div>
       </ons-col>
-    <ons-col></ons-col>
   </ons-row>
 
 <ons-row  style="margin-top: 10px;">
-    <ons-col></ons-col>
     <ons-col align="center">
+        <div style="text-align: center" class="content-padded">
        <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/contactForm.html')">
               <ons-icon icon="envelope-o"></ons-icon>Enviar Consulta
             </ons-button>
+            </div>
     </ons-col>
-    <ons-col></ons-col>
   </ons-row>
-
-
-     
-
-
-        <ons-row style="margin-top: 10px;" ng-hide="true">
-          <ons-col align="center">
-            <ons-button modifier="light" ng-click="emailSucursal(cods_sucursal.VICENTE_LOPEZ)">
-              <ons-icon icon="envelope-o"></ons-icon> Sucursal Vicente Lopez
-            </ons-button>
-          </ons-col>
-        </ons-row>
-
-
-        <ons-row style="margin-top: 10px;" ng-hide="true">
-          <ons-col align="center">
-            <ons-button modifier="light" ng-click="emailSucursal(cods_sucursal.CAPITAL)">
-              <ons-icon icon="envelope-o"></ons-icon> Sucursal Capital Federal
-            </ons-button>
-          </ons-col>
-        </ons-row>
-       
         <ons-row style="margin-top: 10px;">
           <ons-col align="center">
        
