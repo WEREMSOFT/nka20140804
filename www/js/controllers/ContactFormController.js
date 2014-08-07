@@ -11,6 +11,7 @@
             var ubicacion = "VICENTE LOPEZ";
             var email = 'werem@yopmail.com';
             var consulta = "texto de la consulta";
+
             var hashMail = "bdfdd68e313ed7b27afd2c82d37fd8f65d9d21c7";
             var hashAnt = "04ee83e501cba614fbb591e2d31460ca745cc11c";
             var request = $http({
@@ -29,6 +30,35 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
+
+        }
+
+        $scope.getHash = function(){
+        	 var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
+        }
+
+        this.httpGetHashSuccess = function(data){
+        	var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
+        	$scope.hashMail = arrTemp[1].split('"')[0];
+        	$scope.hashLast = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
+
+        	alert($scope.hashMail);
+        	alert($scope.hashLast) 
+        	
 
         }
 
