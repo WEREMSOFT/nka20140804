@@ -12,8 +12,12 @@
             var email = 'werem@yopmail.com';
             var consulta = "texto de la consulta";
 
-            var hashMail = "bdfdd68e313ed7b27afd2c82d37fd8f65d9d21c7";
-            var hashAnt = "04ee83e501cba614fbb591e2d31460ca745cc11c";
+            var hashMail = $scope.hashMail;
+            var hashAnt = $scope.hashAnt;
+
+            alert($scope.hashMail);
+            alert($scope.hashAnt) 
+
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/contactos',
@@ -54,12 +58,11 @@
         $scope.httpGetHashSuccess = function(data){
         	var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
         	$scope.hashMail = arrTemp[1].split('"')[0];
-        	$scope.hashLast = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
+        	$scope.hashAnt = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
 
         	alert($scope.hashMail);
-        	alert($scope.hashLast) 
-        	
-
+        	alert($scope.hashAnt) 
+            this.sendContact();
         }
 
         $scope.httpError = function(data, status, headers, config) {
