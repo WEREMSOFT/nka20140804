@@ -63,6 +63,8 @@
 
         $scope.httpGetUserDetailsSuccess = function(data, status, headers, config) {
             $scope.debugText = "Exito!: " + data;
+            $scope.userName = data.split('"Ver datos de ')[1].split('"')[0];
+            alert("Bienvenido " + $scope.userName + "!!!!!");
         }
 
     });
