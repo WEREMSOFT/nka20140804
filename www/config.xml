@@ -10,7 +10,7 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="res/drawable/icon.png" />
-    <gap:splash src="res/drawable/splash.png" />
+    <gap:splash src="res/drawable/splash.png" gap:platform="ios"/>
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="100000" />
     <preference name="Orientation" value="landscape" />
