@@ -10,6 +10,9 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="res/drawable/icon.png" />
+    <gap:splash src="res/drawable/splash.png" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="100000" />
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
 </widget>
