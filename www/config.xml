@@ -10,10 +10,9 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="res/drawable/icon.png" />
-    <gap:splash src="res/drawable/splash.png" gap:platform="ios"/>
-    <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="100000" />
+    <gap:splash src="res/drawable/splash.png"/>
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
     <gap:plugin name="com.boyvanderlaak.cordova.plugin.orientationchanger" />
+    <gap:plugin name="org.apache.cordova.device" />
 </widget>
