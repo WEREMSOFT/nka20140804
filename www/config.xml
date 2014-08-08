@@ -15,4 +15,5 @@
     <preference name="SplashScreenDelay" value="100000" />
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
+    <gap:plugin name="com.boyvanderlaak.cordova.plugin.orientationchanger" />
 </widget>

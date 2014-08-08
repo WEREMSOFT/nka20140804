@@ -17,7 +17,7 @@
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     app.onDeviceReady = function() {
-        // set to either landscape
-        screen.lockOrientation('portrait');
+        // set to either portrait
+        window.plugins.orientationchanger.lockOrientation('portrait');
     }
 })();
