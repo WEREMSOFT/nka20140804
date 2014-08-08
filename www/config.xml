@@ -9,6 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <icon src="res/drawable/icon.png" />
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
 </widget>
