@@ -9,11 +9,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="orientation" value="portrait" />
     <gap:config-file platform="ios" parent="UISupportedInterfaceOrientations" overwrite="true">
-        <key>UISupportedInterfaceOrientations</key>
         <array>
-            <string>UIInterfaceOrientationPortrait</string>
+            <string>UIInterfaceOrientationLandscapeOmg</string>
             <string>UIInterfaceOrientationPortraitUpsideDown</string>
         </array>
     </gap:config-file>
