@@ -33,6 +33,12 @@
 
         }
 
+        $scope.goBack = function()
+        {
+             if($scope.isWorking == true) return;
+            ons.navigator.popPage();
+        }
+
         $scope.getHash = function(){
             if($scope.isWorking == true) return;
             $scope.isWorking = true;
@@ -62,12 +68,13 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            console.log($scope.debugText);
-            $scope.consulta = "error " + status;
+            alert("Ooosp!, algo ha salido mal, reintente en un momento");
+            $scope.isWorking = false;
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            $scope.modalAlert.show();
+            alert('Su consulta ha sido enviado con éxito!');
+            ons.navigator.popPage();
         }
     });
 

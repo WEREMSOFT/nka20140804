@@ -7,13 +7,12 @@
         <div class="main-image-wrapper">
 		    <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
 		</div>
-		<input type="email" class="text-input--underbar" placeholder="Email" value="">
-		<input type="password" type="text" class="text-input--underbar" placeholder="Password" value="">
+		<input type="email" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
+		<input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
 		<br>
 		<button class="button login-button" ng-click="login()">Log in</button>
-		<br>
-    <br>
-    <textarea class="text-input--underbar" ng-model="debugText" placeholder="Ingrese su consulta" style="font-size:19px;width: 80%; height: 100px;">Contulta Cadorna</textarea>
+	
+   
       </ons-col>
     </ons-row>
 

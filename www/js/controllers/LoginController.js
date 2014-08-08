@@ -3,12 +3,12 @@
     var module = angular.module('Login', []);
 
     module.controller('LoginController', function($scope, $http) {
-        this.scope = $scope;
 
         $scope.login = function() {
-            this.debugText = "enviando...";
-            var $email = 'pablo.weremczuk@gmail.com';
-            var $pass = '26825782';
+            if(!$scope.user){
+                alert('La dirección de mail no es válida');
+                return;
+            }
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/frontlogin/0',
@@ -16,7 +16,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + $email + '&data[Login][password]=' + $pass + '&',
+                data: '_method=POST&data[Login][login]=' + $scope.userName + '&data[Login][password]=' + $scope.password + '&',
             });
 
 
@@ -30,11 +30,10 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            $scope.debugText = "error " + data;
+            alert("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            $scope.debugText = "Exito!: " + data;
             $scope.getUserDetails();
         }
 
