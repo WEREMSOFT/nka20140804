@@ -18,6 +18,9 @@
     // function, we must explicitly call 'app.receivedEvent(...);'
     app.onDeviceReady = function() {
         // set to either portrait
-        window.plugins.orientationchanger.lockOrientation('portrait');
+        alert("orientando!!!!!");
+       screen.lockOrientation('landscape');
+       alert("orientado!!!!!");
+
     }
 })();
