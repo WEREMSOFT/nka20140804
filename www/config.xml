@@ -13,6 +13,6 @@
     <gap:splash src="res/drawable/splash.png"/>
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
-    <gap:plugin name="com.boyvanderlaak.cordova.plugin.orientationchanger" />
+    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" />
     <gap:plugin name="org.apache.cordova.device" />
 </widget>
