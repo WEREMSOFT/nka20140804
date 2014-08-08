@@ -16,7 +16,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + $scope.userName + '&data[Login][password]=' + $scope.password + '&',
+                data: '_method=POST&data[Login][login]=' + $scope.user + '&data[Login][password]=' + $scope.password + '&',
             });
 
 
