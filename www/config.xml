@@ -15,5 +15,4 @@
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
     <gap:plugin name="net.yoik.cordova.plugins.screenorientation" />
-    <gap:plugin name="org.apache.cordova.device" />
 </widget>
