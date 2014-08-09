@@ -21,3 +21,12 @@
         alert("orientando!!!!!");
     }
 })();
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// Cordova is ready
+//
+function onDeviceReady() {
+    alert("iniiando");
+    navigator.splashscreen.show();
+}

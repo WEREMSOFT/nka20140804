@@ -8,11 +8,21 @@
         Apache Cordova Team
     </author>
     <preference name="phonegap-version" value="3.5.0" />
+
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+
+
+
     <content src="index.html" />
     <access origin="*" />
     <icon src="res/drawable/icon.png" />
-    <gap:splash src="res/drawable/splash.png"/>
+    <gap:splash src="res/drawable/splash.png" />
     <preference name="Orientation" value="landscape" />
     <preference name="Fullscreen" value="true" />
-    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
 </widget>
