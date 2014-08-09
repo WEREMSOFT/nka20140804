@@ -20,5 +20,13 @@
     <access origin="*" />
     <icon src="res/drawable/icon.png" />
     <gap:splash src="res/drawable/splash.png" />
-    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
+
+    <gap:config-file platform="android" parent="/application">
+        <activity android:screenOrientation="landscape" >
+            <intent-filter></intent-filter>
+        </activity>
+    </gap:config-file>
+
+
+
 </widget>
