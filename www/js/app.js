@@ -19,8 +19,5 @@
     app.onDeviceReady = function() {
         // set to either portrait
         alert("orientando!!!!!");
-       screen.lockOrientation('landscape');
-       alert("orientado!!!!!");
-
     }
 })();
