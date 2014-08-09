@@ -1,42 +1,23 @@
 [{
     loggedIn: true,
-
-    nombre: Pablo,  
-    apellido: Weremczuk, 
-    mail: pablo.weremczuk@gmail.com
-    foto: 
-    nakarios
-    compras
-    carrito
-    telefono
-    tel-cel
-    direccion
-    provincia
-    provincia de residencia
-    terminalDeEnvio
-    Terminal de envio
-    localidad
-    localidad
-    partido
-    partido
-    codigoPostal
-    codigo postal
-    datosFacturacion
-    Datos de facturación,
-    pueden ser Consumidor Final,
-    responsable inscripto,
-    etc.
-    Pedidos
-
-
-    pedidosFinalizados
-    Un array de objetos,
-    formato de los mismos a determinar
-    pedidosPendientes
-    Idem anterior
-    pedidosCancelados
-    Idem anterior
-
-
-
+    nombre: "Pablo",
+    apellido: "Weremczuk",
+    mail: "pablo.weremczuk@gmail.com"
+    foto: "http://lorempixel.com/150/200/people/"
+    nakarios: 2,
+    compras: [{incimpleto: "a Determinar"}],
+    carrito: [{items: [34, 455, 454, 3]}    ]
+    telefono: "45239431",
+    telCel: "1568760653",
+    direccion: "donado 810",
+    provincia: "Buenos Aires",
+    terminalDeEnvio: "Retiro",
+    localidad:"CABA",
+    partido: "Villa Ortuzar",
+    codigoPostal: "1744",
+    datosFacturacion: 1,
+    pedidosFinalizados: [{incimpleto: "a Determinar"}],
+    Un array de objetos: [{incimpleto: "a Determinar"}],
+    pedidosPendientes: [{incimpleto: "a Determinar"}],
+    pedidosCancelados: [{incimpleto: "a Determinar"}],
 }]
