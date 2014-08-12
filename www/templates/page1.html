@@ -2,7 +2,7 @@
   <div ng-include="'templates/header.html'"></div>
    <div style="text-align: center" class="content-padded">
     <ul class="list list-top">
-        <li ng-repeat="category in categories" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
+        <li ng-repeat="category in categories[categories.length - 1]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
             <div class="list-item-main">
                 <div class="list-item-left">
                     <img src="{{category.thumb}}" class="avator">
@@ -20,5 +20,3 @@
     </ul>
 </div>
 </ons-page>
-
-

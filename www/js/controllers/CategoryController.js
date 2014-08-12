@@ -4,9 +4,9 @@
 
     module.controller('CategoryController', function($scope, $http) {
 
-        $scope.categories = null;
-
-
+        $scope.categories = [];
+        $scope.lastCategory = [];
+        $scope.nav = null;
 
         $scope.getCategory = function(categoryID) {
             var request = $http({
@@ -19,8 +19,7 @@
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
-                console.log(data.result.child_categories);
-                $scope.categories = data.result.child_categories;
+                $scope.categories.push(data.result.child_categories);
             }
 
             // Store the data-dump of the FORM scope.
@@ -31,8 +30,20 @@
             request.error(this.httpGetCategoryDetailsError);
         }
 
-        $scope.showCategory = function (categoryID)
-        {
+        $scope.showCategory = function(categoryID) {
+            if ($scope.nav == null) {
+                $scope.nav = ons.navigator;
+                $scope.nav.on('prepop', function(event) {
+                    var page = event.currentPage; // Get current page object
+                    if(page.page == "templates/page1.html")
+                    {
+                        $scope.categories.pop();
+                    }
+                });
+            }
+
+
+            $scope.lastCategory.push(categoryID);
             $scope.getCategory(categoryID);
             ons.navigator.pushPage('templates/page1.html');
         }
