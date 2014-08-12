@@ -1,19 +1,24 @@
-    <ons-page class="center">
-      <div ng-include="'templates/header.html'"></div>
-       <ons-row style="margin-top: 0px;">
-        <ons-col align="center">
-          <ons-list>
-            <ons-list-item modifier="chevron" ng-repeat="category in categories" ng-click="showCategory(category.id)">
-              <ons-row>
-                <ons-col class="left">
-                  {{category.title}}
-                </ons-col>
-              </ons-row>                          
-            </ons-list-item>
-          </ons-list>
-
-          </ons-col>
-      </ons-row>
+<ons-page class="center">
+  <div ng-include="'templates/header.html'"></div>
+   <div style="text-align: center" class="content-padded">
+    <ul class="list list-top">
+        <li ng-repeat="category in categories" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
+            <div class="list-item-main">
+                <div class="list-item-left">
+                    <img src="{{category.thumb}}" class="avator">
+                </div>
+                <div class="list-item-right">
+                    <div class="list-item-content">
+                        <span class="list-item-name">{{category.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <span class="list-item-action">
+                <i class="fa fa-angle-right"></i>
+            </span>
+        </li>
+    </ul>
+</div>
 </ons-page>
 
-   
+
