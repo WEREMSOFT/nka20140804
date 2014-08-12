@@ -1,0 +1,19 @@
+<div style="text-align: center" class="content-padded">
+    <ul class="list list-top">
+        <li ng-repeat="category in categories" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="ons.navigator.pushPage('templates/contacto.html')">
+            <div class="list-item-main">
+                <div class="list-item-left">
+                    <img src="{{category.thumb}}" class="avator">
+                </div>
+                <div class="list-item-right">
+                    <div class="list-item-content">
+                        <span class="list-item-name">{{category.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <span class="list-item-action">
+                <i class="fa fa-angle-right"></i>
+            </span>
+        </li>
+    </ul>
+</div>

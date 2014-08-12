@@ -1,23 +1,19 @@
- <ons-page>
-
-<ons-navigator>
-
-
-    <ons-page style="background-color: #f9f9f9">
+    <ons-page class="center">
       <div ng-include="'templates/header.html'"></div>
+       <ons-row style="margin-top: 0px;">
+        <ons-col align="center">
+          <ons-list>
+            <ons-list-item modifier="chevron" ng-repeat="category in categories" ng-click="showCategory(category.id)">
+              <ons-row>
+                <ons-col class="left">
+                  {{category.title}}
+                </ons-col>
+              </ons-row>                          
+            </ons-list-item>
+          </ons-list>
 
-      <ons-list ng-controller="MasterController">
-        <ons-list-item modifier="chevron" ng-repeat="item in items" ng-click="showDetail($index)">
-          <ons-row>
-            <ons-col width="38px"> 
-              <ons-icon icon="{{item.icon}}" fixed-width="true" style="color: #999"></ons-icon>
-            </ons-col>
-            <ons-col class="left">
-              {{item.title}}
-            </ons-col>
-          </ons-row>                          
-        </ons-list-item>
-      </ons-list>
-    </ons-page>
-  </ons-navigator>
-    </ons-page>
+          </ons-col>
+      </ons-row>
+</ons-page>
+
+   
