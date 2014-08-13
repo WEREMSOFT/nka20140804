@@ -1,7 +1,7 @@
 <ons-page class="center">
   <div ng-include="'templates/header.html'"></div>
-   <div style="text-align: center" class="content-padded">
-    <ul class="list list-top">
+   <div style="text-align: center" class="content-padded" ng-hide="loading">
+    <ul class="list list-top" >
         <li ng-repeat="category in categories[categories.length - 1]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
             <div class="list-item-main">
                 <div class="list-item-left">
@@ -18,5 +18,12 @@
             </span>
         </li>
     </ul>
+</div>
+<div  class="content-padded" ng-show="loading">
+    <ons-row>
+            <ons-col align="center"> 
+                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
+            </ons-col>
+    </ons-row>
 </div>
 </ons-page>

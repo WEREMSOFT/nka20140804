@@ -7,8 +7,10 @@
         $scope.categories = [];
         $scope.lastCategory = [];
         $scope.nav = null;
+        $scope.loading = true;
 
         $scope.getCategory = function(categoryID) {
+            $scope.loading = true;
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID,
@@ -20,6 +22,7 @@
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
                 $scope.categories.push(data.result.child_categories);
+                $scope.loading = false;
             }
 
             // Store the data-dump of the FORM scope.

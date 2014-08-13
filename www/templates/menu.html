@@ -5,7 +5,15 @@
       <ons-list-item modifier="chevron" onclick="ons.navigator.pushPage('templates/contacto.html')">
         Contacto
       </ons-list-item>
-      <ons-list-item ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id)">
+      <ons-list-item ng-hide="categories.length == 0" ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id)">
         {{category.title}}
+      </ons-list-item>
+
+      <ons-list-item ng-show="categories.length == 0">
+        <ons-row>
+              <ons-col align="center"> 
+                  <ons-icon icon="spinner" size="20px" spin="true"></ons-icon>
+              </ons-col>
+        </ons-row>
       </ons-list-item>
     </ons-list>
