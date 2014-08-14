@@ -23,7 +23,6 @@
         }
 
         $scope.addSlides($scope.slides4, 'nature', 5);
-        console.log($scope.slides4);
     });
 
 })();

@@ -1,29 +1,30 @@
 <ons-page class="center">
-  <div ng-include="'templates/ModuleHeader.html'"></div>
-   <div style="text-align: center" class="content-padded" ng-hide="loading">
-    <ul class="list list-top" >
-        <li ng-repeat="category in categories[categories.length - 1]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
-            <div class="list-item-main">
-                <div class="list-item-left">
-                    <img src="{{category.thumb}}" class="avator">
-                </div>
-                <div class="list-item-right">
-                    <div class="list-item-content">
-                        <span class="list-item-name">{{category.title}}</span>
+    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <div style="text-align: center" class="content-padded" ng-hide="loading">
+        <ul class="list list-top">
+            <li ng-repeat="category in categories[categories.length - 1]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
+                <div class="list-item-main">
+                    <div class="list-item-left">
+                        <img src="{{category.thumb}}" class="avator">
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <span class="list-item-name">{{category.title}}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <span class="list-item-action">
-                <i class="fa fa-angle-right"></i>
-            </span>
-        </li>
-    </ul>
-</div>
-<div  class="content-padded" ng-show="loading">
-    <ons-row>
-            <ons-col align="center"> 
+                <span class="list-item-action">
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="content-padded" ng-show="loading">
+        <ons-row>
+            <ons-col align="center">
                 <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
+                <br>cargando...
             </ons-col>
-    </ons-row>
-</div>
+        </ons-row>
+    </div>
 </ons-page>

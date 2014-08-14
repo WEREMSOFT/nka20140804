@@ -38,8 +38,7 @@
                 $scope.nav = ons.navigator;
                 $scope.nav.on('prepop', function(event) {
                     var page = event.currentPage; // Get current page object
-                    if(page.page == "templates/PageCategory.html")
-                    {
+                    if (page.page == "templates/PageCategory.html") {
                         $scope.categories.pop();
                     }
                 });

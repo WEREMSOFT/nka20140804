@@ -5,7 +5,7 @@
       <ons-list-item modifier="chevron" onclick="ons.navigator.pushPage('templates/PageContacto.html')">
         Contacto
       </ons-list-item>
-      <ons-list-item ng-hide="categories.length == 0" ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id)">
+      <ons-list-item ng-hide="categories.length == 0" ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id, true)">
         {{category.title}}
       </ons-list-item>
 

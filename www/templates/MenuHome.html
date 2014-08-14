@@ -19,12 +19,5 @@
 	        </ons-col>
 	    </ons-row>
     </div>
-	    <div  class="content-padded" ng-show="categories.length == 0">
-	    <ons-row>
-	            <ons-col align="center"> 
-	                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
-	            </ons-col>
-	    </ons-row>
-	</div>
-
+    <div ng-include="'templates/ModuleCargando.html'"  ng-show="categories.length == 0"></div>
 </div>

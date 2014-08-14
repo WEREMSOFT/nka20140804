@@ -1,25 +1,26 @@
- <ons-tabbar>
-    <ons-tabbar-item
-      active="true"
-      label="Home"
-      icon="home"
-      page="templates/PageHome.html">
-    </ons-tabbar-item>
+<ons-tabbar>
+  <ons-tabbar-item
+    active="true"
+    label="Home"
+    icon="home"
+    page="templates/PageHome.html"
+    animation="lift">
+  </ons-tabbar-item>
 
-    <ons-tabbar-item
-      label="Buscar"
-      icon="search"
-      ng-click="ons.navigator.pushPage('templates/PageSearch.html')">
-    </ons-tabbar-item>
+  <ons-tabbar-item
+    label="Buscar"
+    icon="search"
+    ng-click="ons.navigator.pushPage('templates/PageSearch.html')">
+  </ons-tabbar-item>
 
-    <ons-tabbar-item
-      label="Contacto"
-      icon="phone"
-      ng-click="ons.navigator.pushPage('templates/PageContacto.html')">
-    </ons-tabbar-item>
-    <ons-tabbar-item
-      label="Mas"
-      icon="plus"
-      ng-click="menu.toggleMenu()">
-    </ons-tabbar-item>
-  </ons-tabbar>
+  <ons-tabbar-item
+    label="Contacto"
+    icon="phone"
+    ng-click="ons.navigator.pushPage('templates/PageContacto.html');">
+  </ons-tabbar-item>
+  <ons-tabbar-item
+    label="Mas"
+    icon="plus"
+    ng-click="menu.toggleMenu()">
+  </ons-tabbar-item>
+</ons-tabbar>
