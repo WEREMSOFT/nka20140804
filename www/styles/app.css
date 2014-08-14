@@ -267,3 +267,28 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 12px;
 }
 /*--- list with pictures end ---*/
+/*--- menu home begin ---*/
+.box-for-3-items {
+    text-align: center;
+    padding: 4px 0 8px 0;
+}
+.box-for-3-items button {
+    width: 90px;
+    height: 28px;
+    line-height: 18px;
+}
+.box-for-3-items img {
+    display: inline-block;
+    width: 90px;
+    margin: 0 auto 0 auto;
+}
+.cadorna {
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+}
+.cadorna2 {
+    padding-top: 20px;
+}
+/*--- menu home end ---*/

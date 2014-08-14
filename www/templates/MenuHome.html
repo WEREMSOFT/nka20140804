@@ -1,29 +1,4 @@
 <div style="text-align: center" class="content-padded">
-    <style type="text/css">
-    .box-for-3-items {
-        text-align: center;
-        padding: 4px 0 8px 0;
-    }
-    .box-for-3-items button {
-        width: 90px;
-        height: 28px;
-        line-height: 18px;
-    }
-    .box-for-3-items img {
-        display: inline-block;
-        width: 90px;
-        margin: 0 auto 0 auto;
-    }
-    .cadorna {
-        font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-        font-size: 12px;
-        -webkit-font-smoothing: antialiased;
-        font-weight: 900;
-    }
-    .cadorna2 {
-        padding-top: 20px;
-    }
-    </style>
     <div ng-hide="categories.length == 0">
 	    <ons-row>
 	        <ons-col ng-repeat="category in categories[0]" class="list__item--tappable" ng-if="$index < 3" ng-click="showCategory(category.id)">
