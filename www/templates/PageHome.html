@@ -1,24 +1,22 @@
 <ons-navigator>
   <ons-page>
-    <div ng-include="'templates/header.html'"></div>
-
-    
+    <div ng-include="'templates/ModuleHeader.html'"></div>
     <ons-row style="margin-top: 0px;">
       <ons-col align="center">
       <div style="text-align: center">
-        <div class="rn-carousel-container" ng-include="'templates/carrousel.html'"></div>
+        <div class="rn-carousel-container" ng-include="'templates/ModuleCarrousel.html'"></div>
         </div>
       </ons-col>
     </ons-row>
     <ons-row style="margin-top: 0px;">
       <ons-col align="center">
-        <div  class="grid-menu-scroller" ng-include="'templates/testGridMenu.html'"></div>
+        <div  class="grid-menu-scroller" ng-include="'templates/MenuHome.html'"></div>
       </ons-col>
     </ons-row>
      <ons-row  style="margin-top: 0px;">
       <ons-col align="center">
         <div style="text-align: center" class="content-padded-left-right">
-          <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/login.html')">Login</ons-button>
+          <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/FormLogin.html')">Login</ons-button>
         </div>
       </ons-col>
     </ons-row>

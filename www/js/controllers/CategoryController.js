@@ -38,7 +38,7 @@
                 $scope.nav = ons.navigator;
                 $scope.nav.on('prepop', function(event) {
                     var page = event.currentPage; // Get current page object
-                    if(page.page == "templates/page1.html")
+                    if(page.page == "templates/PageCategory.html")
                     {
                         $scope.categories.pop();
                     }
@@ -48,7 +48,7 @@
 
             $scope.lastCategory.push(categoryID);
             $scope.getCategory(categoryID);
-            ons.navigator.pushPage('templates/page1.html');
+            ons.navigator.pushPage('templates/PageCategory.html');
         }
 
         $scope.getCategory(0);
