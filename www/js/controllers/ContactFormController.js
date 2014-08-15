@@ -35,7 +35,7 @@
 
         $scope.goBack = function()
         {
-             //if($scope.isWorking === true) return;
+            if($scope.isWorking == true) return;
             ons.navigator.popPage();
         }
 

@@ -1,15 +1,42 @@
 <ons-page class="center">
     <div ng-include="'templates/ModuleHeader.html'"></div>
-    <div style="text-align: center" class="content-padded" ng-hide="loading">
-        <ul class="list list-top">
+    <!-- Solo se muestra si es una categoría -->
+    <div style="text-align: center" class="content-padded" ng-hide="loading" >
+        <ul class="list list-top" ng-if="!products">
             <li ng-repeat="category in categories[categories.length - 1]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
                 <div class="list-item-main">
                     <div class="list-item-left">
-                        <img src="{{category.thumb}}" class="avator">
+                        <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{category.thumb}}" class="avator">
                     </div>
                     <div class="list-item-right">
                         <div class="list-item-content">
                             <span class="list-item-name">{{category.title}}</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="list-item-action">
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </li>
+        </ul>
+        <!-- Solo se muestra si es un listado de productos -->
+        <ul class="list list-top" ng-if="products">
+            <li  ng-repeat="product in products" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showProduct(product.id)">
+                <div class="list-item-main">
+                    <div class="list-item-left">
+                        <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <span class="list-item-name">{{product.title}} &nbsp;
+                                <br/>
+                                <span class="lucent">
+                                    <i class="fa fa-money"></i>&nbsp; $ {{product.price}}&nbsp;&nbsp;<i class="fa fa-credit-card"></i>&nbsp; $ {{product.price * 1.10}}
+                                </span>
+                            </span>
+                            <br/>
+                            <span class="list-item-text" style="margin-top:16px;">Eiffel Tower is the symbol of Paris and named by Gustave Eiffel.
+                            </span>
                         </div>
                     </div>
                 </div>

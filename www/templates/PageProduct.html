@@ -1,0 +1,31 @@
+<ons-page>
+
+    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <div class="content-padded" ng-hide="loading">
+        <ons-row style="margin-top: 0px;">
+            <ons-col align="center">
+                <br>
+                <div>{{product.title}}</div>
+                 <ul ng-controller="CarrouselController" rn-carousel rn-carousel-indicator rn-carousel-swipe="{{true}}" class="my-slider ng-cloak">
+                        <li ng-repeat="slide in product.images" ng-style="{'background-color': '#000000','background-position': 'center','background-repeat':'no-repeat', 'background-image': 'url(http://www.nakaoutdoors.com.ar/img/articulos/'+ slide + ')'}">
+                            <div class="debug">
+                                {{product.description}}
+                            </div>
+                        </li>
+                    </ul>
+                <div>{{product.description}}</div>
+                <br>
+                <button class="button login-button">Comprar</button>
+
+            </ons-col>
+        </ons-row>
+    </div>
+    <div class="content-padded" ng-show="loading">
+        <ons-row>
+            <ons-col align="center">
+                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
+                <br>cargando...
+            </ons-col>
+        </ons-row>
+    </div>
+</ons-page>
