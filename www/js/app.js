@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'angular-carousel', 'Product','Category','ContactForm', 'List', 'Login', 'GridMenu', 'Carrousel' ]);
+    var app = angular.module('myApp', ['onsen.directives', 'Product','Category','ContactForm', 'List', 'Login', 'GridMenu' ]);
 })();
 
 document.addEventListener("deviceready", onDeviceReady, false);

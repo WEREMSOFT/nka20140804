@@ -13,9 +13,6 @@
     width: 100%;
     height: 205px;
 }
-.float-left {
-    float: left;
-}
 .font-weight-500 {
     font-weight: 500;
 }
@@ -93,9 +90,6 @@
 
 /*--- Login begin ---*/
 
-div.float-left {
-    float: left;
-}
 .text-centering {
     text-align: center;
 }
@@ -144,31 +138,9 @@ input[type=text], input[type=email], input[type=password] {
     overflow: hidden;
     color: #999;
 }
-/*--- Angular Carrousel begin ---*/
-
-.my-slider {
-    width: 100%;
-    height: 150px;
-    font-size: 0;
-}
-.my-slider li div.debug {
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 12px;
-    width: 100%;
-    padding: 5px;
-}
-/*--- Angular Carrousel end ---*/
-
 /*--- list with pictures begin ---*/
 
-.float-left {
-    float: left;
-}
+
 
 .list-item-container {
     line-height: 14px;
@@ -206,7 +178,8 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 .avator {
-    width: 40px;
+    width: auto;
+    max-width: 40px;
     height: 40px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -297,9 +270,6 @@ input[type=text], input[type=email], input[type=password] {
     width: 0;
 }
 
-.float-left {
-    float: left;
-}
 
 .list-item-container {
     line-height: 14px;
@@ -337,7 +307,8 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 .thumbnail {
-    width: 80px;
+    width: auto;
+    max-width: 80px;
     height: 80px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
@@ -373,3 +344,67 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 /*--- Listado de productos end ---*/
+/*--- Imagenes del producto begin---*/
+.float-left {
+    float: left;
+}
+
+.frame-for-featured-image {
+    width: 100%;
+    height: 272px;
+    margin: 10px auto 0 auto;
+    border-top: 1px solid #AEAEAE;
+    border-bottom: 1px solid #AEAEAE;
+    text-align: center;
+}
+
+.image-frame {
+    display: box;
+    display: -moz-box;
+    display: -webkit-box;
+    display: -o-box;
+    display: -ms-box;
+    box-align: center;
+    -ms-box-align: center;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+    -o-box-align: center;
+    box-pack: center;
+    -moz-box-pack: center;
+    -ms-box-pack: center;
+    -webkit-box-pack: center;
+    -o-box-pack: center;
+}
+
+.featured-image {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    height: 270px;
+    margin-top: 1px;
+}
+
+.bottom-image-picker {
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    text-align: center;
+}
+
+.image-frame-for-picker {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    margin: 1px auto 0 auto;
+    padding-top: 1px;
+    border: 1px solid #A8A8A8;
+    background: #EEEEEE;
+}
+
+.bottom-image-picker img {
+    width: 50px;    
+    height: 50px;
+    margin: 0 auto 0 auto;
+}
+/*--- Imagenes del producto end---*/
+

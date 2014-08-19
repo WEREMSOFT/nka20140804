@@ -35,12 +35,12 @@
 
         $scope.goBack = function()
         {
-            if($scope.isWorking == true) return;
+            if($scope.isWorking === true) return;
             ons.navigator.popPage();
         }
 
         $scope.getHash = function(){
-            if($scope.isWorking == true) return;
+            if($scope.isWorking === true) return;
             $scope.isWorking = true;
         	 var request = $http({
                 method: "get",
