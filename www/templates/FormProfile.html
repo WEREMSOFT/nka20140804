@@ -1,0 +1,31 @@
+<ons-page ng-controller="LoginController" ng-init="init()">
+    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <ons-row style="margin-top: 20px;">
+        <ons-col align="center">
+            <img class="profile-image" width="100px" height="100px" src="/img/avatar/naka5_1_thumb.jpg">
+            <ons-list>
+                <ons-list-header>Datos Personales</ons-list-header>
+                <ons-list-item modifier="tappable">Nombre de Usuario: {{userData.profileData.login}}</ons-list-item>
+                <ons-list-item modifier="tappable">Nombre Completo: {{userData.profileData.nombre + ' ' + userData.profileData.apellido}}</ons-list-item>
+
+                <ons-list-header>Datos de Contacto</ons-list-header>
+                <ons-list-item modifier="tappable">Mail: {{userData.profileData.mail}}</ons-list-item>
+                <ons-list-item modifier="tappable">Telefono: {{userData.profileData.telefono}}</ons-list-item>
+                <ons-list-item modifier="tappable">Celular: {{userData.profileData.celular}}</ons-list-item>
+                <ons-list-item modifier="tappable">Provincia: {{userData.profileData.provincia}}</ons-list-item>
+                <ons-list-item modifier="tappable">Dirección: {{userData.profileData.direccion}}</ons-list-item>
+                <ons-list-item modifier="tappable">Localidad: {{userData.profileData.localidad}}</ons-list-item>
+                <ons-list-item modifier="tappable">Partido: {{userData.profileData.partido}}</ons-list-item>
+                <ons-list-item modifier="tappable">Cod. Postal: {{userData.profileData.codigo_postal}}</ons-list-item>
+                <ons-list-item modifier="tappable">Terminal: {{userData.profileData.terminal}}</ons-list-item>
+                
+                <ons-list-header>Datos de Facturación</ons-list-header>
+                <ons-list-item modifier="tappable">Razón Social: {{userData.profileData.razon_social}}</ons-list-item>
+                <ons-list-item modifier="tappable">Dir. Facturación: {{userData.profileData.dir_facturacion}}</ons-list-item>
+                <ons-list-item modifier="tappable">cuit: {{userData.profileData.cuit}}</ons-list-item>
+                <ons-list-item modifier="tappable">Facturación: {{userData.profileData.facturacion}}</ons-list-item>
+                <ons-list-item modifier="tappable">Nombre de Fantasía: {{userData.profileData.nombre_fantasia}}</ons-list-item>
+            </ons-list>
+        </ons-col>
+    </ons-row>
+</ons-page>

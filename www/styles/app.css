@@ -161,11 +161,6 @@ input[type=text], input[type=email], input[type=password] {
     visibility: hidden;
 }
 
-.list-item-left {
-    width: 60px;
-    margin-right: -60px;
-    float: left;
-}
 
 .list-item-right {
     width: 100%;
@@ -187,12 +182,6 @@ input[type=text], input[type=email], input[type=password] {
 
 .list-top {
     margin-top: -1px;
-}
-
-.list-item-name {
-    font-weight: 500;
-    line-height: 16px;
-    min-height: 16px;
 }
 
 .list-item-text {
@@ -294,6 +283,7 @@ input[type=text], input[type=email], input[type=password] {
     width: 100px;
     margin-right: -100px;
     float: left;
+    text-align: center;
 }
 
 .list-item-right {
@@ -319,7 +309,7 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 .list-item-name {
-    font-weight: 500;
+    font-weight: 900;
     line-height: 16px;
     min-height: 16px;
 }
@@ -407,4 +397,11 @@ input[type=text], input[type=email], input[type=password] {
     margin: 0 auto 0 auto;
 }
 /*--- Imagenes del producto end---*/
+/*--- Imagenes del profile start---*/
+
+.profile-image
+{
+    border-radius: 500px;
+}
+/*--- Imagenes del profile end---*/
 

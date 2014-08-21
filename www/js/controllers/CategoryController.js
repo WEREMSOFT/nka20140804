@@ -2,8 +2,8 @@
     'use strict';
     var module = angular.module('Category', []);
 
-    module.controller('CategoryController', function($scope, $http) {
-
+    module.controller('CategoryController', function($scope, $http, userData) {
+        $scope.userData = userData;
         $scope.categories = [];
         $scope.products = null;
         $scope.lastCategory = [];
@@ -23,7 +23,11 @@
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
                 if (data.result.child_categories) {
-                    $scope.categories.push(data.result.child_categories);
+                    var categoryID = 0;
+                    if (ons.navigator.getCurrentPage().options.categoryID) {
+                        categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                    }
+                    $scope.categories[categoryID] = data.result.child_categories;
                     console.log($scope.categories);
                     $scope.isCategory = true;
                 } else if (data.result.child_products) {
@@ -45,29 +49,9 @@
         }
 
         $scope.showCategory = function(categoryID) {
-            if ($scope.nav == null) {
-                $scope.nav = ons.navigator;
-                $scope.nav.on('prepop', function(event) {
-                    var page = event.currentPage; // Get current page object
-                    console.log('pagina');
-                    console.log(event.currentPage);
-                    if (page.page == "templates/PageCategory.html") {
-                        if ($scope.products) {
-                            $scope.products = null;
-                        } else {
-                            var pop = $scope.categories.pop();
-                            console.log('popeando: ')
-                            console.log(pop);
-
-                        }
-                    }
-                });
-            }
-
-
-            $scope.lastCategory.push(categoryID);
-            $scope.getCategory(categoryID);
-            ons.navigator.pushPage('templates/PageCategory.html');
+            ons.navigator.pushPage('templates/PageCategory.html', {
+                'categoryID': categoryID
+            });
         }
 
         $scope.getProduct = function(productID) {
@@ -125,11 +109,16 @@
             request.error(this.httpGetDestacadosDetailsError);
         }
 
-
-
-
-        $scope.getCategory(0);
-        $scope.getDestacados();
+        $scope.init = function() {
+            console.log('page initialize');
+            var categoryID = 0;
+            if (ons.navigator) {
+                if (ons.navigator.getCurrentPage().options.categoryID) {
+                    categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                }
+            }
+            $scope.getCategory(categoryID);
+        }
     });
 
 

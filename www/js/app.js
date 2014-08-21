@@ -1,6 +1,11 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'Product','Category','ContactForm', 'List', 'Login', 'GridMenu' ]);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'Product','Category','ContactForm', 'List', 'Login', 'GridMenu' ]);
+
+    app.factory('userData',function(){
+    	return {legedIn: false, profileData:null}
+    });
+
 })();
 
 document.addEventListener("deviceready", onDeviceReady, false);
