@@ -10,7 +10,7 @@
         $scope.products = [];
 
         $scope.search = function(strSearchString) {
-            if(strSearchString.logedIn < 3){
+            if(strSearchString.length < 3){
                 alert('La cadena de busqueda es muy corta.');
                 return;
             }
