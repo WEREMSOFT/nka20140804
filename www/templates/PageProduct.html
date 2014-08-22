@@ -11,16 +11,10 @@
                     <div class="frame-for-featured-image" ng-show="$first">
                         <img class="featured-image" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
                     </div>
-                    <div class="image-frame bottom-image-picker" style="text-align:center;">
-                        <div class="image-frame-for-picker image-frame">
-                            <img class="image-picker-item" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
-                        </div>
-                        <div class="image-frame-for-picker image-frame">
-                            <img class="image-picker-item" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
-                        </div>
-                        <div class="image-frame-for-picker image-frame">
-                            <img class="image-picker-item" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
-                        </div>
+                </div>
+                <div class="image-frame bottom-image-picker" style="text-align:center;">
+                    <div class="image-frame-for-picker image-frame" ng-repeat="slide in product.images">
+                        <img class="image-picker-item" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
                     </div>
                 </div>
                 <div ng-bind-html="product.body"></div>

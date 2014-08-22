@@ -2,7 +2,7 @@
     <div ng-include="'templates/ModuleHeader.html'"></div>
     <ons-row style="margin-top: 20px;">
         <ons-col align="center">
-            <img class="profile-image" width="100px" height="100px" src="/img/avatar/naka5_1_thumb.jpg">
+            <img class="profile-image" width="100px" height="100px" src="{{userData.profileData.imagen}}">
             <ons-list>
                 <ons-list-header>Datos Personales</ons-list-header>
                 <ons-list-item modifier="tappable">Nombre de Usuario: {{userData.profileData.login}}</ons-list-item>

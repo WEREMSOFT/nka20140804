@@ -8,4 +8,9 @@
     <div class="center">
         <img style="margin-top: 4px;" src="imgs/logo_original_png.png">
     </div>
+    <div class="right">
+        <ons-toolbar-button ng-show="userData.logedIn && ons.navigator.getCurrentPage().name != 'templates/FormProfile.html'" class="vertical-allign" ng-click="ons.navigator.pushPage('templates/FormProfile.html')">{{userData.profileData.nombre + ' ' + userData.profileData.apellido}}
+        </ons-toolbar-button>
+
 </ons-toolbar>
+
