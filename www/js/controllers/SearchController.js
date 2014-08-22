@@ -5,19 +5,24 @@
 
     module.controller('SearchController', function($scope, $http) {
 
+        $scope.searchString = "";
+        $scope.working = false;
+        $scope.products = [];
+
         $scope.search = function(strSearchString) {
             if(strSearchString.logedIn < 3){
                 alert('La cadena de busqueda es muy corta.');
                 return;
             }
+            $scope.working = true;
             var request = $http({
                 method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/search.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + $scope.user + '&data[Login][password]=' + $scope.password + '&',
+                data: '_method=POST&data[Busqueda][string]=' + strSearchString + '&',
             });
 
 
@@ -35,14 +40,9 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            if(data.result.logedIn === 1)
-            {
-                alert('Bienvenido ' + data.result.Usuario.nombre + '!!');
-            }else if(data.result.logedIn === -2)
-            {
-                alert('Nombre de usuario o contraseña invalidas');
-            }
-            
+            console.log(data);
+            $scope.products = data.result;
+            $scope.working = false;
         }
 
         $scope.getUserDetails = function()
@@ -66,6 +66,7 @@
 
          $scope.httpGetUserDetailsError = function(data, status, headers, config) {
             $scope.debugText = "error " + data;
+            
         }
 
         $scope.httpGetUserDetailsSuccess = function(data, status, headers, config) {
