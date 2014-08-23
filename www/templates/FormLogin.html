@@ -1,17 +1,17 @@
 <ons-page ng-controller="LoginController" ng-init="init()">
 
     <div ng-include="'templates/ModuleHeader.html'"></div>
-
-    <ons-row style="margin-top: 0px;">
-        <ons-col align="center">
-            <div class="main-image-wrapper">
-                <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
-            </div>
-            <input type="email" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
-            <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
-            <br>
-            <button class="button login-button" ng-click="login()">Log in</button>
-        </ons-col>
-    </ons-row>
-
+    <form ng-submit="login()">
+        <ons-row style="margin-top: 0px;">
+            <ons-col align="center">
+                <div class="main-image-wrapper">
+                    <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
+                </div>
+                <input type="email" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
+                <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
+                <br>
+                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
+            </ons-col>
+        </ons-row>
+    </form>
 </ons-page>

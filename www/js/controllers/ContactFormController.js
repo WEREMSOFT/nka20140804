@@ -1,12 +1,26 @@
 (function() {
     'use strict';
     var module = angular.module('ContactForm', []);
-    module.controller('ContactFormController', function($scope, $http) {
-        $scope.nombre = "werem";
-        $scope.email = "werem@yopmail.com";
-        $scope.telefono = "1568760653";
-        $scope.ubicacion = "vicente lopez";
-        $scope.consulta = "Consulta Cadorna";
+    module.controller('ContactFormController', function($scope, $http, userData) {
+
+        if (userData.profileData) {
+            $scope.nombre = userData.profileData.login;
+            $scope.email = userData.profileData.mail;
+            $scope.telefono = userData.profileData.celular;
+            $scope.ubicacion = userData.profileData.localidad;
+        } else if (userData.lastProfileData) {
+            $scope.nombre = userData.lastProfileData.login;
+            $scope.email = userData.lastProfileData.mail;
+            $scope.telefono = userData.lastProfileData.celular;
+            $scope.ubicacion = userData.lastProfileData.localidad;
+        } else {
+            $scope.nombre = "";
+            $scope.email = "";
+            $scope.telefono = "";
+            $scope.ubicacion = "";
+        }
+
+        $scope.consulta = "";
         $scope.isWorking = false;
 
         $scope.sendContact = function() {
@@ -33,16 +47,15 @@
 
         }
 
-        $scope.goBack = function()
-        {
-            if($scope.isWorking === true) return;
+        $scope.goBack = function() {
+            if ($scope.isWorking === true) return;
             ons.navigator.popPage();
         }
 
-        $scope.getHash = function(){
-            if($scope.isWorking === true) return;
+        $scope.getHash = function() {
+            if ($scope.isWorking === true) return;
             $scope.isWorking = true;
-        	 var request = $http({
+            var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/contactos',
                 headers: {
@@ -59,10 +72,10 @@
             request.error(this.httpError);
         }
 
-        $scope.httpGetHashSuccess = function(data){
-        	var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
-        	$scope.hashMail = arrTemp[1].split('"')[0];
-        	$scope.hashAnt = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
+        $scope.httpGetHashSuccess = function(data) {
+            var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
+            $scope.hashMail = arrTemp[1].split('"')[0];
+            $scope.hashAnt = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
 
             $scope.sendContact();
         }

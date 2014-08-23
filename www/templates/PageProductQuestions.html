@@ -1,0 +1,18 @@
+<ons-page>
+    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <div class="content-padded" ng-hide="loading">
+        <ons-row style="margin-top: 0px;">
+            <ons-col align="center">
+            	<div>{{product.name}}</div>
+                 <ons-list>
+                    <ons-list-item ng-repeat="question in product.questions">{{question.name}}<br>{{question.message}}</ons-list-item>
+                </ons-list>
+            </ons-col>
+        </ons-row>
+        <ons-row style="margin-top: 0px;">
+            <ons-col align="center">
+                <ons-button modifier="large" ng-click="ons.navigator.popPage()">volver</ons-button>
+            </ons-col>
+        </ons-row>
+    </div>
+</ons-page>

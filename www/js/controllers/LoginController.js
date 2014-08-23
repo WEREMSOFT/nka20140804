@@ -5,11 +5,14 @@
 
     module.controller('LoginController', function($scope, $http, userData) {
         $scope.userData = userData;
+        $scope.isWorking = false;
         $scope.login = function() {
+            if($scope.isWorking) return;
             if (!$scope.user) {
                 alert('La dirección de mail no es válida');
                 return;
             }
+            $scope.isWorking = true;
             window.localStorage.setItem("user", $scope.user);
             window.localStorage.setItem("password", $scope.password);
             window.localStorage.setItem("logedIn", true);
@@ -34,10 +37,12 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
+            $scope.isWorking = false;
             alert("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
+            $scope.isWorking = false;
             if (data.result.logedIn === 1) {
                 $scope.userData.profileData = data.result.Usuario;
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
@@ -49,35 +54,6 @@
                 alert('Nombre de usuario o contraseña invalidas');
             }
 
-        }
-
-        $scope.getUserDetails = function() {
-            this.debugText = "Obteniendo detalles del usuario...";
-            var request = $http({
-                method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/client/dashboards/index',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
-
-            // Store the data-dump of the FORM scope.
-            request.success(this.httpGetUserDetailsSuccess);
-
-
-            // Store the data-dump of the FORM scope.
-            request.error(this.httpGetUserDetailsError);
-        }
-
-        $scope.httpGetUserDetailsError = function(data, status, headers, config) {
-            $scope.debugText = "error " + data;
-        }
-
-        $scope.httpGetUserDetailsSuccess = function(data, status, headers, config) {
-            $scope.debugText = "Exito!: " + data;
-            $scope.userName = data.split('"Ver datos de ')[1].split('"')[0];
-            alert("Bienvenido " + $scope.userName + "!!!!!");
-            ons.navigator.resetToPage('templates/FormProfile.html');
         }
 
         $scope.init = function() {
@@ -95,6 +71,7 @@
         }
 
         $scope.logout = function() {
+            $scope.isWorking = true;
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/logout',
@@ -109,10 +86,12 @@
         }
 
         $scope.logoutError = function(data, status, headers, config) {
+            $scope.isWorking = false;
             console.log("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.logoutSuccess = function(data, status, headers, config) {
+            $scope.isWorking = false;
             $scope.userData.reset();
             ons.navigator.resetToPage('templates/PageHome.html');
         }

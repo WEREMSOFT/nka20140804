@@ -17,7 +17,11 @@
                         <img class="image-picker-item" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ slide}}" />
                     </div>
                 </div>
-                <div ng-bind-html="product.body"></div>
+
+                <ons-list>
+                    <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductDetail.html', {productDetails: product.body})"><ons-icon icon="info-circle"></ons-icon> Detalles del Producto</ons-list-item>
+                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductQuestions.html', {productQuestions: product.questions})"><ons-icon icon="question-circle"></ons-icon> Preguntas</ons-list-item>
+                </ons-list>
                 <br>
                 <button class="button login-button">Comprar</button>
             </ons-col>

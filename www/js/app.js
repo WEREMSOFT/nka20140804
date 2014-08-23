@@ -3,12 +3,13 @@
     var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'Product', 'Category', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
 
     app.factory('userData', function() {
-    	var returnValue = {logedIn: false, profileData: null, userName: null, password: null};
+    	var returnValue = {logedIn: false, profileData: null, userName: null, password: null, lastProfileData: null};
     	returnValue.reset = function()
     	{
 
     		this.logedIn = false;
-    		this.profileData = null;
+            this.lastProfileData = this.profileData;
+            this.profileData = null;
     		window.localStorage.setItem('logedIn', false);
     		window.localStorage.setItem('profileData', null);
     	}
