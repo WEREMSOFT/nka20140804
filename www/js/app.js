@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'Product', 'Category', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'Category', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
 
     app.factory('userData', function() {
     	var returnValue = {logedIn: false, profileData: null, userName: null, password: null, lastProfileData: null};

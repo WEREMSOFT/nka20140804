@@ -3,9 +3,18 @@
     <div class="content-padded" ng-hide="loading">
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
-            	<div>{{product.name}}</div>
-                 <ons-list>
-                    <ons-list-item ng-repeat="question in product.questions">{{question.name}}<br>{{question.message}}</ons-list-item>
+                <div>{{product.name}}</div>
+                <ons-list>
+                    <div ng-repeat="question in product.questions">
+                        <ons-list-header>{{question.name}}
+                            <br>{{question.message}}</ons-list-header>
+                        <ons-list-item>
+                            ok
+                        </ons-list-item>
+                        <ons-list-item>
+                            ok
+                        </ons-list-item>
+                    </div>
                 </ons-list>
             </ons-col>
         </ons-row>

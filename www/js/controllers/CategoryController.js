@@ -67,6 +67,7 @@
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
                 $scope.product = data.result;
+                $scope.currentSlide = $scope.product.images[0];
                 console.log($scope.product);
                 $scope.isCategory = false;
                 $scope.loading = false;
@@ -118,6 +119,11 @@
                 }
             }
             $scope.getCategory(categoryID);
+        }
+
+        $scope.setCurrentSlide = function(pSlide)
+        {
+            $scope.currentSlide = pSlide;
         }
     });
 
