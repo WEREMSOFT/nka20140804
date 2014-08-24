@@ -3,7 +3,7 @@
     <!-- Solo se muestra si es una categoría -->
     <div style="text-align: center" class="content-padded" ng-hide="loading">
         <ul class="list list-top" ng-if="categories[ons.navigator.getCurrentPage().options.categoryID]">
-            <li ng-repeat="category in categories[ons.navigator.getCurrentPage().options.categoryID]" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showCategory(category.id)">
+            <li ng-repeat="category in categories[ons.navigator.getCurrentPage().options.categoryID]" class="list__item  list__item__line-height list-item-container" ng-click="showCategory(category.id)">
                 <div class="list-item-main">
                     <div class="list-item-left">
                         <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{category.thumb}}" class="avator">
@@ -23,7 +23,7 @@
         </ul>
         <!-- Solo se muestra si es un listado de productos -->
         <ul class="list list-top" ng-if="!categories[ons.navigator.getCurrentPage().options.categoryID]">
-            <li ng-repeat="product in products" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showProduct(product.id)">
+            <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
                 <div class="list-item-main">
                     <div class="list-item-left">
                         <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
