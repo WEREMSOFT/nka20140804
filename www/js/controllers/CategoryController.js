@@ -35,8 +35,6 @@
                     console.log($scope.products);
                     $scope.isCategory = false;
                 }
-
-
                 $scope.loading = false;
             }
 
