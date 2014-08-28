@@ -4,15 +4,17 @@
 
     <ons-row style="margin-top: 0px;">
         <ons-col align="center">
-            <div class="main-image-wrapper">
-                <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
+            <div style="text-align: center" class="content-padded">
+                <div class="main-image-wrapper">
+                    <img src="http://www.nakaoutdoors.com.ar/img/logos/logo_original_png.png">
+                </div>
+                <form ng-submit="login()">
+                    <input type="email" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
+                    <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
+                    <br>
+                </form>
+                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
             </div>
-            <form ng-submit="login()">
-                <input type="email" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
-                <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
-                <br>
-            </form>
-            <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
         </ons-col>
     </ons-row>
     <ons-row style="margin-top: 10px;">

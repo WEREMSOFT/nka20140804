@@ -16,13 +16,14 @@
 
 
 </head>
+<ng-include src="'templates/ModalAlert.html'"></ng-include>
 
 <body ng-controller="CategoryController" ng-init="init()">
     <ons-sliding-menu above-page="templates/TabBarBottom.html" behind-page="templates/MenuSide.html" side="left" max-slide-distance="250px" swipe-target-width="50px" var="menu">
     </ons-sliding-menu>
 
 
-    <ng-include src="'templates/ModalAlert.html'"></ng-include>
+
 
 
     <script src="lib/onsen/js/angular/angular.js"></script>
@@ -44,6 +45,7 @@
     <script src="js/controllers/NewProductsController.js"></script>
     <script src="js/controllers/OfertasController.js"></script>
     <script src="js/controllers/CommingSoonController.js"></script>
+    <script src="js/controllers/QuestionOnProductController.js"></script>
     <script src="js/app.js"></script>
 </body>
 
