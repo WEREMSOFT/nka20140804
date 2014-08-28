@@ -7,7 +7,56 @@
                 <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="">
                 <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="">
                 <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="">
-                <input type="text" ng-model="provinciaId" class="text-input--underbar" placeholder="Provincia" value="">
+                <div style="text-align: center" class="content-padded">
+                    <ul class="list margin-top-adjuster">
+                        <li class="list__header">Browsers</li>
+                        <li class="list__item list__item--tappable">
+                            <span class="list__item__line-height">
+                                <label class="radio-button wrapper-label">
+                                    <input type="radio" name="topcoat" checked="checked">
+                                    <div class="radio-button__checkmark"></div>
+                                    <span class="radio-button-label">Google Chrome</span>
+                                </label>
+                            </span>
+                        </li>
+                        <li class="list__item list__item--tappable">
+                            <span class="list__item__line-height">
+                                <label class="radio-button wrapper-label">
+                                    <input type="radio" name="topcoat">
+                                    <div class="radio-button__checkmark"></div>
+                                    <span class="radio-button-label">Safari</span>
+                                </label>
+                            </span>
+                        </li>
+                        <li class="list__item list__item--tappable">
+                            <span class="list__item__line-height">
+                                <label class="radio-button wrapper-label">
+                                    <input type="radio" name="topcoat">
+                                    <div class="radio-button__checkmark"></div>
+                                    <span class="radio-button-label">Internet Explorer</span>
+                                </label>
+                            </span>
+                        </li>
+                        <li class="list__item list__item--tappable">
+                            <span class="list__item__line-height">
+                                <label class="radio-button wrapper-label">
+                                    <input type="radio" name="topcoat">
+                                    <div class="radio-button__checkmark"></div>
+                                    <span class="radio-button-label">Opera</span>
+                                </label>
+                            </span>
+                        </li>
+                        <li class="list__item list__item--tappable">
+                            <span class="list__item__line-height">
+                                <label class="radio-button wrapper-label">
+                                    <input type="radio" name="topcoat">
+                                    <div class="radio-button__checkmark"></div>
+                                    <span class="radio-button-label">Firefox</span>
+                                </label>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
                 <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="">
                 <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
                 <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="">
@@ -20,15 +69,4 @@
 </ons-page>
 
 
-/*
-_method	POST
-data[Usuario][nombre]	Pablo
-data[Usuario][apellido]	Weremczuk
-data[Usuario][mail]	werem@yopmail.com
-data[Usuario][provincia_id]	2
-data[Usuario][login]	werem1
-data[Usuario][password]	cadorna
-data[Usuario][check_password]	cadorna
-data[Usuario][tipo_usuario_id]	2
-data[Usuario][habilitado]	0
-*/
+/* _method POST data[Usuario][nombre] Pablo data[Usuario][apellido] Weremczuk data[Usuario][mail] werem@yopmail.com data[Usuario][provincia_id] 2 data[Usuario][login] werem1 data[Usuario][password] cadorna data[Usuario][check_password] cadorna data[Usuario][tipo_usuario_id] 2 data[Usuario][habilitado] 0 */

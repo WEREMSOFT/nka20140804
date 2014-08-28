@@ -1,0 +1,38 @@
+<ons-page class="center" ng-controller="NewProductsController" ng-init="init()">
+    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <!-- Solo se muestra si es un listado de productos -->
+    <ul class="list list-top" ng-hide="working">
+        <li ng-repeat="product in newProducts" class="list__item list__item--tappable list__item__line-height list-item-container" ng-click="showProduct(product.id)">
+            <div class="list-item-main">
+                <div class="list-item-left">
+                    <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
+                </div>
+                <div class="list-item-right">
+                    <div class="list-item-content">
+                        <span class="list-item-name">{{product.title}} &nbsp;
+                            <br/>
+                            <span class="lucent">
+                                <i class="fa fa-credit-card"></i>&nbsp; $ {{product.credit_price}}&nbsp;&nbsp;<i class="fa fa-money"></i>&nbsp; $ {{product.price}}
+                            </span>
+                        </span>
+                        <br/>
+                        <span class="list-item-text" style="margin-top:16px;">{{product.description}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="list-item-action">
+                <i class="fa fa-angle-right"></i>
+            </span>
+        </li>
+    </ul>
+    </div>
+    <div class="content-padded" ng-show="working">
+        <ons-row>
+            <ons-col align="center">
+                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
+                <br>cargando...
+            </ons-col>
+        </ons-row>
+    </div>
+</ons-page>
