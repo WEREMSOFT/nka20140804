@@ -8,11 +8,13 @@
             $scope.email = userData.profileData.mail;
             $scope.telefono = userData.profileData.celular;
             $scope.ubicacion = userData.profileData.localidad;
+            $scope.user_id = userData.profileData.id;
         } else if (userData.lastProfileData) {
             $scope.nombre = userData.lastProfileData.login;
             $scope.email = userData.lastProfileData.mail;
             $scope.telefono = userData.lastProfileData.celular;
             $scope.ubicacion = userData.lastProfileData.localidad;
+            $scope.user_id = userData.lastProfileData.id;
         } else {
             $scope.nombre = "";
             $scope.email = "";
@@ -30,11 +32,11 @@
 
             var request = $http({
                 method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                url: 'http://www.nakaoutdoors.com.ar/articulos/index.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                data: '_method=POST&data[Contacto][nombre]=' + $scope.nombre + '&data[Contacto][liam]=' + $scope.email + '&data[Contacto][telefono]=' + $scope.telefono + '&data[Contacto][ubicacion]=' + $scope.ubicacion + '&data[Contacto][consulta]=' + $scope.consulta + '&data[Contacto][mail]=' + hashMail + '&data[Contacto][maps]=&' + '&data[Contacto][ant]=' + hashAnt + '&data[Contacto][url]=contactos&',
+                data: '_method=POST&data[Opinion][nombre]=' + $scope.product.title + '&data[Opinion][articulo_id]=' + $scope.product.id + '&data[Opinion][usuario_id]=' + $scope.user_id + '&data[Opinion][name]=' + $scope.nombre + '&data[Opinion][liam]=' + $scope.email + '&data[Opinion][telefono]=' + $scope.telefono + '&data[Opinion][ubicacion]=' + $scope.ubicacion + '&data[Opinion][message]=' + $scope.consulta + '&data[Opinion][mail]=' + hashMail + '&data[Opinion][maps]=&' + '&data[Opinion][ant]=' + hashAnt + '&data[Opinion][url]=contactos&',
             });
 
 
@@ -89,38 +91,6 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             alert('Su consulta ha sido enviado con éxito!');
             ons.navigator.popPage();
-        }
-    });
-
-    module.controller('ContactController', function($scope) {
-        $scope.cods_sucursal = {
-            VICENTE_LOPEZ: 0,
-            CAPITAL: 1
-        };
-
-        $scope.callSucursal = function(cod_sucursal) {
-            console.log(cod_sucursal);
-            switch (cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
-                    window.open('tel:01147979435', '_new');
-                    break;
-                case this.cods_sucursal.CAPITAL:
-                    window.open('tel:45462853', '_new');
-                    break;
-            }
-        }
-        $scope.emailSucursal = function(cod_sucursal) {
-            console.log(cod_sucursal);
-            switch (cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
-                    var link = "mailto:info@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
-                    window.open(link, '_new');
-                    break;
-                case this.cods_sucursal.CAPITAL:
-                    var link = "mailto:urquiza@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
-                    window.open(link, '_new');
-                    break;
-            }
         }
     });
 })();
