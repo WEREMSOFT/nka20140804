@@ -4,7 +4,7 @@
     module.controller('QuestionOnProductController', function($scope, $http, userData) {
 
         if (userData.profileData) {
-            $scope.nombre = userData.profileData.login;
+            $scope.nombre = userData.profileData.nombre + ' ' + userData.profileData.apellido;
             $scope.email = userData.profileData.mail;
             $scope.telefono = userData.profileData.celular;
             $scope.ubicacion = userData.profileData.localidad;
@@ -90,6 +90,16 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             alert('Su consulta ha sido enviado con éxito!');
+
+            $scope.product.questions.unshift({
+                user: {
+                    name: userData.profileData.nombre + ' ' + userData.profileData.apellido,
+                    image: userData.profileData.imagen,
+                    is_client: 1
+                },
+                message: $scope.consulta,
+                response: null
+            });
             ons.navigator.popPage();
         }
     });
