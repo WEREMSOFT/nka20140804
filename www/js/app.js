@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct','Ofertas', 'CommingSoon','Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Register','Ofertas', 'CommingSoon','Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
 
     app.factory('userData', function() {
     	var returnValue = {logedIn: false, profileData: null, userName: null, password: null, lastProfileData: null};

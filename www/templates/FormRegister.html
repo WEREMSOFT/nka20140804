@@ -1,4 +1,4 @@
-<ons-page ng-controller="LoginController" ng-init="init()">
+<ons-page ng-controller="RegisterController">
     <div ng-include="'templates/ModuleHeader.html'"></div>
     <form ng-submit="login()">
         <ons-row style="margin-top: 0px;">
@@ -7,7 +7,7 @@
                 <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="">
                 <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="">
                 <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="">
-                <div style="text-align: center" class="content-padded">
+                <div style="text-align: center" class="content-padded" ng-if="false">
                     <ul class="list margin-top-adjuster">
                         <li class="list__header">Browsers</li>
                         <li class="list__item list__item--tappable">
@@ -62,11 +62,11 @@
                 <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="">
 
                 <br>
-                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
+                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="register()">Registrarse</ons-button>
             </ons-col>
         </ons-row>
     </form>
 </ons-page>
 
 
-/* _method POST data[Usuario][nombre] Pablo data[Usuario][apellido] Weremczuk data[Usuario][mail] werem@yopmail.com data[Usuario][provincia_id] 2 data[Usuario][login] werem1 data[Usuario][password] cadorna data[Usuario][check_password] cadorna data[Usuario][tipo_usuario_id] 2 data[Usuario][habilitado] 0 */
+

@@ -441,3 +441,11 @@ input[type=text], input[type=email], input[type=password] {
     margin-left: 5px;
 }
 /*--- Combo End ---*/
+
+/*---preguntas begin---*/
+
+.product_question {
+    border-top: 1px solid #ddd;
+    background-color: #eee;
+}
+/*---preguntas end---*/

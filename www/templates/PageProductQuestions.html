@@ -4,15 +4,45 @@
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
                 <div>{{product.name}}</div>
-                <ons-list>
+                <ul class="list list-top" ng-hide="working">
                     <div ng-repeat="question in product.questions">
-                        <ons-list-header>{{question.name}}
-                            <br>{{question.message}}</ons-list-header>
-                        <ons-list-item>
-                            En los últimos años, muchas investigaciones se ha dedicado a la unificación natural de corrección de errores en recepción y los juegos de rol en línea multijugador masivos.
-                        </ons-list-item>
+                        <li class="list__item list__item--tappable list__item__line-height list-item-container product_question">
+                            <div class="list-item-main">
+                                <div class="list-item-left">
+                                    <img src="{{question.user.image}}" class="thumbnail">
+                                </div>
+                                <div class="list-item-right">
+                                    <div class="list-item-content">
+                                        <span class="list-item-name">{{question.user.name}}</span>
+                                        <br/>
+                                        <span class="list-item-text" style="margin-top:16px;">{{question.message}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="list-item-action">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                        </li>
+                        <li class="list__item  list__item__line-height list-item-container">
+                            <div class="list-item-main">
+                                <div class="list-item-left">
+                                    <img src="{{question.seller.image}}" class="avator">
+                                </div>
+                                <div class="list-item-right">
+                                    <div class="list-item-content">
+                                        <span class="list-item-name">{{question.seller.name}}</span>
+                                        <br/>
+                                        <span class="lucent" ng-bind-html="question.response"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="list-item-action">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                        </li>
                     </div>
-                </ons-list>
+                </ul>
             </ons-col>
         </ons-row>
         <ons-row style="margin-top: 10px;">
@@ -25,5 +55,7 @@
                 <ons-button modifier="large" ng-click="ons.navigator.popPage()">volver</ons-button>
             </ons-col>
         </ons-row>
+
+
     </div>
 </ons-page>
