@@ -44,6 +44,10 @@
     <gap:plugin name="com.adobe.plugins.pushplugin" />
 
 
+    <feature name="PushPlugin">
+        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+    </feature>
+
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />
     </feature>
