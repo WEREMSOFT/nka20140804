@@ -44,7 +44,7 @@
     <gap:plugin name="com.adobe.plugins.pushplugin" />
 
 
-    <feature name="PushPlugin">
+    <feature name="GenericPush">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
 
