@@ -54,7 +54,7 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
 
-  
+    <gap:plugin name="com.adobe.plugins.pushplugin" />
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
