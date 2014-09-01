@@ -41,6 +41,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="com.adobe.plugins.pushplugin" />
 
 
     <feature name="SplashScreen">
@@ -53,6 +54,7 @@
 
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
+
 
 
     <icon src="icon.png" />
