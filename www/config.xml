@@ -43,8 +43,10 @@
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.adobe.plugins.pushplugin" />
 
-
-    <feature name="GenericPush">
+    <plugins>
+        <plugin name="PushPlugin" value="PushPlugin" />
+    </plugins>
+    <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
 
