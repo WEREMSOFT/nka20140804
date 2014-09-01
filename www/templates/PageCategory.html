@@ -2,58 +2,8 @@
     <div ng-include="'templates/ModuleHeader.html'" ng-init="init()"></div>
     <!-- Solo se muestra si es una categoría -->
     <div style="text-align: center" class="content-padded" ng-hide="loading">
-        <ul class="list list-top" ng-if="categories[ons.navigator.getCurrentPage().options.categoryID]">
-            <li ng-repeat="category in categories[ons.navigator.getCurrentPage().options.categoryID]" class="list__item  list__item__line-height list-item-container" ng-click="showCategory(category.id)">
-                <div class="list-item-main">
-                    <div class="list-item-left">
-                        <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{category.thumb}}" class="avator">
-                    </div>
-                    <div class="list-item-right">
-                        <div class="list-item-content">
-                            <span class="list-item-name">{{category.title}} </span>
-                            <br/>
-                            <span class="lucent">{{category.description}}</span>
-                        </div>
-                    </div>
-                </div>
-                <span class="list-item-action">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </li>
-        </ul>
-        <!-- Solo se muestra si es un listado de productos -->
-        <ul class="list list-top" ng-if="!categories[ons.navigator.getCurrentPage().options.categoryID]">
-            <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
-                <div class="list-item-main">
-                    <div class="list-item-left">
-                        <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
-                    </div>
-                    <div class="list-item-right">
-                        <div class="list-item-content">
-                            <span class="list-item-name">{{product.title}} &nbsp;
-                                <br/>
-                                <span class="lucent">
-                                    <i class="fa fa-credit-card"></i>&nbsp; $ {{product.credit_price}}&nbsp;&nbsp;<i class="fa fa-money"></i>&nbsp; $ {{product.price}}
-                                </span>
-                            </span>
-                            <br/>
-                            <span class="list-item-text" style="margin-top:16px;">{{product.description}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <span class="list-item-action">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </li>
-        </ul>
+       <module-category-list ng-if="categories[ons.navigator.getCurrentPage().options.categoryID]"></module-category-list>
+       <module-product-list ng-if="!categories[ons.navigator.getCurrentPage().options.categoryID]"></module-product-list>
     </div>
-    <div class="content-padded" ng-show="loading">
-        <ons-row>
-            <ons-col align="center">
-                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
-                <br>cargando...
-            </ons-col>
-        </ons-row>
-    </div>
+    <module-loading-spinner ng-show="loading"></module-loading-spinner>
 </ons-page>

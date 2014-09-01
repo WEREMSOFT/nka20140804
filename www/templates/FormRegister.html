@@ -1,5 +1,5 @@
 <ons-page ng-controller="RegisterController">
-    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <module-header></module-header>
     <form ng-submit="login()">
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
@@ -7,56 +7,33 @@
                 <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="">
                 <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="">
                 <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="">
-                <div style="text-align: center" class="content-padded" ng-if="false">
-                    <ul class="list margin-top-adjuster">
-                        <li class="list__header">Browsers</li>
-                        <li class="list__item list__item--tappable">
-                            <span class="list__item__line-height">
-                                <label class="radio-button wrapper-label">
-                                    <input type="radio" name="topcoat" checked="checked">
-                                    <div class="radio-button__checkmark"></div>
-                                    <span class="radio-button-label">Google Chrome</span>
-                                </label>
-                            </span>
-                        </li>
-                        <li class="list__item list__item--tappable">
-                            <span class="list__item__line-height">
-                                <label class="radio-button wrapper-label">
-                                    <input type="radio" name="topcoat">
-                                    <div class="radio-button__checkmark"></div>
-                                    <span class="radio-button-label">Safari</span>
-                                </label>
-                            </span>
-                        </li>
-                        <li class="list__item list__item--tappable">
-                            <span class="list__item__line-height">
-                                <label class="radio-button wrapper-label">
-                                    <input type="radio" name="topcoat">
-                                    <div class="radio-button__checkmark"></div>
-                                    <span class="radio-button-label">Internet Explorer</span>
-                                </label>
-                            </span>
-                        </li>
-                        <li class="list__item list__item--tappable">
-                            <span class="list__item__line-height">
-                                <label class="radio-button wrapper-label">
-                                    <input type="radio" name="topcoat">
-                                    <div class="radio-button__checkmark"></div>
-                                    <span class="radio-button-label">Opera</span>
-                                </label>
-                            </span>
-                        </li>
-                        <li class="list__item list__item--tappable">
-                            <span class="list__item__line-height">
-                                <label class="radio-button wrapper-label">
-                                    <input type="radio" name="topcoat">
-                                    <div class="radio-button__checkmark"></div>
-                                    <span class="radio-button-label">Firefox</span>
-                                </label>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required" id="UsuarioProvinciaId">
+                    <option value="">-- Seleccionar provincia --</option>
+                    <option value="1">Buenos Aires</option>
+                    <option value="2">Capital Federal</option>
+                    <option value="3">Catamarca</option>
+                    <option value="4">Cordoba</option>
+                    <option value="5">Corrrientes</option>
+                    <option value="6">Chaco</option>
+                    <option value="7">Chubut</option>
+                    <option value="8">Entre Rios</option>
+                    <option value="9">Formosa</option>
+                    <option value="10">Jujuy</option>
+                    <option value="11">La Pampa</option>
+                    <option value="12">La Rioja</option>
+                    <option value="13">Mendoza</option>
+                    <option value="14">Misiones</option>
+                    <option value="15">Neuquen</option>
+                    <option value="16">Rio Negro</option>
+                    <option value="17">Salta</option>
+                    <option value="18">San Luis</option>
+                    <option value="19">San Juan</option>
+                    <option value="20">Santa Cruz</option>
+                    <option value="21">Santa Fe</option>
+                    <option value="22">Santiago del Estero</option>
+                    <option value="23">Tierra del Fuego</option>
+                    <option value="24">Tucuman</option>
+                </select>
                 <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="">
                 <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
                 <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="">

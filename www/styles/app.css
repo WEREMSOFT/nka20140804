@@ -1,3 +1,4 @@
+
 .left {
     text-align: left;
 }
@@ -450,3 +451,16 @@ input[type=text], input[type=email], input[type=password] {
     border-bottom: solid 1px #ddd !important;
 }
 /*---preguntas end---*/
+/*---select begin ---*/
+.select-combo {
+    display: block;
+    width: 80%;
+    height: 48px;
+    margin: 0 auto;
+    font-size: 19px;
+    outline: none;
+    line-height: 48px;
+}
+/*---select end---*/
+
+

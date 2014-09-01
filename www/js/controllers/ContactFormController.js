@@ -57,7 +57,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/hash.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -73,9 +73,9 @@
         }
 
         $scope.httpGetHashSuccess = function(data) {
-            var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
-            $scope.hashMail = arrTemp[1].split('"')[0];
-            $scope.hashAnt = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
+            var hashObj = data.result;
+            $scope.hashMail = hashObj.mail;
+            $scope.hashAnt = hashObj.ant;
 
             $scope.sendContact();
         }
@@ -101,10 +101,10 @@
             console.log(cod_sucursal);
             switch (cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
-                    window.open('tel:01147979435', '_new');
+                    window.open('tel:01147979435', 'silentFrame');
                     break;
                 case this.cods_sucursal.CAPITAL:
-                    window.open('tel:45462853', '_new');
+                    window.open('tel:45462853', 'silentFrame');
                     break;
             }
         }
@@ -113,11 +113,11 @@
             switch (cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     var link = "mailto:info@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
-                    window.open(link, '_new');
+                    window.open(link, 'silentFrame');
                     break;
                 case this.cods_sucursal.CAPITAL:
                     var link = "mailto:urquiza@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
-                    window.open(link, '_new');
+                    window.open(link, 'silentFrame');
                     break;
             }
         }

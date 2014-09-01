@@ -9,7 +9,7 @@
             </ons-col>
             <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/PageOfertas.html')">
                 <div>
-                    <ons-icon icon="tags" size="30px"></ons-icon>
+                    <ons-icon icon="bullhorn" size="30px"></ons-icon>
                 </div>
                 <div class="cadorna">Ofertas</div>
             </ons-col>
@@ -41,5 +41,6 @@
             </ons-col>
         </ons-row>
     </div>
-    <div ng-include="'templates/ModuleCargando.html'" ng-show="categories.length == 0"></div>
+    <module-loading-spinner ng-show="categories.length == 0"></module-loading-spinner>
+    
 </div>

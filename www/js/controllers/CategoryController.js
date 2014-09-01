@@ -10,6 +10,8 @@
         $scope.nav = null;
         $scope.loading = true;
 
+
+
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
             var request = $http({
@@ -65,6 +67,20 @@
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
                 $scope.product = data.result;
+                var stars = new Array(5);
+                for (var i = 0; i < 5; i++) {
+                    stars[i] = {
+                        "value": 0
+                    };
+                    stars[i].value = (i + 1) <= $scope.product.score ? 1 : 0;
+                }
+                $scope.product.stars = stars;
+
+
+                console.log($scope.product.stars);
+
+
+
                 $scope.currentSlide = $scope.product.images[0];
                 console.log($scope.product);
                 $scope.isCategory = false;
@@ -119,12 +135,34 @@
             $scope.getCategory(categoryID);
         }
 
-        $scope.setCurrentSlide = function(pSlide)
-        {
+        $scope.setCurrentSlide = function(pSlide) {
             $scope.currentSlide = pSlide;
         }
+
+        
     });
 
 
+    module.directive('moduleHeader', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/header.html'
+        };
+    });
 
+    module.directive('moduleLoadingSpinner', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/loadingSpinner.html'
+        };
+    });
+
+    module.directive('moduleTabBarBottom', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/tabBarBottom.html'
+        };
+    });
+
+    
 })();

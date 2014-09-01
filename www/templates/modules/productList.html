@@ -1,0 +1,39 @@
+<!-- Solo se muestra si es un listado de productos -->
+<ul class="list list-top">
+    <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
+        <div class="list-item-main">
+            <div class="list-item-left">
+                <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
+            </div>
+            <div class="list-item-right">
+                <div class="list-item-content">
+                    <span class="list-item-name">{{product.title}} &nbsp;
+                        <br/>
+                        <span>
+                            <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}&nbsp;&nbsp;<ons-icon icon="money" style="color: green"></ons-icon>&nbsp; <span style="color: red">$ {{product.price}}</span>
+                        </span>
+                    </span>
+
+                    <br/>
+                    <span class="list-item-text" style="margin-top:16px;">
+                        <!--- STOCK -->
+                        <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'yellow':product.stock==3?'red':'grey'}}"></ons-icon>
+                        {{product.stock==1?'En Stock':product.stock==2?'Consultar':product.stock==3?'Sin Stock':'Proximamente'}}
+                         <!-- NUEVO -->
+                        <ons-icon ng-if="product.new==1" icon="certificate" style="color:red"></ons-icon>
+                        {{product.new=='1'?'Nuevo!':''}}
+                         <ons-icon ng-if="product.offer!=0" icon="bullhorn" style="color:black"></ons-icon>
+                        {{product.offer!='0'?'Oferta!':''}}
+                       
+                    </span>
+                    <br/>
+                    <span class="list-item-text" style="margin-top:16px;">{{product.description}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <span class="list-item-action">
+            <i class="fa fa-angle-right"></i>
+        </span>
+    </li>
+</ul>

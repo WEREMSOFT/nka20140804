@@ -1,6 +1,6 @@
 <ons-page>
 
-    <div ng-include="'templates/ModuleHeader.html'"></div>
+    <module-header></module-header>
     <div class="content-padded" ng-hide="loading">
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
@@ -38,26 +38,45 @@
                                 <span class="product-contado-price">${{product.price}}</span>
                             </ons-col>
                         </ons-row>
+                        <ons-row>
+                            <ons-col align="center">
+                                <!--- STOCK -->
+                                <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'yellow':product.stock==3?'red':'grey'}}"></ons-icon>
+                                {{product.stock==1?'En Stock':product.stock==2?'Consultar':product.stock==3?'Sin Stock':'Proximamente'}}
+                            </ons-col>
+                            <ons-col align="center">
+                                <!-- NUEVO -->
+                                <ons-icon ng-if="product.new==1" icon="certificate" style="color:red"></ons-icon>
+                                {{product.new=='1'?'Nuevo!':''}}
+                            </ons-col>
+                        </ons-row>
+
+
+
+
+
+
                     </ons-list-header>
                     <ons-list-header style="padding-left: 0px;">
                         <img style="width:100%; height:auto" src="http://imgmp.mlstatic.com/org-img/banners/ar/medios/online/575X40.jpg">
                     </ons-list-header>
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductDetail.html', {productDetails: product.body})">
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
+
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductQuestions.html', {productQuestions: product.questions})">
                         <ons-icon icon="question-circle"></ons-icon>Preguntas</ons-list-item>
+
+                    <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductsRatings.html', {productQuestions: product.questions})">
+                        <ons-icon ng-repeat="star in product.stars" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
+
+                    <ons-list-item ng-if="product.reviews_count == 0" modifier="chevron">
+                        <ons-icon icon="star-o"></ons-icon>No hay calificaciones de usuarios.</ons-list-item>
                 </ons-list>
+
                 <br>
                 <button class="button login-button">Comprar</button>
             </ons-col>
         </ons-row>
     </div>
-    <div class="content-padded" ng-show="loading">
-        <ons-row>
-            <ons-col align="center">
-                <ons-icon icon="spinner" size="40px" spin="true"></ons-icon>
-                <br>cargando...
-            </ons-col>
-        </ons-row>
-    </div>
+    <module-loading-spinner ng-show="loading"></module-loading-spinner>
 </ons-page>

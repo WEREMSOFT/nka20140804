@@ -55,12 +55,11 @@
         }
 
         $scope.getHash = function() {
-            console.log('enviando consulta...');
             if ($scope.isWorking === true) return;
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/hash.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -76,9 +75,9 @@
         }
 
         $scope.httpGetHashSuccess = function(data) {
-            var arrTemp = data.split('data[Contacto][mail]" required="required" value="');
-            $scope.hashMail = arrTemp[1].split('"')[0];
-            $scope.hashAnt = arrTemp[1].split('data[Contacto][ant]" required="required" placeholder="Confirm email" value="')[1].split('"')[0];
+            var hashObj = data.result;
+            $scope.hashMail = hashObj.mail;
+            $scope.hashAnt = hashObj.ant;
 
             $scope.sendContact();
         }
@@ -90,11 +89,11 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             alert('Su consulta ha sido enviado con éxito!');
-
+            var image = userData.logedIn == 'true'?userData.profileData.imagen:'http://www.nakaoutdoors.com.ar/img/avatar/sin_avatar_thumb.jpg';
             $scope.product.questions.unshift({
                 user: {
-                    name: userData.profileData.nombre + ' ' + userData.profileData.apellido,
-                    image: userData.profileData.imagen,
+                    name: $scope.nombre,
+                    image: image,
                     is_client: 1
                 },
                 message: $scope.consulta,

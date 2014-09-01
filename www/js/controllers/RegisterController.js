@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     var module = angular.module('Register', []);
-   
+
 
     module.controller('RegisterController', function($scope, $http) {
 
@@ -10,7 +10,7 @@
         $scope.products = [];
 
         $scope.register = function() {
-           
+
             $scope.working = true;
             var request = $http({
                 method: "post",
@@ -19,7 +19,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Usuario][nombre]=' + $scope.nombre + '&data[Usuario][apellido]=' + $scope.apellido + '&data[Usuario][mail]=' + $scope.email + '&data[Usuario][provincia_id]=2&data[Usuario][login]=' + $scope.userName + '&data[Usuario][password]=' + $scope.password + '&data[Usuario][check_password]=' + $scope.passwordVerification + '&data[Usuario][tipo_usuario_id]=2&data[Usuario][habilitado]=0&'
+                data: '_method=POST&data[Usuario][nombre]=' + $scope.nombre + '&data[Usuario][apellido]=' + $scope.apellido + '&data[Usuario][mail]=' + $scope.email + '&data[Usuario][provincia_id]=' + $scope.provincia + '&data[Usuario][login]=' + $scope.userName + '&data[Usuario][password]=' + $scope.password + '&data[Usuario][check_password]=' + $scope.passwordVerification + '&data[Usuario][tipo_usuario_id]=2&data[Usuario][habilitado]=0&'
             });
 
 
@@ -43,5 +43,24 @@
         }
     });
 
-})();
+    module.directive('moduleComboProvincias', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/comboProvincias.html'
+        };
+    });
 
+    module.directive('moduleCategoryList', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/categoryList.html'
+        };
+    });
+
+    module.directive('moduleProductList', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/productList.html'
+        };
+    });
+})();

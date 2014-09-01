@@ -6,7 +6,7 @@
 
         $scope.searchString = "";
         $scope.working = false;
-        $scope.newProducts = [];
+        $scope.products = [];
 
         $scope.init = function() {
             console.log('inicializando');
@@ -30,7 +30,7 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
-            $scope.newProducts = data.result.child_products;
+            $scope.products = data.result.child_products;
             $scope.working = false;
         }
     });
