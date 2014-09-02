@@ -43,11 +43,11 @@ Push notification credentials
 APIKey AIzaSyCRGPHBgI_34D56Dph6E55zU-8rU5ca03c
 Project Number/GCM sender ID: 973400049330*/
     alert('inicializando');
-    var pushNotification = window.plugins.pushNotification;
+    /*var pushNotification = window.plugins.pushNotification;
     pushNotification.register(successHandler, errorHandler, {
         "senderID": "973400049330",
         "ecb": "app.onNotificationGCM"
-    });
+    });*/
 
 }
 
