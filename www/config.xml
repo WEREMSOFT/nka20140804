@@ -41,6 +41,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
 
 
     <feature name="SplashScreen">
