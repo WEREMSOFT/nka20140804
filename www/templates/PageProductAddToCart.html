@@ -1,20 +1,26 @@
 <ons-page>
     <module-header></module-header>
     <div class="content-padded" ng-hide="loading">
-        <ons-row style="margin-top: 0px;">
+        <ons-row style="margin-top: 20px;">
             <ons-col align="center">
-                <br>
                 <div>{{product.title}}</div>
-                <div>
-                    <input type="number" ng-model="cantidad" class="text-input--underbar select-combo" placeholder="Cantidad" value="">
-                </div>
-                <div>
-                    <select type="text" class="text-input--underbar select-combo">
-                        <option ng-repeat="talle in product.options['En Stock']">{{talle.name}}
-                        </option>
-                    </select>
-                </div>
-                <br>
+            </ons-col>
+        </ons-row>
+        <ons-row style="margin-top: 10px;">
+            <ons-col align="center">
+                <input type="number" class="text-input--underbar select-combo" placeholder="Cantidad">
+            </ons-col>
+        </ons-row>
+        <ons-row style="margin-top: 10px;">
+            <ons-col align="center">
+                <select type="text" class="text-input--underbar select-combo">
+                    <option ng-repeat="talle in product.options['En Stock']">{{talle.name}}
+                    </option>
+                </select>
+            </ons-col>
+        </ons-row>
+        <ons-row style="margin-top: 10px;">
+            <ons-col align="center">
                 <ons-button modifier="large" ng-click="ons.navigator.popPage()">volver</ons-button>
             </ons-col>
         </ons-row>
