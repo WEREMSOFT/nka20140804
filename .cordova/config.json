@@ -1,9 +1,0 @@
-{
-    "lib": {
-        "www": {
-            "id": "com.weremsoft.nakaoutdoors",
-            "version": "0.0.1",
-            "uri": "https://github.com/WEREMSOFT/nka20140804.git"
-        }
-    }
-}
