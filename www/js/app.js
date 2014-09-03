@@ -35,6 +35,7 @@ var rootApp =
 {
     initialize : function()
     {
+        alert('inicializando...');
         this.bindEvents();
     },
     bindEvents : function()
