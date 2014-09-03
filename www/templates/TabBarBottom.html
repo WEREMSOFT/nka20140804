@@ -1,3 +1,4 @@
+
 <ons-tabbar>
   <ons-tabbar-item
     active="true"
@@ -13,14 +14,16 @@
     ng-click="ons.navigator.pushPage('templates/FormSearch.html')">
   </ons-tabbar-item>
 
-  <ons-tabbar-item
-    label="Contacto"
-    icon="phone"
+  <ons-tabbar-item 
+    label="Carrito De Compras"
+    icon="shopping-cart"
+    ng-bind-html="'<span class=\'notification\'>10</span>'"
     ng-click="ons.navigator.pushPage('templates/PageContacto.html');">
   </ons-tabbar-item>
   <ons-tabbar-item
     label="Mas"
     icon="plus"
     ng-click="menu.toggleMenu()">
+    
   </ons-tabbar-item>
 </ons-tabbar>
