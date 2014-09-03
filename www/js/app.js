@@ -31,6 +31,9 @@
 
 })();
 
-document.addEventListener("deviceready", function() {
-    alert("123");
-}, true);
+ons.ready(function() {
+  // Hide Cordova splash screen when Onsen UI is loaded completely
+  // API reference: https://github.com/apache/cordova-plugin-splashscreen/blob/master/doc/index.md
+  navigator.splashscreen.hide();
+  alert('ocultando splashscreen');
+});
