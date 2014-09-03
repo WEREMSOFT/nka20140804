@@ -40,7 +40,10 @@ var rootApp =
     },
     bindEvents : function()
     {
+        alert('bindieando events');
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        alert(document)
+        alert('sin errores');
     },
     onDeviceReady: function() {
         alert('deviceready!');
