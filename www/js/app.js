@@ -42,7 +42,8 @@ var rootApp =
     {
         alert('bindieando events');
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        alert(document)
+        alert(document);
+        alert(this.onDeviceReady);
         alert('sin errores');
     },
     onDeviceReady: function() {
