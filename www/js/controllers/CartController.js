@@ -1,9 +1,9 @@
 (function() {
     'use strict';
-    var module = angular.module('Kart', []);
+    var module = angular.module('Cart', []);
 
 
-    module.controller('FormKartController', function($scope, $http) {
+    module.controller('CartController', function($scope, $http) {
 
         $scope.cantidad = 1;
         $scope.myTalle = {};

@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Kart', 'Register', 'Ofertas', 'CommingSoon', 'Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Cart', 'Register', 'Ofertas', 'CommingSoon', 'Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
 
     app.factory('userData', function() {
         var returnValue = {
@@ -31,7 +31,21 @@
 
 })();
 
-document.addEventListener('deviceready', onDeviceReady, false);
+var rootApp = 
+{
+    initialize : function()
+    {
+        this.bindEvents();
+    },
+    bindEvents : function()
+    {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {
+        alert('deviceready!');
+    }
+}
+
 // Cordova is ready
 //
 function onDeviceReady() {
@@ -81,3 +95,8 @@ function onNotificationGCM(e) {
 function errorHandler(error) {
     alert(error);
 }
+
+ons.ready(function() {
+  console.log("ons ready");
+  console.log(document);
+});

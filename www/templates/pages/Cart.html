@@ -1,0 +1,23 @@
+<ons-page ng-controller="CartController">
+    <module-header></module-header>
+
+    <ons-row style="margin-top: 0px;">
+        <ons-col align="center">
+           
+        </ons-col>
+    </ons-row>
+    <ons-row style="margin-top: 10px;">
+        <ons-col align="center">
+            <div style="text-align: center" class="content-padded">
+                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="getHash()">Enviar Pedido</ons-button>
+            </div>
+        </ons-col>
+    </ons-row>
+    <ons-row style="margin-top: 10px;">
+        <ons-col align="center">
+            <div style="text-align: center" class="content-padded">
+                <ons-button modifier="large--quiet" disabled="{{isWorking}}" ng-click="ons.navigator.popPage()">Mejor no</ons-button>
+            </div>
+        </ons-col>
+    </ons-row>
+</ons-page>
