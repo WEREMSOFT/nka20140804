@@ -11,7 +11,7 @@
                 <input type="number" min="1" ng-model="cantidad" class="text-input--underbar select-combo" placeholder="Cantidad">
             </ons-col>
         </ons-row>
-        <ons-row style="margin-top: 10px;">
+        <ons-row style="margin-top: 10px;" ng-show="product.options">
             <ons-col align="center">
                 <select type="text" ng-model="myTalle" ng-options="talle.id as talle.name for talle in product.options['En Stock']" class="text-input--underbar select-combo">
                 </select>

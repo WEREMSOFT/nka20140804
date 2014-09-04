@@ -1,9 +1,10 @@
-<ons-page ng-controller="CartController">
+<ons-page ng-controller="CartController" ng-init="init()">
     <module-header></module-header>
 
     <ons-row style="margin-top: 0px;">
         <ons-col align="center">
-           
+           <module-product-list ng-hide="working"></module-product-list>
+            <module-loading-spinner ng-show="working"></module-loading-spinner>
         </ons-col>
     </ons-row>
     <ons-row style="margin-top: 10px;">

@@ -7,7 +7,7 @@
         $scope.userData = userData;
         $scope.isWorking = false;
         $scope.login = function() {
-            if($scope.isWorking) return;
+            if ($scope.isWorking) return;
             if (!$scope.user) {
                 alert('La dirección de mail no es válida');
                 return;
@@ -47,7 +47,7 @@
                 $scope.userData.profileData = data.result.Usuario;
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
-               
+
                 ons.navigator.resetToPage('templates/PageHome.html');
 
             } else if (data.result.logedIn === -2) {
@@ -59,6 +59,7 @@
         $scope.init = function() {
             console.log('inicializando......' + ons.navigator.getCurrentPage().name);
             if (ons.navigator.getCurrentPage().name === 'templates/FormProfile.html') {
+                $scope.userData.refreshUserDetails();
                 //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
                 return;
             }

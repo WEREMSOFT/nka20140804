@@ -2,8 +2,11 @@
     'use strict';
     var module = angular.module('Category', []);
 
-    module.controller('CategoryController', function($scope, $http, userData) {
+    module.controller('CategoryController', function($scope, $http, userData, shoppingCart) {
         $scope.userData = userData;
+        console.log('shoppingCart');
+        console.log(shoppingCart);
+        $scope.shoppingCart = shoppingCart;
         $scope.categories = [];
         $scope.products = null;
         $scope.lastCategory = [];
@@ -139,7 +142,9 @@
             $scope.currentSlide = pSlide;
         }
 
-        
+       
+
+
     });
 
 
@@ -164,5 +169,8 @@
         };
     });
 
-    
+
+
+
+
 })();
