@@ -44,6 +44,14 @@
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
 
 
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.Notification" />
+    </feature>
+
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
+
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />
     </feature>
