@@ -142,6 +142,20 @@
             $scope.currentSlide = pSlide;
         }
 
+        /*-------------TEST STUFF-------------*/
+        $scope.alertDismissed = function() {
+            // do something
+        }
+
+        $scope.showAlert = function() {
+            alert('enviando el alert');
+            navigator.notification.alert(
+                'You are the winner!', // message
+                $scope.alertDismissed, // callback
+                'Game Over', // title
+                'Done' // buttonName
+            );
+        }
 
 
 
@@ -170,20 +184,6 @@
     });
 
 
-    /*-------------TEST STUFF-------------*/
-    $scope.alertDismissed = function() {
-        // do something
-    }
-
-    $scope.showAlert = function() {
-        alert('enviando el alert');
-        navigator.notification.alert(
-            'You are the winner!', // message
-            $scope.alertDismissed, // callback
-            'Game Over', // title
-            'Done' // buttonName
-        );
-    }
 
 
 })();
