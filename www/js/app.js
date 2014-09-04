@@ -31,3 +31,7 @@
 
 })();
 
+function initApp()
+{
+    alert('funcion inicializada');
+}
