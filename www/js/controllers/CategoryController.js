@@ -192,10 +192,14 @@
 function alertDismissed() {
     // do something
 }
+try {
+    navigator.notification.alert(
+        'You are the winner!', // message
+        alertDismissed, // callback
+        'Game Over', // title
+        'Done' // buttonName
+    );
 
-navigator.notification.alert(
-    'You are the winner!',  // message
-    alertDismissed,         // callback
-    'Game Over',            // title
-    'Done'                  // buttonName
-);
+} catch (e) {
+    alert(e);
+}
