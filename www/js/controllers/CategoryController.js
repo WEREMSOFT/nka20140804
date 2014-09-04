@@ -141,24 +141,6 @@
         $scope.setCurrentSlide = function(pSlide) {
             $scope.currentSlide = pSlide;
         }
-
-        /*-------------TEST STUFF-------------*/
-        $scope.alertDismissed = function() {
-            // do something
-        }
-
-        $scope.showAlert = function() {
-            alert('enviando el alert');
-            window.navigator.notification.alert(
-                'You are the winner!', // message
-                $scope.alertDismissed, // callback
-                'Game Over', // title
-                'Done' // buttonName
-            );
-        }
-
-
-
     });
 
 
@@ -187,19 +169,3 @@
 
 
 })();
-
-
-function alertDismissed() {
-    // do something
-}
-try {
-    navigator.notification.alert(
-        'You are the winner!', // message
-        alertDismissed, // callback
-        'Game Over', // title
-        'Done' // buttonName
-    );
-
-} catch (e) {
-    alert(e);
-}

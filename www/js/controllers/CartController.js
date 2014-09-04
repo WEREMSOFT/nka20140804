@@ -9,7 +9,7 @@
         $scope.myTalle = {};
         $scope.working = false;
         $scope.products = [];
-
+        $scope.isCart = true;
         $scope.addToKart = function() {
 
             $scope.working = true;

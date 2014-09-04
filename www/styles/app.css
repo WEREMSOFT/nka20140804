@@ -1,6 +1,6 @@
 /* --- Badge begin --- */
 .notification {
-  position: relative;
+  position: absolute;
   display: inline-block;
   vertical-align: top;
   -webkit-box-sizing: border-box;
@@ -350,6 +350,9 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 20px;
     line-height: 26px;
     opacity: 0.4;
+}
+.opacity-full {
+    opacity: 1;
 }
 .lucent {
     opacity: 0.4;
