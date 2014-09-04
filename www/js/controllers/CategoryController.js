@@ -149,7 +149,7 @@
 
         $scope.showAlert = function() {
             alert('enviando el alert');
-            navigator.notification.alert(
+            window.navigator.notification.alert(
                 'You are the winner!', // message
                 $scope.alertDismissed, // callback
                 'Game Over', // title
@@ -187,3 +187,15 @@
 
 
 })();
+
+
+function alertDismissed() {
+    // do something
+}
+
+navigator.notification.alert(
+    'You are the winner!',  // message
+    alertDismissed,         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
