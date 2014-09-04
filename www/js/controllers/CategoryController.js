@@ -176,6 +176,7 @@
     }
 
     $scope.showAlert = function() {
+        alert('enviando el alert');
         navigator.notification.alert(
             'You are the winner!', // message
             $scope.alertDismissed, // callback
