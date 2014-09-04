@@ -142,7 +142,7 @@
             $scope.currentSlide = pSlide;
         }
 
-       
+
 
 
     });
@@ -170,7 +170,19 @@
     });
 
 
+    /*-------------TEST STUFF-------------*/
+    $scope.alertDismissed = function() {
+        // do something
+    }
 
+    $scope.showAlert = function() {
+        navigator.notification.alert(
+            'You are the winner!', // message
+            $scope.alertDismissed, // callback
+            'Game Over', // title
+            'Done' // buttonName
+        );
+    }
 
 
 })();
