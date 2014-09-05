@@ -3,13 +3,27 @@
     var module = angular.module('Cart', []);
 
 
-    module.controller('CartController', function($scope, $http, shoppingCart) {
+    module.controller('CartController', function($scope, $http, shoppingCart, userData) {
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
         $scope.myTalle = {};
         $scope.working = false;
         $scope.products = [];
         $scope.isCart = true;
+
+        //---Datos de envío y usuario
+        $scope.nombre = userData.profileData.nombre;
+        $scope.apellido = userData.profileData.apellido;
+        $scope.mail = userData.profileData.mail;
+        $scope.celular = userData.profileData.celular;
+
+        $scope.tipoEnvio = 1;
+        $scope.localidad = userData.profileData.localidad;
+        $scope.codigoPostal = userData.profileData.codigo_postal;
+        $scope.provincia = 1;
+
+        $scope.formaDePago = 1;
+
         $scope.addToKart = function() {
 
             $scope.working = true;

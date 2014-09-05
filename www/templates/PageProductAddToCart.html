@@ -7,16 +7,22 @@
             </ons-col>
         </ons-row>
         <ons-row style="margin-top: 10px;">
-            <ons-col align="center">
-                <input type="number" min="1" ng-model="cantidad" class="text-input--underbar select-combo" placeholder="Cantidad">
+            <ons-col>
+                <ons-list>
+                    <ons-list-header>Cantidad</ons-list-header>
+                    <ons-list-item>
+                        <input type="number" min="1" ng-model="cantidad" class="text-input--underbar select-combo" placeholder="Cantidad">
+                    </ons-list-item>
+                    <ons-list-header ng-if="product.options">Opciones</ons-list-header>
+                    <ons-list-item ng-if="product.options">
+                        <select type="text" ng-model="myTalle" ng-options="talle.id as talle.name for talle in product.options['En Stock']" class="text-input--underbar select-combo">
+                        <option value="">-- Elija una opción --</option>
+                        </select>
+                    </ons-list-item>
+                </ons-list>
             </ons-col>
         </ons-row>
-        <ons-row style="margin-top: 10px;" ng-show="product.options">
-            <ons-col align="center">
-                <select type="text" ng-model="myTalle" ng-options="talle.id as talle.name for talle in product.options['En Stock']" class="text-input--underbar select-combo">
-                </select>
-            </ons-col>
-        </ons-row>
+
         <ons-row style="margin-top: 10px;">
             <ons-col align="center">
                 <ons-button modifier="large" ng-click="addToKart()">Agregar al Carrito</ons-button>

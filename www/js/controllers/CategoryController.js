@@ -4,8 +4,6 @@
 
     module.controller('CategoryController', function($scope, $http, userData, shoppingCart) {
         $scope.userData = userData;
-        console.log('shoppingCart');
-        console.log(shoppingCart);
         $scope.shoppingCart = shoppingCart;
         $scope.categories = [];
         $scope.products = null;
@@ -52,6 +50,7 @@
         }
 
         $scope.showCategory = function(categoryID) {
+            console.log(categoryID);
             ons.navigator.pushPage('templates/PageCategory.html', {
                 'categoryID': categoryID
             });
