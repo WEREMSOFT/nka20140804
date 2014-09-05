@@ -17,17 +17,25 @@
         $scope.mail = userData.profileData.mail;
         $scope.celular = userData.profileData.celular;
 
-        $scope.tipoEnvio = 1;
+        $scope.formaEnvio = '';
         $scope.localidad = userData.profileData.localidad;
         $scope.codigoPostal = userData.profileData.codigo_postal;
-        $scope.provincia = 1;
+        $scope.provincia = '';
 
-        $scope.formaDePago = 1;
+        $scope.observaciones = "Compra de prueba, hacer caso omiso de la misma."
+
+        $scope.codArea = userData.profileData.cod_area;
+        $scope.direccion = userData.profileData.direccion;
+        $scope.terminal = userData.profileData.terminal;
+        $scope.telefono = userData.profileData.telefono;
+        $scope.cuit = userData.profileData.cuit;
+        $scope.nombre_fantasia = userData.profileData.nombre_fantasia;
+
+        $scope.formaDePago = '';
 
         $scope.addToKart = function() {
 
             $scope.working = true;
-            alert("cadorneando");
             console.log($scope.myTalle);
             var request = $http({
                 method: "post",
@@ -90,5 +98,37 @@
             $scope.working = false;
         }
 
+        $scope.enviarPedido = function() {
+            $scope.working = true;
+            var request = $http({
+                method: "put",
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/carrito_index',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+
+                data: '_method=PUT&data[Pedido][nombre]=' + $scope.nombre + '&data[Pedido][apellido]=' + $scope.apellido + '&data[Pedido][mail]=' + $scope.mail + '&data[Pedido][cod_area]=' + $scope.codArea + '&data[Pedido][celular]=' + $scope.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + $scope.direccion + '&data[Pedido][terminal]=' + $scope.terminal + '&data[Pedido][codigo_postal]=' + $scope.codigoPostal + '&data[Pedido][provincia_id]=' + $scope.provincia + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' +  $scope.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + $scope.ivaFacturacion + '&data[Pedido][razon_social]=' + $scope.razonSocial + '&data[Pedido][cuit]' + $scope.cuit + '&'
+
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpEnviarPedidoSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpEnviarPedidoError);
+
+        }
+
+        $scope.httpEnviarPedidoError = function(data, status, headers, config) {
+            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+        }
+
+        $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
+            alert("Su pedido fue enviado con exito");
+            ons.navigator.popPage();
+            $scope.working = false;
+        }
     });
 })();
