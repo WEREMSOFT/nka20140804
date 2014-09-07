@@ -2,7 +2,7 @@
     'use strict';
     var module = angular.module('Category', []);
 
-    module.controller('CategoryController', function($scope, $http, userData, shoppingCart) {
+    module.controller('CategoryController', function($scope, $http, $sce, userData, shoppingCart) {
         $scope.userData = userData;
         $scope.shoppingCart = shoppingCart;
         $scope.categories = [];
@@ -69,6 +69,18 @@
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
                 $scope.product = data.result;
+
+                if ($scope.product.video) {
+                    $scope.product.videoURL = '';
+
+                    if ($scope.product.video.type === 'YOUTUBE') {
+                        $scope.product.videoURL = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.product.video.code);
+                    } 
+                    if ($scope.product.video.type === 'VIMEO') {
+                        $scope.product.videoURL = $sce.trustAsResourceUrl('http://player.vimeo.com/video/' + $scope.product.video.code);
+                    }
+                }
+
                 var stars = new Array(5);
                 for (var i = 0; i < 5; i++) {
                     stars[i] = {

@@ -73,6 +73,9 @@
 
                     <ons-list-item ng-if="product.reviews_count == 0" modifier="chevron">
                         <ons-icon icon="star-o"></ons-icon>No hay calificaciones de usuarios.</ons-list-item>
+
+                    <ons-list-item ng-if="product.video" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductViewVideo.html')">
+                        <ons-icon icon="youtube-play"></ons-icon>Ver video del producto</ons-list-item>
                 </ons-list>
 
                 <br>
