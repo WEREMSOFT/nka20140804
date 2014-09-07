@@ -41,7 +41,7 @@
 </ul>
 <!-- PRODUCTOS DEL CARRITO DE COMPRAS -->
 <ul class="list list-top" ng-if="isCart">
-    <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container">
+    <li ng-repeat="product in shoppingCart.cartData.items" class="list__item list__item__line-height list-item-container">
         <div class="list-item-main">
             <div class="list-item-left">
                 <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
@@ -75,7 +75,7 @@
             </div>
         </div>
         <span class="list-item-action  opacity-full">
-           <span class="list-item-text" style="margin-top:16px;"><ons-button>Eliminar</ons-button> </span>
+           <span class="list-item-text" style="margin-top:16px;"><ons-button ng-click="eliminarDelCarrito(product.cart_id)">Eliminar</ons-button> </span>
         </span>
     </li>
 </ul>
