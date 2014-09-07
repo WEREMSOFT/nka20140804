@@ -70,6 +70,7 @@
         }
 
         $scope.init = function() {
+           console.log(ons.navigator.getCurrentPage().name);
            $scope.shoppingCart.refreshCartDetails();
         }
 
