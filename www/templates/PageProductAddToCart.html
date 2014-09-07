@@ -15,7 +15,7 @@
                     </ons-list-item>
                     <ons-list-header ng-if="product.options">Opciones</ons-list-header>
                     <ons-list-item ng-if="product.options">
-                        <select type="text" ng-model="myTalle" ng-options="talle.id as talle.name for talle in product.options['En Stock']" class="text-input--underbar select-combo">
+                        <select type="text" ng-model="myTalle" ng-options="talle.id as talle.name group by talle.stock for talle in product.talles" class="text-input--underbar select-combo">
                         <option value="">-- Elija una opción --</option>
                         </select>
                     </ons-list-item>

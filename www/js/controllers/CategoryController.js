@@ -81,6 +81,33 @@
                     }
                 }
 
+                if($scope.product.options)
+                {
+                    $scope.product.talles = [];
+                    if($scope.product.options["En Stock"])
+                    {
+                        for(var i = 0; i < $scope.product.options["En Stock"].length; i++)
+                        {
+                            $scope.product.options["En Stock"][i].stock = "En Stock";
+                        }
+                        console.log('concatenando...');
+                        $scope.product.talles = $scope.product.talles.concat($scope.product.options["En Stock"]);
+                    }
+
+                    if($scope.product.options["Consultar Stock"])
+                    {
+                        for(var i = 0; i < $scope.product.options["Consultar Stock"].length; i++)
+                        {
+                            $scope.product.options["Consultar Stock"][i].stock = "Consultar Stock";
+                        }
+                        console.log('concatenando...');
+                        $scope.product.talles = $scope.product.talles.concat($scope.product.options["Consultar Stock"]);
+                    }
+                    console.log("opciones de talle");
+                    console.log($scope.product.talles);
+                }
+                 
+
                 var stars = new Array(5);
                 for (var i = 0; i < 5; i++) {
                     stars[i] = {
