@@ -139,7 +139,7 @@ var app = {
         if (id === 'deviceready') {
             navigator.splashscreen.hide();
             try {
-                navigator.notification.alert('You are the winner!', alertDismissed, 'Game Over', 'Done');
+                navigator.notification.alert('Mensaje de Prueba', alertDismissed, 'Prueba', 'Bueno');
             }catch(e)
             {
                 alert(e);
@@ -149,5 +149,5 @@ var app = {
 };
 
 function alertDismissed() {
-    // do something
+    alert('prueba terminada');
 }
