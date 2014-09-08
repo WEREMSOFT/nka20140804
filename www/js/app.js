@@ -4,8 +4,8 @@
 
     app.factory('shoppingCart', function($http) {
         var returnValue = {
-           firstRun: true,
-           cartData: {}
+            firstRun: true,
+            cartData: {}
         };
 
         returnValue.httpError = function(data, status, headers, config) {
@@ -39,8 +39,7 @@
             request.error(this.httpError);
         }
 
-        if(returnValue.firstRun)
-        {
+        if (returnValue.firstRun) {
             returnValue.refreshCartDetails();
         }
         return returnValue;
@@ -65,7 +64,7 @@
         }
 
         if (window.localStorage.getItem('logedIn')) {
-            returnValue.logedIn = window.localStorage.getItem('logedIn') === 'true'?true:false;
+            returnValue.logedIn = window.localStorage.getItem('logedIn') === 'true' ? true : false;
             returnValue.profileData = JSON.parse(window.localStorage.getItem('profileData'));
             returnValue.userName = window.localStorage.getItem('user');
             returnValue.password = window.localStorage.getItem('password');
@@ -137,9 +136,18 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        if(id === 'deviceready')
-        {
+        if (id === 'deviceready') {
             navigator.splashscreen.hide();
+            try {
+                navigator.notification.alert('You are the winner!', alertDismissed, 'Game Over', 'Done');
+            }catch(e)
+            {
+                alert(e);
+            }
         }
     }
 };
+
+function alertDismissed() {
+    // do something
+}
