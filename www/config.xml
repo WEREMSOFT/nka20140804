@@ -62,8 +62,8 @@
 
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
-
-
+    <preference name="ShowSplashScreenSpinner" value="true" />
+    <preference name="show-splash-screen-spinner" value="true" />
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
