@@ -140,7 +140,6 @@ var app = {
         if(id === 'deviceready')
         {
             navigator.splashscreen.hide();
-            alert('ocultando splahs screen');
         }
     }
 };
