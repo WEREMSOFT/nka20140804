@@ -137,6 +137,9 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        alert("app inicializada");
+        if(id === 'deviceready')
+        {
+            navigator.splashscreen.hide();
+        }
     }
 };
