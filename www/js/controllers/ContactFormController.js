@@ -97,9 +97,28 @@
             CAPITAL: 1
         };
 
-        $scope.callSucursal = function(cod_sucursal) {
+        $scope.askCallSucursal = function(cod_sucursal) {
+            $scope.cod_sucursal = cod_sucursal;
+            navigator.notification.confirm(
+                'Desea llamar a la sucursal?', // message
+                onConfirm, // callback to invoke with index of button pressed
+                'Llamar?', // title
+                ['Tal vez mas tarde', 'Llamar ahora'] // buttonLabels
+            );
+        }
+
+        $scope.onConfirm = function(buttonIndex) {
+            alert('You selected button ' + buttonIndex);
+            if(buttonIndex===1)
+            {
+                $scope.callSucursal();
+            }
+        }
+
+
+        $scope.callSucursal = function() {
             console.log(cod_sucursal);
-            switch (cod_sucursal) {
+            switch ($scope.cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     phonedialer.dial(
                         "01147979435",
