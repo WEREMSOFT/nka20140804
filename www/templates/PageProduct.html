@@ -5,7 +5,7 @@
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
                 <br>
-                <div>{{product.title}} </div>
+                <div>{{product.title}}</div>
                 <div ng-repeat="slide in product.images">
                     <div class="frame-for-featured-image" ng-show="$first">
                         <img class="featured-image" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
@@ -49,7 +49,7 @@
                         <ons-row>
                             <ons-col align="center">
                                 <!--- STOCK -->
-                                <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'yellow':product.stock==3?'red':'grey'}}"></ons-icon>
+                                <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'red':product.stock==3?'black':'yellow'}}"></ons-icon>
                                 {{product.stock==1?'En Stock':product.stock==2?'Consultar':product.stock==3?'Sin Stock':'Proximamente'}}
                             </ons-col>
                             <ons-col align="center">
@@ -70,9 +70,9 @@
 
                     <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductsRatings.html', {productQuestions: product.questions})">
 
-                        <ons-icon ng-repeat="star in product.stars"  ng-class="'dark-orange'" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
+                        <ons-icon ng-repeat="star in product.stars" ng-class="'dark-orange'" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
 
-                    <ons-list-item   ng-if="product.reviews_count == 0" modifier="chevron">
+                    <ons-list-item ng-if="product.reviews_count == 0" modifier="chevron">
                         <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>Sin calificaciones aún.</ons-list-item>
 
                     <ons-list-item ng-if="product.video" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductViewVideo.html')">
