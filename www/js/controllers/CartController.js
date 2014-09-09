@@ -140,5 +140,15 @@
             $scope.isWorking = false;
         }
 
+        $scope.quantityIncrement = function()
+        {
+            $scope.cantidad++;
+        }
+        $scope.quantityDecrement = function()
+        {
+            $scope.cantidad--;
+            $scope.cantidad = $scope.cantidad<1?1:$scope.cantidad;
+        }
+
     });
 })();

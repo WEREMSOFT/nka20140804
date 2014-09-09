@@ -10,8 +10,8 @@
             <ons-col>
                 <ons-list>
                     <ons-list-header>Cantidad</ons-list-header>
-                    <ons-list-item>
-                        <input type="number" min="1" ng-model="cantidad" class="text-input--underbar select-combo" placeholder="Cantidad">
+                    <ons-list-item align="center">
+                         <ons-button ng-click="quantityDecrement()"><ons-icon icon="minus"></ons-icon></ons-button><input type="number" min="1" ng-model="cantidad" disabled class="text-input" placeholder="Cantidad"><ons-button ng-click="quantityIncrement()"><ons-icon icon="plus"></ons-icon></ons-button>
                     </ons-list-item>
                     <ons-list-header ng-if="product.options">Opciones</ons-list-header>
                     <ons-list-item ng-if="product.options">
