@@ -5,12 +5,12 @@
     module.controller('NewProductsController', function($scope, $http) {
 
         $scope.searchString = "";
-        $scope.working = false;
+        $scope.isWorking = false;
         $scope.products = [];
 
         $scope.init = function() {
             console.log('inicializando');
-            $scope.working = true;
+            $scope.isWorking = true;
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json',
@@ -31,7 +31,7 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.result.child_products;
-            $scope.working = false;
+            $scope.isWorking = false;
         }
     });
 

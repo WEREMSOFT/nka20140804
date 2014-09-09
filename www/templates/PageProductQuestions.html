@@ -4,7 +4,7 @@
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
                 <div>{{product.name}}</div>
-                <ul class="list list-top" ng-hide="working">
+                <ul class="list list-top" ng-hide="isWorking">
                     <div ng-repeat="question in product.questions">
                         <li class="list__item list__item--tappable list__item__line-height list-item-container product_question">
                             <div class="list-item-main">
@@ -47,7 +47,7 @@
         </ons-row>
         <ons-row style="margin-top: 10px;">
             <ons-col align="center">
-                <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/FormQuestionOnProduct.html')">Preguntar</ons-button>
+                <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/FormQuestionOnProduct.html')">Consultar</ons-button>
             </ons-col>
         </ons-row>
         <ons-row style="margin-top: 10px;">

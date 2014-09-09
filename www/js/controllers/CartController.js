@@ -7,7 +7,7 @@
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
         $scope.myTalle = {};
-        $scope.working = false;
+        $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
 
@@ -35,7 +35,7 @@
 
         $scope.addToKart = function() {
 
-            $scope.working = true;
+            $scope.isWorking = true;
             console.log($scope.myTalle);
             var request = $http({
                 method: "post",
@@ -59,14 +59,14 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
-            $scope.working = false;
+            $scope.isWorking = false;
         }
 
         $scope.init = function() {
@@ -77,7 +77,7 @@
        
 
         $scope.enviarPedido = function() {
-            $scope.working = true;
+            $scope.isWorking = true;
             var request = $http({
                 method: "put",
                 url: 'http://www.nakaoutdoors.com.ar/pedidos/carrito_index',
@@ -101,18 +101,18 @@
         }
 
         $scope.httpEnviarPedidoError = function(data, status, headers, config) {
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
-            alert("Su pedido fue enviado con exito");
+            navigator.notification.alert('Su pedido ha sido enviado con éxito.', null, 'Éxito', 'Bueno');
             ons.navigator.popPage();
-            $scope.working = false;
+            $scope.isWorking = false;
         }
 
         $scope.eliminarDelCarrito = function(id) {
             console.log('eliminando producto del carrito de compras');
-            $scope.working = true;
+            $scope.isWorking = true;
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_del.json?id=' + id,
@@ -130,14 +130,14 @@
         }
 
         $scope.httpEliminarDelCarritoError = function(data, status, headers, config) {
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
-            $scope.working = false;
+            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            $scope.isWorking = false;
         }
 
         $scope.httpEliminarDelCarritoSuccess = function(data, status, headers, config) {
-            console.log("Item eliminado con exito");
+            navigator.notification.alert('Item eliminado.', null, 'Éxito', 'Bueno');
             $scope.shoppingCart.refreshCartDetails();
-            $scope.working = false;
+            $scope.isWorking = false;
         }
 
     });

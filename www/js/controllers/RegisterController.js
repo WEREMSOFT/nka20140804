@@ -6,12 +6,12 @@
     module.controller('RegisterController', function($scope, $http) {
 
         $scope.searchString = "";
-        $scope.working = false;
+        $scope.isWorking = false;
         $scope.products = [];
 
         $scope.register = function() {
 
-            $scope.working = true;
+            $scope.isWorking = true;
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/registro',
@@ -39,7 +39,7 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.result;
-            $scope.working = false;
+            $scope.isWorking = false;
         }
     });
 

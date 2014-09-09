@@ -1,6 +1,6 @@
 <ons-page class="center" ng-controller="CommingSoonController" ng-init="init()">
     <module-header></module-header>
     <!-- Solo se muestra si es un listado de productos -->
-    <module-product-list ng-hide="working"></module-product-list>
-    <module-loading-spinner ng-show="working"></module-loading-spinner>
+    <module-product-list ng-hide="isWorking"></module-product-list>
+    <module-loading-spinner ng-show="isWorking"></module-loading-spinner>
 </ons-page>

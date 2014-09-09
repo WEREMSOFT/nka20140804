@@ -11,7 +11,8 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', alertDismissed, 'Sin Conección', 'Bueno');
+            navigator.app.exitApp();
         };
 
         returnValue.httpSuccess = function(data, status, headers, config) {
@@ -72,7 +73,8 @@
 
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', alertDismissed, 'Sin Conección', 'Aceptar');
+            navigator.app.exitApp();
         }
 
         returnValue.httpSuccess = function(data, status, headers, config) {
@@ -82,7 +84,7 @@
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
-                alert('Nombre de usuario o contraseña invalidas');
+                navigator.notification.alert('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
             }
         }
 
@@ -138,16 +140,10 @@ var app = {
     receivedEvent: function(id) {
         if (id === 'deviceready') {
             navigator.splashscreen.hide();
-            try {
-                navigator.notification.alert('Mensaje de Prueba', alertDismissed, 'Prueba', 'Bueno');
-            }catch(e)
-            {
-                alert(e);
-            }
         }
     }
 };
 
 function alertDismissed() {
-    alert('prueba terminada');
+    Console.log('dummy callback');
 }

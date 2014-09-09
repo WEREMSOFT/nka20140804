@@ -107,6 +107,7 @@
                     console.log($scope.product.talles);
                 }
                  
+                $scope.product.unsafeParsedHTML = $sce.trustAsHtml($scope.product.body);
 
                 var stars = new Array(5);
                 for (var i = 0; i < 5; i++) {

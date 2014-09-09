@@ -6,7 +6,7 @@
     module.controller('SearchController', function($scope, $http) {
 
         $scope.searchString = "";
-        $scope.working = false;
+        $scope.isWorking = false;
         $scope.products = [];
 
         $scope.search = function(strSearchString) {
@@ -14,7 +14,7 @@
                 alert('La cadena de busqueda es muy corta.');
                 return;
             }
-            $scope.working = true;
+            $scope.isWorking = true;
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/search.json',
@@ -42,7 +42,7 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.result;
-            $scope.working = false;
+            $scope.isWorking = false;
         }
 
         $scope.getUserDetails = function()

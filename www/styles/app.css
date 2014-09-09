@@ -438,7 +438,7 @@ input[type=text], input[type=email], input[type=password] {
 .product-contado-price {
     font-family: Verdana, Geneva, sans-serif;
     line-height: 18px;
-    font-size: 17px;
+    font-size: 12px;
     font-weight: 700;
     color: #a91e23;
 }
@@ -492,14 +492,14 @@ input[type=text], input[type=email], input[type=password] {
 }
 /*--- Combo End ---*/
 
-/*---preguntas begin---*/
+/*---Consultas begin---*/
 
 .product_question {
     border-top: 1px solid #ddd;
     background-color: #eee;
     border-bottom: solid 1px #ddd !important;
 }
-/*---preguntas end---*/
+/*---Consultas end---*/
 /*---select begin ---*/
 .select-combo {
     display: block;
@@ -512,4 +512,13 @@ input[type=text], input[type=email], input[type=password] {
 }
 /*---select end---*/
 
+/*--- Colores Begin ---*/
+.dark-orange {
+    color: darkorange;
+}
 
+.youtube-red
+{
+    color: #cc181e;
+}
+/*--- Colores End ---*/

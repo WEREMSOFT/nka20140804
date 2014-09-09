@@ -5,7 +5,7 @@
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
                 <br>
-                <div>{{product.title}}</div>
+                <div>{{product.title}} </div>
                 <div ng-repeat="slide in product.images">
                     <div class="frame-for-featured-image" ng-show="$first">
                         <img class="featured-image" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
@@ -37,7 +37,7 @@
                         <ons-row>
                             <ons-col align="center">
                                 <i class="fa fa-credit-card"></i> 
-                                <span class="product-debit-credit-label">Debito/Credito :</span>
+                                <span class="product-debit-credit-label">Débito/Crédito :</span>
                                 <span class="product-debit-credit-price">${{product.credit_price}}</span>
                             </ons-col>
                             <ons-col align="center">
@@ -66,16 +66,17 @@
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
 
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductQuestions.html', {productQuestions: product.questions})">
-                        <ons-icon icon="question-circle"></ons-icon>Preguntas</ons-list-item>
+                        <ons-icon icon="question-circle"></ons-icon>Consultas</ons-list-item>
 
                     <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductsRatings.html', {productQuestions: product.questions})">
-                        <ons-icon ng-repeat="star in product.stars" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
 
-                    <ons-list-item ng-if="product.reviews_count == 0" modifier="chevron">
-                        <ons-icon icon="star-o"></ons-icon>No hay calificaciones de usuarios.</ons-list-item>
+                        <ons-icon ng-repeat="star in product.stars"  ng-class="'dark-orange'" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
+
+                    <ons-list-item   ng-if="product.reviews_count == 0" modifier="chevron">
+                        <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>Sin calificaciones aún.</ons-list-item>
 
                     <ons-list-item ng-if="product.video" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductViewVideo.html')">
-                        <ons-icon icon="youtube-play"></ons-icon>Ver video del producto</ons-list-item>
+                        <ons-icon icon="youtube-play" ng-class="'youtube-red'"></ons-icon>Ver video del producto</ons-list-item>
                 </ons-list>
 
                 <br>
