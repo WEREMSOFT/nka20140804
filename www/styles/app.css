@@ -529,6 +529,5 @@ input[type=text], input[type=email], input[type=password] {
 @media only screen and (min-device-width: 768px) {
     body {
         zoom: 150%;
-        color: black;
     }
 }
