@@ -108,7 +108,7 @@
                             else alert("Dialer Error:" + err);
                         },
                         function(success) {
-                            alert('Dialing succeeded');
+                            //alert('Dialing succeeded');
                         }
                     );
                     break;
@@ -120,7 +120,7 @@
                             else alert("Dialer Error:" + err);
                         },
                         function(success) {
-                            alert('Dialing succeeded');
+                            //alert('Dialing succeeded');
                         }
                     );
                     break;
