@@ -1,48 +1,48 @@
 /* --- Badge begin --- */
-.notification {
-  position: absolute;
-  display: inline-block;
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
-  line-height: normal;
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 17px;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-decoration: none;
-  padding: 0 4px;
-  width: auto;
-  height: 19px;
-  -webkit-border-radius: 19px;
-  border-radius: 19px;
-  background-color: #dc5236;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  min-width: 19px;
-  line-height: 19px;
-  font-weight: 400;
-}
 
+.notification {
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    line-height: normal;
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0 4px;
+    width: auto;
+    height: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    background-color: #dc5236;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    min-width: 19px;
+    line-height: 19px;
+    font-weight: 400;
+}
 /* --- Badge end --- */
 
 .left {
@@ -500,7 +500,9 @@ input[type=text], input[type=email], input[type=password] {
     border-bottom: solid 1px #ddd !important;
 }
 /*---Consultas end---*/
+
 /*---select begin ---*/
+
 .select-combo {
     display: block;
     width: 80%;
@@ -513,12 +515,20 @@ input[type=text], input[type=email], input[type=password] {
 /*---select end---*/
 
 /*--- Colores Begin ---*/
+
 .dark-orange {
     color: darkorange;
 }
-
-.youtube-red
-{
+.youtube-red {
     color: #cc181e;
 }
 /*--- Colores End ---*/
+
+/* iPad [portrait + landscape] */
+
+@media only screen and (min-device-width: 768px) {
+    body {
+        zoom: 150%;
+        color: black;
+    }
+}
