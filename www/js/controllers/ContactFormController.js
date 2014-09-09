@@ -101,10 +101,28 @@
             console.log(cod_sucursal);
             switch (cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
-                    window.open('tel:01147979435', 'silentFrame');
+                    phonedialer.dial(
+                        "01147979435",
+                        function(err) {
+                            if (err == "empty") alert("Unknown phone number");
+                            else alert("Dialer Error:" + err);
+                        },
+                        function(success) {
+                            alert('Dialing succeeded');
+                        }
+                    );
                     break;
                 case this.cods_sucursal.CAPITAL:
-                    window.open('tel:45462853', 'silentFrame');
+                    phonedialer.dial(
+                        "45462853",
+                        function(err) {
+                            if (err == "empty") alert("Unknown phone number");
+                            else alert("Dialer Error:" + err);
+                        },
+                        function(success) {
+                            alert('Dialing succeeded');
+                        }
+                    );
                     break;
             }
         }
@@ -121,5 +139,8 @@
                     break;
             }
         }
+
+
+
     });
 })();
