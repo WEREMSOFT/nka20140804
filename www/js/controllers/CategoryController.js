@@ -75,29 +75,24 @@
 
                     if ($scope.product.video.type === 'YOUTUBE') {
                         $scope.product.videoURL = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.product.video.code);
-                    } 
+                    }
                     if ($scope.product.video.type === 'VIMEO') {
                         $scope.product.videoURL = $sce.trustAsResourceUrl('http://player.vimeo.com/video/' + $scope.product.video.code);
                     }
                 }
 
-                if($scope.product.options)
-                {
+                if ($scope.product.options) {
                     $scope.product.talles = [];
-                    if($scope.product.options["En Stock"])
-                    {
-                        for(var i = 0; i < $scope.product.options["En Stock"].length; i++)
-                        {
+                    if ($scope.product.options["En Stock"]) {
+                        for (var i = 0; i < $scope.product.options["En Stock"].length; i++) {
                             $scope.product.options["En Stock"][i].stock = "En Stock";
                         }
                         console.log('concatenando...');
                         $scope.product.talles = $scope.product.talles.concat($scope.product.options["En Stock"]);
                     }
 
-                    if($scope.product.options["Consultar Stock"])
-                    {
-                        for(var i = 0; i < $scope.product.options["Consultar Stock"].length; i++)
-                        {
+                    if ($scope.product.options["Consultar Stock"]) {
+                        for (var i = 0; i < $scope.product.options["Consultar Stock"].length; i++) {
                             $scope.product.options["Consultar Stock"][i].stock = "Consultar Stock";
                         }
                         console.log('concatenando...');
@@ -106,7 +101,7 @@
                     console.log("opciones de talle");
                     console.log($scope.product.talles);
                 }
-                 
+
                 $scope.product.unsafeParsedHTML = $sce.trustAsHtml($scope.product.body);
 
                 var stars = new Array(5);
@@ -201,6 +196,12 @@
         return {
             restrict: 'E',
             templateUrl: 'templates/modules/tabBarBottom.html'
+        };
+    });
+    module.directive('moduleStockColorCodes', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/stockColorCodes.html'
         };
     });
 

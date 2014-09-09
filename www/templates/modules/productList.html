@@ -18,9 +18,7 @@
 
                     <br/>
                     <span class="list-item-text" style="margin-top:16px;">
-                        <!--- STOCK -->
-                        <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'red':product.stock==3?'black':'yellow'}}"></ons-icon>
-                        {{product.stock==1?'En Stock':product.stock==2?'Consultar':product.stock==3?'Sin Stock':'Proximamente'}}
+                        <module-stock-color-codes></module-stock-color-codes>
                         <!-- NUEVO -->
                         <ons-icon ng-if="product.new==1" icon="certificate" style="color:red"></ons-icon>
                         {{product.new=='1'?'Nuevo!':''}}
