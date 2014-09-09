@@ -8,7 +8,7 @@
                 <div>{{product.title}}</div>
                 <div ng-repeat="slide in product.images">
                     <div class="frame-for-featured-image" ng-show="$first">
-                        <img class="featured-image" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
+                        <img class="featured-image" ng-click="ons.navigator.pushPage('templates/PageProductImageDetail.html')" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
                     </div>
                 </div>
             </ons-col>
