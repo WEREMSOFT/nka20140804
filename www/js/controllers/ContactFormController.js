@@ -104,7 +104,7 @@
                     'Desea llamar a la sucursal?', // message
                     $scope.onConfirm, // callback to invoke with index of button pressed
                     'Llamar?', // title
-                    ['Tal vez mas tarde', 'Llamar ahora'] // buttonLabels
+                    ['Llamar ahora', 'Tal vez mas tarde'] // buttonLabels
                 );
             } catch (e) {
                 alert(e);
@@ -112,15 +112,14 @@
         }
 
         $scope.onConfirm = function(buttonIndex) {
-            alert('You selected button ' + buttonIndex);
-            if (buttonIndex === 1) {
+            if (buttonIndex == 2) {
                 $scope.callSucursal();
             }
         }
 
 
         $scope.callSucursal = function() {
-            console.log(cod_sucursal);
+            alert($scope.cod_sucursal);
             switch ($scope.cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     phonedialer.dial(
