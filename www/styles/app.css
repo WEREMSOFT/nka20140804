@@ -428,17 +428,24 @@ input[type=text], input[type=email], input[type=password] {
 
 /*--- Estilos del producto begin --*/
 
-.product-debit-credit-label, .product-contado-label, .product-debit-credit-price {
+.product-debit-credit-label, .product-contado-label {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
     color: #444;
 }
+.product-debit-credit-price {
+    font-family: Verdana, Geneva, sans-serif;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+}
 .product-contado-price {
     font-family: Verdana, Geneva, sans-serif;
     line-height: 18px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: #a91e23;
 }

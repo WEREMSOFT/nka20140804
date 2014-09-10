@@ -64,7 +64,7 @@
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
 
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductQuestions.html', {productQuestions: product.questions})">
-                        <ons-icon icon="question-circle"></ons-icon>Consultas</ons-list-item>
+                        <ons-icon icon="question-circle"></ons-icon>{{product.questions_count == 0?'Sin consultas aún.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
 
                     <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductsRatings.html', {productQuestions: product.questions})">
 
