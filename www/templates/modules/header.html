@@ -11,5 +11,5 @@
     <div class="right">
         <ons-toolbar-button ng-if="false" ng-show="userData.logedIn && ons.navigator.getCurrentPage().name != 'templates/FormProfile.html'" class="vertical-allign" ng-click="ons.navigator.pushPage('templates/FormProfile.html')"><img width="40px" height="40px" class="profile-image" src="{{userData.profileData.imagen}}">&nbsp;{{userData.profileData.nombre + ' ' + userData.profileData.apellido}}
         </ons-toolbar-button>
-        <ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="ons.navigator.pushPage('templates/pages/Cart.html')"><ons-icon icon="shopping-cart"></ons-icon><span class="notification" ng-show="shoppingCart.cartData.items.length" style="margin-left: -12px">{{shoppingCart.cartData.items.length}}</span></ons-toolbar-button>
+        <ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="ons.navigator.pushPage('templates/pages/Cart.html')"><ons-icon icon="shopping-cart"></ons-icon><span class="notification" ng-show="shoppingCart.cartData.summary.quantity" style="margin-left: -12px">{{shoppingCart.cartData.summary.quantity}}</span></ons-toolbar-button>
 </ons-toolbar>

@@ -99,18 +99,21 @@
 
         $scope.askCallSucursal = function(cod_sucursal) {
             $scope.cod_sucursal = cod_sucursal;
-            navigator.notification.confirm(
-                'Desea llamar a la sucursal?', // message
-                onConfirm, // callback to invoke with index of button pressed
-                'Llamar?', // title
-                ['Tal vez mas tarde', 'Llamar ahora'] // buttonLabels
-            );
+            try {
+                navigator.notification.confirm(
+                    'Desea llamar a la sucursal?', // message
+                    onConfirm, // callback to invoke with index of button pressed
+                    'Llamar?', // title
+                    ['Tal vez mas tarde', 'Llamar ahora'] // buttonLabels
+                );
+            } catch (e) {
+                alert(e);
+            }
         }
 
         $scope.onConfirm = function(buttonIndex) {
             alert('You selected button ' + buttonIndex);
-            if(buttonIndex===1)
-            {
+            if (buttonIndex === 1) {
                 $scope.callSucursal();
             }
         }
