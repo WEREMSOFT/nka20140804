@@ -140,6 +140,7 @@ var app = {
     receivedEvent: function(id) {
         if (id === 'deviceready') {
             navigator.splashscreen.hide();
+            subscriveToPushNotificationsAndroid();
         }
     }
 };
@@ -150,9 +151,9 @@ function alertDismissed() {
 
 function subscriveToPushNotificationsAndroid() {
     var pushNotification = window.plugins.pushNotification;
-    pushNotification.register(app.successHandler, app.errorHandler, {
+    pushNotification.register(successHandler, errorHandler, {
         "senderID": "973400049330",
-        "ecb": "app.onNotificationGCM"
+        "ecb": "onNotificationGCM"
     });
 
 }
@@ -167,3 +168,29 @@ function successHandler(result) {
 function errorHandler(error) {
     alert(error);
 }
+
+function onNotificationGCM(e) {
+        switch( e.event )
+        {
+            case 'registered':
+                if ( e.regid.length > 0 )
+                {
+                    console.log("Regid " + e.regid);
+                    alert('registration id = '+e.regid);
+                }
+            break;
+ 
+            case 'message':
+              // this is the actual push notification. its format depends on the data model from the push server
+              alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+            break;
+ 
+            case 'error':
+              alert('GCM error = '+e.msg);
+            break;
+ 
+            default:
+              alert('An unknown GCM event has occurred');
+              break;
+        }
+    }
