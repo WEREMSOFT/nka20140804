@@ -112,14 +112,13 @@
         }
 
         $scope.onConfirm = function(buttonIndex) {
-            if (buttonIndex == 2) {
+            if (buttonIndex == 1) {
                 $scope.callSucursal();
             }
         }
 
 
         $scope.callSucursal = function() {
-            alert($scope.cod_sucursal);
             switch ($scope.cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     phonedialer.dial(
