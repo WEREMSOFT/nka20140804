@@ -102,7 +102,7 @@
             try {
                 navigator.notification.confirm(
                     'Desea llamar a la sucursal?', // message
-                    onConfirm, // callback to invoke with index of button pressed
+                    $scope.onConfirm, // callback to invoke with index of button pressed
                     'Llamar?', // title
                     ['Tal vez mas tarde', 'Llamar ahora'] // buttonLabels
                 );
