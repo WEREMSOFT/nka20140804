@@ -9,7 +9,13 @@
                 <div class="list-item-content">
                     <span class="list-item-name">{{product.title}} &nbsp;
                         <br/>
-                        <span>
+                        <span ng-if="product.offer > 0">
+                            <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp; <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
+                            <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
+                            <span style="color: red">$ {{product.offer_price}}</span>
+                        </span>
+
+                        <span ng-if="product.offer == 0">
                             <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}&nbsp;&nbsp;
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>

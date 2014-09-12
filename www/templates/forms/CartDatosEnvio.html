@@ -1,4 +1,4 @@
-<ons-page ng-controller="CartController">
+<ons-page ng-controller="CartController" ng-init="init()">
     <ons-row style="margin-top: 10px;">
         <ons-col align="center">
             <div style="text-align: center" class="content-padded">
@@ -35,32 +35,8 @@
 
                                 <input type="text" ng-model="codigoPostal" class="text-input--underbar" placeholder="Codigo Postal" value="">
 
-                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required" id="UsuarioProvinciaId">
+                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required"  id="UsuarioProvinciaId">
                                     <option value="">-- Seleccionar provincia --</option>
-                                    <option value="1">Buenos Aires</option>
-                                    <option value="2">Capital Federal</option>
-                                    <option value="3">Catamarca</option>
-                                    <option value="4">Cordoba</option>
-                                    <option value="5">Corrrientes</option>
-                                    <option value="6">Chaco</option>
-                                    <option value="7">Chubut</option>
-                                    <option value="8">Entre Rios</option>
-                                    <option value="9">Formosa</option>
-                                    <option value="10">Jujuy</option>
-                                    <option value="11">La Pampa</option>
-                                    <option value="12">La Rioja</option>
-                                    <option value="13">Mendoza</option>
-                                    <option value="14">Misiones</option>
-                                    <option value="15">Neuquen</option>
-                                    <option value="16">Rio Negro</option>
-                                    <option value="17">Salta</option>
-                                    <option value="18">San Luis</option>
-                                    <option value="19">San Juan</option>
-                                    <option value="20">Santa Cruz</option>
-                                    <option value="21">Santa Fe</option>
-                                    <option value="22">Santiago del Estero</option>
-                                    <option value="23">Tierra del Fuego</option>
-                                    <option value="24">Tucuman</option>
                                 </select>
 
                                 <select type="text" class="text-input--underbar select-combo" ng-model="formaDePago" required="required" id="">

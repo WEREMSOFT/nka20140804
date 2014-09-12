@@ -6,7 +6,7 @@
     module.controller('CartController', function($scope, $http, shoppingCart, userData) {
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
-        $scope.myTalle = {};
+        $scope.talle = null;
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
@@ -33,10 +33,14 @@
 
         $scope.formaDePago = '';
 
-        $scope.addToKart = function() {
+        $scope.buyOptions = {};
+
+        
+
+        $scope.addToCart = function() {
 
             $scope.isWorking = true;
-            console.log($scope.myTalle);
+            console.log($scope.talle);
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_add.json',
@@ -44,7 +48,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Articulo][id]=' + $scope.product.id + '&data[Articulo][cantidad]=' + $scope.cantidad + '&data[Articulo][talle]=' + $scope.myTalle + '&'
+                data: '_method=POST&data[Articulo][id]=' + $scope.product.id + '&data[Articulo][cantidad]=' + $scope.cantidad + '&data[Articulo][opcion]=' + $scope.talle.id + '&data[Articulo][nombre_opcion]=' + $scope.talle.name + '&'
             });
 
 
@@ -70,11 +74,11 @@
         }
 
         $scope.init = function() {
-           console.log(ons.navigator.getCurrentPage().name);
-           $scope.shoppingCart.refreshCartDetails();
+            console.log(ons.navigator.getCurrentPage().name);
+            $scope.shoppingCart.refreshCartDetails();
         }
 
-       
+
 
         $scope.enviarPedido = function() {
             $scope.isWorking = true;
@@ -140,14 +144,38 @@
             $scope.isWorking = false;
         }
 
-        $scope.quantityIncrement = function()
-        {
+        $scope.quantityIncrement = function() {
             $scope.cantidad++;
         }
-        $scope.quantityDecrement = function()
-        {
+        $scope.quantityDecrement = function() {
             $scope.cantidad--;
-            $scope.cantidad = $scope.cantidad<1?1:$scope.cantidad;
+            $scope.cantidad = $scope.cantidad < 1 ? 1 : $scope.cantidad;
+        }
+
+
+        $scope.init = function() {
+            var request = $http({
+                method: "get",
+                url: './json/test.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpGetBuyOptiondSuccess);
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpGetBuyOptiondError);
+        }
+
+        $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
+            $scope.buyOptions = data.result;
+            console.log($scope.buyOptions);
+        }
+
+        $scope.httpGetBuyOptiondError = function() {
+
         }
 
     });

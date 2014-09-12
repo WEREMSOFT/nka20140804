@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="list-item-right">
                                     <div class="list-item-content">
-                                        <span class="list-item-name">{{question.user.name}}</span>
+                                        <span class="list-item-name">{{question.user.name}} ({{question.question_date}})</span>
                                         <br/>
                                         <span class="list-item-text" style="margin-top:16px;">{{question.message}}
                                         </span>
@@ -24,16 +24,19 @@
                                 <i class="fa fa-angle-right"></i>
                             </span>
                         </li>
-                        <li class="list__item  list__item__line-height list-item-container" ng-if="question.response">
+
+
+                        <li class="list__item list__item--tappable list__item__line-height list-item-container question_response" ng-if="question.response">
                             <div class="list-item-main">
                                 <div class="list-item-left">
-                                    <img src="{{question.seller.image}}" class="avator">
+                                    <img src="{{question.seller.image}}" class="thumbnail">
                                 </div>
                                 <div class="list-item-right">
                                     <div class="list-item-content">
-                                        <span class="list-item-name">{{question.seller.name}}</span>
+                                        <span class="list-item-name">{{question.seller.name}} ({{question.response_date}})</span>
                                         <br/>
-                                        <span class="lucent" ng-bind-html="question.response"></span>
+                                        <span class="list-item-text" style="margin-top:16px;" ng-bind-html="question.response">
+                                        </span>
                                     </div>
                                 </div>
                             </div>

@@ -538,3 +538,13 @@ input[type=text], input[type=email], input[type=password] {
         zoom: 150%;
     }
 }
+
+.question_response
+{
+    padding-left: 55px !important;
+}
+
+.stryke-trough
+{
+    text-decoration: line-through;
+}
