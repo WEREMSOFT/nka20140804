@@ -6,7 +6,7 @@
     module.controller('CartController', function($scope, $http, shoppingCart, userData) {
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
-        $scope.talle = null;
+        $scope.talle = {id: null, name: null};
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
