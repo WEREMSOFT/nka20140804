@@ -71,6 +71,8 @@
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
             $scope.isWorking = false;
+            ons.navigator.popPage();
+            navigator.notification.alert('Item agregado con éxito', null, 'Éxito', 'Ok');
         }
 
         $scope.init = function() {
