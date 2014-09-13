@@ -35,10 +35,10 @@
             </ons-col>
         </ons-row>
 
-        <ons-row style="margin-top: 10px;" ng-show="userData.logedIn">
+        <ons-row style="margin-top: 10px;" ng-if="barCodeScanEnabled">
             <ons-col align="center">
                 <div style="text-align: center" class="content-padded-left-right" ng-controller="LoginController">
-                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="barCodeScan()">leer codigo de barras</ons-button>
+                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="barCodeScan()">Leer codigo de barras</ons-button>
                 </div>
             </ons-col>
         </ons-row>

@@ -14,6 +14,8 @@
         $scope.searchString = "";
         $scope.isWorking = false;
 
+        $scope.barCodeScanEnabled = false;
+
 
 
         $scope.getCategory = function(categoryID) {
