@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     var module = angular.module('Search', []);
-   
+
 
     module.controller('SearchController', function($scope, $http) {
 
@@ -10,10 +10,11 @@
         $scope.products = [];
 
         $scope.search = function(strSearchString) {
-            if(strSearchString.length < 3){
-                alert('La cadena de busqueda es muy corta.');
+            if (strSearchString.length < 3) {
+                promptError('La cadena de busqueda es muy corta.');
                 return;
             }
+
             $scope.isWorking = true;
             var request = $http({
                 method: "post",
@@ -32,11 +33,14 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
+            if (ons.navigator.getCurrentPage().name != "templates/FormSearch.html") {
+                ons.navigator.pushPage("templates/FormSearch.html");
+            }
 
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -45,36 +49,7 @@
             $scope.isWorking = false;
         }
 
-        $scope.getUserDetails = function()
-        {
-            this.debugText = "Obteniendo detalles del usuario...";
-            var request = $http({
-                method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/client/dashboards/index',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
-
-            // Store the data-dump of the FORM scope.
-            request.success(this.httpGetUserDetailsSuccess);
-
-
-            // Store the data-dump of the FORM scope.
-            request.error(this.httpGetUserDetailsError);
-        }
-
-         $scope.httpGetUserDetailsError = function(data, status, headers, config) {
-            $scope.debugText = "error " + data;
-            
-        }
-
-        $scope.httpGetUserDetailsSuccess = function(data, status, headers, config) {
-            $scope.debugText = "Exito!: " + data;
-            $scope.userName = data.split('"Ver datos de ')[1].split('"')[0];
-            alert("Bienvenido " + $scope.userName + "!!!!!");
-        }
-
+        
     });
 
 })();

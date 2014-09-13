@@ -5,8 +5,10 @@
         </ons-toolbar-button>
         <ons-back-button ng-hide="ons.navigator.getPages().length <= 1">Back</ons-back-button>
     </div>
-    <div class="center">
-        <img style="margin-top: 4px;" src="imgs/logo_original_png.png">
+    <div class="center" >
+        <img ng-if="ons.navigator.getCurrentPage().name === 'templates/FormSearch.html'" style="margin-top: 4px;" src="imgs/logo_original_png.png">
+
+         <form ng-if="ons.navigator.getCurrentPage().name != 'templates/FormSearch.html'" ng-submit="search(searchString)"><input type="search" ng-model="searchString" value="" placeholder="toque para buscar..." class="display-block search-input"></form>
     </div>
     <div class="right">
         <ons-toolbar-button ng-if="false" ng-show="userData.logedIn && ons.navigator.getCurrentPage().name != 'templates/FormProfile.html'" class="vertical-allign" ng-click="ons.navigator.pushPage('templates/FormProfile.html')"><img width="40px" height="40px" class="profile-image" src="{{userData.profileData.imagen}}">&nbsp;{{userData.profileData.nombre + ' ' + userData.profileData.apellido}}

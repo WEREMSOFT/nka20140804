@@ -44,7 +44,7 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.isWorking = false;
             if (data.result.logedIn === 1) {
-                $scope.userData.profileData = data.result.Usuario;
+                $scope.userData.profileData = data.result.Usuario; 
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
 

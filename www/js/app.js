@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Cart', 'Register', 'Ofertas', 'CommingSoon', 'Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'Search']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Cart', 'Register', 'Ofertas', 'CommingSoon', 'Category', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu']);
 
     app.factory('shoppingCart', function($http) {
         var returnValue = {
@@ -97,7 +97,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + returnValue.userName + '&data[Login][password]=' + returnValue.password + '&',
+                data: '_method=POST&data[Login][login]=' + window.localStorage.getItem("user") + '&data[Login][password]=' + window.localStorage.getItem("password") + '&',
             });
 
 
