@@ -11,9 +11,10 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
-            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', alertDismissed, 'Sin Conección', 'Bueno');
-            navigator.app.exitApp();
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', androidCloseApp, 'Sin Conección', 'Bueno');
         };
+
+
 
         returnValue.httpSuccess = function(data, status, headers, config) {
             returnValue.isWorking = false;
@@ -73,8 +74,7 @@
 
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
-            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', alertDismissed, 'Sin Conección', 'Aceptar');
-            navigator.app.exitApp();
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', androidCloseApp, 'Sin Conección', 'Aceptar');
         }
 
         returnValue.httpSuccess = function(data, status, headers, config) {
@@ -84,7 +84,7 @@
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
-                navigator.notification.alert('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
+                prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
             }
         }
 
@@ -161,12 +161,12 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    alert('Callback Success! Result = '+result);
+    //alert('Callback Success! Result = '+result);
     console.log(result);
 }
 
 function errorHandler(error) {
-    alert(error);
+    promptError(error);
 }
 
 function onNotificationGCM(e) {
@@ -176,7 +176,6 @@ function onNotificationGCM(e) {
                 if ( e.regid.length > 0 )
                 {
                     console.log("Regid " + e.regid);
-                    alert('registration id = '+e.regid);
                 }
             break;
  

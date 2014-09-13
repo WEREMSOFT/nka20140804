@@ -37,4 +37,14 @@ function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel)
 }
 
 
+function androidCloseApp()
+{
+    navigator.app.exitApp();
+}
+
+function goBackOnePage()
+{
+    ons.navigator.popPage();
+}
+
 console.error = promptError;

@@ -76,7 +76,6 @@
 
          $scope.onPromtAddToCartOk = function()
          {
-            prompt("llamando función");
             ons.navigator.popPage();
          }
 
@@ -112,12 +111,11 @@
         }
 
         $scope.httpEnviarPedidoError = function(data, status, headers, config) {
-            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
-            navigator.notification.alert('Su pedido ha sido enviado con éxito.', null, 'Éxito', 'Bueno');
-            ons.navigator.popPage();
+            prompt('Su pedido ha sido enviado con éxito.', goBackOnePage);
             $scope.isWorking = false;
         }
 
@@ -141,12 +139,12 @@
         }
 
         $scope.httpEliminarDelCarritoError = function(data, status, headers, config) {
-            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección');
             $scope.isWorking = false;
         }
 
         $scope.httpEliminarDelCarritoSuccess = function(data, status, headers, config) {
-            navigator.notification.alert('Item eliminado.', null, 'Éxito', 'Bueno');
+            prompt('Item eliminado.', null, 'Éxito');
             $scope.shoppingCart.refreshCartDetails();
             $scope.isWorking = false;
         }
