@@ -145,6 +145,10 @@ var app = {
     }
 };
 
+
+
+
+
 function alertDismissed() {
     Console.log('dummy callback');
 }

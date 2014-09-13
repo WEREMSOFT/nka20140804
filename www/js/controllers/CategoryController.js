@@ -220,6 +220,20 @@
             $scope.products = data.result;
             $scope.isWorking = false;
         }
+
+        $scope.barCodeScan = function() {
+            cordova.plugins.barcodeScanner.scan(
+                function(result) {
+                    prompt("We got a barcode\n" +
+                        "Result: " + result.text + "\n" +
+                        "Format: " + result.format + "\n" +
+                        "Cancelled: " + result.cancelled);
+                },
+                function(error) {
+                    promptError("Scanning failed: " + error);
+                }
+            );
+        }
     });
 
 

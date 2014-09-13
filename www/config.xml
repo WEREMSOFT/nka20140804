@@ -42,6 +42,7 @@
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
     
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
@@ -78,6 +79,7 @@
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
+
 
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
