@@ -63,7 +63,7 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            navigator.notification.alert('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+           promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -71,9 +71,14 @@
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
             $scope.isWorking = false;
-            ons.navigator.popPage();
-            navigator.notification.alert('Item agregado con éxito', null, 'Éxito', 'Ok');
+            prompt('Item agregado con éxito',  $scope.onPromtAddToCartOk, 'Éxito', 'Ok');
         }
+
+         $scope.onPromtAddToCartOk = function()
+         {
+            prompt("llamando función");
+            ons.navigator.popPage();
+         }
 
         $scope.init = function() {
             console.log(ons.navigator.getCurrentPage().name);
