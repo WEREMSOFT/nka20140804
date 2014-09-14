@@ -1,4 +1,5 @@
 <ons-page ng-controller="CartController" ng-init="init()">
+    <module-header></module-header>
     <ons-row style="margin-top: 10px;">
         <ons-col align="center">
             <div style="text-align: center" class="content-padded">
@@ -35,7 +36,7 @@
 
                                 <input type="text" ng-model="codigoPostal" class="text-input--underbar" placeholder="Codigo Postal" value="">
 
-                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required"  id="UsuarioProvinciaId">
+                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required" id="UsuarioProvinciaId">
                                     <option value="">-- Seleccionar provincia --</option>
                                 </select>
 
@@ -46,7 +47,7 @@
                                     <option value="3">Visa</option>
                                 </select>
 
-                                 <textarea class="text-input--underbar" ng-model="observaciones" placeholder="Observaciones" style="font-size:19px;width: 80%; height: 100px;"></textarea>
+                                <textarea class="text-input--underbar" ng-model="observaciones" placeholder="Observaciones" style="font-size:19px;width: 80%; height: 100px;"></textarea>
                             </ons-col>
                         </ons-row>
                     </div>

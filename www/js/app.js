@@ -14,8 +14,6 @@
             promptError('Oops! Algo ha salido mal. Reintenta en un momento', androidCloseApp, 'Sin Conección', 'Bueno');
         };
 
-
-
         returnValue.httpSuccess = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
@@ -50,7 +48,7 @@
     app.factory('userData', function($http) {
         var returnValue = {
             logedIn: false,
-            profileData: null,
+            profileData: {},
             userName: null,
             password: null,
             lastProfileData: null,

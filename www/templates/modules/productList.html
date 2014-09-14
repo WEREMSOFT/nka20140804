@@ -1,4 +1,5 @@
 <!-- Solo se muestra si es un listado de productos -->
+
 <ul class="list list-top" ng-if="!isCart">
     <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
         <div class="list-item-main">
@@ -10,7 +11,8 @@
                     <span class="list-item-name">{{product.title}} &nbsp;
                         <br/>
                         <span ng-if="product.offer > 0">
-                            <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp; <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
+                            <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp;
+                            <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
                             <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.offer_price}}</span>
                         </span>
@@ -33,8 +35,8 @@
 
                     </span>
                     <br/>
-                    <span class="list-item-text" style="margin-top:16px;">{{product.description.length < 140?product.description:product.description.substr(0, 200) + '...'}}
-                    </span>
+                    <span class="list-item-text" style="margin-top:16px;">{{product.description.length
+                        < 140?product.description:product.description.substr(0, 200) + '...'}} </span>
                 </div>
             </div>
         </div>
@@ -79,7 +81,14 @@
             </div>
         </div>
         <span class="list-item-action  opacity-full">
-           <span class="list-item-text" style="margin-top:16px;"><ons-button should-spin="{{isWorking}}" ng-click="eliminarDelCarrito(product.cart_id)">Eliminar</ons-button> </span>
+            <span class="list-item-text" style="margin-top:16px;">
+                <ons-button should-spin="{{isWorking}}" ng-click="eliminarDelCarrito(product.cart_id)">Eliminar</ons-button>
+            </span>
         </span>
     </li>
 </ul>
+<ons-row style="padding:20px" ng-if="products.length === 0" style="margin-top: 0px;">
+    <ons-col align="center">
+        No hay productos para mostrar.
+    </ons-col>
+</ons-row>

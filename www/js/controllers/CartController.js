@@ -6,7 +6,10 @@
     module.controller('CartController', function($scope, $http, shoppingCart, userData) {
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
-        $scope.talle = {id: null, name: null};
+        $scope.talle = {
+            id: null,
+            name: null
+        };
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
@@ -35,7 +38,7 @@
 
         $scope.buyOptions = {};
 
-        
+
 
         $scope.addToCart = function() {
 
@@ -63,7 +66,7 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-           promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -71,22 +74,29 @@
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
             $scope.isWorking = false;
-            prompt('Item agregado con éxito',  $scope.onPromtAddToCartOk, 'Éxito', 'Ok');
+            prompt('Item agregado con éxito', $scope.onPromtAddToCartOk, 'Éxito', 'Ok');
         }
 
-         $scope.onPromtAddToCartOk = function()
-         {
+        $scope.onPromtAddToCartOk = function() {
             ons.navigator.popPage();
-         }
+        }
 
         $scope.init = function() {
             console.log(ons.navigator.getCurrentPage().name);
             $scope.shoppingCart.refreshCartDetails();
         }
 
-
+        $scope.completarDatosEnvio = function() {
+            console.log($scope.products.length);
+            if ($scope.products.length === 0) {
+                prompt("Su carrito de compras esta vacío");
+                return;
+            }
+            ons.navigator.pushPage('templates/forms/CartDatosEnvio.html')
+        }
 
         $scope.enviarPedido = function() {
+
             $scope.isWorking = true;
             var request = $http({
                 method: "put",
