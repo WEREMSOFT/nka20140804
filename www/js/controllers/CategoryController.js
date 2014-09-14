@@ -14,7 +14,7 @@
         $scope.searchString = "";
         $scope.isWorking = false;
 
-        $scope.barCodeScanEnabled = true;
+        $scope.barCodeScanEnabled = false;
 
 
 
