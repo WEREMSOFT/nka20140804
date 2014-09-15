@@ -43,7 +43,7 @@
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
-    
+
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
     </feature>
@@ -102,6 +102,8 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-
+    <gap:config-file platform="ios" parent="CFBundleShortVersionString">
+        <string>114</string>
+    </gap:config-file>
 
 </widget>
