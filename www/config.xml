@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<widget id="com.weremsoft.nakaoutdoors" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>NKAO</name>
+<widget id="com.weremsoft.nakaoutdoors" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Naka Outdoors</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Tienda especializada en equipo de escalada y montaña. Las mejores marcas, Petzl, Edelrid, Mammut, Edelweiss, Beal, Salewa, Marmot, Lowe Alpine, Wild Country, Altus y muchas mas.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
@@ -106,7 +106,7 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>116</string>
+        <string>117</string>
     </gap:config-file>
 
 </widget>
