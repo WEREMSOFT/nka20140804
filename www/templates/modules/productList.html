@@ -47,6 +47,7 @@
 </ul>
 <!-- PRODUCTOS DEL CARRITO DE COMPRAS -->
 <ul class="list list-top" ng-if="isCart">
+    {{shoppingCart.cartData.items.length}}
     <li ng-repeat="product in shoppingCart.cartData.items" class="list__item list__item__line-height list-item-container">
         <div class="list-item-main">
             <div class="list-item-left">
