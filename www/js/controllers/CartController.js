@@ -13,6 +13,7 @@
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
+        $scope.razonSocial = userData.profileData.razon_social;
 
         //---Datos de envío y usuario
         $scope.nombre = userData.profileData.nombre;
@@ -84,11 +85,12 @@
         $scope.init = function() {
             console.log(ons.navigator.getCurrentPage().name);
             $scope.shoppingCart.refreshCartDetails();
+            $scope.getBuyOptions();
         }
 
         $scope.completarDatosEnvio = function() {
-            console.log($scope.products.length);
-            if ($scope.products.length === 0) {
+            console.log($scope.shoppingCart.cartData.items.length);
+            if (!$scope.shoppingCart.cartData.items.length) {
                 prompt("Su carrito de compras esta vacío");
                 return;
             }
@@ -96,7 +98,6 @@
         }
 
         $scope.enviarPedido = function() {
-
             $scope.isWorking = true;
             var request = $http({
                 method: "put",
@@ -105,7 +106,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=PUT&data[Pedido][nombre]=' + $scope.nombre + '&data[Pedido][apellido]=' + $scope.apellido + '&data[Pedido][mail]=' + $scope.mail + '&data[Pedido][cod_area]=' + $scope.codArea + '&data[Pedido][celular]=' + $scope.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + $scope.direccion + '&data[Pedido][terminal]=' + $scope.terminal + '&data[Pedido][codigo_postal]=' + $scope.codigoPostal + '&data[Pedido][provincia_id]=' + $scope.provincia + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + $scope.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + $scope.ivaFacturacion + '&data[Pedido][razon_social]=' + $scope.razonSocial + '&data[Pedido][cuit]' + $scope.cuit + '&'
+                data: '_method=PUT&data[Pedido][nombre]=' + $scope.nombre + '&data[Pedido][apellido]=' + $scope.apellido + '&data[Pedido][mail]=' + $scope.mail + '&data[Pedido][cod_area]=' + $scope.codArea + '&data[Pedido][celular]=' + $scope.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + $scope.direccion + '&data[Pedido][terminal]=' + $scope.terminal + '&data[Pedido][codigo_postal]=' + $scope.codigoPostal + '&data[Pedido][provincia_id]=' + $scope.provincia + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + $scope.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + $scope.ivaFacturacion + '&data[Pedido][razon_social]=' + $scope.razonSocial + '&data[Pedido][cuit]=' + $scope.cuit + '&'
 
             });
 
@@ -126,11 +127,11 @@
 
         $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
             prompt('Su pedido ha sido enviado con éxito.', goBackOnePage);
+            $scope.shoppingCart.refreshCartDetails();
             $scope.isWorking = false;
         }
 
         $scope.eliminarDelCarrito = function(id) {
-            console.log('eliminando producto del carrito de compras');
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
@@ -168,10 +169,10 @@
         }
 
 
-        $scope.init = function() {
+        $scope.getBuyOptions = function() {
             var request = $http({
                 method: "get",
-                url: './json/test.json',
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

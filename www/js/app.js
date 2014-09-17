@@ -87,7 +87,8 @@
         }
 
         returnValue.refreshUserDetails = function() {
-            console.log('Refrescando información de usuario...' + returnValue.userName + ' ' + returnValue.password);
+            console.log('Refrescando información de usuario...');
+            console.log(returnValue);
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',

@@ -12,6 +12,7 @@
                                 <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="">
                                 <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="">
                                 <input type="email" ng-model="mail" class="text-input--underbar" placeholder="Email" value="">
+                                <input type="text" ng-model="codArea" class="text-input--underbar" placeholder="Codigo de área" value="">
                                 <input type="text" ng-model="celular" class="text-input--underbar" placeholder="Celular" value="">
                             </ons-col>
                         </ons-row>
@@ -24,32 +25,136 @@
 
                         <ons-row style="margin-top: 10px;">
                             <ons-col>
-                                <select type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" required="required">
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Le recomendamos asegurar el envío. Hemos experimentado robos en cajas a las empresas de transporte. Si usted decide no asegurar la compra, Nakaoutdoors no se hace responsable una vez despachada la caja en la empresa de encomiendas y usted está aceptando estas condiciones. El valor para el seguro del envío, será el 2% de la suma asegurada: $ 4.- para su compra.
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;">
+                            <ons-col>
+                                <select type="text" class="text-input--underbar select-combo" ng-model="tipoDeEnvio" ng-options="shippingType.id as shippingType.name for shippingType in buyOptions.shipping_types">
                                     <option value="">-- Seleccionar tipo de envío --</option>
-                                    <option value="1">Retiro en local</option>
-                                    <option value="2">Envío asegurado</option>
-                                    <option value="3">Envío sin asegurar</option>
-                                    <option value="4">Otro</option>
                                 </select>
+                                <br>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;" ng-if="tipoDeEnvio === 1">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Su compra será reservada por un plazo máximo de 5 días hábiles. Superado el plazo NO garantizamos el stock de su pedido. Recuerda que puedes pagar por Mercado Pago y retirar en Local con cualquiera de estas tarjetas!
+                                    <img style="width:100%; height:auto" src="http://imgmp.mlstatic.com/org-img/banners/ar/medios/online/575X40.jpg">
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+
+                        <ons-row style="margin-top: 10px;" ng-if="tipoDeEnvio === 2">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Su envío se encuentra asegurado, la suma total será de $189 (importe de la compra) + $4 (importe del seguro), con un total de $193 a depositar. Los costos de envío son abonados al retirar en terminal y dependen de la empresa de transportes. Importante: La caja será cerrada con una faja de seguridad impresa que dice "Nakaoutdoors - Faja de seguridad, verifique que no haya sido violada". Si cuando usted recibe el paquete en terminal observa signos de que la faja fue cortada o la caja violada, no retire el paquete, realice el reclamo y avísenos inmediatamente. Si usted retira la caja y luego descubre que hay faltantes, el seguro pierde validez.
+                                </div>
+
+
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;" ng-if="tipoDeEnvio === 3">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Usted selecciono su envío sin asegurar. Nakaoutdoors no se reponsabiliza por robos una vez despachado el paquete en la empresa de transportes.
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;" ng-show="tipoDeEnvio === 2 || tipoDeEnvio === 3">
+                            <ons-col>
+                                <select type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" ng-options="shipping_way.id as shipping_way.name for shipping_way in buyOptions.shipping_ways">
+                                    <option value="">-- Seleccionar forma de envío --</option>
+                                </select>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;" ng-if="tipoDeEnvio === 4">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Por favor especifique en el campo observaciones ubicado debajo la modalidad de envío que desea para este pedido.
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;">
+                            <ons-col>
+                                <!--- DATOS DE ENVIO -->
+                                <input type="text" ng-model="direccion" class="text-input--underbar" placeholder="dirección" value="">
+
 
                                 <input type="text" ng-model="localidad" class="text-input--underbar" placeholder="Localidad" value="">
 
                                 <input type="text" ng-model="codigoPostal" class="text-input--underbar" placeholder="Codigo Postal" value="">
 
-                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required" id="UsuarioProvinciaId">
+                                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" ng-options="province.id as province.name for province in buyOptions.provinces">
                                     <option value="">-- Seleccionar provincia --</option>
                                 </select>
 
-                                <select type="text" class="text-input--underbar select-combo" ng-model="formaDePago" required="required" id="">
-                                    <option value="">-- Seleccionar tipo de pago --</option>
-                                    <option value="1">Deposito</option>
-                                    <option value="2">Mercado Pago</option>
-                                    <option value="3">Visa</option>
+                                <select type="text" class="text-input--underbar select-combo" ng-model="opcionesDePago" ng-options="billing_option.id as billing_option.name for billing_option in buyOptions.billing_options">
+                                    <option value="">-- Seleccionar tipo de factura --</option>
                                 </select>
+                                <div ng-show="opcionesDePago === 1 || opcionesDePago === 3">
+                                    <input type="text" ng-model="cuit" class="text-input--underbar" placeholder="C.U.I.T" value="">
+                                </div>
+                                <!--- DATOS DE ENVIO -->
 
-                                <textarea class="text-input--underbar" ng-model="observaciones" placeholder="Observaciones" style="font-size:19px;width: 80%; height: 100px;"></textarea>
+
                             </ons-col>
                         </ons-row>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-heading">Forma de pago</div>
+                    <div class="panel-body">
+
+                        <select type="text" class="text-input--underbar select-combo" ng-model="formaDePago" ng-options="payOption.id as payOption.name for payOption in buyOptions.pay_options">
+                            <option value="">-- Seleccionar tipo de pago --</option>
+                        </select>
+                        <ons-row style="margin-top: 10px;" ng-if="formaDePago === 0">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Verificaremos el stock de los productos dentro de las 24hs hábiles siguientes y te escribiremos con la confirmación y números de cuenta para realizar el depósito.
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+
+                        <ons-row style="margin-top: 10px;" ng-if="formaDePago === 3">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    <img style="width:100%; height:auto" src="http://imgmp.mlstatic.com/org-img/banners/ar/medios/online/575X40.jpg">
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+                        <ons-row style="margin-top: 10px;" ng-if="formaDePago === 2">
+                            <ons-col>
+                                <div class="alert-b alert-b-info" role="alert">
+                                    Te llamaremos por teléfono para pedirte los datos de la tarjeta de crédito. El costo total con tarjeta es de $ 210.- ( hasta 3 cuotas sin intereses de: $ 70.- ). Ingrese su número de teléfono fijo para realizar la operación de pago:
+                                    <input type="text" ng-model="telefono" class="text-input--underbar" placeholder="telefono" value="">
+
+                                </div>
+                            </ons-col>
+                        </ons-row>
+
+
+                        <!--
+                        <select type="text" class="text-input--underbar select-combo" ng-model="specialProduct" ng-options="specials_product.id as specials_product.name for specials_product in buyOptions.specials_products">
+                            <option value="">-- Seleccionar especial --</option>
+                        </select>
+
+-->
+                        <textarea class="text-input--underbar" ng-model="observaciones" placeholder="Observaciones" style="font-size:19px;width: 80%; height: 100px;"></textarea>
+
                     </div>
                 </div>
             </div>
