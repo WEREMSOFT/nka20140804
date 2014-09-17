@@ -185,6 +185,18 @@ input[type=text], input[type=email], input[type=password] {
     overflow: hidden;
     color: #999;
 }
+.alert-b-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.alert-b {
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 /*--- list with pictures begin ---*/
 
 .list-item-container {
@@ -539,12 +551,9 @@ input[type=text], input[type=email], input[type=password] {
     }
 }*/
 
-.question_response
-{
+.question_response {
     padding-left: 55px !important;
 }
-
-.stryke-trough
-{
+.stryke-trough {
     text-decoration: line-through;
 }

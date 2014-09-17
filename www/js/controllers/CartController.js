@@ -26,7 +26,7 @@
         $scope.codigoPostal = userData.profileData.codigo_postal;
         $scope.provincia = '';
 
-        $scope.observaciones = "Compra de prueba, hacer caso omiso de la misma."
+        $scope.observaciones = ""
 
         $scope.codArea = userData.profileData.cod_area;
         $scope.direccion = userData.profileData.direccion;
