@@ -13,27 +13,32 @@
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
-        $scope.razonSocial = userData.profileData.razon_social;
+        if (userData.profileData) {
+            $scope.razonSocial = userData.profileData.razon_social;
+            //---Datos de envío y usuario
+            $scope.nombre = userData.profileData.nombre;
+            $scope.apellido = userData.profileData.apellido;
+            $scope.mail = userData.profileData.mail;
+            $scope.celular = userData.profileData.celular;
+            $scope.localidad = userData.profileData.localidad;
+            $scope.codigoPostal = userData.profileData.codigo_postal;
+            $scope.codArea = userData.profileData.cod_area;
+            $scope.direccion = userData.profileData.direccion;
+            $scope.terminal = userData.profileData.terminal;
+            $scope.telefono = userData.profileData.telefono;
+            $scope.cuit = userData.profileData.cuit;
+            $scope.nombre_fantasia = userData.profileData.nombre_fantasia;
+        }
 
-        //---Datos de envío y usuario
-        $scope.nombre = userData.profileData.nombre;
-        $scope.apellido = userData.profileData.apellido;
-        $scope.mail = userData.profileData.mail;
-        $scope.celular = userData.profileData.celular;
+
 
         $scope.formaEnvio = '';
-        $scope.localidad = userData.profileData.localidad;
-        $scope.codigoPostal = userData.profileData.codigo_postal;
+
         $scope.provincia = '';
 
         $scope.observaciones = ""
 
-        $scope.codArea = userData.profileData.cod_area;
-        $scope.direccion = userData.profileData.direccion;
-        $scope.terminal = userData.profileData.terminal;
-        $scope.telefono = userData.profileData.telefono;
-        $scope.cuit = userData.profileData.cuit;
-        $scope.nombre_fantasia = userData.profileData.nombre_fantasia;
+
 
         $scope.formaDePago = '';
 
@@ -42,8 +47,7 @@
 
 
         $scope.addToCart = function() {
-            if($scope.product.options && !$scope.talle.id)
-            {
+            if ($scope.product.options && !$scope.talle.id) {
                 prompt('Debe elegir una opción');
                 return;
             }
