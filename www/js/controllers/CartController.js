@@ -42,7 +42,10 @@
 
 
         $scope.addToCart = function() {
-
+            if (product.options && !$scope.talle.id) {
+                prompt("Debe seleccionar una opción");
+                return;
+            }
             $scope.isWorking = true;
             console.log($scope.talle);
             var request = $http({
