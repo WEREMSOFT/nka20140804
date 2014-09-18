@@ -562,3 +562,9 @@ input[type=text], input[type=email], input[type=password] {
 .stryke-trough {
     text-decoration: line-through;
 }
+
+
+.zoomed
+{
+    zoom: 150%;
+}
