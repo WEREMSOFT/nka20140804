@@ -16,7 +16,7 @@
 
         $scope.barCodeScanEnabled = true;
 
-
+        $scope.deviceType = deviceType;
 
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
