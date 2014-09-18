@@ -42,8 +42,9 @@
 
 
         $scope.addToCart = function() {
-            if (product.options && !$scope.talle.id) {
-                prompt("Debe seleccionar una opción");
+            if($scope.product.options && !$scope.talle.id)
+            {
+                prompt('Debe elegir una opción');
                 return;
             }
             $scope.isWorking = true;

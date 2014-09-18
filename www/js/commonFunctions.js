@@ -34,6 +34,10 @@ function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel)
         if (fnctCallBaclFunction)
             fnctCallBaclFunction();
     }
+    if(console.logError)
+    {
+        console.logError(strMessage);
+    }
 }
 
 
@@ -47,4 +51,5 @@ function goBackOnePage()
     ons.navigator.popPage();
 }
 
+console.logError = console.error;
 console.error = promptError;
