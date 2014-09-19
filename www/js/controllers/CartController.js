@@ -36,7 +36,7 @@
 
         $scope.provincia = '';
 
-        $scope.observaciones = "Compra de Prueba. Omitir este pedido";
+        $scope.observaciones = "";
 
 
 
