@@ -36,7 +36,7 @@
 
         $scope.provincia = '';
 
-        $scope.observaciones = ""
+        $scope.observaciones = "Compra de Prueba. Omitir este pedido";
 
 
 
@@ -105,7 +105,13 @@
             ons.navigator.pushPage('templates/forms/CartDatosEnvio.html')
         }
 
+
         $scope.enviarPedido = function() {
+            console.log($scope.formPedido);
+            if ($scope.formPedido.$invalid) {
+                prompt("Debe completar todos los campos marcados en rojo");
+                return;
+            }
             $scope.isWorking = true;
             var request = $http({
                 method: "put",

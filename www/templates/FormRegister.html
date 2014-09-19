@@ -1,49 +1,22 @@
-<ons-page ng-controller="RegisterController">
+<ons-page ng-controller="RegisterController" ng-init="init()">
     <module-header></module-header>
-    <form ng-submit="login()">
+    <form novalidate name="formRegister" ng-submit="submitRegister()">
         <ons-row style="margin-top: 0px;">
             <ons-col align="center">
 
-                <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="">
-                <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="">
-                <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="">
-                <select type="text" class="text-input--underbar select-combo" ng-model="provincia" required="required" id="UsuarioProvinciaId">
+                <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
+                <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
+                <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="" required>
+                <select required type="text" class="text-input--underbar select-combo" ng-model="provincia" ng-options="province.id as province.name for province in buyOptions.provinces">
                     <option value="">-- Seleccionar provincia --</option>
-                    <option value="1">Buenos Aires</option>
-                    <option value="2">Capital Federal</option>
-                    <option value="3">Catamarca</option>
-                    <option value="4">Cordoba</option>
-                    <option value="5">Corrrientes</option>
-                    <option value="6">Chaco</option>
-                    <option value="7">Chubut</option>
-                    <option value="8">Entre Rios</option>
-                    <option value="9">Formosa</option>
-                    <option value="10">Jujuy</option>
-                    <option value="11">La Pampa</option>
-                    <option value="12">La Rioja</option>
-                    <option value="13">Mendoza</option>
-                    <option value="14">Misiones</option>
-                    <option value="15">Neuquen</option>
-                    <option value="16">Rio Negro</option>
-                    <option value="17">Salta</option>
-                    <option value="18">San Luis</option>
-                    <option value="19">San Juan</option>
-                    <option value="20">Santa Cruz</option>
-                    <option value="21">Santa Fe</option>
-                    <option value="22">Santiago del Estero</option>
-                    <option value="23">Tierra del Fuego</option>
-                    <option value="24">Tucuman</option>
                 </select>
-                <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="">
-                <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
-                <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="">
+                <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="" required>
+                <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="" required>
+                <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="" required>
 
                 <br>
-                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="getHash()">Registrarse</ons-button>
+                <ons-button modifier="large" should-spin="{{isWorking}}" type="submit">Registrarse</ons-button>
             </ons-col>
         </ons-row>
     </form>
 </ons-page>
-
-
-

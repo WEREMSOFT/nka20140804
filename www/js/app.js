@@ -18,6 +18,7 @@
             returnValue.isWorking = false;
             returnValue.firstRun = false;
             returnValue.cartData = data.result;
+            console.log(data.result);
         };
 
         returnValue.refreshCartDetails = function() {

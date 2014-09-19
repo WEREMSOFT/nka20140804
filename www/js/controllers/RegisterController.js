@@ -8,6 +8,7 @@
         $scope.searchString = "";
         $scope.isWorking = false;
         $scope.products = [];
+        $scope.buyOptions = {};
 
         $scope.register = function() {
 
@@ -36,16 +37,32 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            console.log(data);
             $scope.result = data.result;
+            $scope.isWorking = false;
             if ($scope.result.code === 0) {
                 prompt($scope.result.messagge);
+                $scope.goBack();
             } else {
                 promptError($scope.result.message);
             }
-            $scope.isWorking = false;
-            $scope.goBack();
         }
+
+        $scope.init = function() {
+            $scope.getBuyOptions();
+        }
+
+        $scope.submitRegister = function() {
+            if ($scope.formRegister.$invalid) {
+                prompt("Debe completar todos los campos marcados en rojo");
+                return;
+            }
+            if ($scope.password != $scope.passwordVerification) {
+                prompt("Las passwords no coinciden");
+                return;
+            }
+            $scope.getHash();
+        }
+
         $scope.getHash = function() {
             if ($scope.isWorking === true) return;
             $scope.isWorking = true;
@@ -82,6 +99,31 @@
         $scope.httpError = function(data, status, headers, config) {
             promptError("Ooosp!, algo ha salido mal, reintente en un momento");
             $scope.isWorking = false;
+        }
+
+        $scope.getBuyOptions = function() {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpGetBuyOptiondSuccess);
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpGetBuyOptiondError);
+        }
+
+        $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
+            $scope.buyOptions = data.result;
+            console.log($scope.buyOptions);
+        }
+
+        $scope.httpGetBuyOptiondError = function() {
+
         }
 
     });

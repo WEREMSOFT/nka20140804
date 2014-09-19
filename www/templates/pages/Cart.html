@@ -6,6 +6,28 @@
             <module-loading-spinner ng-show="isWorking"></module-loading-spinner>
         </ons-col>
     </ons-row>
+    <ons-row style="margin-top: 0px;">
+        <ons-col align="center">
+            <ons-li </ons-col>
+    </ons-row>
+    <ons-row style="margin-top: 30px">
+        <ons-col align="center">
+            <i class="fa fa-credit-card"></i> 
+            <span class="product-debit-credit-label">Tarjeta: </span>
+            <span class="product-debit-credit-price">${{shoppingCart.cartData.summary.credit_amount}}</span>
+        </ons-col>
+        <ons-col align="center">
+            <i class="fa fa-money"></i> 
+            <span class="product-contado-label">Efectivo:</span>
+            <span class="product-contado-price" >${{shoppingCart.cartData.summary.amount}}</span>
+        </ons-col>
+        <ons-col align="center" ng-if="product.offer > 0">
+            <i class="fa fa-certificate"></i> 
+            <span class="product-contado-label">Oferta -{{product.offer}}% :</span>
+            <span class="product-contado-price">${{product.offer_price}}</span>
+        </ons-col>
+    </ons-row>
+
     <ons-row style="margin-top: 10px;">
         <ons-col align="center">
             <div style="text-align: center" class="content-padded">
