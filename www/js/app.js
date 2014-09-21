@@ -140,7 +140,7 @@ var app = {
     receivedEvent: function(id) {
         if (id === 'deviceready') {
             gaPlugin = window.plugins.gaPlugin;
-            gaPlugin.init(googleAnalyticsSuccess, errorHandler, "UA-55001466-1", 10);
+            gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55001466-1", 10);
             navigator.splashscreen.hide();
             subscriveToPushNotificationsAndroid();
         }
@@ -153,17 +153,17 @@ function googleAnalyticsSuccess() {
 }
 
 function googleAnalyticsError() {
-    console.log("error al inicializar google analytics");
+    alert("error al inicializar google analytics");
 }
 
 function googleAnalyticsTrackEventSuccess()
 {
-
+    alert('evento trackeado con exito');
 }
 
 function googleAnalyticsTrakEventError()
 {
-    console.log("error al trackear evento de google analytics");
+    alert("error al trackear evento de google analytics");
 }
 
 
