@@ -140,7 +140,7 @@ var app = {
     receivedEvent: function(id) {
         if (id === 'deviceready') {
             gaPlugin = window.plugins.gaPlugin;
-            gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55001466-1", 10);
+            gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55016244-1", 10);
             navigator.splashscreen.hide();
             subscriveToPushNotificationsAndroid();
         }
