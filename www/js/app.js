@@ -139,6 +139,8 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         if (id === 'deviceready') {
+            gaPlugin = window.plugins.gaPlugin;
+            gaPlugin.init(googleAnalyticsSuccess, errorHandler, "UA-55001466-1", 10);
             navigator.splashscreen.hide();
             subscriveToPushNotificationsAndroid();
         }
@@ -146,7 +148,23 @@ var app = {
 };
 
 
+function googleAnalyticsSuccess() {
+    gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "init", "Aplicación iniciada", 1);
+}
 
+function googleAnalyticsError() {
+    console.log("error al inicializar google analytics");
+}
+
+function googleAnalyticsTrackEventSuccess()
+{
+
+}
+
+function googleAnalyticsTrakEventError()
+{
+    console.log("error al trackear evento de google analytics");
+}
 
 
 function alertDismissed() {
@@ -174,26 +192,28 @@ function errorHandler(error) {
 }
 
 function onNotificationGCM(e) {
-        switch( e.event )
-        {
-            case 'registered':
-                if ( e.regid.length > 0 )
-                {
-                    console.log("Regid " + e.regid);
-                }
+    switch (e.event) {
+        case 'registered':
+            if (e.regid.length > 0) {
+                console.log("Regid " + e.regid);
+            }
             break;
- 
-            case 'message':
-              // this is the actual push notification. its format depends on the data model from the push server
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+
+        case 'message':
+            // this is the actual push notification. its format depends on the data model from the push server
+            alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
             break;
- 
-            case 'error':
-              alert('GCM error = '+e.msg);
+
+        case 'error':
+            alert('GCM error = ' + e.msg);
             break;
- 
-            default:
-              alert('An unknown GCM event has occurred');
-              break;
-        }
+
+        default:
+            alert('An unknown GCM event has occurred');
+            break;
     }
+}
+
+
+//---google app analitycs
+var gaPlugin;

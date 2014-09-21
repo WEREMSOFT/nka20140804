@@ -43,7 +43,8 @@
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
-
+    <gap:plugin name="com.adobe.plugins.gaplugin" />
+    
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
     </feature>
@@ -81,6 +82,7 @@
     <icon gap:platform="ios" height="76" src="res/icon/ios/icon-76.png" width="76" />
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
+    <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
 
 
