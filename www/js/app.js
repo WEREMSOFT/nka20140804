@@ -148,24 +148,6 @@ var app = {
 };
 
 
-function googleAnalyticsSuccess() {
-    gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "init", "Aplicación iniciada", 1);
-}
-
-function googleAnalyticsError() {
-    alert("error al inicializar google analytics");
-}
-
-function googleAnalyticsTrackEventSuccess()
-{
-    alert('evento trackeado con exito');
-}
-
-function googleAnalyticsTrakEventError()
-{
-    alert("error al trackear evento de google analytics");
-}
-
 
 function alertDismissed() {
     Console.log('dummy callback');
@@ -217,3 +199,22 @@ function onNotificationGCM(e) {
 
 //---google app analitycs
 var gaPlugin;
+
+function googleAnalyticsSuccess() {
+    gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "init", "Aplicación iniciada", 1);
+}
+
+function googleAnalyticsError() {
+    console.log("error al inicializar google analytics");
+}
+
+function googleAnalyticsTrackEventSuccess()
+{
+    console.log('evento trackeado con exito');
+}
+
+function googleAnalyticsTrakEventError()
+{
+    console.log("error al trackear evento de google analytics");
+}
+
