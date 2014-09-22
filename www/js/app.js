@@ -139,6 +139,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         if (id === 'deviceready') {
+            console.log('device ready');
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55016244-1", 10);
             navigator.splashscreen.hide();
