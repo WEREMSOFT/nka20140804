@@ -9,13 +9,11 @@
         $scope.login = function() {
             if ($scope.isWorking) return;
             if (!$scope.user) {
-                alert('La dirección de mail no es válida');
+                promptError('La dirección de mail no es válida');
                 return;
             }
             $scope.isWorking = true;
-            window.localStorage.setItem("user", $scope.user);
-            window.localStorage.setItem("password", $scope.password);
-            window.localStorage.setItem("logedIn", true);
+
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',
@@ -44,7 +42,10 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.isWorking = false;
             if (data.result.logedIn === 1) {
-                $scope.userData.profileData = data.result.Usuario; 
+                window.localStorage.setItem("user", $scope.user);
+                window.localStorage.setItem("password", $scope.password);
+                window.localStorage.setItem("logedIn", true);
+                $scope.userData.profileData = data.result.Usuario;
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
 
