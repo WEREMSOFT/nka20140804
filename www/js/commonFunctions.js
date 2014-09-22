@@ -20,6 +20,10 @@ function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
 }
 
 function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+    if(gaPlugin)
+    {
+        gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "Error", "Aplicación iniciada", 1);
+    }
     if (isApp) {
         if (!strTitle) {
             strTitle = "Error";

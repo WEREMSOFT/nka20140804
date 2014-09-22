@@ -184,11 +184,10 @@
 
 
         $scope.search = function(strSearchString) {
-            if (strSearchString.length < 3) {
-                promptError('La cadena de busqueda es muy corta.');
-                return;
-            }
 
+            if (gaPlugin) {
+                gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);
+            }
             $scope.isWorking = true;
             var request = $http({
                 method: "post",

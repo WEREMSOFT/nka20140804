@@ -38,7 +38,7 @@
 
         $scope.httpError = function(data, status, headers, config) {
             $scope.isWorking = false;
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -51,7 +51,7 @@
                 ons.navigator.resetToPage('templates/PageHome.html');
 
             } else if (data.result.logedIn === -2) {
-                alert('Nombre de usuario o contraseña invalidas');
+                promptError('Nombre de usuario o contraseña invalidas');
             }
 
         }
