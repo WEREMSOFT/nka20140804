@@ -202,6 +202,7 @@ function onNotificationGCM(e) {
 var gaPlugin;
 
 function googleAnalyticsSuccess() {
+    gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Button", "Click", "event only", 1);
     gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "init", "Aplicación iniciada", 1);
 }
 
