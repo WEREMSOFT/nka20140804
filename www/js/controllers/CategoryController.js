@@ -79,6 +79,8 @@
                 if($scope.product.code === 3)
                 {
                     prompt('Atículo no encontrado');
+                    $scope.loading = false;
+                    ons.navigator.popPage();
                     return;
                 }
 
