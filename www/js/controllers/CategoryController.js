@@ -76,6 +76,10 @@
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
                 $scope.product = data.result;
+                if($scope.product.code === 3)
+                {
+                    prompt('Atículo no encontrado');
+                }
 
                 if ($scope.product.video) {
                     $scope.product.videoURL = '';
