@@ -229,6 +229,11 @@
         }
 
         $scope.barCodeScanSuccess = function(result) {
+            prompt("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+            return;
             if(result.cancelled)
             {
                prompt('Lectura Cancelada'); 
@@ -236,10 +241,7 @@
             {
                 $scope.getProduct(result.text, true);
             }
-           /* prompt("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);*/
+          
         }
 
         $scope.barCodeScanError = function(error)
