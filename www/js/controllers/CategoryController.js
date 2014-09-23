@@ -20,7 +20,7 @@
 
         console.log("###################### iniciando");
 
-        document.addEventListener("deviceready", init, false);
+        document.addEventListener("deviceready", $scope.init, false);
 
         console.log("###################### escuchando evento");
 
