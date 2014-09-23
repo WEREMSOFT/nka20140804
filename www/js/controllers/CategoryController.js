@@ -27,6 +27,7 @@
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
                 promptError("Parece que no hay conección. Reintenta en un momento");
+                $scope.loading = false;
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
@@ -63,7 +64,7 @@
 
         $scope.getProduct = function(productID, pIsCodebar) {
 
-            var searchVariable = pIsCodebar?'barcode':'id';
+            var searchVariable = pIsCodebar ? 'barcode' : 'id';
 
             var request = $http({
                 method: "get",
@@ -76,8 +77,7 @@
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
                 $scope.product = data.result;
-                if($scope.product.code === 3)
-                {
+                if ($scope.product.code === 3) {
                     prompt('Atículo no encontrado');
                     $scope.loading = false;
                     ons.navigator.popPage();
@@ -176,6 +176,10 @@
         }
 
         $scope.init = function() {
+            document.addEventListener("deviceready", loadHomeCategory, false);
+        }
+
+        $scope.loadHomeCategory = function() {
             console.log('page initialize');
             var categoryID = 0;
             if (ons.navigator) {
@@ -232,26 +236,23 @@
         }
 
         $scope.barCodeScan = function() {
-            cordova.plugins.barcodeScanner.scan($scope.barCodeScanSuccess,$scope.barCodeScanError);
+            cordova.plugins.barcodeScanner.scan($scope.barCodeScanSuccess, $scope.barCodeScanError);
         }
 
         $scope.barCodeScanSuccess = function(result) {
- /*           prompt("We got a barcode\n" +
+            /*           prompt("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
-            if(result.cancelled)
-            {
-               prompt('Lectura Cancelada'); 
-            }else
-            {
+            if (result.cancelled) {
+                prompt('Lectura Cancelada');
+            } else {
                 $scope.showProduct(result.text, true);
             }
-          
+
         }
 
-        $scope.barCodeScanError = function(error)
-        {
+        $scope.barCodeScanError = function(error) {
             promptError("Scanning failed: " + error);
         }
     });
