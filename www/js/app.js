@@ -11,7 +11,7 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
-            promptError('Oops! Algo ha salido mal. Reintenta en un momento', androidCloseApp, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         };
 
         returnValue.httpSuccess = function(data, status, headers, config) {
@@ -73,7 +73,7 @@
 
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
-            promptError('Oops! Algo ha salido mal. Reintenta en un momento', androidCloseApp, 'Sin Conección', 'Aceptar');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Aceptar');
         }
 
         returnValue.httpSuccess = function(data, status, headers, config) {
