@@ -33,7 +33,7 @@ function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel)
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
 
-    if (isApp && navigator.notification) {
+    if (isApp && navigator.notification != undefined) {
         if (!strTitle) {
             strTitle = "Error";
         }
