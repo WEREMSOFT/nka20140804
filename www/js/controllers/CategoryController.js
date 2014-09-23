@@ -18,6 +18,13 @@
 
         $scope.deviceType = deviceType;
 
+        console.log("###################### iniciando");
+
+        document.addEventListener("deviceready", init, false);
+
+        console.log("###################### escuchando evento");
+
+
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
             var request = $http({
@@ -176,10 +183,6 @@
         }
 
         $scope.init = function() {
-            document.addEventListener("deviceready", loadHomeCategory, false);
-        }
-
-        $scope.loadHomeCategory = function() {
             console.log('page initialize');
             var categoryID = 0;
             if (ons.navigator) {
