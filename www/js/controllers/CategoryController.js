@@ -63,7 +63,7 @@
 
         $scope.getProduct = function(productID, pIsCodebar) {
 
-            var searchVariable = pIsCodebar ? 'id' : 'codebar'
+            var searchVariable = pIsCodebar ? 'id' : 'barcode'
 
             var request = $http({
                 method: "get",
@@ -79,6 +79,7 @@
                 if($scope.product.code === 3)
                 {
                     prompt('Atículo no encontrado');
+                    return;
                 }
 
                 if ($scope.product.video) {
