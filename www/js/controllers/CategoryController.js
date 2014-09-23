@@ -21,6 +21,8 @@
 
 
 
+
+
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
             var request = $http({

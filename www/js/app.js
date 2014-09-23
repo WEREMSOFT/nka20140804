@@ -11,7 +11,7 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
-            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
         };
 
         returnValue.httpSuccess = function(data, status, headers, config) {
@@ -73,7 +73,7 @@
 
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
-            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Aceptar');
+            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
         }
 
         returnValue.httpSuccess = function(data, status, headers, config) {
