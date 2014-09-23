@@ -63,7 +63,7 @@
 
         $scope.getProduct = function(productID, pIsCodebar) {
 
-            var searchVariable = pIsCodebar ? 'id' : 'barcode'
+            var searchVariable = pIsCodebar?'barcode':'id';
 
             var request = $http({
                 method: "get",
@@ -234,10 +234,10 @@
         }
 
         $scope.barCodeScanSuccess = function(result) {
-            prompt("We got a barcode\n" +
+ /*           prompt("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+                "Cancelled: " + result.cancelled);*/
             if(result.cancelled)
             {
                prompt('Lectura Cancelada'); 
