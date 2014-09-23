@@ -26,7 +26,7 @@
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
-                console.log(data);
+                promptError("Parece que no hay conección. Reintenta en un momento");
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
