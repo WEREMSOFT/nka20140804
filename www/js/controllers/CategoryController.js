@@ -18,11 +18,7 @@
 
         $scope.deviceType = deviceType;
 
-        console.log("###################### iniciando");
 
-        document.addEventListener("deviceready", $scope.init, false);
-
-        console.log("###################### escuchando evento");
 
 
         $scope.getCategory = function(categoryID) {
@@ -258,6 +254,12 @@
         $scope.barCodeScanError = function(error) {
             promptError("Scanning failed: " + error);
         }
+
+        console.log("###################### iniciando");
+
+        document.addEventListener("deviceready", $scope.init, false);
+
+        console.log("###################### escuchando evento");
     });
 
 
