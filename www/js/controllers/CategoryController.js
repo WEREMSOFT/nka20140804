@@ -144,9 +144,9 @@
             request.error(this.httpGetProductDetailsError);
         }
 
-        $scope.showProduct = function(productID) {
+        $scope.showProduct = function(productID, pCodebar) {
             $scope.loading = true;
-            $scope.getProduct(productID);
+            $scope.getProduct(productID, pCodebar);
             ons.navigator.pushPage('templates/PageProduct.html');
         }
 
@@ -243,7 +243,7 @@
                prompt('Lectura Cancelada'); 
             }else
             {
-                $scope.getProduct(result.text, true);
+                $scope.showProduct(result.text, true);
             }
           
         }
