@@ -17,7 +17,7 @@
         $scope.barCodeScanEnabled = true;
 
         $scope.deviceType = deviceType;
-
+        $scope.connectionFail = false;
 
 
 
@@ -31,8 +31,8 @@
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
-                promptError("Parece que no hay conección. Reintenta en un momento");
                 $scope.loading = false;
+                $scope.connectionFail = true;
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
@@ -50,6 +50,7 @@
                     $scope.isCategory = false;
                 }
                 $scope.loading = false;
+                $scope.connectionFail = false;
             }
 
             // Store the data-dump of the FORM scope.
@@ -78,9 +79,12 @@
 
             this.httpGetProductDetailsError = function(data, status, headers, config) {
                 console.log(data);
+                $scope.connectionFail = true;
+                $scope.loading = false;
             }
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
+                $scope.connectionFail = false;
                 $scope.product = data.result;
                 if ($scope.product.code === 3) {
                     prompt('Atículo no encontrado');
@@ -182,6 +186,7 @@
 
         $scope.init = function() {
             console.log('page initialize');
+            $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {
                 if (ons.navigator.getCurrentPage().options.categoryID) {
@@ -227,10 +232,11 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
+            $scope.connectionFail = true;
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
+            $scope.connectionFail = false;
             console.log(data);
             $scope.products = data.result;
             $scope.isWorking = false;
@@ -256,14 +262,16 @@
         $scope.barCodeScanError = function(error) {
             promptError("Scanning failed: " + error);
         }
-
-        console.log("###################### iniciando");
-
         document.addEventListener("deviceready", $scope.init, false);
-
-        console.log("###################### escuchando evento");
     });
 
+
+    module.directive('moduleSinConexion', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/sinConexion.html'
+        };
+    });
 
     module.directive('moduleHeader', function() {
         return {

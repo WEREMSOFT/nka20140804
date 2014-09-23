@@ -7,6 +7,7 @@
         $scope.searchString = "";
         $scope.isWorking = false;
         $scope.products = [];
+        $scope.connectionFail = false;
 
         $scope.init = function() {
             console.log('inicializando');
@@ -25,13 +26,15 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            alert("Oops! Algo ha salido mal. Reintenta en un momento");
+           $scope.connectionFail = true;
+           $scope.isWorking = false;
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.result.child_products;
             $scope.isWorking = false;
+            $scope.connectionFail = false;
         }
     });
 

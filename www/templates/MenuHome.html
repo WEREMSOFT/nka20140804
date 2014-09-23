@@ -1,6 +1,6 @@
 <div style="text-align: center" class="content-padded">
     <div ng-hide="categories.length == 0">
-        <ons-row >
+        <ons-row ng-hide="connectionFail">
             <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/PageNewProducts.html')">
                 <div>
                     <ons-icon icon="exclamation" size="30px"></ons-icon>
@@ -41,6 +41,6 @@
             </ons-col>
         </ons-row>
     </div>
-    <module-loading-spinner ng-show="categories.length == 0"></module-loading-spinner>
-    
+    <module-loading-spinner ng-show="categories.length == 0 && !connectionFail"></module-loading-spinner>
+    <module-sin-conexion ng-show="connectionFail"></module-sin-conexion>
 </div>

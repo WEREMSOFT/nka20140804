@@ -202,6 +202,12 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
+
+.alert-b-danger {
+color: #a94442;
+background-color: #f2dede;
+border-color: #ebccd1;
+}
 /*--- list with pictures begin ---*/
 
 .list-item-container {
