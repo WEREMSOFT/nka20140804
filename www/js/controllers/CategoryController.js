@@ -61,11 +61,13 @@
             });
         }
 
-        $scope.getProduct = function(productID) {
+        $scope.getProduct = function(productID, pIsCodebar) {
+
+            var searchVariable = pIsCodebar ? 'id' : 'codebar'
 
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/producto.json?id=' + productID,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/producto.json?' + searchVariable + '=' + productID,
             });
 
             this.httpGetProductDetailsError = function(data, status, headers, config) {
@@ -223,17 +225,26 @@
         }
 
         $scope.barCodeScan = function() {
-            cordova.plugins.barcodeScanner.scan(
-                function(result) {
-                    prompt("We got a barcode\n" +
-                        "Result: " + result.text + "\n" +
-                        "Format: " + result.format + "\n" +
-                        "Cancelled: " + result.cancelled);
-                },
-                function(error) {
-                    promptError("Scanning failed: " + error);
-                }
-            );
+            cordova.plugins.barcodeScanner.scan(barCodeScanSuccess,barCodeScanError);
+        }
+
+        $scope.barCodeScanSuccess = function(result) {
+            if(result.cancelled)
+            {
+               prompt('Lectura Cancelada'); 
+            }else
+            {
+                $scope.getProduct(result.text, true);
+            }
+           /* prompt("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);*/
+        }
+
+        $scope.barCodeScanError = function(error)
+        {
+            promptError("Scanning failed: " + error);
         }
     });
 
