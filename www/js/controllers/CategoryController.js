@@ -237,7 +237,6 @@
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
-            return;
             if(result.cancelled)
             {
                prompt('Lectura Cancelada'); 
