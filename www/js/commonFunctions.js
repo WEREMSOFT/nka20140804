@@ -3,6 +3,11 @@ var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('http
 
 
 function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+
+    if (!fnctCallBaclFunction) {
+        fnctCallBaclFunction = messageDefaultCallBackFunction;
+    }
+
     if (isApp) {
         if (!strTitle) {
             strTitle = "Información";
@@ -20,10 +25,14 @@ function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
 }
 
 function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
-    if(gaPlugin)
-    {
+    if (gaPlugin) {
         gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "Error", strMessage, 1);
     }
+
+    if (!fnctCallBaclFunction) {
+        fnctCallBaclFunction = messageDefaultCallBackFunction;
+    }
+
     if (isApp) {
         if (!strTitle) {
             strTitle = "Error";
@@ -38,25 +47,24 @@ function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel)
         if (fnctCallBaclFunction)
             fnctCallBaclFunction();
     }
-    if(console.logError)
-    {
+    if (console.logError) {
         console.logError(strMessage);
     }
 }
 
+function messageDefaultCallBackFunction() {
+    console.log('Notificación mostrada con exito');
+}
 
-function androidCloseApp()
-{
+function androidCloseApp() {
     navigator.app.exitApp();
 }
 
-function goBackOnePage()
-{
+function goBackOnePage() {
     ons.navigator.popPage();
 }
 
 console.logError = console.error;
 console.error = promptError;
 
-var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "browser";
-
+var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "browser";
