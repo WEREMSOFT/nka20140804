@@ -1,4 +1,5 @@
 <form novalidate name="formUser" ng-submit="saveProfile()">
+    <ons-button modifier="large" ng-click="saveProfile()">Guardar</ons-button>
     <ons-list-header>Datos Personales</ons-list-header>
 
     <ons-list-item>
@@ -63,4 +64,5 @@
     <ons-list-item>
         <input type="text" ng-model="userData.profileData.nombre_fantasia" class="text-input--underbar" placeholder="Nombre de Fantasía" value="">
     </ons-list-item>
+    <ons-button modifier="large" >Guardar</ons-button>
 </form>

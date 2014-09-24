@@ -5,12 +5,8 @@
             <img class="profile-image" src="{{userData.profileData.imagen}}">
             <br>
             <ons-list>
-                <ons-button modifier="large" ng-show="editMode" ng-click="saveProfile()">Guardar</ons-button>
-                <ons-button modifier="large" ng-hide="editMode" ng-click="editProfile()">Editar</ons-button>
                 <profile-read ng-hide="editMode"></profile-read>
                 <profile-edit ng-show="editMode"></profile-edit>
-                <ons-button modifier="large" ng-hide="editMode" ng-click="editProfile()">Editar</ons-button>
-                <ons-button modifier="large" ng-show="editMode" ng-click="saveProfile()">Guardar</ons-button>
             </ons-list>
         </ons-col>
     </ons-row>

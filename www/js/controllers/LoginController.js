@@ -7,6 +7,7 @@
         $scope.userData = userData;
         $scope.isWorking = false;
         $scope.editMode = false;
+        $scope.buyOptions = {};
 
         $scope.login = function() {
             if ($scope.isWorking) return;
@@ -72,6 +73,32 @@
                 $scope.user = window.localStorage.getItem('user');
                 $scope.password = window.localStorage.getItem('password');
             }
+
+        }
+
+        $scope.getBuyOptions = function() {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpGetBuyOptiondSuccess);
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpGetBuyOptiondError);
+        }
+
+        $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
+            $scope.buyOptions = data.result;
+            console.log($scope.buyOptions);
+        }
+
+        $scope.httpGetBuyOptiondError = function() {
+
         }
 
         $scope.logout = function() {
@@ -102,11 +129,12 @@
 
         $scope.editProfile = function() {
             $scope.editMode = true;
+            $scope.getBuyOptions();
         }
 
         $scope.saveProfile = function() {
             $scope.editMode = false;
-            if ($scope.formPedido.$invalid) {
+            if ($scope.formUser.$invalid) {
                 prompt("Debe completar todos los campos marcados en rojo");
                 return;
             }
@@ -118,19 +146,28 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + userData.profileData.imagen + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
+                data: '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + userData.profileData.imagen + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
 
             });
 
 
             // Store the data-dump of the FORM scope.
-            request.success(this.httpEnviarPedidoSuccess);
+            request.success($scope.httpSaveProfileSuccess);
 
 
             // Store the data-dump of the FORM scope.
-            request.error(this.httpEnviarPedidoError);
+            request.error($scope.httpSaveProfileError);
 
             //http://www.nakaoutdoors.com.ar/client/usuarios/edit.json
+        }
+
+        $scope.httpSaveProfileError = function(data, status, headers, config) {
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+        }
+
+        $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
+            $scope.editMode = false;
+            $scope.isWorking = false;
         }
 
     });
