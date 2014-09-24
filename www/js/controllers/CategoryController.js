@@ -36,6 +36,7 @@
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
+                console.log("cargando categoría");
                 if (data.result.child_categories) {
                     var categoryID = 0;
                     if (ons.navigator.getCurrentPage().options.categoryID) {
