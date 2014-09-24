@@ -1,0 +1,66 @@
+<form novalidate name="formUser" ng-submit="saveProfile()">
+    <ons-list-header>Datos Personales</ons-list-header>
+
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.login" class="text-input--underbar" placeholder="Nombre de Usuario" value="" required>
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
+    </ons-list-item>
+
+    <ons-list-header>Datos de Contacto</ons-list-header>
+    <ons-list-item>
+        <input type="email" ng-model="userData.profileData.mail" class="text-input--underbar" placeholder="Email" value="" required>
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.telefono" class="text-input--underbar" placeholder="telefono" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.celular" class="text-input--underbar" placeholder="celular" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.provincia" ng-options="province.id as province.name for province in buyOptions.provinces">
+            <option value="">-- Seleccionar provincia --</option>
+        </select>
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.direccion" class="text-input--underbar" placeholder="dirección" value="">
+    </ons-list-item>
+
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.localidad" class="text-input--underbar" placeholder="localidad" value="">
+    </ons-list-item>
+
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.partido" class="text-input--underbar" placeholder="partido" value="">
+    </ons-list-item>
+
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="cod. postal" value="">
+    </ons-list-item>
+
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.terminal" class="text-input--underbar" placeholder="Terminal" value="">
+    </ons-list-item>
+
+
+    <ons-list-header>Datos de Facturación</ons-list-header>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.razon_social" class="text-input--underbar" placeholder="Razón Social" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.dir_facturacion" class="text-input--underbar" placeholder="Dir. Facturación" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.cuit" class="text-input--underbar" placeholder="cuit" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.facturacion" class="text-input--underbar" placeholder="Facturación" value="">
+    </ons-list-item>
+    <ons-list-item>
+        <input type="text" ng-model="userData.profileData.nombre_fantasia" class="text-input--underbar" placeholder="Nombre de Fantasía" value="">
+    </ons-list-item>
+</form>

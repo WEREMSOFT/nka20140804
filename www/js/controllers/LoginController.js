@@ -6,6 +6,8 @@
     module.controller('LoginController', function($scope, $http, userData) {
         $scope.userData = userData;
         $scope.isWorking = false;
+        $scope.editMode = false;
+
         $scope.login = function() {
             if ($scope.isWorking) return;
             if (!$scope.user) {
@@ -98,6 +100,53 @@
             ons.navigator.resetToPage('templates/PageHome.html');
         }
 
+        $scope.editProfile = function() {
+            $scope.editMode = true;
+        }
+
+        $scope.saveProfile = function() {
+            $scope.editMode = false;
+            if ($scope.formPedido.$invalid) {
+                prompt("Debe completar todos los campos marcados en rojo");
+                return;
+            }
+            $scope.isWorking = true;
+            var request = $http({
+                method: "post",
+                url: 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+
+                data: '_method=POST&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + userData.profileData.imagen + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
+
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpEnviarPedidoSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpEnviarPedidoError);
+
+            //http://www.nakaoutdoors.com.ar/client/usuarios/edit.json
+        }
+
+    });
+
+    module.directive('profileEdit', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/profile/profileEdit.html'
+        };
+    });
+
+    module.directive('profileRead', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/profile/profileRead.html'
+        };
     });
 
 })();
