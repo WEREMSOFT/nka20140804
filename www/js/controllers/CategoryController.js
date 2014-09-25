@@ -20,9 +20,6 @@
         $scope.connectionFail = false;
 
 
-
-
-
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
             var request = $http({
@@ -39,8 +36,11 @@
                 console.log("cargando categoría");
                 if (data.result.child_categories) {
                     var categoryID = 0;
-                    if (ons.navigator.getCurrentPage().options.categoryID) {
-                        categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                    if(ons.navigator)
+                    {
+                        if (ons.navigator.getCurrentPage().options.categoryID) {
+                            categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                        }
                     }
                     $scope.categories[categoryID] = data.result.child_categories;
                     console.log($scope.categories);
@@ -70,6 +70,9 @@
         }
 
         $scope.getProduct = function(productID, pIsCodebar) {
+
+
+
 
             var searchVariable = pIsCodebar ? 'barcode' : 'id';
 
@@ -252,56 +255,56 @@
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
-            if (result.cancelled) {
-                prompt('Lectura Cancelada');
-            } else {
-                $scope.showProduct(result.text, true);
-            }
+if (result.cancelled) {
+    prompt('Lectura Cancelada');
+} else {
+    $scope.showProduct(result.text, true);
+}
 
-        }
+}
 
-        $scope.barCodeScanError = function(error) {
-            promptError("Scanning failed: " + error);
-        }
-        document.addEventListener("deviceready", $scope.init, false);
-
-       
-    });
+$scope.barCodeScanError = function(error) {
+    promptError("Scanning failed: " + error);
+}
+document.addEventListener("deviceready", $scope.init, false);
 
 
-    module.directive('moduleSinConexion', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/modules/sinConexion.html'
-        };
-    });
+});
 
-    module.directive('moduleHeader', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/modules/header.html'
-        };
-    });
 
-    module.directive('moduleLoadingSpinner', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/modules/loadingSpinner.html'
-        };
-    });
+module.directive('moduleSinConexion', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/modules/sinConexion.html'
+    };
+});
 
-    module.directive('moduleTabBarBottom', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/modules/tabBarBottom.html'
-        };
-    });
-    module.directive('moduleStockColorCodes', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/modules/stockColorCodes.html'
-        };
-    });
+module.directive('moduleHeader', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/modules/header.html'
+    };
+});
+
+module.directive('moduleLoadingSpinner', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/modules/loadingSpinner.html'
+    };
+});
+
+module.directive('moduleTabBarBottom', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/modules/tabBarBottom.html'
+    };
+});
+module.directive('moduleStockColorCodes', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/modules/stockColorCodes.html'
+    };
+});
 
 
 
