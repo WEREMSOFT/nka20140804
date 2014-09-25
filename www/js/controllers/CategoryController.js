@@ -18,6 +18,7 @@
 
         $scope.deviceType = deviceType;
         $scope.connectionFail = false;
+        $scope.flashLight = flashLight;
 
 
 
@@ -264,6 +265,11 @@
             promptError("Scanning failed: " + error);
         }
         document.addEventListener("deviceready", $scope.init, false);
+
+        $scope.toggleFlashLight = function()
+        {
+            $scope.flashLight.toggle();
+        }
     });
 
 
