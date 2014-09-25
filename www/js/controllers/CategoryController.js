@@ -18,7 +18,6 @@
 
         $scope.deviceType = deviceType;
         $scope.connectionFail = false;
-        $scope.flashLight = flashLight;
 
 
 
@@ -266,11 +265,7 @@
         }
         document.addEventListener("deviceready", $scope.init, false);
 
-        $scope.toggleFlashLight = function()
-        {
-            prompt("activando linterna");
-            $scope.flashLight.toggle();
-        }
+       
     });
 
 

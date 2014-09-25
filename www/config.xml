@@ -31,7 +31,6 @@
     <gap:plugin name="org.apache.cordova.device-motion" />
     <gap:plugin name="org.apache.cordova.device-orientation" />
     <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="nl.x-services.plugins.flashlight" version="2.0.0" />
     <!--<gap:plugin name="org.apache.cordova.file" />-->
     <!--<gap:plugin name="org.apache.cordova.file-transfer" />-->
     <!--<gap:plugin name="org.apache.cordova.geolocation" />-->

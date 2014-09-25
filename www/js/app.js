@@ -144,23 +144,12 @@ receivedEvent: function(id) {
         gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55001466-1", 10);
         navigator.splashscreen.hide();
         subscriveToPushNotificationsAndroid();
-        setFlashLight();
     }
 }
 };
 
 
-function setFlashLight() {
-    window.plugins.flashlight.available(checkIfFlashLightIsAvailable);
-}
 
-function checkIfFlashLightIsAvailable(isAvailable)
-{
-    if (isAvailable) {
-        flashLight = window.plugins.flashlight;
-        flashLight.toggle();
-    }
-}
 
 function alertDismissed() {
     Console.log('dummy callback');
