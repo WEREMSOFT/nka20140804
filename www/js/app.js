@@ -158,7 +158,7 @@ function checkIfFlashLightIsAvailable(isAvailable)
 {
     if (isAvailable) {
         flashLight = window.plugins.flashlight;
-        flashlight.toggle();
+        flashLight.toggle();
     }
 }
 
