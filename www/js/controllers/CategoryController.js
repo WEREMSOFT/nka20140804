@@ -268,6 +268,7 @@
 
         $scope.toggleFlashLight = function()
         {
+            prompt("activando linterna");
             $scope.flashLight.toggle();
         }
     });
