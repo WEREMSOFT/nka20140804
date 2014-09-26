@@ -184,20 +184,20 @@
 
         $scope.onCapturePhoto = function(fileURI) {
             var win = function(r) {
-                clearCache();
-                retries = 0;
+                $scope.clearCache();
+                $scope.retries = 0;
                 alert('Done!');
             }
 
             var fail = function(error) {
-                if (retries == 0) {
-                    retries++
+                if ($scope.retries == 0) {
+                    $scope.retries++
                     setTimeout(function() {
-                        onCapturePhoto(fileURI)
+                        $scope.onCapturePhoto(fileURI)
                     }, 1000)
                 } else {
                     retries = 0;
-                    clearCache();
+                    $scope.clearCache();
                     alert('Ups. Something wrong happens!');
                 }
             }
@@ -212,7 +212,7 @@
         }
 
         $scope.onFail = function(message) {
-            alert('Failed because: ' + message);
+            logoutError('Failed because: ' + message);
         }
         //#####################################################################
 
