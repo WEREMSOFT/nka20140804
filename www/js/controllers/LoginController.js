@@ -188,7 +188,7 @@
         // Take a picture using the camera or select one from the library
         $scope.takePicture = function(e) {
             navigator.camera.getPicture($scope.onCameraSuccess, $scope.onCameraFail, {
-                quality: 100,
+                quality: 50,
                 destinationType: Camera.DestinationType.DATA_URL
             });
         }
