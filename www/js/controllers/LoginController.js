@@ -159,39 +159,62 @@
             $scope.isWorking = false;
             $scope.userData.refreshUserDetails();
         }
-        // Upload image to server
-        $scope.onCameraSuccess = function(pImageData) {
-            var request = $http({
-                method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-
-                data: '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + pImageData + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
-
-            });
-
-            // Store the data-dump of the FORM scope.
-            request.success($scope.httpSaveProfileSuccess);
 
 
-            // Store the data-dump of the FORM scope.
-            request.error($scope.httpSaveProfileError);
+        //##################################################################
+        $scope.pictureSource; // picture source
+        $scope.destinationType; // sets the format of returned value
 
-        }
 
-        $scope.onCameraFail = function(pMessage) {
-            promptError("Error al subir imagen: " + pMessage);
-        }
 
-        // Take a picture using the camera or select one from the library
-        $scope.takePicture = function(e) {
-            navigator.camera.getPicture($scope.onCameraSuccess, $scope.onCameraFail, {
+        $scope.takePicture = function() {
+            pictureSource = navigator.camera.PictureSourceType;
+            destinationType = navigator.camera.DestinationType;
+            navigator.camera.getPicture($scope.onCapturePhoto, $scope.onFail, {
                 quality: 100,
-                destinationType: Camera.DestinationType.DATA_URL
+                destinationType: destinationType.FILE_URI
             });
         }
+
+        $scope.clearCache = function() {
+            navigator.camera.cleanup();
+        }
+
+        $scope.retries = 0;
+
+        $scope.onCapturePhoto = function(fileURI) {
+            var win = function(r) {
+                clearCache();
+                retries = 0;
+                alert('Done!');
+            }
+
+            var fail = function(error) {
+                if (retries == 0) {
+                    retries++
+                    setTimeout(function() {
+                        onCapturePhoto(fileURI)
+                    }, 1000)
+                } else {
+                    retries = 0;
+                    clearCache();
+                    alert('Ups. Something wrong happens!');
+                }
+            }
+
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+            options.params = {}; // if we need to send parameters to the server request
+            var ft = new FileTransfer();
+            ft.upload(fileURI, encodeURI("http://host/upload"), win, fail, options);
+        }
+
+        $scope.onFail = function(message) {
+            alert('Failed because: ' + message);
+        }
+        //#####################################################################
 
     });
 
