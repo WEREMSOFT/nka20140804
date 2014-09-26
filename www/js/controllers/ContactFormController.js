@@ -30,7 +30,7 @@
 
             var request = $http({
                 method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/contactos',
+                url: 'http://www.nakaoutdoors.com.ar/contactos.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },

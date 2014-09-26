@@ -32,127 +32,170 @@
             });
 
 
-// Store the data-dump of the FORM scope.
-request.success(this.httpSuccess);
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
 
 
-// Store the data-dump of the FORM scope.
-request.error(this.httpError);
-}
-
-if (returnValue.firstRun) {
-    returnValue.refreshCartDetails();
-}
-return returnValue;
-});
-
-app.factory('userData', function($http) {
-    var returnValue = {
-        logedIn: false,
-        profileData: {},
-        userName: null,
-        password: null,
-        lastProfileData: null,
-        isWorking: false
-    };
-    returnValue.reset = function() {
-
-        this.logedIn = false;
-        this.lastProfileData = this.profileData;
-        this.profileData = null;
-        window.localStorage.setItem('logedIn', false);
-        window.localStorage.setItem('profileData', null);
-    }
-
-    if (window.localStorage.getItem('logedIn')) {
-        returnValue.logedIn = window.localStorage.getItem('logedIn') === 'true' ? true : false;
-        returnValue.profileData = JSON.parse(window.localStorage.getItem('profileData'));
-        returnValue.userName = window.localStorage.getItem('user');
-        returnValue.password = window.localStorage.getItem('password');
-    }
-
-    returnValue.httpError = function(data, status, headers, config) {
-        returnValue.isWorking = false;
-        console.log('Oops! Algo ha salido mal. Reintenta en un momento');
-    }
-
-    returnValue.httpSuccess = function(data, status, headers, config) {
-        returnValue.isWorking = false;
-        if (data.result.logedIn === 1) {
-            returnValue.profileData = data.result.Usuario;
-            window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
-            returnValue.logedIn = true;
-        } else if (data.result.logedIn === -2) {
-            prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
         }
-    }
 
-    returnValue.refreshUserDetails = function() {
-        console.log('Refrescando información de usuario...');
-        console.log(returnValue);
-        var request = $http({
-            method: "post",
-            url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
+        if (returnValue.firstRun) {
+            returnValue.refreshCartDetails();
+        }
+        return returnValue;
+    });
 
-            data: '_method=POST&data[Login][login]=' + window.localStorage.getItem("user") + '&data[Login][password]=' + window.localStorage.getItem("password") + '&',
-        });
+    app.factory('userData', function($http) {
+        var returnValue = {
+            logedIn: false,
+            profileData: {},
+            userName: null,
+            password: null,
+            lastProfileData: null,
+            isWorking: false
+        };
+        returnValue.reset = function() {
+            this.logedIn = false;
+            this.lastProfileData = this.profileData;
+            this.profileData = null;
+            window.localStorage.setItem('logedIn', false);
+            window.localStorage.setItem('profileData', null);
+        }
+
+        if (window.localStorage.getItem('logedIn')) {
+            returnValue.logedIn = window.localStorage.getItem('logedIn') === 'true' ? true : false;
+            returnValue.profileData = JSON.parse(window.localStorage.getItem('profileData'));
+            returnValue.userName = window.localStorage.getItem('user');
+            returnValue.password = window.localStorage.getItem('password');
+        }
+
+        returnValue.httpError = function(data, status, headers, config) {
+            returnValue.isWorking = false;
+            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
+            this.reset();
+        }
+
+        returnValue.httpSuccess = function(data, status, headers, config) {
+            returnValue.isWorking = false;
+            if (data.result.logedIn === 1) {
+                returnValue.profileData = data.result.Usuario;
+                returnValue.profileData.provincia_id = parseInt(returnValue.profileData.provincia_id );
+                returnValue.profileData.iva_facturacion = parseInt(returnValue.profileData.iva_facturacion);
+                window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
+                returnValue.logedIn = true;
+            } else if (data.result.logedIn === -2) {
+                prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
+                returnValue.logout();
+            }
+        }
+
+        returnValue.refreshUserDetails = function() {
+            console.log('Refrescando información de usuario...');
+            console.log(returnValue);
+            var request = $http({
+                method: "post",
+                url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+
+                data: '_method=POST&data[Login][login]=' + window.localStorage.getItem("user") + '&data[Login][password]=' + window.localStorage.getItem("password") + '&',
+            });
 
 
-// Store the data-dump of the FORM scope.
-request.success(this.httpSuccess);
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
 
 
-// Store the data-dump of the FORM scope.
-request.error(this.httpError);
-}
-if (returnValue.logedIn) {
-    returnValue.refreshUserDetails();
-}
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
 
-return returnValue;
-});
+
+        }
+
+        returnValue.logout = function(pSuccessCallback, pErrorCallback) {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/usuarios/logout',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            if (pSuccessCallback) {
+                // Store the data-dump of the FORM scope.
+                request.success(pSuccessCallback);
+            } else {
+                // Store the data-dump of the FORM scope.
+                request.success(this.logoutSuccess);
+
+            }
+
+            if (pErrorCallback) {
+                // Store the data-dump of the FORM scope.
+                request.error(pErrorCallback);
+            } else {
+                // Store the data-dump of the FORM scope.
+                request.error(this.logoutError);
+            }
+
+        }
+
+        returnValue.logoutError = function(data, status, headers, config) {
+            console.log("Oops! Algo ha salido mal. Reintenta en un momento");
+        }
+
+        returnValue.logoutSuccess = function(data, status, headers, config) {
+            returnValue.reset();
+        }
+
+
+        if (returnValue.logedIn) {
+            returnValue.refreshUserDetails();
+        }
+
+        return returnValue;
+    });
 
 })();
 
 var app = {
-// Application Constructor
-initialize: function() {
-    this.bindEvents();
-},
-// Bind Event Listeners
-//
-// Bind any events that are required on startup. Common events are:
-// 'load', 'deviceready', 'offline', and 'online'.
-bindEvents: function() {
-    document.addEventListener('deviceready', this.onDeviceReady, false);
-},
-// deviceready Event Handler
-//
-// The scope of 'this' is the event. In order to call the 'receivedEvent'
-// function, we must explicitly call 'app.receivedEvent(...);'
-onDeviceReady: function() {
-    app.receivedEvent('deviceready');
-},
-// Update DOM on a Received Event
-receivedEvent: function(id) {
-    if (id === 'deviceready') {
-        console.log('device ready');
-        gaPlugin = window.plugins.gaPlugin;
-        gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55001466-1", 10);
-        navigator.splashscreen.hide();
-        subscriveToPushNotificationsAndroid();
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        if (id === 'deviceready') {
+            console.log('device ready');
+            gaPlugin = window.plugins.gaPlugin;
+            gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55001466-1", 10);
+            navigator.splashscreen.hide();
+            subscriveToPushNotificationsAndroid();
+        }
     }
-}
 };
 
 
 
 
 function alertDismissed() {
-    Console.log('dummy callback');
+    console.log('dummy callback');
 }
 
 function subscriveToPushNotificationsAndroid() {
@@ -167,8 +210,8 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-//alert('Callback Success! Result = '+result);
-console.log(result);
+    //alert('Callback Success! Result = '+result);
+    console.log(result);
 }
 
 function errorHandler(error) {
@@ -178,24 +221,24 @@ function errorHandler(error) {
 function onNotificationGCM(e) {
     switch (e.event) {
         case 'registered':
-        if (e.regid.length > 0) {
-            console.log("Regid " + e.regid);
-        }
-        break;
+            if (e.regid.length > 0) {
+                console.log("Regid " + e.regid);
+            }
+            break;
 
         case 'message':
-// this is the actual push notification. its format depends on the data model from the push server
-alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
-break;
+            // this is the actual push notification. its format depends on the data model from the push server
+            alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
+            break;
 
-case 'error':
-alert('GCM error = ' + e.msg);
-break;
+        case 'error':
+            alert('GCM error = ' + e.msg);
+            break;
 
-default:
-alert('An unknown GCM event has occurred');
-break;
-}
+        default:
+            alert('An unknown GCM event has occurred');
+            break;
+    }
 }
 
 

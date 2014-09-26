@@ -49,15 +49,15 @@
                 window.localStorage.setItem("password", $scope.password);
                 window.localStorage.setItem("logedIn", true);
                 $scope.userData.profileData = data.result.Usuario;
+                $scope.userData.profileData.provincia_id = parseInt($scope.userData.profileData.provincia_id);
+                $scope.userData.profileData.iva_facturacion =  parseInt($scope.userData.profileData.iva_facturacion);
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
-
                 ons.navigator.resetToPage('templates/PageHome.html');
-
             } else if (data.result.logedIn === -2) {
                 promptError('Nombre de usuario o contraseña invalidas');
+                $scope.logout();
             }
-
         }
 
         $scope.init = function() {
@@ -73,7 +73,6 @@
                 $scope.user = window.localStorage.getItem('user');
                 $scope.password = window.localStorage.getItem('password');
             }
-
         }
 
         $scope.getBuyOptions = function() {
@@ -103,17 +102,7 @@
 
         $scope.logout = function() {
             $scope.isWorking = true;
-            var request = $http({
-                method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/usuarios/logout',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
-            // Store the data-dump of the FORM scope.
-            request.success(this.logoutSuccess);
-            // Store the data-dump of the FORM scope.
-            request.error(this.logoutError);
+            userData.logout(this.logoutSuccess, this.logoutError);
         }
 
         $scope.logoutError = function(data, status, headers, config) {
@@ -168,6 +157,7 @@
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
             $scope.editMode = false;
             $scope.isWorking = false;
+            $scope.userData.refreshUserDetails();
         }
 
     });
