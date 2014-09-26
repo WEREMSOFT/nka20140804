@@ -210,7 +210,9 @@
             var ft = new FileTransfer();
             prompt(ft);
             prompt(fileURI);
+            prompt(encodeURI("http://www.nakaoutdoors.com.ar/client/usuarios/edit.json"));
             ft.upload(fileURI, encodeURI("http://www.nakaoutdoors.com.ar/client/usuarios/edit.json"), win, fail, options);
+            prompt("se envio");
         }
 
         $scope.onFail = function(message) {
