@@ -168,8 +168,8 @@
 
 
         $scope.takePicture = function() {
-            pictureSource = navigator.camera.PictureSourceType;
-            destinationType = navigator.camera.DestinationType;
+            $scope.pictureSource = navigator.camera.PictureSourceType;
+            $scope.destinationType = navigator.camera.DestinationType;
             navigator.camera.getPicture($scope.onCapturePhoto, $scope.onFail, {
                 quality: 100,
                 destinationType: destinationType.FILE_URI
