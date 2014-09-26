@@ -172,7 +172,7 @@
             $scope.destinationType = navigator.camera.DestinationType;
             navigator.camera.getPicture($scope.onCapturePhoto, $scope.onFail, {
                 quality: 100,
-                destinationType: destinationType.FILE_URI
+                destinationType: $scope.destinationType.FILE_URI
             });
         }
 
