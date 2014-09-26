@@ -172,7 +172,7 @@
                 "description": "Uploaded from my phone"
             };
 
-            ft.upload(imageURI, 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json' + "/images",
+            ft.upload(imageURI, 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json',
                 function(e) {
                     prompt(e);
                     prompt("Imagen subida con exito");
