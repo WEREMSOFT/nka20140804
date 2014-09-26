@@ -161,10 +161,6 @@
         }
         // Upload image to server
         $scope.onCameraSuccess = function(pImageData) {
-            $.post("upload.php", {
-                data: imageData
-            }, function(data) {});
-
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json',
