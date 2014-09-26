@@ -174,6 +174,7 @@
 
             ft.upload(imageURI, 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json' + "/images",
                 function(e) {
+                    prompt(e);
                     prompt("Imagen subida con exito");
                 },
                 function(e) {
