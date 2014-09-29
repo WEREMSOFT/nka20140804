@@ -8,6 +8,8 @@
         $scope.isWorking = false;
         $scope.editMode = false;
         $scope.buyOptions = {};
+        $scope.profileImageData;
+        $scope.myFile = "";
 
         $scope.login = function() {
             if ($scope.isWorking) return;
@@ -159,39 +161,9 @@
             $scope.isWorking = false;
             $scope.userData.refreshUserDetails();
         }
-        // Upload image to server
-        $scope.onCameraSuccess = function(pImageData) {
-            var request = $http({
-                method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/client/usuarios/edit.json',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-
-                data: '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + pImageData + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
-
-            });
-
-            // Store the data-dump of the FORM scope.
-            request.success($scope.httpSaveProfileSuccess);
 
 
-            // Store the data-dump of the FORM scope.
-            request.error($scope.httpSaveProfileError);
-
-        }
-
-        $scope.onCameraFail = function(pMessage) {
-            promptError("Error al subir imagen: " + pMessage);
-        }
-
-        // Take a picture using the camera or select one from the library
-        $scope.takePicture = function(e) {
-            navigator.camera.getPicture($scope.onCameraSuccess, $scope.onCameraFail, {
-                quality: 50,
-                destinationType: Camera.DestinationType.DATA_URL
-            });
-        }
+        
 
     });
 

@@ -1,7 +1,13 @@
-<ons-button modifier="large" ng-click="takePicture()">Subir foto de perfil</ons-button>
+<div ng-controller="UploadProfilePictureController">
+    <input type="file" nv-file-select="" uploader="uploader" />
+    {{uploader.queue.length}}
+    <ons-button modifier="large" ng-click="test()">Subir foto de perfil</ons-button>
+</div>
+
 <form novalidate name="formUser" ng-submit="saveProfile()">
-    <ons-button modifier="large" ng-click="saveProfile()">Guardar</ons-button>
+    <ons-button modifier="large">Guardar</ons-button>
     <ons-list-header>Editar mis datos</ons-list-header>
+
     <ons-list-item>
         <input type="text" ng-model="userData.profileData.nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
     </ons-list-item>
