@@ -192,16 +192,6 @@
                 destinationType: Camera.DestinationType.DATA_URL
             });
         }
-        // Take a picture using the camera or select one from the library
-        $scope.uploadPictureFromLibrary = function(e) {
-            navigator.camera.getPicture($scope.onCameraSuccess, $scope.onCameraFail, {
-                quality: 50,
-                destinationType: Camera.DestinationType.PHOTOLIBRARY 
-            });
-        }
-
-        
-
     });
 
     module.directive('profileEdit', function() {
