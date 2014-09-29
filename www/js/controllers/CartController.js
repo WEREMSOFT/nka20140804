@@ -10,18 +10,17 @@
             id: null,
             name: null
         };
-        console.log("selected option: " + $scope.product.selected_option);
-        if($scope.product.selected_option)
-        {
-            for(var i = 0;$scope.talle.id === null && i < $scope.product.options.length; i++)
-            {
-                if($scope.product.options[i].id === $scope.product.selected_option)
-                {
-                  $scope.talle = $scope.product.options[i];
+        if ($scope.product) {
+            if ($scope.product.selected_option) {
+                for (var i = 0; $scope.talle.id === null && i < $scope.product.options.length; i++) {
+                    if ($scope.product.options[i].id === $scope.product.selected_option) {
+                        $scope.talle = $scope.product.options[i];
+                    }
                 }
+
             }
-            
         }
+
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
