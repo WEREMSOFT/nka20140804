@@ -11,7 +11,7 @@
 
         $scope.login = function() {
             if ($scope.isWorking) return;
-            if (!$scope.user) {
+            if (!$scope.userData.userName) {
                 promptError('La dirección de mail no es válida');
                 return;
             }
@@ -24,7 +24,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + $scope.user + '&data[Login][password]=' + $scope.password + '&',
+                data: '_method=POST&data[Login][login]=' + $scope.userData.userName + '&data[Login][password]=' + $scope.userData.password + '&',
             });
 
 
@@ -45,9 +45,10 @@
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.isWorking = false;
             if (data.result.logedIn === 1) {
-                window.localStorage.setItem("user", $scope.user);
-                window.localStorage.setItem("password", $scope.password);
+                window.localStorage.setItem("user", $scope.userData.userName);
+                window.localStorage.setItem("password", $scope.userData.password);
                 window.localStorage.setItem("logedIn", true);
+                $scope.userData.check_password = $scope.userData.password;
                 $scope.userData.profileData = data.result.Usuario;
                 $scope.userData.profileData.provincia_id = parseInt($scope.userData.profileData.provincia_id);
                 $scope.userData.profileData.iva_facturacion = parseInt($scope.userData.profileData.iva_facturacion);
@@ -70,8 +71,9 @@
             if ($scope.userData.logedIn === true) {
                 ons.navigator.resetToPage('templates/FormProfile.html');
             } else {
-                $scope.user = window.localStorage.getItem('user');
-                $scope.password = window.localStorage.getItem('password');
+                $scope.userData.userName = window.localStorage.getItem('user');
+                $scope.userData.password = window.localStorage.getItem('password');
+                $scope.userData.check_password = window.localStorage.getItem('password');
             }
         }
 
@@ -135,7 +137,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + userData.profileData.imagen + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&'
+                data: '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + userData.profileData.imagen + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&data[Usuario][password]=' + userData.password + '&data[Usuario][check_password]=' + userData.check_password + '&data[Usuario][login]=' + userData.userName
 
             });
 
@@ -157,6 +159,8 @@
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
             $scope.editMode = false;
             $scope.isWorking = false;
+            window.localStorage.setItem('user', userData.userName);
+            window.localStorage.setItem('password', userData.password);
             $scope.userData.refreshUserDetails();
         }
         // Upload image to server

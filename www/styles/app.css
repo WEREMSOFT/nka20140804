@@ -154,12 +154,14 @@
 }
 input[type=text], input[type=email], input[type=password] {
     display: block;
-    width: 80%;
-    height: 48px;
+    width: 100%;
+    height: 29px;
     margin: 0 auto;
     font-size: 19px;
     outline: none;
-    line-height: 48px;
+    line-height: 29px;
+    margin-top: 10px;
+}
 }
 .login-button {
     display: block;
@@ -202,11 +204,10 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
-
 .alert-b-danger {
-color: #a94442;
-background-color: #f2dede;
-border-color: #ebccd1;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
 /*--- list with pictures begin ---*/
 
@@ -535,7 +536,7 @@ border-color: #ebccd1;
 
 .select-combo {
     display: block;
-    width: 80%;
+    width: 100%;
     height: 48px;
     margin: 0 auto;
     font-size: 19px;
@@ -568,29 +569,27 @@ border-color: #ebccd1;
 .stryke-trough {
     text-decoration: line-through;
 }
-
-
-.zoomed
-{
+.zoomed {
     zoom: 150%;
 }
-
-.number-input
-{
+.number-input {
     width: 60px;
     text-align: center;
-} 
-
+}
 .animate-show {
-  opacity:1;
+    opacity: 1;
 }
-
 .animate-show.ng-hide {
-  opacity:0;
+    opacity: 0;
 }
+.animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+}
+/*--- Estilos de los campos con placeholder override begin ---*/
 
-.animate-show.ng-hide-add.ng-hide-add-active,
-.animate-show.ng-hide-remove.ng-hide-remove-active {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+label {
+    font-size: 14px;
+    color: gray;
 }
+/*--- Estilos de los campos con placeholder override end ---*/

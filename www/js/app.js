@@ -52,6 +52,7 @@
             profileData: {},
             userName: null,
             password: null,
+            check_password: null,
             lastProfileData: null,
             isWorking: false
         };
@@ -83,6 +84,11 @@
                 returnValue.profileData.provincia_id = parseInt(returnValue.profileData.provincia_id );
                 returnValue.profileData.iva_facturacion = parseInt(returnValue.profileData.iva_facturacion);
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
+
+                returnValue.userName = window.localStorage.getItem("user");
+                returnValue.password = window.localStorage.getItem("password");
+                returnValue.check_password = window.localStorage.getItem("password");
+
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
                 prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');

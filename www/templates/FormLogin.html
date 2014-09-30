@@ -6,8 +6,9 @@
         <ons-col align="center">
             <div style="text-align: center" class="content-padded">
                 <form ng-submit="login()">
-                    <input type="text" ng-model="user" class="text-input--underbar" placeholder="Email" value="">
-                    <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="">
+                
+                    <input type="text" ng-model="userData.userName" class="text-input--underbar" placeholder="Usuario" value="">
+                    <input type="password" ng-model="userData.password" class="text-input--underbar" placeholder="Password" value="">
                     <br>
                 </form>
                 <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
