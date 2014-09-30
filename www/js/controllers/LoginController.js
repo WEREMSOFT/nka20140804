@@ -124,9 +124,16 @@
         }
 
         $scope.saveProfile = function() {
-            $scope.editMode = false;
+    
             if ($scope.formUser.$invalid) {
                 prompt("Debe completar todos los campos marcados en rojo");
+                return;
+            }
+
+            if(userData.check_password != userData.password)
+            {
+                userData.check_password = "";
+                prompt("Las contraseñas no coinciden");
                 return;
             }
             $scope.isWorking = true;

@@ -24,34 +24,15 @@
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
-        if (userData.profileData) {
-            $scope.razonSocial = userData.profileData.razon_social;
-            //---Datos de envío y usuario
-            $scope.nombre = userData.profileData.nombre;
-            $scope.apellido = userData.profileData.apellido;
-            $scope.mail = userData.profileData.mail;
-            $scope.celular = userData.profileData.celular;
-            $scope.localidad = userData.profileData.localidad;
-            $scope.codigoPostal = userData.profileData.codigo_postal;
-            $scope.codArea = userData.profileData.cod_area;
-            $scope.direccion = userData.profileData.direccion;
-            $scope.terminal = userData.profileData.terminal;
-            $scope.telefono = userData.profileData.telefono;
-            $scope.cuit = userData.profileData.cuit;
-            $scope.nombre_fantasia = userData.profileData.nombre_fantasia;
-        }
+        
 
 
 
         $scope.formaEnvio = '';
 
-        $scope.provincia = '';
 
         $scope.observaciones = "";
 
-
-
-        $scope.formaDePago = '';
 
         $scope.buyOptions = {};
 
@@ -131,8 +112,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=PUT&data[Pedido][nombre]=' + $scope.nombre + '&data[Pedido][apellido]=' + $scope.apellido + '&data[Pedido][mail]=' + $scope.mail + '&data[Pedido][cod_area]=' + $scope.codArea + '&data[Pedido][celular]=' + $scope.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + $scope.direccion + '&data[Pedido][terminal]=' + $scope.terminal + '&data[Pedido][codigo_postal]=' + $scope.codigoPostal + '&data[Pedido][provincia_id]=' + $scope.provincia + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + $scope.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + $scope.ivaFacturacion + '&data[Pedido][razon_social]=' + $scope.razonSocial + '&data[Pedido][cuit]=' + $scope.cuit + '&'
-
+                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido  + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
 

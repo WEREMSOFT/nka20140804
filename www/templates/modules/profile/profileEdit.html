@@ -61,19 +61,20 @@
                 <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.iva_facturacion" ng-options="billing_option.id as billing_option.name for billing_option in buyOptions.billing_options">
                     <option value="">-- Seleccionar tipo de factura --</option>
                 </select>
-                <label>Tipo de factura</label>
+                <label>Tipo de factura {{userData.profileData.iva_facturacion}}</label>
+                <div ng-show="userData.profileData.iva_facturacion === 1 || userData.profileData.iva_facturacion === 3">
+                    <input type="text" ng-model="userData.profileData.razon_social" class="text-input--underbar" placeholder="razón social" value="">
+                    <label>Razón social</label>
+                    <input type="text" ng-model="userData.profileData.nombre_fantasia" class="text-input--underbar" placeholder="Nombre de Fantasía" value="">
+                    <label>Nombre de fantasía</label>
 
-                <input type="text" ng-model="userData.profileData.razon_social" class="text-input--underbar" placeholder="razón social" value="">
-                <label>Razón social</label>
-                <input type="text" ng-model="userData.profileData.nombre_fantasia" class="text-input--underbar" placeholder="Nombre de Fantasía" value="">
-                <label>Nombre de fantasía</label>
 
+                    <input type="text" ng-model="userData.profileData.dir_facturacion" class="text-input--underbar" placeholder="dirección de facturación" value="">
+                    <label>Dirección de facturación</label>
 
-                <input type="text" ng-model="userData.profileData.dir_facturacion" class="text-input--underbar" placeholder="dirección de facturación" value="">
-                <label>Dirección de facturación</label>
-
-                <input type="text" ng-model="userData.profileData.cuit" class="text-input--underbar" placeholder="cuit" value="">
-                <label>C.U.I.T</label>
+                    <input type="text"  ng-model="userData.profileData.cuit" class="text-input--underbar" placeholder="cuit" value="">
+                    <label>C.U.I.T</label>
+                </div>
             </div>
         </div>
     </div>
