@@ -74,7 +74,7 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             console.log('Oops! Algo ha salido mal. Reintenta en un momento');
-            this.reset();
+            returnValue.reset();
         }
 
         returnValue.httpSuccess = function(data, status, headers, config) {
