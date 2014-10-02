@@ -209,9 +209,11 @@
         }
 
         $scope.getPictureFromGallery = function() {
+            $scope.isWorking = true;
             // Retrieve image file location from specified source
-            navigator.camera.getPicture($scope.pictureFromGalleryInformation, function(message) {
-                alert('get picture failed');
+            navigator.camera.getPicture($scope.uploadPhoto, function(message) {
+                promptError('Error al obtener la imagen');
+                $scope.isWorking = false;
             }, {
                 quality: 50,
                 destinationType: navigator.camera.DestinationType.FILE_URI,
@@ -221,10 +223,41 @@
 
         }
 
-        $scope.pictureFromGalleryInformation = function(pImageUri)
-        {
+        $scope.pictureFromGalleryInformation = function(pImageUri) {
             prompt(pImageUri);
         }
+
+        $scope.uploadPhoto = function(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://www.nakaoutdoors.com.ar/client/usuarios/edit.json", $scope.win, $scope.fail, options);
+        }
+
+        $scope.win = function(r) {
+            $scope.isWorking = false;
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+        }
+
+        $scope.fail = funcition(error) {
+            $scope.isWorking = false;
+            prompt("An error has occurred: Code = " = error.code);
+        }
+
+
+
+
     });
 
     module.directive('profileEdit', function() {
