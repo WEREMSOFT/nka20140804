@@ -252,7 +252,7 @@
 
         $scope.fail = function(error) {
             $scope.isWorking = false;
-            prompt("An error has occurred: Code = " = error.code);
+            prompt("An error has occurred: Code = " + error.code);
         }
 
 
