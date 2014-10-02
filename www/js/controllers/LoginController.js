@@ -124,14 +124,14 @@
         }
 
         $scope.saveProfile = function() {
-    
+            if ($scope.isWorking) return;
+
             if ($scope.formUser.$invalid) {
                 prompt("Debe completar todos los campos marcados en rojo");
                 return;
             }
 
-            if(userData.check_password != userData.password)
-            {
+            if (userData.check_password != userData.password) {
                 userData.check_password = "";
                 prompt("Las contraseñas no coinciden");
                 return;
@@ -160,6 +160,7 @@
         }
 
         $scope.httpSaveProfileError = function(data, status, headers, config) {
+            $scope.isWorking = false;
             promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
@@ -193,11 +194,14 @@
         }
 
         $scope.onCameraFail = function(pMessage) {
+            $scope.isWorking = false;
             promptError("Error al subir imagen: " + pMessage);
         }
 
         // Take a picture using the camera or select one from the library
         $scope.takePicture = function(e) {
+            if ($scope.isWorking) return;
+            $scope.isWorking = ture;
             navigator.camera.getPicture($scope.onCameraSuccess, $scope.onCameraFail, {
                 quality: 50,
                 destinationType: Camera.DestinationType.DATA_URL
