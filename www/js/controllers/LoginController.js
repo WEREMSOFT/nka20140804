@@ -207,6 +207,24 @@
                 destinationType: Camera.DestinationType.DATA_URL
             });
         }
+
+        $scope.getPictureFromGallery = function() {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture($scope.pictureFromGalleryInformation, function(message) {
+                alert('get picture failed');
+            }, {
+                quality: 50,
+                destinationType: navigator.camera.DestinationType.FILE_URI,
+                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+
+            });
+
+        }
+
+        $scope.pictureFromGalleryInformation = function(pImageUri)
+        {
+            prompt(pImageUri);
+        }
     });
 
     module.directive('profileEdit', function() {
