@@ -3,12 +3,17 @@
     <module-header></module-header>
 
     <ons-row style="margin-top: 0px;">
-        <ons-col align="center">
-            <div style="text-align: center" class="content-padded">
+        <ons-col >
+            <div class="content-padded">
                 <form ng-submit="login()">
                 
-                    <input type="text" ng-model="userData.userName" class="text-input--underbar" placeholder="Usuario" value="">
+                    <input type="text" ng-model="userData.userName" class="text-input--underbar" placeholder="Usuario o e-mail" value="">
+                                    <label>Usuario o e-mail</label>
                     <input type="password" ng-model="userData.password" class="text-input--underbar" placeholder="Password" value="">
+                    <label>Password</label>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                 </form>
                 <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
