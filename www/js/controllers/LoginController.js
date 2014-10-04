@@ -241,31 +241,22 @@
 
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", win, fail, options);
+            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", $scope.win, $scope.fail, options);
 
-            function win(r) {
-                isWorking = false;
-                prompt("Archivo subido con exito");
-            }
-
-            function fail(error) {
-                isWorking = false;
-                promptError("An error has occurred: Code = " + error.code);
-            }
-
+        
 
         }
 
         $scope.win = function(r) {
+            prompt("Code = " + r.responseCode);
+            prompt("Response = " + r.response);
+            prompt("Sent = " + r.bytesSent);
             $scope.isWorking = false;
-            /*console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
         }
 
         $scope.fail = function(error) {
+            promptError("An error has occurred: Code = " + error.code);
             $scope.isWorking = false;
-            //promptError("An error has occurred: Code = " + error.code);
         }
 
 
