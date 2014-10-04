@@ -240,7 +240,7 @@
             options.params = params;
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://www.nakaoutdoors.com.ar/client/usuarios/edit.json", $scope.win, $scope.fail, options);
+            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", $scope.win, $scope.fail, options);
         }
 
         $scope.win = function(r) {
