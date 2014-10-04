@@ -244,12 +244,12 @@
             ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", win, fail, options);
 
             function win(r) {
-                $scope.isWorking = false;
+                isWorking = false;
                 prompt("Archivo subido con exito");
             }
 
             function fail(error) {
-                $scope.isWorking = false;
+                isWorking = false;
                 promptError("An error has occurred: Code = " + error.code);
             }
 
