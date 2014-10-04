@@ -165,13 +165,13 @@
         }
 
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
-            $scope.editMode = false;
-            $scope.isWorking = false;
-            window.localStorage.setItem('user', userData.userName);
-            window.localStorage.setItem('password', userData.password);
-            $scope.userData.refreshUserDetails();
-        }
-        // Upload image to server
+                $scope.editMode = false;
+                $scope.isWorking = false;
+                window.localStorage.setItem('user', userData.userName);
+                window.localStorage.setItem('password', userData.password);
+                $scope.userData.refreshUserDetails();
+            }
+            // Upload image to server
         $scope.onCameraSuccess = function(pImageData) {
             var request = $http({
                 method: "post",
@@ -239,10 +239,21 @@
 
             options.params = params;
 
-            options.params = '_method=POST&data[Usuario][nombre]=' + userData.profileData.nombre + '&data[Usuario][apellido]=' + userData.profileData.apellido + '&data[Usuario][mail]=' + userData.profileData.mail + '&data[Usuario][cod_area]=' + userData.profileData.cod_area + '&data[Usuario][celular]=' + userData.profileData.celular + '&data[Usuario][direccion]=' + userData.profileData.direccion + '&data[Usuario][terminal]=' + userData.profileData.terminal + '&data[Usuario][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Usuario][provincia_id]=' + userData.profileData.provincia_id + '&data[Usuario][telefono]=' + userData.profileData.telefono + '&data[Usuario][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Usuario][razon_social]=' + userData.profileData.razon_social + '&data[Usuario][cuit]=' + userData.profileData.cuit + '&data[Usuario][localidad]=' + userData.profileData.localidad + '&data[Usuario][partido]=' + userData.profileData.partido + '&data[Usuario][dir_facturacion]=' + userData.profileData.dir_facturacion + '&data[Usuario][nombre_fantasia]=' + userData.profileData.nombre_fantasia + '&data[Usuario][imagen]=' + pImageData + '&data[Usuario][perfil]=' + userData.profileData.perfil + '&';
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", $scope.win, $scope.fail, options);
+            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", win, fail, options);
+
+            function win(r) {
+                $scope.isWorking = false;
+                prompt("Archivo subido con exito");
+            }
+
+            function fail(error) {
+                $scope.isWorking = false;
+                promptError("An error has occurred: Code = " + error.code);
+            }
+
+
         }
 
         $scope.win = function(r) {
