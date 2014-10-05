@@ -134,7 +134,6 @@
     line-height: 44px;
 }
 /*--- GridMenu end ---*/
-
 /*--- Login begin ---*/
 
 .text-centering {
@@ -175,7 +174,6 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 14px;
 }
 /*--- Login end ---*/
-
 /* Alert Col */
 
 .alert {
@@ -284,7 +282,6 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 12px;
 }
 /*--- list with pictures end ---*/
-
 /*--- menu home begin ---*/
 
 .box-for-3-items {
@@ -311,7 +308,6 @@ input[type=text], input[type=email], input[type=password] {
     padding-top: 20px;
 }
 /*--- menu home end ---*/
-
 /*--- Listado de productos begin ---*/
 
 ::-webkit-scrollbar {
@@ -334,7 +330,7 @@ input[type=text], input[type=email], input[type=password] {
     visibility: hidden;
 }
 .list-item-left {
-    width: 100px;
+    width: 70px;
     margin-right: -100px;
     float: left;
     text-align: center;
@@ -382,7 +378,6 @@ input[type=text], input[type=email], input[type=password] {
     opacity: 0.4;
 }
 /*--- Listado de productos end ---*/
-
 /*--- Imagenes del producto begin---*/
 
 .float-left {
@@ -441,15 +436,18 @@ input[type=text], input[type=email], input[type=password] {
     margin: 0 auto 0 auto;
 }
 /*--- Imagenes del producto end---*/
-
 /*--- Imagenes del profile start---*/
 
 .profile-image {
     border-radius: 500px;
     vertical-align: bottom;
 }
+.logo-image {
+    border-radius: 500px;
+    vertical-align: top;
+    margin-top: 3px;
+}
 /*--- Imagenes del profile end---*/
-
 /*--- Estilos del producto begin --*/
 
 .product-debit-credit-label, .product-contado-label {
@@ -474,7 +472,6 @@ input[type=text], input[type=email], input[type=password] {
     color: #a91e23;
 }
 /*--- Estilos del producto end --*/
-
 /*--- Panel begin ---*/
 
 .panel {
@@ -504,7 +501,6 @@ input[type=text], input[type=email], input[type=password] {
     border-radius: 4px;
 }
 /*--- Panel end --*/
-
 /*--- Combo Begin ---*/
 
 .wrapper-label {
@@ -522,7 +518,6 @@ input[type=text], input[type=email], input[type=password] {
     margin-left: 5px;
 }
 /*--- Combo End ---*/
-
 /*---Consultas begin---*/
 
 .product_question {
@@ -531,7 +526,6 @@ input[type=text], input[type=email], input[type=password] {
     border-bottom: solid 1px #ddd !important;
 }
 /*---Consultas end---*/
-
 /*---select begin ---*/
 
 .select-combo {
@@ -544,7 +538,6 @@ input[type=text], input[type=email], input[type=password] {
     line-height: 48px;
 }
 /*---select end---*/
-
 /*--- Colores Begin ---*/
 
 .dark-orange {
@@ -554,9 +547,7 @@ input[type=text], input[type=email], input[type=password] {
     color: #cc181e;
 }
 /*--- Colores End ---*/
-
 /* iPad [portrait + landscape] */
-
 /*@media only screen and (min-device-width: 768px) {
     body {
         zoom: 150%;
@@ -593,3 +584,15 @@ label {
     color: gray;
 }
 /*--- Estilos de los campos con placeholder override end ---*/
+/*--- toolbar begin ---*/
+
+.bars-in-logo {
+    margin-left: -23px;
+}
+
+.back-button-image
+{
+    margin-left: -20px;
+}
+
+
