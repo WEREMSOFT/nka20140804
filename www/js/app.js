@@ -152,7 +152,7 @@
 
         returnValue.sendPushNotificationToken = function(pToken) {
             var request = $http({
-                method: "get",
+                method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/mobile/device_add.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
