@@ -274,9 +274,6 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    pushNotificationToken = result;
-    alert(result);
-    window.localStorage.setItem('pushNotificationToken', result);
     console.log(result);
 }
 
@@ -288,7 +285,8 @@ function onNotificationGCM(e) {
     switch (e.event) {
         case 'registered':
             if (e.regid.length > 0) {
-                console.log("Regid " + e.regid);
+                alert("Regid " + e.regid);
+                window.localStorage.setItem('pushNotificationToken', e.regid);
             }
             break;
 
