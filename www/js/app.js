@@ -141,12 +141,40 @@
 
         returnValue.httpGetPendingCalificationsSuccess = function(data, status, headers, config) {
             returnValue.pendingCalifications = data.result.products;
-            console.log(returnValue.pendingCalifications );
+            console.log(returnValue.pendingCalifications);
         }
 
 
         returnValue.httpGetPendingCalificationsFail = function(data, status, headers, config) {
 
+        }
+
+        returnValue.sendPushNotificationToken = function(pToken) {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/mobile/device_add.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: '_method=POST&data[MobileDevice][token]=' + pToken + '&data[MobileDevice][os]=0data[MobileDevice][description]=' + deviceType
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSendPushNotificationTokenSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpSendPushNotificationTokenFail);
+        }
+
+        returnValue.httpSendPushNotificationTokenSuccess =  function(data, status, headers, config)
+        {
+            console.log('token enviado con exito');
+        }
+
+        returnValue.httpSendPushNotificationTokenFail = function(data, status, headers, config) {
+            console.log('error al enviar el token');
         }
 
         returnValue.logout = function(pSuccessCallback, pErrorCallback) {
@@ -245,8 +273,9 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    alert('Callback Success! Result = '+result);
+    alert('Callback Success! Result =' + result);
     pushNotificationToken = retuls;
+    window.localStorage.setItem('pushNotificationToken', retuls);
     console.log(result);
 }
 
