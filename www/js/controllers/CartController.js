@@ -79,7 +79,7 @@
         }
 
         $scope.onPromtAddToCartOk = function() {
-            ons.navigator.popPage();
+            //ons.navigator.popPage();
         }
 
         $scope.init = function() {
