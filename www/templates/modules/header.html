@@ -16,9 +16,9 @@
         </form>
     </div>
     <div class="right">
-        <ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/PageContacto.html'" ng-click="ons.navigator.pushPage('templates/PageContacto.html');">
+        <!--<ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/PageContacto.html'" ng-click="ons.navigator.pushPage('templates/PageContacto.html');">
             <ons-icon icon="phone"></ons-icon>
-        </ons-toolbar-button>
+        </ons-toolbar-button>-->
         <ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="ons.navigator.pushPage('templates/pages/Cart.html')">
             <ons-icon icon="shopping-cart"></ons-icon>
             <span class="notification" ng-show="shoppingCart.cartData.summary.quantity" style="margin-left: -12px">{{shoppingCart.cartData.summary.quantity}}</span>
