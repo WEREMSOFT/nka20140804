@@ -108,7 +108,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=POST&data[Login][login]=' + window.localStorage.getItem("user") + '&data[Login][password]=' + window.localStorage.getItem("password") + '&',
+                data: '_method=POST&data[Login][login]=' + window.localStorage.getItem("user") + '&data[Login][password]=' + window.localStorage.getItem("password") + '&data[Login][token]=' + window.localStorage.getItem("pushNotificationToken")
             });
 
 
@@ -285,7 +285,6 @@ function onNotificationGCM(e) {
     switch (e.event) {
         case 'registered':
             if (e.regid.length > 0) {
-                alert("Regid " + e.regid);
                 window.localStorage.setItem('pushNotificationToken', e.regid);
             }
             break;
