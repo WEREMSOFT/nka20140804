@@ -157,7 +157,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                data: '_method=POST&data[MobileDevice][token]=' + pToken + '&data[MobileDevice][os]=0data[MobileDevice][description]=' + deviceType
+                data: '_method=POST&data[MobileDevice][token]=' + pToken + '&data[MobileDevice][os]=0&data[MobileDevice][description]=' + deviceType
             });
 
 
@@ -274,8 +274,9 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    pushNotificationToken = retuls;
-    window.localStorage.setItem('pushNotificationToken', retuls);
+    pushNotificationToken = result;
+    alert(result);
+    window.localStorage.setItem('pushNotificationToken', result);
     console.log(result);
 }
 
