@@ -90,6 +90,7 @@
                 returnValue.password = window.localStorage.getItem("password");
                 returnValue.check_password = window.localStorage.getItem("password");
                 returnValue.getPendingCalifications();
+                returnValue.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
                 prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
@@ -273,7 +274,6 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    alert('Callback Success! Result =' + result);
     pushNotificationToken = retuls;
     window.localStorage.setItem('pushNotificationToken', retuls);
     console.log(result);
