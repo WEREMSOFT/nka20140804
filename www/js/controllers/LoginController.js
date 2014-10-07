@@ -236,15 +236,10 @@
             var params = new Object();
             params.value1 = "test";
             params.value2 = "param";
-
             options.params = params;
-
 
             var ft = new FileTransfer();
             ft.upload(imageURI, "http://www.nakaoutdoors.com.ar/client/usuarios/upload_avatar.json", $scope.win, $scope.fail, options);
-
-        
-
         }
 
         $scope.win = function(r) {
