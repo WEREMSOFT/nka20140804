@@ -245,7 +245,8 @@ function subscriveToPushNotificationsAndroid() {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    //alert('Callback Success! Result = '+result);
+    alert('Callback Success! Result = '+result);
+    pushNotificationToken = retuls;
     console.log(result);
 }
 
