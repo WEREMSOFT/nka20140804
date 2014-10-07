@@ -231,7 +231,7 @@
             var options = new FileUploadOptions();
             options.fileKey = "file";
             options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-            options.mimeType = "image/jpeg";
+            options.mimeType = "image/png";
 
             var params = new Object();
             params.value1 = "test";
@@ -241,7 +241,7 @@
 
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://192.168.1.104:8080/fileUploadTest/upload.php", $scope.win, $scope.fail, options);
+            ft.upload(imageURI, "http://www.nakaoutdoors.com.ar/client/usuarios/upload_avatar.json", $scope.win, $scope.fail, options);
 
         
 

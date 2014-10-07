@@ -54,7 +54,8 @@
             password: null,
             check_password: null,
             lastProfileData: null,
-            isWorking: false
+            isWorking: false,
+            pendingCalifications: null
         };
         returnValue.reset = function() {
             this.logedIn = false;
@@ -81,14 +82,14 @@
             returnValue.isWorking = false;
             if (data.result.logedIn === 1) {
                 returnValue.profileData = data.result.Usuario;
-                returnValue.profileData.provincia_id = parseInt(returnValue.profileData.provincia_id );
+                returnValue.profileData.provincia_id = parseInt(returnValue.profileData.provincia_id);
                 returnValue.profileData.iva_facturacion = parseInt(returnValue.profileData.iva_facturacion);
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
 
                 returnValue.userName = window.localStorage.getItem("user");
                 returnValue.password = window.localStorage.getItem("password");
                 returnValue.check_password = window.localStorage.getItem("password");
-
+                returnValue.getPendingCalifications();
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
                 prompt('Nombre de usuario o contraseña invalidas.', alertDismissed, 'Opa!', 'Aceptar');
@@ -117,6 +118,34 @@
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
 
+
+        }
+
+        returnValue.getPendingCalifications = function() {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/client/articulos/valoraciones_pendientes_index.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpGetPendingCalificationsSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpGetPendingCalificationsFail);
+        }
+
+        returnValue.httpGetPendingCalificationsSuccess = function(data, status, headers, config) {
+            returnValue.pendingCalifications = data.result.products;
+            console.log(returnValue.pendingCalifications );
+        }
+
+
+        returnValue.httpGetPendingCalificationsFail = function(data, status, headers, config) {
 
         }
 

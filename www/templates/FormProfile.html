@@ -5,6 +5,13 @@
             <img class="profile-image" src="{{userData.profileData.imagen}}">
             <br>
             <ons-list>
+                <ons-list-item ng-if="userData.pendingCalifications.count === 0" modifier="chevron">
+                    <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>Sin calificaciones aún.</ons-list-item>
+
+                <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/PageProductsRatings.html', {productQuestions: product.questions})">
+
+                    <ons-icon ng-class="'dark-orange'" icon="star"></ons-icon>según {{product.reviews_count}} calificaciones de usuarios.</ons-list-item>
+
                 <profile-read ng-hide="editMode"></profile-read>
                 <profile-edit ng-show="editMode"></profile-edit>
             </ons-list>
