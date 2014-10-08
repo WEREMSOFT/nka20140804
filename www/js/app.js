@@ -282,6 +282,7 @@ function errorHandler(error) {
 }
 
 function onNotificationGCM(e) {
+    alert(JSON.stringify(e));
     switch (e.event) {
         case 'registered':
             if (e.regid.length > 0) {
