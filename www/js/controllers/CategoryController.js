@@ -195,6 +195,7 @@
         }
 
         $scope.checkForPushNotificationData = function() {
+            alert('test');
             if (gcmProductID) {
                 $scope.showProduct(gcmProductID);
                 gcmProductID = null;
@@ -278,6 +279,7 @@
 
         }
 
+        document.addEventListener("resume", $scope.checkForPushNotificationData, false);
         document.addEventListener("deviceready", $scope.init, false);
 
 
