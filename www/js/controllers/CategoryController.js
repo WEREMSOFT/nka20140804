@@ -36,8 +36,7 @@
                 console.log("cargando categoría");
                 if (data.result.child_categories) {
                     var categoryID = 0;
-                    if(ons.navigator)
-                    {
+                    if (ons.navigator) {
                         if (ons.navigator.getCurrentPage().options.categoryID) {
                             categoryID = ons.navigator.getCurrentPage().options.categoryID;
                         }
@@ -198,13 +197,22 @@
                 }
             }
             $scope.getCategory(categoryID);
+            checkForPushNotificationData();
         }
 
         $scope.setCurrentSlide = function(pSlide) {
             $scope.currentSlide = pSlide;
         }
 
-
+        $scope.checkForPushNotificationData = function() {
+            if (gcmProductID) {
+                $scope.showProduct(gcmProductID);
+                gcmProductID = null;
+            } else if (gcmCategoryID) {
+                $scope.showCategory(gcmCategoryID);
+                gcmCategoryID = null;
+            }
+        }
 
         $scope.search = function(strSearchString) {
 
@@ -255,56 +263,56 @@
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
-if (result.cancelled) {
-    prompt('Lectura Cancelada');
-} else {
-    $scope.showProduct(result.text, true);
-}
+            if (result.cancelled) {
+                prompt('Lectura Cancelada');
+            } else {
+                $scope.showProduct(result.text, true);
+            }
 
-}
+        }
 
-$scope.barCodeScanError = function(error) {
-    promptError("Scanning failed: " + error);
-}
-document.addEventListener("deviceready", $scope.init, false);
-
-
-});
+        $scope.barCodeScanError = function(error) {
+            promptError("Scanning failed: " + error);
+        }
+        document.addEventListener("deviceready", $scope.init, false);
 
 
-module.directive('moduleSinConexion', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'templates/modules/sinConexion.html'
-    };
-});
+    });
 
-module.directive('moduleHeader', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'templates/modules/header.html'
-    };
-});
 
-module.directive('moduleLoadingSpinner', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'templates/modules/loadingSpinner.html'
-    };
-});
+    module.directive('moduleSinConexion', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/sinConexion.html'
+        };
+    });
 
-module.directive('moduleTabBarBottom', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'templates/modules/tabBarBottom.html'
-    };
-});
-module.directive('moduleStockColorCodes', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'templates/modules/stockColorCodes.html'
-    };
-});
+    module.directive('moduleHeader', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/header.html'
+        };
+    });
+
+    module.directive('moduleLoadingSpinner', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/loadingSpinner.html'
+        };
+    });
+
+    module.directive('moduleTabBarBottom', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/tabBarBottom.html'
+        };
+    });
+    module.directive('moduleStockColorCodes', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/stockColorCodes.html'
+        };
+    });
 
 
 

@@ -282,7 +282,6 @@ function errorHandler(error) {
 }
 
 function onNotificationGCM(e) {
-    alert(JSON.stringify(e));
     switch (e.event) {
         case 'registered':
             if (e.regid.length > 0) {
@@ -292,9 +291,14 @@ function onNotificationGCM(e) {
 
         case 'message':
             // this is the actual push notification. its format depends on the data model from the push server
-            alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
-            alert('productId = ' + e.payload.productID + ' CategoryID=' + e.payload.categoryID);
-            alert(e);
+            if(e.payload.productID)
+            {
+                gcmProductID = e.payload.productID;
+            }
+            if(e.payload.categoryID)
+            {
+                gcmCategoryID = e.payload.categoryID;
+            }
             break;
 
         case 'error':
