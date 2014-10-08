@@ -51,6 +51,7 @@
                 }
                 $scope.loading = false;
                 $scope.connectionFail = false;
+                $scope.checkForPushNotificationData();
             }
 
             // Store the data-dump of the FORM scope.
@@ -187,18 +188,7 @@
             request.error(this.httpGetDestacadosDetailsError);
         }
 
-        $scope.init = function() {
-            console.log('page initialize');
-            $scope.connectionFail = false;
-            var categoryID = 0;
-            if (ons.navigator) {
-                if (ons.navigator.getCurrentPage().options.categoryID) {
-                    categoryID = ons.navigator.getCurrentPage().options.categoryID;
-                }
-            }
-            $scope.getCategory(categoryID);
-            checkForPushNotificationData();
-        }
+
 
         $scope.setCurrentSlide = function(pSlide) {
             $scope.currentSlide = pSlide;
@@ -274,6 +264,20 @@
         $scope.barCodeScanError = function(error) {
             promptError("Scanning failed: " + error);
         }
+
+        $scope.init = function() {
+            console.log('page initialize');
+            $scope.connectionFail = false;
+            var categoryID = 0;
+            if (ons.navigator) {
+                if (ons.navigator.getCurrentPage().options.categoryID) {
+                    categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                }
+            }
+            $scope.getCategory(categoryID);
+
+        }
+
         document.addEventListener("deviceready", $scope.init, false);
 
 
