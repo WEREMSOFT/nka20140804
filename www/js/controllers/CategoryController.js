@@ -195,7 +195,6 @@
         }
 
         $scope.checkForPushNotificationData = function() {
-            alert('test');
             if (gcmProductID) {
                 $scope.showProduct(gcmProductID);
                 gcmProductID = null;
