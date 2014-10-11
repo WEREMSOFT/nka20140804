@@ -24,7 +24,7 @@
         $scope.isWorking = false;
         $scope.products = [];
         $scope.isCart = true;
-        
+
 
 
 
@@ -75,10 +75,31 @@
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
             $scope.isWorking = false;
-            prompt('Item agregado con éxito', $scope.onPromtAddToCartOk, 'Éxito', 'Ok');
+            console.log('->' + $scope.cantidad);
+            console.log('->' + ($scope.cantidad > 1 ? 's' : ''));
+            var strConfirmationText = ' ' + $scope.cantidad + ' item' + ($scope.cantidad > 1 ? 's' : '') + ' agregado' + ($scope.cantidad > 1 ? 's' : '') + ' al carrito.';
+            navigator.notification.confirm(
+                strConfirmationText, // message
+                $scope.onPromtAddToCartOk, // callback to invoke with index of button pressed
+                'Éxito', // title
+                ['Ver Carrito', 'Seguir'] // buttonLabels
+            );
         }
 
-        $scope.onPromtAddToCartOk = function() {
+        $scope.onConfirmAddToCart =  function(buttonIndex) {
+            
+        }
+
+
+
+        $scope.onPromtAddToCartOk = function(buttonIndex) {
+            alert('You selected button ' + buttonIndex);
+            switch(buttonIndex)
+            {
+                case 1:
+                    ons.navigator.pushPage('templates/pages/Cart.html');
+                    break;
+            }
             //ons.navigator.popPage();
         }
 
@@ -112,7 +133,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido  + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
+                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
 

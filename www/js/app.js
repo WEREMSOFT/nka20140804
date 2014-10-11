@@ -141,8 +141,11 @@
         }
 
         returnValue.httpGetPendingCalificationsSuccess = function(data, status, headers, config) {
-            returnValue.pendingCalifications = data.result.products;
-            console.log(returnValue.pendingCalifications);
+            if (data.result.products) {
+                returnValue.pendingCalifications = data.result.products;
+                console.log(returnValue.pendingCalifications);
+            }
+
         }
 
 
@@ -169,8 +172,7 @@
             request.error(this.httpSendPushNotificationTokenFail);
         }
 
-        returnValue.httpSendPushNotificationTokenSuccess =  function(data, status, headers, config)
-        {
+        returnValue.httpSendPushNotificationTokenSuccess = function(data, status, headers, config) {
             console.log('token enviado con exito');
         }
 
@@ -291,12 +293,10 @@ function onNotificationGCM(e) {
 
         case 'message':
             // this is the actual push notification. its format depends on the data model from the push server
-            if(e.payload.productID)
-            {
+            if (e.payload.productID) {
                 gcmProductID = e.payload.productID;
             }
-            if(e.payload.categoryID)
-            {
+            if (e.payload.categoryID) {
                 gcmCategoryID = e.payload.categoryID;
             }
             break;
