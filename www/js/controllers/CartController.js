@@ -86,16 +86,8 @@
             );
         }
 
-        $scope.onConfirmAddToCart =  function(buttonIndex) {
-            
-        }
-
-
-
         $scope.onPromtAddToCartOk = function(buttonIndex) {
-            alert('You selected button ' + buttonIndex);
-            switch(buttonIndex)
-            {
+            switch (buttonIndex) {
                 case 1:
                     ons.navigator.pushPage('templates/pages/Cart.html');
                     break;
