@@ -141,11 +141,12 @@
         }
 
         returnValue.httpGetPendingCalificationsSuccess = function(data, status, headers, config) {
-            if (data.result.products) {
-                returnValue.pendingCalifications = data.result.products;
-                console.log(returnValue.pendingCalifications);
+            if (data.result) {
+                if (data.result.products) {
+                    returnValue.pendingCalifications = data.result.products;
+                    console.log(returnValue.pendingCalifications);
+                }
             }
-
         }
 
 
