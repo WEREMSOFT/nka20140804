@@ -46,7 +46,7 @@
     <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
     <gap:plugin name="com.adobe.plugins.gaplugin" />
-    
+
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
     </feature>
@@ -67,6 +67,14 @@
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="show-splash-screen-spinner" value="true" />
+
+
+    <gap:config-file platform="winphone" parent="/Deployment" mode="replace">
+        <Languages xmlns="">
+            <Language code="es-ES" />
+        </Languages>
+        <DefaultLanguage xmlns="" code="es-ES" />
+    </gap:config-file>
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
