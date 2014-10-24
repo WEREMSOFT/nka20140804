@@ -591,10 +591,24 @@ label {
 .bars-in-logo {
     margin-left: -23px;
 }
-
-.back-button-image
-{
+.back-button-image {
     margin-left: -20px;
 }
+.button--large {
+    background-color: #636363;
+}
+.icon-button--quiet {
+    color: #636363;
+}
+.tab-bar__button:active > .tab-bar__icon, :checked + .tab-bar__button > .tab-bar__icon {
+    color: #e61624;
+}
 
+.tab-bar__button:active, :checked + .tab-bar__button
+{
+    color: #e61624;
+}
 
+.list__item--tappable:active {
+  background-color: #ffffff;
+}
