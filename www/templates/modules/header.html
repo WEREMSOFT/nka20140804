@@ -11,12 +11,12 @@
         </ons-toolbar-button>
     </div>
     <div class="center">
-        <form ng-if="ons.navigator.getCurrentPage().name != 'templates/FormSearch.html'" ng-submit="search(searchString)">
+        <form ng-if="ons.navigator.getCurrentPage().name != 'templates/forms/FormSearch.html'" ng-submit="search(searchString)">
             <input type="search" ng-model="searchString" value="" placeholder="Buscar..." class="display-block search-input">
         </form>
     </div>
     <div class="right">
-        <!--<ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/PageContacto.html'" ng-click="ons.navigator.pushPage('templates/PageContacto.html');">
+        <!--<ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/PageContacto.html'" ng-click="ons.navigator.pushPage('templates/pages/PageContacto.html');">
             <ons-icon icon="phone"></ons-icon>
         </ons-toolbar-button>-->
         <ons-toolbar-button ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="ons.navigator.pushPage('templates/pages/Cart.html')">

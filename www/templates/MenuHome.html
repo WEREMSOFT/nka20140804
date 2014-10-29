@@ -1,11 +1,11 @@
 <div style="text-align: center" class="content-padded">
     <div ng-hide="categories.length == 0">
         <ons-row ng-hide="connectionFail">
-            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/PageNewProducts.html')">
+            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/PageNewProducts.html')">
                 <img width="50px" height="50px" src="imgs/icons/nuevos256.jpg">
                 <div class="cadorna">Nuevos</div>
             </ons-col>
-            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/PageOfertas.html')">
+            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/PageOfertas.html')">
                 <img width="50px" height="50px" src="imgs/icons/ofertas256.jpg">
                 <div class="cadorna">Ofertas</div>
             </ons-col>
@@ -27,7 +27,7 @@
                 <img width="50px" height="50px" src="http://www.nakaoutdoors.com.ar/img/articulos/{{category.thumb}}">
                 <div class="cadorna">{{category.title}}</div>
             </ons-col>
-            <ons-col class="list__item--tappable" ng-click="ons.navigator.pushPage('templates/PageContacto.html')">
+            <ons-col class="list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/PageContacto.html')">
                 <img width="50px" height="50px" src="imgs/icons/contacto256.jpg">
                 <div class="cadorna">Contacto</div>
             </ons-col>

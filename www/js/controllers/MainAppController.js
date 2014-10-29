@@ -64,7 +64,7 @@
 
         $scope.showCategory = function(categoryID) {
             console.log(categoryID);
-            ons.navigator.pushPage('templates/PageCategory.html', {
+            ons.navigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
         }
@@ -162,7 +162,7 @@
         $scope.showProduct = function(productID, pCodebar) {
             $scope.loading = true;
             $scope.getProduct(productID, pCodebar);
-            ons.navigator.pushPage('templates/PageProduct.html');
+            ons.navigator.pushPage('templates/pages/PageProduct.html');
         }
 
         $scope.getDestacados = function() {
@@ -227,8 +227,8 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-            if (ons.navigator.getCurrentPage().name != "templates/FormSearch.html") {
-                ons.navigator.pushPage("templates/FormSearch.html");
+            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
+                ons.navigator.pushPage("templates/forms/FormSearch.html");
             }
 
         }

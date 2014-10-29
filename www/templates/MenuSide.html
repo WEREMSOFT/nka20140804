@@ -1,15 +1,15 @@
 <ons-list>
-    <ons-list-item modifier="chevron" ng-hide="userData.logedIn" onclick="ons.navigator.pushPage('templates/FormLogin.html')">
+    <ons-list-item modifier="chevron" ng-hide="userData.logedIn" onclick="ons.navigator.pushPage('templates/forms/FormLogin.html')">
         Login
     </ons-list-item>
 
-    <ons-list-item modifier="chevron" ng-show="userData.logedIn" onclick="ons.navigator.pushPage('templates/FormProfile.html')">
+    <ons-list-item modifier="chevron" ng-show="userData.logedIn" onclick="ons.navigator.pushPage('templates/forms/FormProfile.html')">
         Ver Perfil
     </ons-list-item>
     <ons-list-item modifier="chevron" ng-controller="LoginController" ng-show="userData.logedIn" ng-click="logout()">
         Logout
     </ons-list-item>
-    <ons-list-item modifier="chevron" onclick="ons.navigator.pushPage('templates/PageContacto.html')">
+    <ons-list-item modifier="chevron" onclick="ons.navigator.pushPage('templates/pages/PageContacto.html')">
         Contacto
     </ons-list-item>
     <ons-list-item ng-hide="categories.length == 0" ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id, true)">

@@ -33,8 +33,8 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-            if (ons.navigator.getCurrentPage().name != "templates/FormSearch.html") {
-                ons.navigator.pushPage("templates/FormSearch.html");
+            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
+                ons.navigator.pushPage("templates/forms/FormSearch.html");
             }
 
         }

@@ -54,7 +54,7 @@
                 $scope.userData.profileData.iva_facturacion = parseInt($scope.userData.profileData.iva_facturacion);
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
-                ons.navigator.resetToPage('templates/PageHome.html');
+                ons.navigator.resetToPage('templates/pages/PageHome.html');
             } else if (data.result.logedIn === -2) {
                 promptError('Nombre de usuario o contraseña invalidas');
                 $scope.logout();
@@ -63,13 +63,13 @@
 
         $scope.init = function() {
             console.log('inicializando......' + ons.navigator.getCurrentPage().name);
-            if (ons.navigator.getCurrentPage().name === 'templates/FormProfile.html') {
+            if (ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 $scope.userData.refreshUserDetails();
                 //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
                 return;
             }
             if ($scope.userData.logedIn === true) {
-                ons.navigator.resetToPage('templates/FormProfile.html');
+                ons.navigator.resetToPage('templates/forms/FormProfile.html');
             } else {
                 $scope.userData.userName = window.localStorage.getItem('user');
                 $scope.userData.password = window.localStorage.getItem('password');
@@ -115,7 +115,7 @@
         $scope.logoutSuccess = function(data, status, headers, config) {
             $scope.isWorking = false;
             $scope.userData.reset();
-            ons.navigator.resetToPage('templates/PageHome.html');
+            ons.navigator.resetToPage('templates/pages/PageHome.html');
         }
 
         $scope.editProfile = function() {

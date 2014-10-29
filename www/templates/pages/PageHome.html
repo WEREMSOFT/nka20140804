@@ -16,14 +16,14 @@
         <ons-row style="margin-top: 0px;" ng-hide="userData.logedIn">
             <ons-col align="center">
                 <div style="text-align: center" class="content-padded-left-right">
-                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="ons.navigator.pushPage('templates/FormLogin.html')">Login</ons-button>
+                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="ons.navigator.pushPage('templates/forms/FormLogin.html')">Login</ons-button>
                 </div>
             </ons-col>
         </ons-row>
         <ons-row style="margin-top: 0px;" ng-show="userData.logedIn">
             <ons-col align="center">
                 <div style="text-align: center" class="content-padded-left-right">
-                    <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/FormProfile.html')">Ver Perfil</ons-button>
+                    <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/forms/FormProfile.html')">Ver Perfil</ons-button>
                 </div>
             </ons-col>
         </ons-row>
