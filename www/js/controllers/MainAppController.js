@@ -1,8 +1,8 @@
 (function() {
     'use strict';
-    var module = angular.module('Category', []);
+    var module = angular.module('MainApp', []);
 
-    module.controller('CategoryController', function($scope, $http, $sce, userData, shoppingCart) {
+    module.controller('MainAppController', function($scope, $http, $sce, userData, shoppingCart) {
         $scope.userData = userData;
         $scope.shoppingCart = shoppingCart;
         $scope.categories = [];
