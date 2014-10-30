@@ -612,3 +612,8 @@ label {
 .list__item--tappable:active {
   background-color: #ffffff;
 }
+
+.search-input
+{
+    margin-top: 8px;
+}

@@ -1,28 +1,17 @@
-
 <ons-tabbar>
-  <ons-tabbar-item
-    active="true"
-    label="Home"
-    icon="home"
-    page="templates/pages/PageHome.html"
-    animation="lift">
-  </ons-tabbar-item>
+    <ons-tabbar-item active="true" label="Home" icon="home" page="templates/pages/PageHome.html" animation="lift">
+    </ons-tabbar-item>
 
-  <ons-tabbar-item
-    label="Buscar"
-    icon="search"
-    ng-click="ons.navigator.pushPage('templates/forms/FormSearch.html')">
-  </ons-tabbar-item>
+    <ons-tabbar-item label="Contacto" icon="phone" ng-click="ons.navigator.pushPage('templates/pages/PageContacto.html');">
+    </ons-tabbar-item>
 
-  <ons-tabbar-item 
-    label="Contacto"
-    icon="phone"
-    ng-click="ons.navigator.pushPage('templates/pages/PageContacto.html');">
-  </ons-tabbar-item>
-  <ons-tabbar-item
-    label="Mas"
-    icon="plus"
-    ng-click="menu.toggleMenu()">
-    
-  </ons-tabbar-item>
+    <ons-tabbar-item ng-hide="userData.logedIn" label="Login" icon="user" ng-click="ons.navigator.pushPage('templates/forms/FormLogin.html')">
+    </ons-tabbar-item>
+
+    <ons-tabbar-item ng-show="userData.logedIn" label="Logout" icon="user" ng-click="logout()">
+    </ons-tabbar-item>
+
+    <ons-tabbar-item label="Lector de Código" icon="barcode" ng-click="barCodeScan()">
+
+    </ons-tabbar-item>
 </ons-tabbar>

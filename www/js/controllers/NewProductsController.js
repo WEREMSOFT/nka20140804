@@ -14,7 +14,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=1',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

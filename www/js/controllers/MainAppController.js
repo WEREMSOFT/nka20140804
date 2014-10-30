@@ -19,12 +19,15 @@
         $scope.deviceType = deviceType;
         $scope.connectionFail = false;
 
+        $scope.searchTotal = 0;
+        $scope.lastPage = 1;
+
 
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=1',
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
@@ -70,10 +73,6 @@
         }
 
         $scope.getProduct = function(productID, pIsCodebar) {
-
-
-
-
             var searchVariable = pIsCodebar ? 'barcode' : 'id';
 
             var request = $http({
@@ -168,7 +167,7 @@
         $scope.getDestacados = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json?max=9999&offset=1&order=1',
             });
 
             this.httpGetDestacadosDetailsError = function(data, status, headers, config) {
@@ -204,15 +203,28 @@
             }
         }
 
-        $scope.search = function(strSearchString) {
-
+        $scope.search = function(strSearchString, pPage, pCount) {
+            $scope.searchString = strSearchString;
             if (gaPlugin) {
                 gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);
             }
+
+            if (pCount == null) {
+                pCount = 30;
+            }
+
+            if (pPage == null) {
+                pPage = 1;
+                $scope.lastPage = 1;
+            }else
+            {
+                $scope.lastPage = pPage;
+            }
+
             $scope.isWorking = true;
             var request = $http({
                 method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/search.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/search.json?max=' + pCount + '&offset=' + pPage + '&order=1',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
@@ -222,11 +234,12 @@
 
 
             // Store the data-dump of the FORM scope.
-            request.success(this.httpSuccess);
+            request.success($scope.httpSuccess);
 
 
             // Store the data-dump of the FORM scope.
-            request.error(this.httpError);
+            request.error($scope.httpError);
+
             if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
                 ons.navigator.pushPage("templates/forms/FormSearch.html");
             }
@@ -239,9 +252,14 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.connectionFail = false;
-            console.log(data);
-            $scope.products = data.result;
+            if ($scope.lastPage > 1) {
+                $scope.products = $.merge($scope.products, data.result.child_products);
+            } else {
+                $scope.products = data.result.child_products;
+            }
+
             $scope.isWorking = false;
+            $scope.searchTotal = data.result.count;
         }
 
         $scope.barCodeScan = function() {

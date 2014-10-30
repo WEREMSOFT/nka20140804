@@ -11,7 +11,7 @@
         </ons-toolbar-button>
     </div>
     <div class="center">
-        <form ng-if="ons.navigator.getCurrentPage().name != 'templates/forms/FormSearch.html'" ng-submit="search(searchString)">
+        <form ng-ifd="ons.navigator.getCurrentPage().name != 'templates/forms/FormSearch.html'" ng-submit="search(searchString)">
             <input type="search" ng-model="searchString" value="" placeholder="Buscar..." class="display-block search-input">
         </form>
     </div>

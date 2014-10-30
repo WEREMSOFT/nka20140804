@@ -1,22 +1,13 @@
 <ons-page class="center">
     <module-header></module-header>
-    <form ng-submit="search(searchString)">
-        <ons-row style="margin-top: 10px;">
+        <!-- Solo se muestra si es un listado de productos -->
+        <module-product-list ng-hide="isWorking && lastPage == 1"></module-product-list>
+        <module-loading-spinner ng-show="isWorking"></module-loading-spinner>
+        <ons-row style="margin-top: 0px;" ng-show="products.length < searchTotal">
             <ons-col align="center">
                 <div style="text-align: center" class="content-padded">
-                    <input type="search" ng-model="searchString" value="" placeholder="Buscar..." class="display-block search-input">
+                    <ons-button ng-click="search(searchString, lastPage + 1)" modifier="large">Mas...</ons-button>
                 </div>
             </ons-col>
         </ons-row>
-        <ons-row style="margin-top: 0px;">
-            <ons-col align="center">
-                <div style="text-align: center" class="content-padded">
-                    <ons-button ng-click="search(searchString)" modifier="large">Buscar</ons-button>
-                </div>
-            </ons-col>
-        </ons-row>
-    </form>
-    <!-- Solo se muestra si es un listado de productos -->
-    <module-product-list ng-hide="isWorking"></module-product-list>
-    <module-loading-spinner ng-show="isWorking"></module-loading-spinner>
 </ons-page>
