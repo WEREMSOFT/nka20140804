@@ -22,6 +22,38 @@
         $scope.searchTotal = 0;
         $scope.lastPage = 1;
 
+        $scope.slides2 = [{
+            "id": 1,
+            "label": "slide #1",
+            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1.jpg",
+            "color": "#fc0003",
+            "odd": true
+        }, {
+            "id": 2,
+            "label": "slide #2",
+            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_1.jpg",
+            "color": "#c90036",
+            "odd": false
+        }, {
+            "id": 3,
+            "label": "slide #3",
+            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_2.jpg",
+            "color": "#c90036",
+            "odd": false
+        }];
+
+        var nakaSlides = [{
+            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1.jpg",
+            url: ""
+        }, {
+            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_1.jpg",
+            url: ""
+        }, {
+            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_2.jpg",
+            url: ""
+        }];
+
+        console.log($scope.slides2);
 
         $scope.getCategory = function(categoryID) {
             $scope.loading = true;
@@ -216,8 +248,7 @@
             if (pPage == null) {
                 pPage = 1;
                 $scope.lastPage = 1;
-            }else
-            {
+            } else {
                 $scope.lastPage = pPage;
             }
 
