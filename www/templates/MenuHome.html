@@ -1,11 +1,11 @@
 <div style="text-align: center" class="content-padded">
     <div ng-hide="categories.length == 0">
         <ons-row ng-hide="connectionFail">
-            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/PageNewProducts.html')">
+            <ons-col class="cadorna2 list__item--tappable" ng-click="getNewProducts()">
                 <img width="50px" height="50px" src="imgs/icons/nuevos256.jpg">
                 <div class="cadorna">Nuevos</div>
             </ons-col>
-            <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/PageOfertas.html')">
+            <ons-col class="cadorna2 list__item--tappable" ng-click="getOfertas()">
                 <img width="50px" height="50px" src="imgs/icons/ofertas256.jpg">
                 <div class="cadorna">Ofertas</div>
             </ons-col>

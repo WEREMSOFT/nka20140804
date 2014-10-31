@@ -25,25 +25,98 @@
 
         $scope.slides2 = [];
 
-
-        var nakaSlides = [{
-            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1.jpg",
-            url: ""
-        }, {
-            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_1.jpg",
-            url: ""
-        }, {
-            file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_2.jpg",
-            url: ""
-        }];
+        $scope.currentCategory = 0;
 
         console.log($scope.slides2);
 
+
+        $scope.refreshCurrentProductList = function() {
+            console.log("searchString: " + $scope.searchString);
+            console.log("last category: " + $scope.currentCategory);
+            console.log(ons.navigator.getCurrentPage().page);
+            if (ons.navigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
+                $scope.getCategory($scope.currentCategory);
+            } else if (ons.navigator.getCurrentPage().page == "templates/forms/FormSearch.html") {
+                $scope.search($scope.searchString);
+            } else if (ons.navigator.getCurrentPage().page == "templates/pages/PageNewProducts.html") {
+                $scope.getNewProducts();
+            } else if (ons.navigator.getCurrentPage().page == 'templates/pages/PageOfertas.html') {
+                $scope.getOfertas();
+            }
+        }
+
+        $scope.getOfertas = function() {
+            console.log('inicializando');
+            $scope.isWorking = true;
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/webservices/ofertas.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            $scope.httpError = function(data, status, headers, config) {
+                $scope.connectionFail = true;
+                $scope.isWorking = false;
+            }
+
+            $scope.httpSuccess = function(data, status, headers, config) {
+                console.log(data);
+                $scope.products = data.result.child_products;
+                $scope.isWorking = false;
+                $scope.connectionFail = false;
+            }
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
+
+            if (ons.navigator.getCurrentPage().page != 'templates/pages/PageOfertas.html') {
+                ons.navigator.pushPage('templates/pages/PageOfertas.html');
+            }
+
+        }
+
+        $scope.getNewProducts = function() {
+            console.log('inicializando');
+            $scope.isWorking = true;
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            this.httpError = function(data, status, headers, config) {
+                $scope.connectionFail = true;
+                $scope.isWorking = false;
+            }
+
+            this.httpSuccess = function(data, status, headers, config) {
+                    console.log(data);
+                    $scope.products = data.result.child_products;
+                    $scope.isWorking = false;
+                    $scope.connectionFail = false;
+                }
+                // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
+            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
+                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
+            }
+        }
+
         $scope.getCategory = function(categoryID) {
+            $scope.searchString = "";
+            $scope.currentCategory = categoryID;
             $scope.loading = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=1',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
@@ -345,7 +418,7 @@
             request.error(this.getCarrouselDataError);
         }
 
-        
+
 
         document.addEventListener("resume", $scope.checkForPushNotificationData, false);
         document.addEventListener("deviceready", $scope.init, false);

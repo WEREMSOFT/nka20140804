@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Cart', 'Register', 'Ofertas', 'CommingSoon', 'MainApp', 'NewProducts', 'ContactForm', 'List', 'Login', 'GridMenu', 'PendingCalifications', 'angular-carousel']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngSanitize', 'QuestionOnProduct', 'Cart', 'Register', 'CommingSoon', 'MainApp', 'ContactForm', 'List', 'Login', 'GridMenu', 'PendingCalifications', 'angular-carousel']);
 
     app.factory('shoppingCart', function($http) {
         var returnValue = {
