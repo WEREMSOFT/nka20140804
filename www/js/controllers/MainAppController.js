@@ -2,9 +2,10 @@
     'use strict';
     var module = angular.module('MainApp', []);
 
-    module.controller('MainAppController', function($scope, $http, $sce, userData, shoppingCart) {
+    module.controller('MainAppController', function($scope, $http, $sce, userData, shoppingCart, sortOptions) {
         $scope.userData = userData;
         $scope.shoppingCart = shoppingCart;
+        $scope.sortOptions = sortOptions;
         $scope.categories = [];
         $scope.products = null;
         $scope.lastCategory = [];
@@ -22,25 +23,8 @@
         $scope.searchTotal = 0;
         $scope.lastPage = 1;
 
-        $scope.slides2 = [{
-            "id": 1,
-            "label": "slide #1",
-            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1.jpg",
-            "color": "#fc0003",
-            "odd": true
-        }, {
-            "id": 2,
-            "label": "slide #2",
-            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_1.jpg",
-            "color": "#c90036",
-            "odd": false
-        }, {
-            "id": 3,
-            "label": "slide #3",
-            "img": "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1_2.jpg",
-            "color": "#c90036",
-            "odd": false
-        }];
+        $scope.slides2 = [];
+
 
         var nakaSlides = [{
             file: "http://www.nakaoutdoors.com.ar/img/slides/slide_mobile_test_1.jpg",
@@ -324,8 +308,44 @@
                 }
             }
             $scope.getCategory(categoryID);
+            $scope.getCarrouselData();
 
         }
+
+        $scope.getCarrouselData = function() {
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/webservices/slide.json',
+            });
+
+            this.getCarrouselDataError = function(data, status, headers, config) {
+                console.log(data);
+            }
+
+            this.getCarrouselDataSuccess = function(data, status, headers, config) {
+                if (data.result.slide.length > 0) {
+                    for (var i = 0; i < data.result.slide.length; i++) {
+                        $scope.slides2.push({
+                            "id": i,
+                            "label": "slide #" + i,
+                            "img": data.result.slide[i].file,
+                            "color": "#fc0003",
+                            "odd": i % 2 == 0
+                        });
+                    }
+                }
+
+            }
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.getCarrouselDataSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.getCarrouselDataError);
+        }
+
+        
 
         document.addEventListener("resume", $scope.checkForPushNotificationData, false);
         document.addEventListener("deviceready", $scope.init, false);

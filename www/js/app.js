@@ -46,6 +46,52 @@
         return returnValue;
     });
 
+
+    app.factory('sortOptions', function($http) {
+        var returnValue = {
+            firstRun : true,
+            selectedSortOption: 1,
+            options: {}
+        };
+
+        returnValue.httpError = function(data, status, headers, config) {
+            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
+        };
+
+        returnValue.httpSuccess = function(data, status, headers, config) {
+            returnValue.firstRun = false;
+            returnValue.options = data.result.order_options;
+            console.log(data.options);
+        };
+
+        returnValue.refreshSortOptions = function() {
+            console.log('Refrescando información de carrito...');
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/webservices/order_options.json',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+
+            // Store the data-dump of the FORM scope.
+            request.success(this.httpSuccess);
+
+
+            // Store the data-dump of the FORM scope.
+            request.error(this.httpError);
+        }
+
+        if (returnValue.firstRun) {
+            returnValue.refreshSortOptions();
+        }
+        return returnValue;
+    });
+
+
+
+
     app.factory('userData', function($http) {
         var returnValue = {
             logedIn: false,

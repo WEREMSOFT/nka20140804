@@ -1,5 +1,13 @@
-<!-- Solo se muestra si es un listado de productos -->
+<ons-row style="margin-top: 0px;">
+    <ons-col align="center">
+        {{cheto}}
+        <select style="margin-top: 3px;" type="number" ng-show="sortOptions.options" ng-model="cheto" ng-options="sortOption.id as sortOption.description for sortOption in sortOptions.options" class="text-input--underbar select-combo">
+            <option value="">-- Elija una opción --</option>
+        </select>
+    </ons-col>
+</ons-row>
 
+<!-- Solo se muestra si es un listado de productos -->
 <ul class="list list-top" ng-if="!isCart">
     <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
         <div class="list-item-main">
@@ -57,9 +65,11 @@
                     <span class="list-item-name">{{product.title}} &nbsp;
                         <br/>
                         <span>
-                            <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}<br>
+                            <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}
+                            <br>
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
-                            <span style="color: red">$ {{product.price}}</span><br>
+                            <span style="color: red">$ {{product.price}}</span>
+                            <br>
                         </span>
                     </span>
 
@@ -94,4 +104,3 @@
         </div>
     </ons-col>
 </ons-row>
-
