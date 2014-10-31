@@ -1,7 +1,6 @@
 <ons-row style="margin-top: 0px;">
     <ons-col align="center">
-        {{cheto}}
-        <select style="margin-top: 3px;" type="number" ng-show="sortOptions.options" ng-model="cheto" ng-options="sortOption.id as sortOption.description for sortOption in sortOptions.options" class="text-input--underbar select-combo">
+        <select style="margin-top: 3px;" type="number" ng-change="search(searchString)" ng-show="sortOptions.options" ng-model="sortOptions.selectedSortOption" ng-options="sortOption.id as sortOption.description for sortOption in sortOptions.options" class="text-input--underbar select-combo">
             <option value="">-- Elija una opción --</option>
         </select>
     </ons-col>

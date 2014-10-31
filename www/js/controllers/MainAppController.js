@@ -239,7 +239,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "post",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/search.json?max=' + pCount + '&offset=' + pPage + '&order=1',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/search.json?max=' + pCount + '&offset=' + pPage + '&order=' + sortOptions.selectedSortOption,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
