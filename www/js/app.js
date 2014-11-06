@@ -300,14 +300,15 @@ var app = {
     receivedEvent: function(id) {
         alert("id del evento: " + id);
         if (id === 'deviceready') {
-            console.log('device ready');
+            alert('entrando a deviceready');
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
-
+            alert('pantalla ocultada, dispositivo: ' + device.platform);
             if (device.platform == 'Android') {
                 subscriveToPushNotificationsAndroid();
             } else {
+                alert("suscribiendo a push notidications ios");
                 subscriveToPushNotificationsIOS();
             }
 
@@ -332,6 +333,8 @@ function subscriveToPushNotificationsAndroid() {
 }
 
 function subscriveToPushNotificationsIOS() {
+    alert("llamando a pushNotification cadorn");
+    var pushNotification = window.plugins.pushNotification;
     pushNotification.register(
         tokenHandler,
         errorHandler, {
