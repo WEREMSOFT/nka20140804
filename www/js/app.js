@@ -295,14 +295,11 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        alert(device.platform);
         if (id === 'deviceready') {
             console.log('device ready');
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
-
-            alert(device.platform);
 
             if (device.platform == 'Android') {
                 subscriveToPushNotificationsAndroid();
