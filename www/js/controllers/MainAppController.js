@@ -26,7 +26,7 @@
         $scope.slides2 = [];
 
         $scope.currentCategory = 0;
-
+        console.log("slides2");
         console.log($scope.slides2);
 
 
@@ -159,6 +159,7 @@
             ons.navigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
+            $scope.getCategory(categoryID);
         }
 
         $scope.getProduct = function(productID, pIsCodebar) {
