@@ -295,6 +295,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        alert(device.platform);
         if (id === 'deviceready') {
             console.log('device ready');
             gaPlugin = window.plugins.gaPlugin;
