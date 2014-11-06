@@ -49,7 +49,7 @@
 
     app.factory('sortOptions', function($http) {
         var returnValue = {
-            firstRun : true,
+            firstRun: true,
             selectedSortOption: 1,
             options: {}
         };
@@ -299,7 +299,13 @@ var app = {
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
-            subscriveToPushNotificationsAndroid();
+
+            if (device.platform == 'android') {
+                subscriveToPushNotificationsAndroid();
+            } else {
+                subscriveToPushNotificationsIOS();
+            }
+
         }
     }
 };
@@ -320,6 +326,22 @@ function subscriveToPushNotificationsAndroid() {
 
 }
 
+function subscriveToPushNotificationsIOS() {
+    pushNotification.register(
+        tokenHandler,
+        errorHandler, {
+            "badge": "true",
+            "sound": "true",
+            "alert": "true",
+            "ecb": "onNotificationAPN"
+        });
+}
+
+function tokenHandler (result) {
+    // Your iOS push server needs to know the token before it can push to this device
+    // here is where you might want to send it the token for later use.
+    window.localStorage.setItem('pushNotificationToken', result);
+}
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
