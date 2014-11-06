@@ -383,6 +383,7 @@
             }
             $scope.getCategory(categoryID);
             $scope.getCarrouselData();
+            $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
         }
 
