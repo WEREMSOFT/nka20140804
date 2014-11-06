@@ -373,7 +373,7 @@
         }
 
         $scope.init = function() {
-            console.log('page initialize');
+            alert('page initialize');
             $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {
