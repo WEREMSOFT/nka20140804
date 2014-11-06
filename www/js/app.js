@@ -300,6 +300,8 @@ var app = {
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
 
+            alert(device.platform);
+
             if (device.platform == 'android') {
                 subscriveToPushNotificationsAndroid();
             } else {
