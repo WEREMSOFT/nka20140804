@@ -1,7 +1,7 @@
 <ons-page class="center">
     <module-header></module-header>
     <!-- Solo se muestra si es una categoría -->
-    <div style="text-align: center" class="content-padded" ng-hide="loading">
+    <div style="text-align: center" class="content-padded" ng-hide="loading"  ng-init="init()">
         <module-category-list ng-if="categories[ons.navigator.getCurrentPage().options.categoryID]"></module-category-list>
         <module-product-list ng-if="!categories[ons.navigator.getCurrentPage().options.categoryID]"></module-product-list>
     </div>

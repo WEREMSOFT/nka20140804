@@ -159,7 +159,6 @@
             ons.navigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
-            $scope.getCategory(categoryID);
         }
 
         $scope.getProduct = function(productID, pIsCodebar) {
@@ -372,8 +371,8 @@
             promptError("Scanning failed: " + error);
         }
 
-        $scope.init = function() {
-            alert('page initialize');
+        $scope.categoryPageInit = function()
+        {
             $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {
@@ -382,6 +381,10 @@
                 }
             }
             $scope.getCategory(categoryID);
+        }
+
+        $scope.init = function() {
+            $scope.categoryPageInit();
             $scope.getCarrouselData();
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 

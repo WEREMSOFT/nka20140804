@@ -201,7 +201,6 @@
         }
 
         returnValue.sendPushNotificationToken = function(pToken) {
-            alert("Enviando token");
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/mobile/device_add.json',
@@ -296,7 +295,6 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         if (id === 'deviceready') {
-            alert('entrando a deviceready');
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
@@ -304,7 +302,6 @@ var app = {
             if (device.platform == 'Android') {
                 subscriveToPushNotificationsAndroid();
             } else {
-                alert("suscribiendo a push notidications ios");
                 subscriveToPushNotificationsIOS();
             }
 
@@ -343,7 +340,6 @@ function subscriveToPushNotificationsIOS() {
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    alert(result);
     window.localStorage.setItem('pushNotificationToken', result);
 }
 
