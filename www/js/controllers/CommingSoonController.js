@@ -31,7 +31,6 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            console.log(data);
             $scope.products = data.result.child_products;
             $scope.isWorking = false;
             $scope.connectionFail = false;

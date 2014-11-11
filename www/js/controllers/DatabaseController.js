@@ -27,7 +27,6 @@
         }
 
         function querySuccess(tx, results) {
-            console.log(results);
             var len = results.rows.length;
             console.log("APPDATA table: " + len + " rows found.");
             for (var i = 0; i < len; i++) {

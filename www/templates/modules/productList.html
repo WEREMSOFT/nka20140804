@@ -1,4 +1,10 @@
-
+<ons-row style="margin-top: 0px;" ng-if="!isCart">
+    <ons-col align="center">
+        <select style="margin-top: 3px;" type="number" ng-change="refreshCurrentProductList()" ng-show="sortOptions.options" ng-model="sortOptions.selectedSortOption" ng-options="sortOption.id as sortOption.description for sortOption in sortOptions.options" class="text-input--underbar select-combo">
+            <option value="">-- Elija una opción --</option>
+        </select>
+    </ons-col>
+</ons-row>
 
 <!-- Solo se muestra si es un listado de productos -->
 <ul class="list list-top" ng-if="!isCart">

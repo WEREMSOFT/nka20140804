@@ -62,7 +62,6 @@
         }
 
         $scope.init = function() {
-            console.log('inicializando......' + ons.navigator.getCurrentPage().name);
             if (ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 $scope.userData.refreshUserDetails();
                 //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
@@ -95,7 +94,6 @@
 
         $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
             $scope.buyOptions = data.result;
-            console.log($scope.buyOptions);
         }
 
         $scope.httpGetBuyOptiondError = function() {

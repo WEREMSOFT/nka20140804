@@ -44,7 +44,6 @@
                 return;
             }
             $scope.isWorking = true;
-            console.log($scope.talle);
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_add.json',
@@ -71,12 +70,9 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            console.log(data);
             shoppingCart.refreshCartDetails();
             $scope.products = data.result;
             $scope.isWorking = false;
-            console.log('->' + $scope.cantidad);
-            console.log('->' + ($scope.cantidad > 1 ? 's' : ''));
             var strConfirmationText = ' ' + $scope.cantidad + ' item' + ($scope.cantidad > 1 ? 's' : '') + ' agregado' + ($scope.cantidad > 1 ? 's' : '') + ' al carrito.';
             navigator.notification.confirm(
                 strConfirmationText, // message
@@ -96,13 +92,11 @@
         }
 
         $scope.init = function() {
-            console.log(ons.navigator.getCurrentPage().name);
             $scope.shoppingCart.refreshCartDetails();
             $scope.getBuyOptions();
         }
 
         $scope.completarDatosEnvio = function() {
-            console.log($scope.shoppingCart.cartData.items.length);
             if (!$scope.shoppingCart.cartData.items.length) {
                 prompt("Su carrito de compras esta vacío");
                 return;
@@ -112,7 +106,6 @@
 
 
         $scope.enviarPedido = function() {
-            console.log($scope.formPedido);
             if ($scope.formPedido.$invalid) {
                 prompt("Debe completar todos los campos marcados en rojo");
                 return;
@@ -205,7 +198,6 @@
 
         $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
             $scope.buyOptions = data.result;
-            console.log($scope.buyOptions);
         }
 
         $scope.httpGetBuyOptiondError = function() {

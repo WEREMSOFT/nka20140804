@@ -147,7 +147,6 @@
             }
         }
         $scope.emailSucursal = function(cod_sucursal) {
-            console.log(cod_sucursal);
             switch (cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     var link = "mailto:info@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");

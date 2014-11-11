@@ -26,14 +26,8 @@
         $scope.slides2 = [];
 
         $scope.currentCategory = 0;
-        console.log("slides2");
-        console.log($scope.slides2);
-
 
         $scope.refreshCurrentProductList = function() {
-            console.log("searchString: " + $scope.searchString);
-            console.log("last category: " + $scope.currentCategory);
-            console.log(ons.navigator.getCurrentPage().page);
             if (ons.navigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
                 $scope.getCategory($scope.currentCategory);
             } else if (ons.navigator.getCurrentPage().page == "templates/forms/FormSearch.html") {
@@ -46,7 +40,6 @@
         }
 
         $scope.getOfertas = function() {
-            console.log('inicializando');
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
@@ -62,7 +55,6 @@
             }
 
             $scope.httpSuccess = function(data, status, headers, config) {
-                console.log(data);
                 $scope.products = data.result.child_products;
                 $scope.isWorking = false;
                 $scope.connectionFail = false;
@@ -80,7 +72,6 @@
         }
 
         $scope.getNewProducts = function() {
-            console.log('inicializando');
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
@@ -96,7 +87,6 @@
             }
 
             this.httpSuccess = function(data, status, headers, config) {
-                    console.log(data);
                     $scope.products = data.result.child_products;
                     $scope.isWorking = false;
                     $scope.connectionFail = false;
@@ -125,7 +115,6 @@
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
-                console.log("cargando categoría");
                 if (data.result.child_categories) {
                     var categoryID = 0;
                     if (ons.navigator) {
@@ -134,11 +123,9 @@
                         }
                     }
                     $scope.categories[categoryID] = data.result.child_categories;
-                    console.log($scope.categories);
                     $scope.isCategory = true;
                 } else if (data.result.child_products) {
                     $scope.products = data.result.child_products;
-                    console.log($scope.products);
                     $scope.isCategory = false;
                 }
                 $scope.loading = false;
@@ -155,7 +142,6 @@
         }
 
         $scope.showCategory = function(categoryID) {
-            console.log(categoryID);
             ons.navigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
@@ -170,7 +156,6 @@
             });
 
             this.httpGetProductDetailsError = function(data, status, headers, config) {
-                console.log(data);
                 $scope.connectionFail = true;
                 $scope.loading = false;
             }
@@ -202,7 +187,6 @@
                         for (var i = 0; i < $scope.product.options["En Stock"].length; i++) {
                             $scope.product.options["En Stock"][i].stock = "En Stock";
                         }
-                        console.log('concatenando...');
                         $scope.product.talles = $scope.product.talles.concat($scope.product.options["En Stock"]);
                     }
 
@@ -210,11 +194,8 @@
                         for (var i = 0; i < $scope.product.options["Consultar Stock"].length; i++) {
                             $scope.product.options["Consultar Stock"][i].stock = "Consultar Stock";
                         }
-                        console.log('concatenando...');
                         $scope.product.talles = $scope.product.talles.concat($scope.product.options["Consultar Stock"]);
                     }
-                    console.log("opciones de talle");
-                    console.log($scope.product.talles);
                 }
 
                 $scope.product.unsafeParsedHTML = $sce.trustAsHtml($scope.product.body);
@@ -227,14 +208,7 @@
                     stars[i].value = (i + 1) <= $scope.product.score ? 1 : 0;
                 }
                 $scope.product.stars = stars;
-
-
-                console.log($scope.product.stars);
-
-
-
                 $scope.currentSlide = $scope.product.images[0];
-                console.log($scope.product);
                 $scope.isCategory = false;
                 $scope.loading = false;
             }
@@ -265,7 +239,6 @@
 
             this.httpGetDestacadosSuccess = function(data, status, headers, config) {
                 $scope.destacadosHome = data.result.child_products;
-                console.log($scope.destacadosHome);
             }
 
             // Store the data-dump of the FORM scope.

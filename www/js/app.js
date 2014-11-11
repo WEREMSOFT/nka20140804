@@ -11,18 +11,15 @@
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
-            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
         };
 
         returnValue.httpSuccess = function(data, status, headers, config) {
             returnValue.isWorking = false;
             returnValue.firstRun = false;
             returnValue.cartData = data.result;
-            console.log(data.result);
         };
 
         returnValue.refreshCartDetails = function() {
-            console.log('Refrescando información de carrito...');
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/carrito.json',
@@ -61,11 +58,9 @@
         returnValue.httpSuccess = function(data, status, headers, config) {
             returnValue.firstRun = false;
             returnValue.options = data.result.order_options;
-            console.log(data.options);
         };
 
         returnValue.refreshSortOptions = function() {
-            console.log('Refrescando información de carrito...');
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/order_options.json',
@@ -120,7 +115,6 @@
 
         returnValue.httpError = function(data, status, headers, config) {
             returnValue.isWorking = false;
-            console.log('Oops! Algo ha salido mal. Reintenta en un momento');
             returnValue.reset();
         }
 
@@ -145,8 +139,6 @@
         }
 
         returnValue.refreshUserDetails = function() {
-            console.log('Refrescando información de usuario...');
-            console.log(returnValue);
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/usuarios/applogin.json',
@@ -190,7 +182,6 @@
             if (data.result) {
                 if (data.result.products) {
                     returnValue.pendingCalifications = data.result.products;
-                    console.log(returnValue.pendingCalifications);
                 }
             }
         }
@@ -344,7 +335,6 @@ function tokenHandler (result) {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    console.log(result);
 }
 
 function errorHandler(error) {
