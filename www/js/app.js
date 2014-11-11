@@ -298,7 +298,6 @@ var app = {
             gaPlugin = window.plugins.gaPlugin;
             gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
             navigator.splashscreen.hide();
-            alert('pantalla ocultada, dispositivo: ' + device.platform);
             if (device.platform == 'Android') {
                 subscriveToPushNotificationsAndroid();
             } else {
