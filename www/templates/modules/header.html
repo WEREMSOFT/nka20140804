@@ -6,7 +6,7 @@
         </ons-toolbar-button>
         <ons-back-button ng-hide="ons.navigator.getPages().length <= 1">
         </ons-back-button>
-        <ons-toolbar-button class="back-button-image" ng-hide="ons.navigator.getPages().length <= 1" ng-click="ons.navigator.popPage()">
+        <ons-toolbar-button class="back-button-image" ng-hide="ons.navigator.getPages().length <= 1" ng-click="backButtonHandler()">
             <img width="30px" height="36px" class="logo-image" src="imgs/header_logo.png">
         </ons-toolbar-button>
     </div>
