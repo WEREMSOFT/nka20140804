@@ -29,7 +29,7 @@
 
         $scope.backButtonHandler = function()
         {
-            if(ons.navigator.getPages().length <= 1)
+            if(ons.navigator.getPages().length > 1)
                 ons.navigator.popPage()
             else
                 return true;
