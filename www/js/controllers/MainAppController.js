@@ -27,6 +27,14 @@
 
         $scope.currentCategory = 0;
 
+        $scope.backButtonHandler = function()
+        {
+            if(ons.navigator.getPages().length <= 1)
+                ons.navigator.popPage()
+            else
+                return true;
+        }
+
         $scope.refreshCurrentProductList = function() {
             if (ons.navigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
                 $scope.getCategory($scope.currentCategory);
