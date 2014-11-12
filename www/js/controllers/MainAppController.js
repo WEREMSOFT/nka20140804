@@ -29,7 +29,10 @@
 
         $scope.backButtonHandler = function()
         {
-            if(ons.navigator.getPages().length > 1)
+            alert('entro!');
+            alert($scope.ons.navigator.getPages().length);
+
+            if($scope.ons.navigator.getPages().length > 1)
             {
                 alert('entro!');
                 $scope.ons.navigator.popPage();
