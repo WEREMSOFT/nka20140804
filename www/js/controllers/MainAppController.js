@@ -27,8 +27,7 @@
 
         $scope.currentCategory = 0;
 
-        $scope.backButtonHandler = function()
-        {
+        $scope.backButtonHandler = function() {
             $scope.ons.navigator.popPage();
             alert('test');
         }
@@ -350,8 +349,7 @@
             promptError("Scanning failed: " + error);
         }
 
-        $scope.categoryPageInit = function()
-        {
+        $scope.categoryPageInit = function() {
             $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {
@@ -366,6 +364,10 @@
             $scope.categoryPageInit();
             $scope.getCarrouselData();
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
+
+            ons.setDefaultDeviceBackButtonListener(function() {
+                alert("backButtonHandler");
+            });
 
         }
 
