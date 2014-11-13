@@ -366,6 +366,7 @@
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
             ons.setDefaultDeviceBackButtonListener(function() {
+                alert('test');
                 ons.navigator.popPage();
             });
 
