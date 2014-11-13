@@ -350,6 +350,10 @@
         }
 
         $scope.categoryPageInit = function() {
+            ons.setDefaultDeviceBackButtonListener(function() {
+                alert('test');
+                ons.navigator.popPage();
+            });
             $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {
@@ -358,10 +362,7 @@
                 }
             }
             $scope.getCategory(categoryID);
-             ons.setDefaultDeviceBackButtonListener(function() {
-                alert('test');
-                ons.navigator.popPage();
-            });
+
         }
 
         $scope.init = function() {
@@ -369,7 +370,7 @@
             $scope.getCarrouselData();
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
-            
+
 
         }
 
