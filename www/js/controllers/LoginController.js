@@ -61,6 +61,8 @@
             }
         }
 
+
+
         $scope.init = function() {
             if (ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 $scope.userData.refreshUserDetails();
