@@ -29,12 +29,8 @@
 
         $scope.backButtonHandler = function()
         {
-            if($scope.ons.navigator.getPages().length > 1)
-            {
-                $scope.ons.navigator.popPage();
-            }
-            else
-                return true;
+            $scope.ons.navigator.popPage();
+            alert('test');
         }
 
         $scope.refreshCurrentProductList = function() {
