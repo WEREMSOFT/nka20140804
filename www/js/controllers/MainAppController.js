@@ -29,6 +29,7 @@
 
         $scope.backButtonHandler = function() {
             ons.navigator.popPage();
+            $scope.$apply();
         }
 
         $scope.refreshCurrentProductList = function() {
