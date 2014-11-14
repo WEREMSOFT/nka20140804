@@ -5448,8 +5448,8 @@ limitations under the License.
 
       _onDeviceBackButton: function(event) {
         if (this.pages.length > 1) {
+        	//Comento esto para evitar que onsen llama pop page.
           //this.popPage();
-          //alert("pop page desde onsen");
         } else {
           event.callParentHandler();
         }
