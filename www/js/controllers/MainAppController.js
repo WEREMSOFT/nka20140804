@@ -373,7 +373,7 @@
                     e.preventDefault();
                     //ons.navigator.popPage();
                 } else {
-                    navigator.app.exitApp();
+                    //navigator.app.exitApp();
                 }
             }, false);
 
