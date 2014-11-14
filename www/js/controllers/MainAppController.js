@@ -350,6 +350,7 @@
         }
 
         $scope.categoryPageInit = function() {
+            alert(ons.setDefaultDeviceBackButtonListener);
             ons.setDefaultDeviceBackButtonListener(function() {
                 alert('test');
                 ons.navigator.popPage();
