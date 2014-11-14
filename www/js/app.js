@@ -387,4 +387,4 @@ function googleAnalyticsTrakEventError() {
 document.addEventListener("backbutton", function(e) {
     alert("THE BACK BUTTON WAS HIT!");
     e.preventDefault();
-}, false);
+}, true);
