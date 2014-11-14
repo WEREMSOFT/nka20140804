@@ -28,8 +28,7 @@
         $scope.currentCategory = 0;
 
         $scope.backButtonHandler = function() {
-            $scope.ons.navigator.popPage();
-            alert('test');
+            ons.navigator.popPage();
         }
 
         $scope.refreshCurrentProductList = function() {
