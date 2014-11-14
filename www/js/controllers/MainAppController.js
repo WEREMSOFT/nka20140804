@@ -365,19 +365,6 @@
             $scope.categoryPageInit();
             $scope.getCarrouselData();
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
-            //Manejo el evento de backbutton en android porque funciona mal el pop page
-            document.addEventListener("backbutton", function(e) {
-                alert("evento backbutton desde main. Paginas: ");
-                alert(ons.navigator.getPages().length);
-                if (ons.navigator.getPages().length > 1) {
-                    e.preventDefault();
-                    //ons.navigator.popPage();
-                } else {
-                    //navigator.app.exitApp();
-                }
-            }, false);
-
-
         }
 
         $scope.getCarrouselData = function() {
