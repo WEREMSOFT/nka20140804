@@ -289,7 +289,7 @@ var app = {
         } else {
             subscriveToPushNotificationsIOS();
         }
-        
+
 
     }
 };
@@ -383,3 +383,8 @@ function googleAnalyticsTrackEventSuccess() {
 function googleAnalyticsTrakEventError() {
     console.log("error al trackear evento de google analytics");
 }
+
+document.addEventListener("backbutton", function(e) {
+    alert("THE BACK BUTTON WAS HIT!");
+    e.preventDefault();
+}, false);
