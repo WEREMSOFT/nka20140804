@@ -350,11 +350,6 @@
         }
 
         $scope.categoryPageInit = function() {
-            alert(ons.setDefaultDeviceBackButtonListener);
-            ons.setDefaultDeviceBackButtonListener(function() {
-                alert('test');
-                ons.navigator.popPage();
-            });
             $scope.connectionFail = false;
             var categoryID = 0;
             if (ons.navigator) {

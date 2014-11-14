@@ -281,21 +281,25 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        if (id === 'deviceready') {
-            gaPlugin = window.plugins.gaPlugin;
-            gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
-            navigator.splashscreen.hide();
-            if (device.platform == 'Android') {
-                subscriveToPushNotificationsAndroid();
-            } else {
-                subscriveToPushNotificationsIOS();
-            }
 
+        gaPlugin = window.plugins.gaPlugin;
+        gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
+        navigator.splashscreen.hide();
+        if (device.platform == 'Android') {
+            subscriveToPushNotificationsAndroid();
+        } else {
+            subscriveToPushNotificationsIOS();
         }
+        document.addEventListener("backbutton", function(e) {
+            alert("evento backbutton");
+            if ($rootScope.ons.navigator.getPages().length > 1) {
+                e.preventDefault();
+                $rootScope.ons.navigator.popPage();
+            } else {
+                navigator.app.exitApp();
+            }
+        }, false);
+
     }
 };
 
@@ -327,15 +331,14 @@ function subscriveToPushNotificationsIOS() {
         });
 }
 
-function tokenHandler (result) {
+function tokenHandler(result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
     window.localStorage.setItem('pushNotificationToken', result);
 }
 
 // result contains any message sent from the plugin call
-function successHandler(result) {
-}
+function successHandler(result) {}
 
 function errorHandler(error) {
     promptError(error);
