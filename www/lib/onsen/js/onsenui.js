@@ -5449,7 +5449,7 @@ limitations under the License.
       _onDeviceBackButton: function(event) {
         if (this.pages.length > 1) {
           this.popPage();
-          $rootScope.$apply();
+          this._scope.$apply();
         } else {
           event.callParentHandler();
         }
