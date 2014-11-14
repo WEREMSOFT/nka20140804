@@ -290,8 +290,9 @@ var app = {
         } else {
             subscriveToPushNotificationsIOS();
         }
+        //Manejo el evento de backbutton en android porque funciona mal el pop page
         document.addEventListener("backbutton", function(e) {
-            alert("evento backbutton");
+            alert("evento backbutton. Paginas: " + $rootScope.ons.navigator.getPages().length);
             if ($rootScope.ons.navigator.getPages().length > 1) {
                 e.preventDefault();
                 $rootScope.ons.navigator.popPage();
