@@ -371,7 +371,7 @@
                 alert(ons.navigator.getPages().length);
                 if (ons.navigator.getPages().length > 1) {
                     e.preventDefault();
-                    ons.navigator.popPage();
+                    //ons.navigator.popPage();
                 } else {
                     navigator.app.exitApp();
                 }
