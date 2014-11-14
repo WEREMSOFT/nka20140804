@@ -2,6 +2,8 @@
     <module-header></module-header>
     <!-- Solo se muestra si es una categoría -->
     <div style="text-align: center" class="content-padded" ng-hide="loading"  ng-init="categoryPageInit()">
+	    {{'categorias: '}}
+	    {{categories[ons.navigator.getCurrentPage().options.categoryID]}}
         <module-category-list ng-if="categories[ons.navigator.getCurrentPage().options.categoryID]"></module-category-list>
         <module-product-list ng-if="!categories[ons.navigator.getCurrentPage().options.categoryID]"></module-product-list>
     </div>
