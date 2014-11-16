@@ -5,7 +5,7 @@
             <ons-col align="center">
                 <div style="text-align: center">
                     <ul rn-carousel rn-carousel-buffered class="carousel2">
-                        <li ng-repeat="slide in slides2 track by slide.id" ng-class="'id-' + slide.id">
+                        <li ng-repeat="slide in slides2 track by $index" ng-class="'id-' + slide.id">
                             <div ng-style="{'background-image': 'url(' + slide.img + ')'}" class="bgimage">
                             </div>
                         </li>
