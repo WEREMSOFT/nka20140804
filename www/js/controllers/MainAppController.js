@@ -445,7 +445,12 @@
             templateUrl: 'templates/modules/stockColorCodes.html'
         };
     });
-
+   module.directive('moduleCarrousel', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/modules/carrousel.html'
+        };
+    });
 
 
 
