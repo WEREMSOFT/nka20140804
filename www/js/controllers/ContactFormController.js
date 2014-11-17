@@ -25,10 +25,7 @@
 
         $scope.sendContact = function() {
 
-            if ($scope.consulta = "") {
-                prompt("Debe ingresar un texto para la consulta.");
-                return false;
-            }
+
 
             var hashMail = $scope.hashMail;
             var hashAnt = $scope.hashAnt;
@@ -58,7 +55,15 @@
         }
 
         $scope.getHash = function() {
+
+
             if ($scope.isWorking === true) return;
+            
+            if ($scope.consulta == "") {
+                prompt("Debe ingresar un texto para la consulta.");
+                return false;
+            }
+
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
