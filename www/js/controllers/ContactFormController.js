@@ -96,7 +96,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            prompt('Su consulta ha sido enviado con éxito!');
+            prompt('Su consulta ha sido enviada con éxito');
             ons.navigator.popPage();
         }
     });
@@ -111,9 +111,9 @@
             $scope.cod_sucursal = cod_sucursal;
             try {
                 navigator.notification.confirm(
-                    'Desea llamar a la sucursal?', // message
+                    '¿Desea llamar a la sucursal?', // message
                     $scope.onConfirm, // callback to invoke with index of button pressed
-                    'Llamar?', // title
+                    'Contacto', // title
                     ['Llamar ahora', 'Tal vez mas tarde'] // buttonLabels
                 );
             } catch (e) {

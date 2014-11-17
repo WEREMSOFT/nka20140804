@@ -83,12 +83,12 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            alert("Ooosp!, algo ha salido mal, reintente en un momento");
+            promptError("Ooosp!, algo ha salido mal, reintente en un momento");
             $scope.isWorking = false;
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            alert('Su consulta ha sido enviado con éxito!');
+            alert('Su consulta ha sido enviada con éxito');
             var image = userData.logedIn == 'true'?userData.profileData.imagen:'http://www.nakaoutdoors.com.ar/img/avatar/sin_avatar_thumb.jpg';
             $scope.product.questions.unshift({
                 user: {
