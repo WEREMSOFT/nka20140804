@@ -57,7 +57,7 @@
                 ons.navigator.resetToPage('templates/pages/PageHome.html');
             } else if (data.result.logedIn === -2) {
                 promptError('Nombre de usuario o contraseña inválidas');
-                $scope.logout();
+                $scope.logout(false);
             }
         }
 
@@ -102,16 +102,22 @@
 
         }
 
-        $scope.logout = function() {
-            try {
-                navigator.notification.confirm(
-                    '¿Desea deslogearse?', // message
-                    $scope.onConfirm, // callback to invoke with index of button pressed
-                    'Deslogearse?', // title
-                    ['Sí', 'Mejor no'] // buttonLabels
-                );
-            } catch (e) {
-                alert(e);
+        $scope.logout = function(pConfirm) {
+            if(pConfirm)
+            {
+                try {
+                    navigator.notification.confirm(
+                        '¿Desea deslogearse?', // message
+                        $scope.onConfirm, // callback to invoke with index of button pressed
+                        'Deslogearse?', // title
+                        ['Sí', 'Mejor no'] // buttonLabels
+                    );
+                } catch (e) {
+                    alert(e);
+                }
+            }else
+            {
+                $scope.onConfirm(1);
             }
 
         }
