@@ -52,6 +52,7 @@
         }
 
         $scope.submitRegister = function() {
+            prompt("registrando");
             if ($scope.formRegister.$invalid) {
                 prompt("Debe completar todos los campos marcados en rojo");
                 return;

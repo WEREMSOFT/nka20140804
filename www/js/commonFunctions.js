@@ -1,5 +1,5 @@
 var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-
+var raiseDebugErrors = false;
 
 
 function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
@@ -62,8 +62,10 @@ function goBackOnePage() {
     ons.navigator.popPage();
 }
 
-console.logError = console.error;
-console.error = promptError;
+if (raiseDebugErrors) {
+    console.logError = console.error;
+    console.error = promptError;
+}
 var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "browser";
 var gcmProductID = null;
 var gcmCategoryID = null;

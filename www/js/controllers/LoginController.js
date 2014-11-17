@@ -103,8 +103,24 @@
         }
 
         $scope.logout = function() {
-            $scope.isWorking = true;
-            userData.logout(this.logoutSuccess, this.logoutError);
+            try {
+                navigator.notification.confirm(
+                    '¿Desea deslogearse?', // message
+                    $scope.onConfirm, // callback to invoke with index of button pressed
+                    'Deslogearse?', // title
+                    ['Sí', 'Mejor no'] // buttonLabels
+                );
+            } catch (e) {
+                alert(e);
+            }
+
+        }
+
+        $scope.onConfirm = function(buttonIndex) {
+            if (buttonIndex == 1) {
+                $scope.isWorking = true;
+                userData.logout(this.logoutSuccess, this.logoutError);
+            }
         }
 
         $scope.logoutError = function(data, status, headers, config) {
