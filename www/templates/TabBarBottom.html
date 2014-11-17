@@ -11,7 +11,7 @@
     <ons-tabbar-item ng-show="userData.logedIn" label="Perfil" icon="user" ng-controller="LoginController" ng-click="ons.navigator.pushPage('templates/forms/FormProfile.html')">
     </ons-tabbar-item>
 
-    <ons-tabbar-item ng-show="userData.logedIn" label="Logout" icon="sign-out" ng-controller="LoginController" ng-click="logout()">
+    <ons-tabbar-item ng-show="userData.logedIn" label="Logout" icon="sign-out" ng-controller="LoginController" ng-click="logout(true)">
     </ons-tabbar-item>
 
     <ons-tabbar-item label="Lector de Código" icon="barcode" ng-click="barCodeScan()">
