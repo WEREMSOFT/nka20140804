@@ -56,7 +56,7 @@
                 $scope.userData.logedIn = true;
                 ons.navigator.resetToPage('templates/pages/PageHome.html');
             } else if (data.result.logedIn === -2) {
-                promptError('Nombre de usuario o contraseña invalidas');
+                promptError('Nombre de usuario o contraseña inválidas');
                 $scope.logout();
             }
         }
