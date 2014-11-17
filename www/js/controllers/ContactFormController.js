@@ -96,7 +96,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            alert('Su consulta ha sido enviado con éxito!');
+            prompt('Su consulta ha sido enviado con éxito!');
             ons.navigator.popPage();
         }
     });
