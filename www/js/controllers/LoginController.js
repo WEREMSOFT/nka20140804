@@ -137,7 +137,6 @@
         $scope.logoutSuccess = function(data, status, headers, config) {
             $scope.isWorking = false;
             $scope.userData.reset();
-            ons.navigator.resetToPage('templates/pages/PageHome.html');
         }
 
         $scope.editProfile = function() {
