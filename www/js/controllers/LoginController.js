@@ -148,7 +148,7 @@
             if ($scope.isWorking) return;
 
             if ($scope.formUser.$invalid) {
-                prompt("Debe completar todos los campos marcados en rojo");
+                prompt("Debe completar todos los obligatorios");
                 return;
             }
 
