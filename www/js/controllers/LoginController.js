@@ -117,6 +117,7 @@
         }
 
         $scope.onConfirm = function(buttonIndex) {
+            prompt(buttonIndex);
             if (buttonIndex == 1) {
                 $scope.isWorking = true;
                 userData.logout(this.logoutSuccess, this.logoutError);
