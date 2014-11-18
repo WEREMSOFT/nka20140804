@@ -7,12 +7,12 @@
             $scope.nombre = userData.profileData.login;
             $scope.email = userData.profileData.mail;
             $scope.telefono = userData.profileData.celular;
-            $scope.ubicacion = userData.profileData.localidad;
+            $scope.ubicacion = userData.profileData.provincia;
         } else if (userData.lastProfileData) {
             $scope.nombre = userData.lastProfileData.login;
             $scope.email = userData.lastProfileData.mail;
             $scope.telefono = userData.lastProfileData.celular;
-            $scope.ubicacion = userData.lastProfileData.localidad;
+            $scope.ubicacion = userData.lastProfileData.provincia;
         } else {
             $scope.nombre = "";
             $scope.email = "";
