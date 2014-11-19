@@ -159,8 +159,8 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 19px;
     outline: none;
     line-height: 29px;
-    margin-top: 10px;
-}
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 .login-button {
     display: block;
@@ -603,69 +603,56 @@ label {
 .tab-bar__button:active > .tab-bar__icon, :checked + .tab-bar__button > .tab-bar__icon {
     color: #e61624;
 }
-
-.tab-bar__button:active, :checked + .tab-bar__button
-{
+.tab-bar__button:active, :checked + .tab-bar__button {
     color: #e61624;
 }
-
 .list__item--tappable:active {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
-
-.search-input
-{
+.search-input {
     margin-top: 8px;
 }
-
 .bgimage {
-    text-align:right;
-    color:white;
-    background-size:cover;
+    text-align: right;
+    color: white;
+    background-size: cover;
     height: 100%;
     background-position: center center;
 }
-
 ul[rn-carousel] {
-    width:100%;
-    height:200px;
+    width: 100%;
+    height: 200px;
     margin: 0 auto;
 }
-
 .carousel5 li {
-    width:100%;
-    height:100%;
-    font-size:30px;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
     background-color: #ccc;
 }
-
 .carousel-demo {
-    margin-top:20px;
-    display:inline-block;
+    margin-top: 20px;
+    display: inline-block;
     text-align: center;
 }
 .carousel-demo-fullscreen {
-  width:100%;
-  height:100%;
+    width: 100%;
+    height: 100%;
 }
 .carousel-demo-fullscreen ul[rn-carousel] {
-  width:100%;
-  height:100%;
+    width: 100%;
+    height: 100%;
 }
-
 input.tiny {
-    width:50px;
-    text-align:center;
+    width: 50px;
+    text-align: center;
 }
-
-
 .carousel-demo ul[rn-carousel-transition="hexagon"] {
-  margin-left:100px;
+    margin-left: 100px;
 }
-
 .custom-indicator span {
-  transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
 }
 .custom-indicator span.active {
-  color:yellow !important;
+    color: yellow !important;
 }

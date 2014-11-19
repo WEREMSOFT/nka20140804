@@ -8,6 +8,7 @@
         $scope.isWorking = false;
         $scope.editMode = false;
         $scope.buyOptions = {};
+        $scope.shouldAskForConfirmationBeforeLeave = false;
 
         $scope.login = function() {
             if ($scope.isWorking) return;
@@ -66,7 +67,8 @@
         $scope.init = function() {
             if (ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 $scope.userData.refreshUserDetails();
-                //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
+                ons.navigator.on('prepop', $scope.onPrePop)
+                    //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
                 return;
             }
             if ($scope.userData.logedIn === true) {
@@ -75,6 +77,40 @@
                 $scope.userData.userName = window.localStorage.getItem('user');
                 $scope.userData.password = window.localStorage.getItem('password');
                 $scope.userData.check_password = window.localStorage.getItem('password');
+            }
+
+        }
+
+
+
+        $scope.onPrePop = function(event) {
+            if ($scope.editMode) {
+                if ($scope.shouldAskForConfirmationBeforeLeave) {
+                    $scope.shouldAskForConfirmationBeforeLeave = false;
+                    return;
+                }
+                if (deviceType == 'browser') {
+                    if (confirm('¿Desea salir sin guardar los cambios?')) {
+                        setTimeout(function() {
+                            $scope.onPrePopConfirm(1);
+                        }, 300);
+                    }
+                } else {
+                    navigator.notification.confirm(
+                        '¿Desea salir sin guardar los cambios?', // message
+                        $scope.onPrePopConfirm, // callback to invoke with index of button pressed
+                        'Atención!', // title
+                        ['Sí', 'Mejor no'] // buttonLabels
+                    );
+                }
+                event.cancel();
+            }
+        }
+
+        $scope.onPrePopConfirm = function(buttonIndex) {
+            if (buttonIndex == 1) {
+                $scope.shouldAskForConfirmationBeforeLeave = true;
+                ons.navigator.popPage();
             }
         }
 
@@ -103,8 +139,7 @@
         }
 
         $scope.logout = function(pConfirm) {
-            if(pConfirm)
-            {
+            if (pConfirm) {
                 try {
                     navigator.notification.confirm(
                         '¿Desea deslogearse?', // message
@@ -115,8 +150,7 @@
                 } catch (e) {
                     alert(e);
                 }
-            }else
-            {
+            } else {
                 $scope.onConfirm(1);
             }
 
@@ -140,13 +174,14 @@
         }
 
         $scope.editProfile = function() {
+            $scope.shouldAskForConfirmationBeforeLeave = false;
             $scope.editMode = true;
             $scope.getBuyOptions();
         }
 
         $scope.saveProfile = function() {
             if ($scope.isWorking) return;
-
+            $scope.shouldAskForConfirmationBeforeLeave = true;
             if ($scope.formUser.$invalid) {
                 prompt("Debe completar todos los obligatorios");
                 return;

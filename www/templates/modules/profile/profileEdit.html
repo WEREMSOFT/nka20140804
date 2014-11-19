@@ -12,23 +12,24 @@
         <div class="panel">
             <div class="panel-heading">Editar mis datos</div>
             <div class="panel-body">
+                <label>Nombre:</label>
                 <input type="text" ng-model="userData.profileData.nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
-                <label>Nombre</label>
 
+
+                <label>Apellido:</label>
                 <input type="text" ng-model="userData.profileData.apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
-                <label>Apellido</label>
 
+                <label>e-mail:</label>
                 <input type="email" ng-model="userData.profileData.mail" class="text-input--underbar" placeholder="Email" value="" required>
-                <label>e-mail</label>
 
+                <label>Telefono:</label>
                 <input type="text" ng-model="userData.profileData.telefono" class="text-input--underbar" placeholder="telefono" value="">
-                <label>Telefono</label>
 
+                <label>Código de área:</label>
                 <input type="text" ng-model="userData.profileData.cod_area" class="text-input--underbar" placeholder="código de área" value="">
-                <label>Código de área</label>
 
+                <label>Celular:</label>
                 <input type="text" ng-model="userData.profileData.celular" class="text-input--underbar" placeholder="celular" value="">
-                <label>Celular</label>
             </div>
         </div>
     </div>
@@ -36,25 +37,25 @@
         <div class="panel">
             <div class="panel-heading">Editar mis datos</div>
             <div class="panel-body">
+                <label>Dirección:</label>
                 <input type="text" ng-model="userData.profileData.direccion" class="text-input--underbar" placeholder="dirección" value="">
-                <label>Dirección</label>
 
+                <label>Provincia:</label>
                 <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.provincia_id" ng-options="province.id as province.name for province in buyOptions.provinces">
                     <option value="">-- Seleccionar provincia --</option>
                 </select>
-                <label>Provincia</label>
 
+                <label>Terminal de envío:</label>
                 <input type="text" ng-model="userData.profileData.terminal" class="text-input--underbar" placeholder="Terminal" value="">
-                <label>Terminal de envío</label>
 
+                <label>Localidad:</label>
                 <input type="text" ng-model="userData.profileData.localidad" class="text-input--underbar" placeholder="localidad" value="">
-                <label>Localidad</label>
 
+                <label>Partido:</label>
                 <input type="text" ng-model="userData.profileData.partido" class="text-input--underbar" placeholder="partido" value="">
-                <label>Partido</label>
 
+                <label>Código postal:</label>
                 <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="cod. postal" value="">
-                <label>Código postal</label>
             </div>
         </div>
     </div>
@@ -63,22 +64,22 @@
         <div class="panel">
             <div class="panel-heading">Datos de Facturación (no obl.)</div>
             <div class="panel-body">
+                <label>Tipo de factura {{userData.profileData.iva_facturacion}}:</label>
                 <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.iva_facturacion" ng-options="billing_option.id as billing_option.name for billing_option in buyOptions.billing_options">
                     <option value="">-- Seleccionar tipo de factura --</option>
                 </select>
-                <label>Tipo de factura {{userData.profileData.iva_facturacion}}</label>
                 <div ng-show="userData.profileData.iva_facturacion === 1 || userData.profileData.iva_facturacion === 3">
+                    <label>Razón social:</label>
                     <input type="text" ng-model="userData.profileData.razon_social" class="text-input--underbar" placeholder="razón social" value="">
-                    <label>Razón social</label>
+                    <label>Nombre de fantasía:</label>
                     <input type="text" ng-model="userData.profileData.nombre_fantasia" class="text-input--underbar" placeholder="Nombre de Fantasía" value="">
-                    <label>Nombre de fantasía</label>
 
 
+                    <label>Dirección de facturación:</label>
                     <input type="text" ng-model="userData.profileData.dir_facturacion" class="text-input--underbar" placeholder="dirección de facturación" value="">
-                    <label>Dirección de facturación</label>
 
+                    <label>C.U.I.T:</label>
                     <input type="text" ng-model="userData.profileData.cuit" class="text-input--underbar" placeholder="cuit" value="">
-                    <label>C.U.I.T</label>
                 </div>
             </div>
         </div>
@@ -87,14 +88,14 @@
         <div class="panel">
             <div class="panel-heading">Datos de Acceso</div>
             <div class="panel-body">
+                <label>Login:</label>
                 <input type="text" ng-model="userData.userName" class="text-input--underbar" placeholder="Nombre de Usuario" value="" required>
-                <label>Login</label>
 
+                <label>Contraseña:</label>
                 <input type="password" ng-model="userData.password" class="text-input--underbar" placeholder="Password" value="" required>
-                <label>Contraseña</label>
 
+                <label>Confirmar Contraseña:</label>
                 <input type="password" ng-model="userData.check_password" class="text-input--underbar" placeholder="Check Password" value="" required>
-                <label>Confirmar Contraseña</label>
 
             </div>
         </div>
