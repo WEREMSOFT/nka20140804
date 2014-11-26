@@ -3,16 +3,37 @@
     var module = angular.module('PendingCalifications', []);
 
     module.controller('PendingCalificationsController', function($scope, $http, userData) {
-    	$scope.userData = userData;
+        $scope.userData = userData;
         $scope.calificationBeingEdited = -1;
         $scope.isWorking = false;
         $scope.connectionFail = false;
-        $scope.calificationForm = {valoracion: 0};
+        $scope.calificationForm = {
+            valoracion: 0
+        };
+        $scope.starOptions = [{
+            'label': '-- Elija una calificación --',
+            'value': "0"
+        }, {
+            'label': '1 Estrella',
+            'value': "1"
+        }, {
+            'label': '2 Estrellas',
+            'value': "2"
+        }, {
+            'label': '4 Estrellas',
+            'value': "4"
+        }, {
+            'label': '5 Estrellas',
+            'value': "5"
+        }]
 
         $scope.id = "";
 
-        $scope.setCalificationBeingEdited = function(pProduct) {
-            $scope.calificationBeingEdited = pProduct;
+        $scope.setCalificationBeingEdited = function(pProductId, pProduct) {
+            $scope.calificationBeingEdited = pProductId;
+            $scope.calificationForm.status = pProduct.review.status;
+            $scope.calificationForm.valoracion = pProduct.review.score;
+            $scope.calificationForm.comentario = pProduct.review.review;
         }
 
         /*

@@ -20,15 +20,15 @@
                         <span ng-if="product.offer > 0">
                             <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp;
                             <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
-                            <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
-                            <span style="color: red">$ {{product.offer_price}}</span>
-                        </span>
+                    <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
+                    <span style="color: red">$ {{product.offer_price}}</span>
+                    </span>
 
-                        <span ng-if="product.offer == 0">
-                            <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}&nbsp;&nbsp;
+                    <span ng-if="product.offer == 0">
+                            <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}<br>
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>
-                        </span>
+                    </span>
                     </span>
 
                     <br/>
@@ -43,7 +43,7 @@
                     </span>
                     <br/>
                     <span class="list-item-text" style="margin-top:16px;">{{product.description.length
-                        < 140?product.description:product.description.substr(0, 100) + '...'}} </span>
+                        < 100?product.description:product.description.substr(0, 100) + '...'}} </span>
                 </div>
             </div>
         </div>
@@ -58,6 +58,7 @@
         <div class="list-item-main">
             <div class="list-item-left">
                 <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
+
             </div>
             <div class="list-item-right">
                 <div class="list-item-content">
@@ -68,8 +69,8 @@
                             <br>
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>
-                            <br>
-                        </span>
+                    <br>
+                    </span>
                     </span>
 
                     <br/>
@@ -89,12 +90,13 @@
                 </div>
             </div>
         </div>
-        <span class="list-item-action  opacity-full">
-            <span class="list-item-text" style="margin-top:16px;">
-                <ons-button should-spin="{{isWorking}}" ng-click="eliminarDelCarrito(product.cart_id)">Eliminar</ons-button>
-            </span>
-        </span>
+        <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="eliminarDelCarrito(product.cart_id)">
+            <ons-icon icon="fa-trash-o"></ons-icon>
+            </ons-icon>
+        </ons-button>
+<br>
     </li>
+
 </ul>
 <ons-row style="padding:20px" ng-if="(shoppingCart.cartData.items.length === 0 && isCart) || (products.length === 0 && !isCart)" style="margin-top: 0px;">
     <ons-col align="center">

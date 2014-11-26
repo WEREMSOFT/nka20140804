@@ -148,7 +148,8 @@
                         ['Sí', 'Mejor no'] // buttonLabels
                     );
                 } catch (e) {
-                    alert(e);
+                    console.log(e);
+                    $scope.onConfirm(1);
                 }
             } else {
                 $scope.onConfirm(1);

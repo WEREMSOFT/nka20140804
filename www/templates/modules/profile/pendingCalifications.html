@@ -2,9 +2,13 @@
     <module-header></module-header>
     <ons-row style="margin-top: 0px;">
         <ons-col align="center">
+
             <!-- PRODUCTOS A CALIFICAR -->
             <ul class="list list-top" ng-controller="PendingCalificationsController">
-                <li ng-repeat="product in userData.pendingCalifications" class="list__item list__item__line-height list-item-container" ng-click="setCalificationBeingEdited($index)">
+
+
+
+                <li ng-repeat="product in userData.pendingCalifications" class="list__item list__item__line-height list-item-container" ng-click="setCalificationBeingEdited($index, product)">
                     <div class="list-item-main">
                         <div class="list-item-left">
                             <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
@@ -15,21 +19,19 @@
                                 </span>
                                 <br>
 
-                                <form novalidate name="formRegister" ng-submit="submitCalification(product, calificationForm)" ng-if="$index === calificationBeingEdited && !isWorking">
-                                    <select required style="margin-top: 3px;" ng-model="calificationForm.valoracion" type="number" class="text-input--underbar select-combo">
-                                        <option value="0">-- Calificación --</option>
-                                        <option value="1">1 estrella</option>
-                                        <option value="2">2 estrellas</option>
-                                        <option value="3">3 estrellas</option>
-                                        <option value="4">4 estrellas</option>
-                                        <option value="5">5 estrellas</option>
+                                <form novalidate name="formRegister" ng-if="$index === calificationBeingEdited && !isWorking">
+                                    -{{calificationForm.valoracion}}-
+                                    <input type="text" ng-model="calificationForm.valoracion">
+                                    <select ng-model="calificationForm.valoracion" ng-options="so.value as so.label for so in starOptions">
                                     </select>
+
+                                    <label>Cantidad de caracteres(mínimo 50): {{calificationForm.comentario.length}}</label>
                                     <span class="list-item-text" style="margin-top:16px;">
                                         <textarea class="text-input--underbar" ng-model="calificationForm.comentario" placeholder="Ingrese su calificación" style="font-size:19px;width: 100%; height: 100px;" required></textarea>
 
                                     </span>
                                     <div class="list-item-text" style="margin-top:16px;">
-                                        <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="getHash()">Enviar Calificación</ons-button>
+                                        <ons-button modifier="large" ng-click="submitCalification(product, calificationForm)" should-spin="{{isWorking}}">Enviar Calificación</ons-button>
                                     </div>
                                 </form>
                                 <module-loading-spinner ng-show="isWorking && !connectionFail && $index === calificationBeingEdited"></module-loading-spinner>
