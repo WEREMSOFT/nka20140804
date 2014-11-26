@@ -7,7 +7,6 @@
             <ul class="list list-top" ng-controller="PendingCalificationsController">
 
 
-
                 <li ng-repeat="product in userData.pendingCalifications" class="list__item list__item__line-height list-item-container" ng-click="setCalificationBeingEdited($index, product)">
                     <div class="list-item-main">
                         <div class="list-item-left">
@@ -15,14 +14,12 @@
                         </div>
                         <div class="list-item-right">
                             <div class="list-item-content">
-                                <span class="list-item-name">{{product.name}}</span>
+                                <span class="list-item-name">{{product.name}} - estado: {{product.review.status == 0?'Pendiente':product.review.status == 1?'En Revisión':'Rechazada'}}</span>
                                 </span>
                                 <br>
 
                                 <form novalidate name="formRegister" ng-if="$index === calificationBeingEdited && !isWorking">
-                                    -{{calificationForm.valoracion}}-
-                                    <input type="text" ng-model="calificationForm.valoracion">
-                                    <select ng-model="calificationForm.valoracion" ng-options="so.value as so.label for so in starOptions">
+                                    <select required type="number" class="text-input--underbar select-combo" ng-model="calificationForm.valoracion" ng-options="so.value as so.label for so in starOptions">
                                     </select>
 
                                     <label>Cantidad de caracteres(mínimo 50): {{calificationForm.comentario.length}}</label>

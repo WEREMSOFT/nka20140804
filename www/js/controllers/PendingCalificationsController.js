@@ -7,6 +7,9 @@
         $scope.calificationBeingEdited = -1;
         $scope.isWorking = false;
         $scope.connectionFail = false;
+
+       
+
         $scope.calificationForm = {
             valoracion: 0
         };
@@ -30,10 +33,13 @@
         $scope.id = "";
 
         $scope.setCalificationBeingEdited = function(pProductId, pProduct) {
-            $scope.calificationBeingEdited = pProductId;
-            $scope.calificationForm.status = pProduct.review.status;
-            $scope.calificationForm.valoracion = pProduct.review.score;
-            $scope.calificationForm.comentario = pProduct.review.review;
+            if($scope.calificationBeingEdited != pProductId)
+            {
+                $scope.calificationBeingEdited = pProductId;
+                $scope.calificationForm.status = pProduct.review.status;
+                $scope.calificationForm.valoracion = pProduct.review.score;
+                $scope.calificationForm.comentario = pProduct.review.review;
+            }
         }
 
         /*
@@ -48,13 +54,13 @@
 
         $scope.submitCalification = function(pProduct, pCalificationForm) {
             if ($scope.isWorking) return;
-            if (!$scope.userData.userName) {
-                promptError('La dirección de mail no es válida');
+
+            if(pCalificationForm.comentario.length < 50)
+            {
+                promptError('La calificación debe tener mas de 50 letras.');
                 return;
             }
             $scope.isWorking = true;
-            console.log(pProduct);
-            console.log(pCalificationForm);
 
 
             var request = $http({
@@ -80,6 +86,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
+            prompt('Su calificación ha sido enviada con éxito y ahora esta a la espera de ser revisada. Puede cambiarla cuantas veces lo desee hasta que sea aprobada.');
             $scope.isWorking = false;
             $scope.userData.refreshUserDetails();
         }
