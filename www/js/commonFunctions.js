@@ -18,6 +18,7 @@ function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
         }
         navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
     } else {
+        alert(strMessage);
         if (fnctCallBaclFunction)
             fnctCallBaclFunction();
     }

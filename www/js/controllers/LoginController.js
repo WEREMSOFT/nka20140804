@@ -142,9 +142,9 @@
             if (pConfirm) {
                 try {
                     navigator.notification.confirm(
-                        '¿Desea deslogearse?', // message
+                        '¿Desea Salir?', // message
                         $scope.onConfirm, // callback to invoke with index of button pressed
-                        'Deslogearse?', // title
+                        'Información', // title
                         ['Sí', 'Mejor no'] // buttonLabels
                     );
                 } catch (e) {

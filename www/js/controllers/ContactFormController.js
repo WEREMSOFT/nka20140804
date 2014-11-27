@@ -24,9 +24,6 @@
         $scope.isWorking = false;
 
         $scope.sendContact = function() {
-
-
-
             var hashMail = $scope.hashMail;
             var hashAnt = $scope.hashAnt;
 
@@ -54,16 +51,18 @@
             ons.navigator.popPage();
         }
 
-        $scope.getHash = function() {
-
-
-            if ($scope.isWorking === true) return;
-            
-            if ($scope.consulta == "") {
-                prompt("Debe ingresar un texto para la consulta.");
-                return false;
+        $scope.submitContact = function() {
+            if ($scope.formContact.$invalid) {
+                prompt("Debe completar todos los campos.");
+                return;
             }
 
+            $scope.getHash();
+        }
+
+        $scope.getHash = function() {
+
+            if ($scope.isWorking === true) return;
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
