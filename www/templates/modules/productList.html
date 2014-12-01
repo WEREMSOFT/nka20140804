@@ -66,10 +66,14 @@
                         <br/>
                         <span>
                             <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}
-                            <br>
+                            <br> 
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>
                     <br>
+                    <div ng-if="product.option != 'null'">
+                    <ons-icon  icon="bookmark" style="color: black"></ons-icon><span> {{product.option}}</span>
+                    <br>
+                    </div>
                     </span>
                     </span>
 
@@ -94,7 +98,7 @@
             <ons-icon icon="fa-trash-o"></ons-icon>
             </ons-icon>
         </ons-button>
-<br>
+        <br>
     </li>
 
 </ul>
