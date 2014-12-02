@@ -111,6 +111,7 @@
             if (buttonIndex == 1) {
                 $scope.shouldAskForConfirmationBeforeLeave = true;
                 ons.navigator.popPage();
+                $scope.editMode = false;
             }
         }
 
