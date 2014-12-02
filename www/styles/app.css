@@ -656,3 +656,10 @@ input.tiny {
 .custom-indicator span.active {
     color: yellow !important;
 }
+.text-input--underbar:invalid {
+    border: 1px solid #ddd;
+    color: #cc181e;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #cc181e;
+}
