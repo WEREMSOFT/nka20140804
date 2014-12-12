@@ -37,6 +37,12 @@
         $scope.buyOptions = {};
 
 
+        $scope.selectCallback = function(pObj)
+        {
+            console.log(pObj);
+            console.log($scope.talle);
+        }
+
 
         $scope.addToCart = function() {
             if ($scope.product.options && !$scope.talle.id) {
