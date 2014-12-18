@@ -281,6 +281,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        deviceReadyWasFired = true;
         gaPlugin = window.plugins.gaPlugin;
         gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);
         navigator.splashscreen.hide();
@@ -295,7 +296,7 @@ var app = {
 };
 
 
-
+var deviceReadyWasFired = false;
 
 function alertDismissed() {
     console.log('dummy callback');
@@ -384,4 +385,10 @@ function googleAnalyticsTrakEventError() {
     console.log("error al trackear evento de google analytics");
 }
 
-
+window.setTimeout(function() {
+    if (!deviceReadyWasFired) {
+        var e = document.createEvent('Events');
+        e.initEvent("deviceready");
+        document.dispatchEvent(e);
+    }
+}, 3000);
