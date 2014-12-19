@@ -37,7 +37,7 @@
     <gap:plugin name="org.apache.cordova.file-transfer" /> -->
     <!--<gap:plugin name="org.apache.cordova.geolocation" />-->
     <!--<gap:plugin name="org.apache.cordova.globalization" />-->
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <!-- <gap:plugin name="org.apache.cordova.inappbrowser" /> -->
     <!--<gap:plugin name="org.apache.cordova.media" />-->
     <!--<gap:plugin name="org.apache.cordova.network-information" />-->
     <gap:plugin name="org.apache.cordova.splashscreen" />
@@ -45,7 +45,7 @@
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
-    <gap:plugin name="com.adobe.plugins.gaplugin" />
+    <!-- <gap:plugin name="com.adobe.plugins.gaplugin" /> -->
 
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
