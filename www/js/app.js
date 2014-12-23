@@ -282,9 +282,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         deviceReadyWasFired = true;
-/*        gaPlugin = window.plugins.gaPlugin;
-        gaPlugin.init(googleAnalyticsSuccess, googleAnalyticsError, "UA-55236443-1", 10);*/
-        //navigator.splashscreen.hide();
+        navigator.splashscreen.hide();
         if (device.platform == 'Android') {
             subscriveToPushNotificationsAndroid();
         } else {

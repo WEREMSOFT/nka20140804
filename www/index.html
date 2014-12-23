@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+    <link rel="stylesheet" href="styles/onsen-css-components.css">
     <link rel="stylesheet" href="lib/angularDropDown/angular-dropdowns.css">
     <link rel="stylesheet" href="styles/app.css" />
     <link rel="stylesheet" href="lib/angular-carrousel/angular-carousel.css" />
@@ -19,11 +20,11 @@
 </head>
 
 <body ng-controller="MainAppController" ng-init-old="deviceType === 'browser'?init():null" ng-init='init()'>
-<!--     <ons-sliding-menu above-page="templates/TabBarBottom.html" behind-page="templates/MenuSide.html" side="left" max-slide-distance="250px" swipe-target-width="50px" var="menu">
+    <!--     <ons-sliding-menu above-page="templates/TabBarBottom.html" behind-page="templates/MenuSide.html" side="left" max-slide-distance="250px" swipe-target-width="50px" var="menu">
     </ons-sliding-menu> -->
 
 
-  <ons-sliding-menu menu-page="templates/MenuSide.html" main-page="templates/TabBarBottom.html" side="left" var="menu" type="reveal" max-slide-distance="250px" swipe-target-width="50px" swipable="true">
+    <ons-sliding-menu menu-page="templates/MenuSide.html" main-page="templates/TabBarBottom.html" side="left" var="menu" type="reveal" max-slide-distance="250px" swipe-target-width="50px" swipable="true">
     </ons-sliding-menu>
 
 
