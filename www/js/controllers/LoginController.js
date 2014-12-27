@@ -13,7 +13,7 @@
         $scope.login = function() {
             if ($scope.isWorking) return;
             if (!$scope.userData.userName) {
-                promptError('La dirección de mail no es válida');
+                messageWindowError('La dirección de mail no es válida');
                 return;
             }
             $scope.isWorking = true;
@@ -40,7 +40,7 @@
 
         $scope.httpError = function(data, status, headers, config) {
             $scope.isWorking = false;
-            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
+            messageWindowError("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -57,7 +57,7 @@
                 $scope.userData.logedIn = true;
                 ons.navigator.resetToPage('templates/pages/PageHome.html');
             } else if (data.result.logedIn === -2) {
-                promptError('Nombre de usuario o contraseña inválidas');
+                messageWindowError('Nombre de usuario o contraseña inválidas');
                 $scope.logout(false);
             }
         }
@@ -89,23 +89,27 @@
                     $scope.shouldAskForConfirmationBeforeLeave = false;
                     return;
                 }
-                if (deviceType == 'browser') {
-                    if (confirm('¿Desea salir sin guardar los cambios?')) {
-                        setTimeout(function() {
-                            $scope.onPrePopConfirm(1);
-                        }, 300);
+                ons.notification.confirm({
+                    buttonLabel: 'Sí',
+                    title: 'Atención!',
+                    message: '¿Desea salir sin guardar los cambios?',
+                    callback: function(idx) {
+                        switch (idx) {
+                            case 0:
+                                //do nothing
+                                break;
+                            case 1:
+                                $scope.onPrePopConfirm(1);
+                                break;
+                        }
                     }
-                } else {
-                    navigator.notification.confirm(
-                        '¿Desea salir sin guardar los cambios?', // message
-                        $scope.onPrePopConfirm, // callback to invoke with index of button pressed
-                        'Atención!', // title
-                        ['Sí', 'Mejor no'] // buttonLabels
-                    );
-                }
+                });
                 event.cancel();
             }
         }
+
+
+
 
         $scope.onPrePopConfirm = function(buttonIndex) {
             if (buttonIndex == 1) {
@@ -141,21 +145,48 @@
 
         $scope.logout = function(pConfirm) {
             if (pConfirm) {
-                try {
-                    navigator.notification.confirm(
-                        '¿Desea Salir?', // message
-                        $scope.onConfirm, // callback to invoke with index of button pressed
-                        'Información', // title
-                        ['Sí', 'Mejor no'] // buttonLabels
-                    );
-                } catch (e) {
-                    console.log(e);
-                    $scope.onConfirm(1);
-                }
+                ons.notification.confirm({
+                    buttonLabel: 'Sí',
+                    title: 'Información',
+                    message: '¿Desea Salir?',
+                    callback: function(idx) {
+                        switch (idx) {
+                            case 0:
+                                //do nothing
+                                break;
+                            case 1:
+                                $scope.onConfirm(1);
+                                break;
+                        }
+                    }
+                });
             } else {
                 $scope.onConfirm(1);
             }
 
+        }
+
+        $scope.askCallSoporte = function(cod_sucursal) {
+            try {
+                ons.notification.confirm({
+                    buttonLabel: 'Sí',
+                    title: 'Contacto',
+                    message: '¿Desea llamar a soporte?',
+                    callback: function(idx) {
+                        switch (idx) {
+                            case 0:
+                                //do nothing
+                                break;
+                            case 1:
+                                $scope.onConfirm(1);
+                                break;
+                        }
+                    }
+                });
+            } catch (e) {
+                console.log(e);
+                //alert(e);
+            }
         }
 
         $scope.onConfirm = function(buttonIndex) {
@@ -185,13 +216,13 @@
             if ($scope.isWorking) return;
             $scope.shouldAskForConfirmationBeforeLeave = true;
             if ($scope.formUser.$invalid) {
-                prompt("Debe completar todos los obligatorios");
+                messageWindow("Debe completar todos los obligatorios");
                 return;
             }
 
             if (userData.check_password != userData.password) {
                 userData.check_password = "";
-                prompt("Las contraseñas no coinciden");
+                messageWindow("Las contraseñas no coinciden");
                 return;
             }
             $scope.isWorking = true;
@@ -219,7 +250,7 @@
 
         $scope.httpSaveProfileError = function(data, status, headers, config) {
             $scope.isWorking = false;
-            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            messageWindowError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
@@ -253,7 +284,7 @@
 
         $scope.onCameraFail = function(pMessage) {
             $scope.isWorking = false;
-            promptError("Error al subir imagen: " + pMessage);
+            messageWindowError("Error al subir imagen: " + pMessage);
         }
 
         // Take a picture using the camera or select one from the library
@@ -270,7 +301,7 @@
             $scope.isWorking = true;
             // Retrieve image file location from specified source
             navigator.camera.getPicture($scope.uploadPhoto, function(message) {
-                promptError('Error al obtener la imagen');
+                messageWindowError('Error al obtener la imagen');
                 $scope.isWorking = false;
             }, {
                 quality: 50,
@@ -282,7 +313,7 @@
         }
 
         $scope.pictureFromGalleryInformation = function(pImageUri) {
-            prompt(pImageUri);
+            messageWindow(pImageUri);
         }
 
         $scope.uploadPhoto = function(imageURI) {
@@ -301,14 +332,14 @@
         }
 
         $scope.win = function(r) {
-            prompt("Code = " + r.responseCode);
-            prompt("Response = " + r.response);
-            prompt("Sent = " + r.bytesSent);
+            messageWindow("Code = " + r.responseCode);
+            messageWindow("Response = " + r.response);
+            messageWindow("Sent = " + r.bytesSent);
             $scope.isWorking = false;
         }
 
         $scope.fail = function(error) {
-            promptError("An error has occurred: Code = " + error.code);
+            messageWindowError("An error has occurred: Code = " + error.code);
             $scope.isWorking = false;
         }
 

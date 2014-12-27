@@ -33,17 +33,17 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
+            messageWindowError("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.result = data.result;
             $scope.isWorking = false;
             if ($scope.result.code === 0) {
-                prompt($scope.result.messagge);
+                messageWindow($scope.result.messagge);
                 $scope.goBack();
             } else {
-                promptError($scope.result.message);
+                messageWindowError($scope.result.message);
             }
         }
 
@@ -52,13 +52,13 @@
         }
 
         $scope.submitRegister = function() {
-            prompt("registrando");
+            messageWindow("registrando");
             if ($scope.formRegister.$invalid) {
-                prompt("Debe completar todos los campos marcados en rojo");
+                messageWindow("Debe completar todos los campos marcados en rojo");
                 return;
             }
             if ($scope.password != $scope.passwordVerification) {
-                prompt("Las passwords no coinciden");
+                messageWindow("Las passwords no coinciden");
                 return;
             }
             $scope.getHash();
@@ -98,7 +98,7 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            promptError("Ooosp!, algo ha salido mal, reintente en un momento");
+            messageWindowError("Ooosp!, algo ha salido mal, reintente en un momento");
             $scope.isWorking = false;
         }
 

@@ -83,7 +83,7 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            promptError("Ooosp!, algo ha salido mal, reintente en un momento");
+            messageWindowError("Ooosp!, algo ha salido mal, reintente en un momento");
             $scope.isWorking = false;
         }
 

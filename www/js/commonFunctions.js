@@ -2,50 +2,45 @@ var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('http
 var raiseDebugErrors = false;
 
 
-function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+function messageWindow(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+
 
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
 
-    if (isApp) {
-        if (!strTitle) {
-            strTitle = "Información";
-        }
-
-        if (!strButtonLabel) {
-            strButtonLabel = "Ok";
-        }
-        navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
-    } else {
-        alert(strMessage);
-        if (fnctCallBaclFunction)
-            fnctCallBaclFunction();
+    if (!strTitle) {
+        strTitle = "Información";
     }
+
+    if (!strButtonLabel) {
+        strButtonLabel = "Ok";
+    }
+    ons.notification.alert({
+        message: strMessage,
+        title: strTitle
+    });
+    //navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
+    if (fnctCallBaclFunction)
+        fnctCallBaclFunction();
 }
 
-function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
-    if (gaPlugin) {
-        gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "Error", strMessage, 1);
-    }
+function messageWindowError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
 
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
 
-    if (isApp && navigator.notification != undefined) {
-        if (!strTitle) {
-            strTitle = "Error";
-        }
+    strTitle = "Error";
 
-        if (!strButtonLabel) {
-            strButtonLabel = "Ok";
-        }
-        navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
-    } else {
-        if (fnctCallBaclFunction)
-            fnctCallBaclFunction();
+    if (!strButtonLabel) {
+        strButtonLabel = "Ok";
     }
+
+    ons.notification.alert({
+        message: strMessage,
+        title: strTitle
+    });
     if (console.logError) {
         console.logError(strMessage);
     }
@@ -65,7 +60,7 @@ function goBackOnePage() {
 
 if (raiseDebugErrors) {
     console.logError = console.error;
-    console.error = promptError;
+    console.error = messageWindowError;
 }
 var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "browser";
 var gcmProductID = null;

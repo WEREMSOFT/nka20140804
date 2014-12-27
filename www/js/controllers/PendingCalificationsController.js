@@ -57,7 +57,7 @@
 
             if(pCalificationForm.comentario.length < 50)
             {
-                promptError('La calificación debe tener mas de 50 letras.');
+                messageWindowError('La calificación debe tener mas de 50 letras.');
                 return;
             }
             $scope.isWorking = true;
@@ -82,11 +82,11 @@
 
         $scope.httpError = function(data, status, headers, config) {
             $scope.isWorking = false;
-            promptError("Oops! Algo ha salido mal. Reintenta en un momento");
+            messageWindowError("Oops! Algo ha salido mal. Reintenta en un momento");
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            prompt('Su calificación ha sido enviada con éxito y ahora esta a la espera de ser revisada. Puede cambiarla cuantas veces lo desee hasta que sea aprobada.');
+            messageWindow('Su calificación ha sido enviada con éxito y ahora esta a la espera de ser revisada. Puede cambiarla cuantas veces lo desee hasta que sea aprobada.');
             $scope.isWorking = false;
             $scope.userData.refreshUserDetails();
         }

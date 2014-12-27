@@ -53,7 +53,7 @@
 
         $scope.submitContact = function() {
             if ($scope.formContact.$invalid) {
-                prompt("Debe completar todos los campos.");
+                messageWindow("Debe completar todos los campos.");
                 return;
             }
 
@@ -95,7 +95,7 @@
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
-            prompt('Su consulta ha sido enviada con éxito');
+            messageWindow('Su consulta ha sido enviada con éxito');
             ons.navigator.popPage();
         }
     });
