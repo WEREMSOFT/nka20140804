@@ -20,35 +20,5 @@
                 <div class="grid-menu-scroller" ng-include="'templates/MenuHome.html'"></div>
             </ons-col>
         </ons-row>
-        <!--
-        <ons-row style="margin-top: 0px;" ng-hide="userData.logedIn">
-            <ons-col align="center">
-                <div style="text-align: center" class="content-padded-left-right">
-                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="ons.navigator.pushPage('templates/forms/FormLogin.html')">Login</ons-button>
-                </div>
-            </ons-col>
-        </ons-row>
-        <ons-row style="margin-top: 0px;" ng-show="userData.logedIn">
-            <ons-col align="center">
-                <div style="text-align: center" class="content-padded-left-right">
-                    <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/forms/FormProfile.html')">Ver Perfil</ons-button>
-                </div>
-            </ons-col>
-        </ons-row>
-        <ons-row style="margin-top: 10px;" ng-show="userData.logedIn">
-            <ons-col align="center">
-                <div style="text-align: center" class="content-padded-left-right" ng-controller="LoginController">
-                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="logout()">Logout</ons-button>
-                </div>
-            </ons-col>
-        </ons-row>
-        <ons-row style="margin-top: 10px;" ng-if="barCodeScanEnabled">
-            <ons-col align="center">
-                <div style="text-align: center" class="content-padded-left-right" ng-controller="LoginController">
-                    <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="barCodeScan()">
-                        <ons-icon icon="barcode"></ons-icon>Leer codigo de barras</ons-button>
-                </div>
-            </ons-col>
-        </ons-row>-->
     </ons-navigator>
 </ons-page>
