@@ -94,6 +94,7 @@
             }
 
             this.httpSuccess = function(data, status, headers, config) {
+                    console.log('success llamada a nuevos');
                     $scope.products = data.result.child_products;
                     $scope.isWorking = false;
                     $scope.connectionFail = false;
