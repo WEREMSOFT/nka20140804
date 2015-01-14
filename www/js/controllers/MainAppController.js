@@ -84,7 +84,7 @@
             try {
                 var request = $http({
                     method: "get",
-                    url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption
+                    url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
                 });
 
             } catch (e) {
