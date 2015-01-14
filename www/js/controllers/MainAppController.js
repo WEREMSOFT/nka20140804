@@ -79,13 +79,12 @@
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
             console.log("llamando");
+            var myUrl = 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption;
+            console.log('la url es: ' + myUrl);
             try {
                 var request = $http({
                     method: "get",
-                    url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
+                    url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption
                 });
 
             } catch (e) {
