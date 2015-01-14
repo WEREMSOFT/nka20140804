@@ -79,6 +79,8 @@
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
             console.log("llamando");
+            ons.navigator.pushPage('templates/pages/PageNewProducts.html')
+            return;
             var myUrl = 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption;
             console.log('la url es: ' + myUrl);
 
