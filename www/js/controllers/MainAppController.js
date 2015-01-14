@@ -78,13 +78,19 @@
 
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
-            var request = $http({
-                method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
+            messageWindow("llamando");
+            try {
+                var request = $http({
+                    method: "get",
+                    url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+            } catch (e) {
+                messageWindowError(e);
+            }
 
             this.httpError = function(data, status, headers, config) {
                 $scope.connectionFail = true;
@@ -366,7 +372,7 @@
             $scope.getCarrouselData();
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
-           
+
 
         }
 
@@ -445,7 +451,7 @@
             templateUrl: 'templates/modules/stockColorCodes.html'
         };
     });
-   module.directive('moduleCarrousel', function() {
+    module.directive('moduleCarrousel', function() {
         return {
             restrict: 'E',
             templateUrl: 'templates/modules/carrousel.html'
