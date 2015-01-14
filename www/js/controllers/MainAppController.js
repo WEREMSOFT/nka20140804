@@ -91,6 +91,11 @@
                 console.log(e);
             }
 
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=1&max=9999&offset=1&order=1',
+            });
+
             this.httpError = function(data, status, headers, config) {
                 $scope.connectionFail = true;
                 $scope.isWorking = false;
