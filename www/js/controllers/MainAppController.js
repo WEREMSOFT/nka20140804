@@ -78,7 +78,7 @@
 
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
-            messageWindow("llamando");
+            console.log("llamando");
             try {
                 var request = $http({
                     method: "get",
@@ -89,7 +89,7 @@
                 });
 
             } catch (e) {
-                messageWindowError(e);
+                console.log(e);
             }
 
             this.httpError = function(data, status, headers, config) {
