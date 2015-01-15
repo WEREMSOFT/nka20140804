@@ -90,11 +90,8 @@
             }
 
             this.httpSuccess = function(data, status, headers, config) {
-                    console.log('success llamada a nuevos');
-                    console.log(data.result);
-                    console.log(data.result.child_products);
-                    console.log(data.result.child_products.length);
                     $scope.products = data.result.child_products;
+                    console.log("cantidad de productos" + $scope.products.length);
                     $scope.isWorking = false;
                     $scope.connectionFail = false;
                 }
