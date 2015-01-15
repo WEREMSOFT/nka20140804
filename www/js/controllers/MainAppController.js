@@ -90,6 +90,7 @@
             }
 
             this.httpSuccess = function(data, status, headers, config) {
+                    console.log(typeof data.result.child_products);
                     $scope.products = data.result.child_products;
                     console.log("cantidad de productos" + $scope.products.length);
                     $scope.isWorking = false;
