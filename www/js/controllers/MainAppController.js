@@ -227,6 +227,7 @@
         }
 
         $scope.showProduct = function(productID, pCodebar) {
+            console.log("llamando a producto");
             $scope.loading = true;
             $scope.getProduct(productID, pCodebar);
             ons.navigator.pushPage('templates/pages/PageProduct.html');
