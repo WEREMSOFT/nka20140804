@@ -163,9 +163,11 @@
             this.httpGetProductDetailsError = function(data, status, headers, config) {
                 $scope.connectionFail = true;
                 $scope.loading = false;
+                console.log("get product fail");
             }
 
             this.httpGetProductDetailsSuccess = function(data, status, headers, config) {
+                console.log("get product success");
                 $scope.connectionFail = false;
                 $scope.product = data.result;
                 if ($scope.product.code === 3) {
@@ -229,8 +231,8 @@
         $scope.showProduct = function(productID, pCodebar) {
             console.log("llamando a producto");
             $scope.loading = true;
-            $scope.getProduct(productID, pCodebar);
             ons.navigator.pushPage('templates/pages/PageProduct.html');
+            $scope.getProduct(productID, pCodebar);
         }
 
         $scope.getDestacados = function() {
