@@ -27,20 +27,57 @@
 
         $scope.currentCategory = 0;
 
-        $scope.loginOptions = [{
-            text: '--Seleccione una opción--',
-            value: 0
+        //--Esto es para los selects
+        $scope.genericSelect = {};
+        $scope.genericSelect.options = [];
+        $scope.genericSelect.returnVariable = null;
+        $scope.genericSelectLabel = 'Seleccióne una opción';
+        $scope.sarasa = {};
+        $scope.sarasaOptions = [{
+            label: "Opcion 1",
+            value: "0"
         }, {
-            text: 'Contratista',
-            value: 1
+            label: "Opcion 2",
+            value: "1"
         }, {
-            text: 'Empresa',
-            value: 2
+            label: "Opcion 3",
+            value: "2"
         }];
 
-        $scope.selectedLoginOption = {};
 
 
+        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pLabelFieldName, pValueFieldName, pCallBackFunction) {
+            if (!pLabelFieldName) {
+                pLabelFieldName = 'label';
+            }
+            $scope.genericSelect.labelFieldName = pLabelFieldName;
+
+            if (!pValueFieldName) {
+                pValueFieldName = 'value';
+            }
+            $scope.genericSelect.valueFieldName = pValueFieldName;
+            $scope.genericSelect.callBackFunction = pCallBackFunction;
+            $scope.genericSelect.options = pSelectOptions;
+            $scope.genericSelect.returnVariable = pReturnVariable;
+            ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
+        }
+
+
+        $scope.genericSelectOptionClick = function(pReturnVariable) {
+            $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable.label;
+            $scope.genericSelect.returnVariable[$scope.genericSelect.valueFieldName] = pReturnVariable.value;
+            if ($scope.genericSelect.callBackFunction) {
+                $scope.genericSelect.callBackFunction(pReturnVariable);
+            }
+            ons.navigator.popPage();
+        }
+
+        $scope.onSelectTestButton = function(optionObject)
+
+        {
+            console.log(optionObject.label);
+            console.log(optionObject.value);
+        }
 
         $scope.backButtonHandler = function() {
             ons.navigator.popPage();

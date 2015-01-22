@@ -35,22 +35,11 @@
         </ons-row>
         <ons-col>
             <ons-row>
-                <label>Tipo:</label>
-                <div style="width:100%" dropdown-menu="loginOptions" dropdown-model="selectedLoginOption" dropdown-onchange="selectCallback(selected)">
-                    <ons-button modifier="outline" style="width:100%; text-align:left">{{selectedLoginOption.text}}&nbsp;&nbsp;&nbsp;
-                        <ons-icon icon="fa-caret-down" style="float: right;"></ons-icon>
-                    </ons-button>
-                </div>
+               <ons-button modifier="large" ng-click="genericSelectStart(sarasaOptions, sarasa, null, null, onSelectTestButton)">{{'--' + sarasa.label + '--'}}</ons-button>
             </ons-row>
         </ons-col>
     </div>
 
-    <select>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
 
 
     <module-loading-spinner ng-show="categories.length == 0 && !connectionFail"></module-loading-spinner>
