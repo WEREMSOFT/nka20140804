@@ -10,10 +10,11 @@
                 <div class="cadorna">Ofertas</div>
             </ons-col>
             <ons-col class="cadorna2 list__item--tappable" ng-click="ons.navigator.pushPage('templates/pages/ComoLlegar.html')">
-                  <img width="50px" height="50px" src="imgs/icons/tiendas256.jpg">
+                <img width="50px" height="50px" src="imgs/icons/tiendas256.jpg">
                 <div class="cadorna">Como Llegar</div>
             </ons-col>
         </ons-row>
+
 
 
         <ons-row style="padding-top: 10px">
@@ -33,6 +34,13 @@
             </ons-col>
         </ons-row>
     </div>
+    <label>Tipo:</label>
+    <div style="width:100%" dropdown-menu="loginOptions" dropdown-model="selectedLoginOption" dropdown-onchange="selectCallback(selected)">
+        <ons-button modifier="outline" style="width:100%; text-align:left">{{selectedLoginOption.text}}&nbsp;&nbsp;&nbsp;
+            <ons-icon icon="fa-caret-down" style="float: right;"></ons-icon>
+        </ons-button>
+    </div>
+
     <module-loading-spinner ng-show="categories.length == 0 && !connectionFail"></module-loading-spinner>
     <module-sin-conexion ng-show="connectionFail"></module-sin-conexion>
 </div>

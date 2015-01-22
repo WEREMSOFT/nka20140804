@@ -27,6 +27,21 @@
 
         $scope.currentCategory = 0;
 
+        $scope.loginOptions = [{
+            text: '--Seleccione una opción--',
+            value: 0
+        }, {
+            text: 'Contratista',
+            value: 1
+        }, {
+            text: 'Empresa',
+            value: 2
+        }];
+
+        $scope.selectedLoginOption = {};
+
+
+
         $scope.backButtonHandler = function() {
             ons.navigator.popPage();
             $scope.$apply();
@@ -367,6 +382,9 @@
         $scope.init = function() {
             $scope.categoryPageInit();
             $scope.getCarrouselData();
+
+            $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);
+
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
 
