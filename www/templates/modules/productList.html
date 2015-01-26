@@ -1,8 +1,6 @@
 <ons-row style="margin-top: 0px;" ng-if="!isCart">
     <ons-col align="center">
-        <select style="margin-top: 3px;" type="number" ng-change="refreshCurrentProductList()" ng-show="sortOptions.options" ng-model="sortOptions.selectedSortOption" ng-options="sortOption.id as sortOption.description for sortOption in sortOptions.options" class="text-input--underbar select-combo">
-            <option value="">-- Elija una opción --</option>
-        </select>
+        <ons-button modifier="large" ng-click="genericSelectStart(sortOptions.options, 'sortOptions.selectedSortOption','sortOptions.selectedSortDescription', 'description', 'id', refreshCurrentProductList)">Ordenado por : {{ sortOptions.selectedSortDescription}}</ons-button>
     </ons-col>
 </ons-row>
 
@@ -20,8 +18,8 @@
                         <span ng-if="product.offer > 0">
                             <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp;
                             <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
-<ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
-<span style="color: red">$ {{product.offer_price}}</span>
+                    <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
+                    <span style="color: red">$ {{product.offer_price}}</span>
 
                     </span>
 
@@ -41,7 +39,7 @@
                         <ons-icon ng-if="product.offer!=0" icon="bullhorn" style="color:black"></ons-icon>
                         {{product.offer!='0'?'Oferta!':''}} 
 
-                     </span> 
+                     </span>
                     <br/>
                     <span class="list-item-text" style="margin-top:16px;">{{product.description.length
                         < 100?product.description:product.description.substr(0, 100) + '...'}} </span>
@@ -80,8 +78,8 @@
                             <span style="color: red">$ {{product.price}}</span>
                     <br>
                     <div ng-if="product.option != 'null'">
-                    <ons-icon  icon="bookmark" style="color: black"></ons-icon><span> {{product.option}}</span>
-                    <br>
+                        <ons-icon icon="bookmark" style="color: black"></ons-icon><span> {{product.option}}</span>
+                        <br>
                     </div>
                     </span>
                     </span>

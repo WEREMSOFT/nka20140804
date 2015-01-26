@@ -46,7 +46,7 @@
 
 
 
-        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pLabelFieldName, pValueFieldName, pCallBackFunction) {
+        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction) {
             if (!pLabelFieldName) {
                 pLabelFieldName = 'label';
             }
@@ -59,17 +59,22 @@
             $scope.genericSelect.callBackFunction = pCallBackFunction;
             $scope.genericSelect.options = pSelectOptions;
             $scope.genericSelect.returnVariable = pReturnVariable;
+            $scope.genericSelect.returnDescription = pReturnDescription;
+
             ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
         }
 
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
-            $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable.label;
-            $scope.genericSelect.returnVariable[$scope.genericSelect.valueFieldName] = pReturnVariable.value;
+           /* $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable[$scope.genericSelect.labelFieldName];
+            $scope.genericSelect.returnVariable[$scope.genericSelect.valueFieldName] = pReturnVariable[$scope.genericSelect.valueFieldName];*/
+            eval('$scope.' + $scope.genericSelect.returnVariable + ' = pReturnVariable[$scope.genericSelect.valueFieldName]');
+            console.log($scope['sortOptions.selectedSortOption']);
+            eval('$scope.' + $scope.genericSelect.returnDescription + ' = pReturnVariable[$scope.genericSelect.labelFieldName]');
+            ons.navigator.popPage();
             if ($scope.genericSelect.callBackFunction) {
                 $scope.genericSelect.callBackFunction(pReturnVariable);
             }
-            ons.navigator.popPage();
         }
 
         $scope.onSelectTestButton = function(optionObject)

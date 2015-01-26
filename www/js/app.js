@@ -48,6 +48,7 @@
         var returnValue = {
             firstRun: true,
             selectedSortOption: 1,
+            selectedSortDescription: '',
             options: {}
         };
 
@@ -58,6 +59,8 @@
         returnValue.httpSuccess = function(data, status, headers, config) {
             returnValue.firstRun = false;
             returnValue.options = data.result.order_options;
+            returnValue.selectedSortOption = data.result.order_options[0].id;
+            returnValue.selectedSortDescription = data.result.order_options[0].description;
         };
 
         returnValue.refreshSortOptions = function() {
