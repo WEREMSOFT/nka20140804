@@ -430,7 +430,7 @@
             $scope.categoryPageInit();
             $scope.getCarrouselData();
 
-            $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);
+           /* $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);*/
 
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
