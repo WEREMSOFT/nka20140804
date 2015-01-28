@@ -2,45 +2,50 @@ var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('http
 var raiseDebugErrors = false;
 
 
-function messageWindow(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
-
+function prompt(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
 
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
 
-    if (!strTitle) {
-        strTitle = "Información";
-    }
+    if (isApp) {
+        if (!strTitle) {
+            strTitle = "Información";
+        }
 
-    if (!strButtonLabel) {
-        strButtonLabel = "Ok";
+        if (!strButtonLabel) {
+            strButtonLabel = "Ok";
+        }
+        navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
+    } else {
+        alert(strMessage);
+        if (fnctCallBaclFunction)
+            fnctCallBaclFunction();
     }
-    ons.notification.alert({
-        message: strMessage,
-        title: strTitle
-    });
-    //navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
-    if (fnctCallBaclFunction)
-        fnctCallBaclFunction();
 }
 
-function messageWindowError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+function promptError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
+    if (gaPlugin) {
+        gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "Error", strMessage, 1);
+    }
 
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
 
-    strTitle = "Error";
+    if (isApp && navigator.notification != undefined) {
+        if (!strTitle) {
+            strTitle = "Error";
+        }
 
-    if (!strButtonLabel) {
-        strButtonLabel = "Ok";
+        if (!strButtonLabel) {
+            strButtonLabel = "Ok";
+        }
+        navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
+    } else {
+        if (fnctCallBaclFunction)
+            fnctCallBaclFunction();
     }
-
-    ons.notification.alert({
-        message: strMessage,
-        title: strTitle
-    });
     if (console.logError) {
         console.logError(strMessage);
     }
@@ -60,7 +65,7 @@ function goBackOnePage() {
 
 if (raiseDebugErrors) {
     console.logError = console.error;
-    console.error = messageWindowError;
+    console.error = promptError;
 }
 var deviceType = (navigator.userAgent.match(/iPad/i)) == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i)) == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "browser";
 var gcmProductID = null;

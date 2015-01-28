@@ -223,7 +223,7 @@
                 $scope.connectionFail = false;
                 $scope.product = data.result;
                 if ($scope.product.code === 3) {
-                    messageWindow('Atículo no encontrado');
+                    prompt('Atículo no encontrado');
                     $scope.loading = false;
                     ons.navigator.popPage();
                     return;
@@ -388,12 +388,12 @@
         }
 
         $scope.barCodeScanSuccess = function(result) {
-            /*           messageWindow("We got a barcode\n" +
+            /*           prompt("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
             if (result.cancelled) {
-                messageWindow('Lectura Cancelada');
+                prompt('Lectura Cancelada');
             } else {
                 $scope.showProduct(result.text, true);
             }
@@ -401,7 +401,7 @@
         }
 
         $scope.barCodeScanError = function(error) {
-            messageWindowError("Scanning failed: " + error);
+            promptError("Scanning failed: " + error);
         }
 
         $scope.categoryPageInit = function() {

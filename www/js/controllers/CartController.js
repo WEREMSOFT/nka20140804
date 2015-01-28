@@ -46,7 +46,7 @@
 
         $scope.addToCart = function() {
             if ($scope.product.options && !$scope.talle.id) {
-                messageWindow('Debe elegir una opción');
+                prompt('Debe elegir una opción');
                 return;
             }
             $scope.isWorking = true;
@@ -72,7 +72,7 @@
         }
 
         $scope.httpError = function(data, status, headers, config) {
-            messageWindowError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpSuccess = function(data, status, headers, config) {
@@ -104,7 +104,7 @@
 
         $scope.completarDatosEnvio = function() {
             if (!$scope.shoppingCart.cartData.items.length) {
-                messageWindow("Su carrito de compras esta vacío");
+                prompt("Su carrito de compras esta vacío");
                 return;
             }
             ons.navigator.pushPage('templates/forms/CartDatosEnvio.html')
@@ -113,7 +113,7 @@
 
         $scope.enviarPedido = function() {
             if ($scope.formPedido.$invalid) {
-                messageWindow("Debe completar todos los campos marcados en rojo");
+                prompt("Debe completar todos los campos marcados en rojo");
                 return;
             }
             $scope.isWorking = true;
@@ -139,11 +139,11 @@
         }
 
         $scope.httpEnviarPedidoError = function(data, status, headers, config) {
-            messageWindowError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección', 'Bueno');
         }
 
         $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
-            messageWindow('Su pedido ha sido enviado con éxito.', goBackOnePage);
+            prompt('Su pedido ha sido enviado con éxito.', goBackOnePage);
             $scope.shoppingCart.refreshCartDetails();
             $scope.isWorking = false;
         }
@@ -167,12 +167,12 @@
         }
 
         $scope.httpEliminarDelCarritoError = function(data, status, headers, config) {
-            messageWindowError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección');
+            promptError('Oops! Algo ha salido mal. Reintenta en un momento', null, 'Sin Conección');
             $scope.isWorking = false;
         }
 
         $scope.httpEliminarDelCarritoSuccess = function(data, status, headers, config) {
-            messageWindow('Item eliminado.', null, 'Éxito');
+            prompt('Item eliminado.', null, 'Éxito');
             $scope.shoppingCart.refreshCartDetails();
             $scope.isWorking = false;
         }
