@@ -34,9 +34,20 @@
 }
 </style>
 <div id="myToolbar">
-    <ons-button modifier="large--cta" ng-click="genericSelectStart(sortOptions.options, 'sortOptions.selectedSortOption','sortOptions.selectedSortDescription', 'description', 'id', refreshCurrentProductList)">Ordenado por : {{ sortOptions.selectedSortDescription}}</ons-button>
-    <form ng-ifd="ons.navigator.getCurrentPage().name != 'templates/forms/FormSearch.html'" ng-submit="search(searchString)">
-        <input type="search" ng-model="searchString" value="" placeholder="Buscar..." class="display-block search-input">
-    </form>
+    <ons-row>
+        <ons-col>
+            <ons-button modifier="quiet" ng-click="ons.navigator.popPage()"><img class="logo" width="30px" height="36px" class="logo-image" src="imgs/header_logo.png">
+            </ons-button>
+        </ons-col>
+        <ons-col>
+            <form ng-ifd="ons.navigator.getCurrentPage().name != 'templates/forms/FormSearch.html'" ng-submit="search(searchString)">
+                <input type="search" ng-model="searchString" value="" placeholder="Buscar..." class="search-input">
+            </form>
+        </ons-col>
+        <ons-col>
+            <ons-button modifier="quiet" ng-if="ons.navigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="ons.navigator.pushPage('templates/pages/Cart.html')"><ons-icon icon="shopping-cart"></ons-icon>
+            </ons-button>
+        </ons-col>
+    </ons-row>
 </div>
 <!-- <ons-toolbar>test</ons-toolbar> -->
