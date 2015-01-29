@@ -17,6 +17,7 @@
             returnValue.isWorking = false;
             returnValue.firstRun = false;
             returnValue.cartData = data.result;
+            messageWindow("carrito refrescado con exito");
         };
 
         returnValue.refreshCartDetails = function() {
