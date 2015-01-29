@@ -23,7 +23,7 @@
         returnValue.refreshCartDetails = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/carrito.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/carrito.json?bypassCache=' + Math.random(),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
