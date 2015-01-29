@@ -44,11 +44,14 @@
 
 
         $scope.addToCart = function() {
+            messageWindow("1");
             if ($scope.product.options && !$scope.talle.id) {
                 messageWindow('Debe elegir una opción');
                 return;
             }
+            messageWindow("2");
             $scope.isWorking = true;
+            messageWindow("3");
             var request = $http({
                 method: "post",
                 url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_add.json',
@@ -59,15 +62,15 @@
                 data: '_method=POST&data[Articulo][id]=' + $scope.product.id + '&data[Articulo][cantidad]=' + $scope.cantidad + '&data[Articulo][opcion]=' + $scope.talle.id + '&data[Articulo][nombre_opcion]=' + $scope.talle.name + '&'
             });
 
-
+            messageWindow("4");
 
             // Store the data-dump of the FORM scope.
             request.success(this.httpSuccess);
-
+            messageWindow("5");
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-
+            messageWindow("6");
         }
 
         $scope.httpError = function(data, status, headers, config) {
