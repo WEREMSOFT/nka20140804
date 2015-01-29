@@ -37,8 +37,7 @@
         $scope.buyOptions = {};
 
 
-        $scope.selectCallback = function(pObj)
-        {
+        $scope.selectCallback = function(pObj) {
             console.log(pObj);
             console.log($scope.talle);
         }
@@ -80,13 +79,32 @@
             $scope.products = data.result;
             $scope.isWorking = false;
             var strConfirmationText = ' ' + $scope.cantidad + ' item' + ($scope.cantidad > 1 ? 's' : '') + ' agregado' + ($scope.cantidad > 1 ? 's' : '') + ' al carrito.';
-            navigator.notification.confirm(
-                strConfirmationText, // message
-                $scope.onPromtAddToCartOk, // callback to invoke with index of button pressed
-                'Éxito', // title
-                ['Ver Carrito', 'Seguir'] // buttonLabels
-            );
+            /*            navigator.notification.confirm(
+                            strConfirmationText, // message
+                            $scope.onPromtAddToCartOk, // callback to invoke with index of button pressed
+                            'Éxito', // title
+                            ['Ver Carrito', 'Seguir'] // buttonLabels
+                        );*/
+
+            ons.notification.confirm({
+                buttonLabel: 'Sí',
+                title: 'Información',
+                message: strConfirmationText,
+                buttonLabels: ['Seguir', 'Ver Carrito'],
+                callback: function(idx) {
+                    switch (idx) {
+                        case 0:
+                            //do nothing
+                            break;
+                        case 1:
+                            $scope.onPromtAddToCartOk(1);
+                            break;
+                    }
+                }
+            });
         }
+
+
 
         $scope.onPromtAddToCartOk = function(buttonIndex) {
             switch (buttonIndex) {
