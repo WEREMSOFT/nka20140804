@@ -663,8 +663,9 @@ input.tiny {
     background-color: transparent;
     border-bottom: 2px solid #cc181e;
 }
-
 .tab-bar {
     position: fixed;
 }
-
+.page__content {
+    top: 22px;
+}
