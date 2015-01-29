@@ -10,7 +10,7 @@
     <preference name="loadUrlTimeoutValue" value="60000" />
     <preference name="android-targetSdkVersion" value="10" />
     <preference name="android-maxSdkVersion" value="15" />
-    <preference name="android-minSdkVersion" value="1" />
+    <preference name="android-minSdkVersion" value="7" />
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="portrait" />
@@ -24,7 +24,6 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <!--<gap:plugin name="org.apache.cordova.battery-status" />-->
    <!--  <gap:plugin name="org.apache.cordova.camera" /> -->
