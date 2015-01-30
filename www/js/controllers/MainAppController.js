@@ -337,6 +337,13 @@
         }
 
         $scope.search = function(strSearchString, pPage, pCount) {
+            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
+                ons.navigator.pushPage("templates/forms/FormSearch.html");
+            }
+            if(!strSearchString)
+            {
+                return;
+            }
             $scope.searchString = strSearchString;
             if (gaPlugin) {
                 gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);
@@ -372,9 +379,7 @@
             // Store the data-dump of the FORM scope.
             request.error($scope.httpError);
 
-            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
-                ons.navigator.pushPage("templates/forms/FormSearch.html");
-            }
+            
 
         }
 
