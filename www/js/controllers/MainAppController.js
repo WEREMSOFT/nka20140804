@@ -140,6 +140,9 @@
 
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
+            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
+                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
+            }
             var request = $http({
                 method: "get",
                 url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=15&offset=1&order=' + sortOptions.selectedSortOption,
@@ -162,9 +165,7 @@
             request.success(this.httpSuccess);
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
-                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
-            }
+
         }
 
         $scope.getCategory = function(categoryID) {
@@ -430,7 +431,7 @@
             $scope.categoryPageInit();
             $scope.getCarrouselData();
 
-           /* $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);*/
+            /* $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);*/
 
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 

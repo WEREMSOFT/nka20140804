@@ -394,3 +394,6 @@ window.setTimeout(function() {
     }
 }, 3000);
 
+$('body').bind('touchstart', function(e) {
+    console.log('touch disparado');
+});
