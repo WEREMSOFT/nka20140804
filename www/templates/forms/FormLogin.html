@@ -9,12 +9,9 @@
                     <form ng-submit="login()">
 
                         <label>Usuario o e-mail:</label>
-                        <input type="text" ng-model="userData.userName" class="text-input" placeholder="Usuario o e-mail" value="">
+                        <input type="text" ng-model="userData.userName" placeholder="Usuario o e-mail" value="">
                         <label>Password:</label>
-                        <input type="password" ng-model="userData.password" class="text-input" placeholder="Password" value="">
-                        <br>
-                        <br>
-                        <br>
+                        <input type="password" ng-model="userData.password" placeholder="Password" value="">
                         <br>
                     </form>
                     <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="login()">Ingresar</ons-button>
