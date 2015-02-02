@@ -116,10 +116,6 @@
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
                                 <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_name?userData.profileData.provincia_name:'-- Seleccionar provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>
-                            <!--                            <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.iva_facturacion" ng-options="billing_option.id as billing_option.name for billing_option in buyOptions.billing_options">
-                                <option value="">-- Seleccionar tipo de factura --</option>
-                            </select>
-                            {{userData.profileData.iva_facturacion}}-{{userData.profileData.iva_facturacion_name}} -->
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_facturacion_name', 'name', 'id', null, this)">
                                 <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion_name?userData.profileData.iva_facturacion_name:'-- Seleccionar tipo de factura --'}}</ons-button>
 

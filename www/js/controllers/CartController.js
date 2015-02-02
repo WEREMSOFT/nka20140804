@@ -25,11 +25,7 @@
         $scope.products = [];
         $scope.isCart = true;
 
-
-
-
         $scope.formaEnvio = {};
-
 
         $scope.observaciones = "";
 
