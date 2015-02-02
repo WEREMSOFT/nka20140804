@@ -28,12 +28,12 @@
 
 
 
-        $scope.formaEnvio = '';
+        $scope.formaEnvio = {};
 
 
         $scope.observaciones = "";
 
-
+        $scope.tipoDeEnvio = {};
         $scope.buyOptions = {};
 
 

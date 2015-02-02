@@ -35,7 +35,7 @@
                                     <ons-icon icon="plus"></ons-icon>
                                 </ons-button>
                                 <br>
-                                <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this)">{{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
+                                <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this)"><ons-icon icon="male"></ons-icon>&nbsp:{{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
                             </ons-col>
                         </ons-row>
                         <ons-row style="margin-top: 10px;margin-bottom:10px">
@@ -85,7 +85,7 @@
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
 
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductQuestions.html', {productQuestions: product.questions})">
-                        <ons-icon icon="comments-o"></ons-icon>{{product.questions_count == 0?'Sin consultas aún.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
+                        <ons-icon icon="comments-o"></ons-icon>{{product.questions_count == 0?'Sé el primero en dejar una consulta.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
 
                     <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductsRatings.html', {productQuestions: product.questions})">
 
