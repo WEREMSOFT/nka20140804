@@ -32,12 +32,9 @@
         $scope.genericSelect.options = [];
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
-
         $scope.talle = {};
 
-
-
-        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pLabelFieldName, pValueFieldName, pCallBackFunction) {
+        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope) {
             if (!pLabelFieldName) {
                 pLabelFieldName = 'label';
             }
@@ -50,21 +47,30 @@
             $scope.genericSelect.callBackFunction = pCallBackFunction;
             $scope.genericSelect.options = pSelectOptions;
             $scope.genericSelect.returnVariable = pReturnVariable;
+            $scope.genericSelect.returnDescription = pReturnDescription;
+            $scope.genericSelect.childScope = pChildScope;
             ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
         }
 
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
-            $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable.label;
-            $scope.genericSelect.returnVariable[$scope.genericSelect.valueFieldName] = pReturnVariable.value;
+            /* $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable[$scope.genericSelect.labelFieldName];
+             $scope.genericSelect.returnVariable[$scope.genericSelect.valueFieldName] = pReturnVariable[$scope.genericSelect.valueFieldName];*/
+            console.log($scope['sortOptions.selectedSortOption']);
+            if ($scope.genericSelect.childScope) {
+                eval('$scope.genericSelect.childScope.' + $scope.genericSelect.returnDescription + ' = pReturnVariable[$scope.genericSelect.labelFieldName]');
+                eval('$scope.genericSelect.childScope.' + $scope.genericSelect.returnVariable + ' = pReturnVariable[$scope.genericSelect.valueFieldName]');
+            } else {
+                eval('$scope.' + $scope.genericSelect.returnVariable + ' = pReturnVariable[$scope.genericSelect.valueFieldName]');
+                eval('$scope.' + $scope.genericSelect.returnDescription + ' = pReturnVariable[$scope.genericSelect.labelFieldName]');
+            }
+            ons.navigator.popPage();
             if ($scope.genericSelect.callBackFunction) {
                 $scope.genericSelect.callBackFunction(pReturnVariable);
             }
-            ons.navigator.popPage();
         }
 
         $scope.onSelectTestButton = function(optionObject)
-
         {
             console.log(optionObject.label);
             console.log(optionObject.value);
