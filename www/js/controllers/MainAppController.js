@@ -27,12 +27,13 @@
 
         $scope.currentCategory = 0;
 
-        //--Esto es para los selects
+       //--Esto es para los selects
         $scope.genericSelect = {};
         $scope.genericSelect.options = [];
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
-        $scope.talle = {};
+
+
 
         $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope) {
             if (!pLabelFieldName) {
@@ -71,10 +72,12 @@
         }
 
         $scope.onSelectTestButton = function(optionObject)
+
         {
             console.log(optionObject.label);
             console.log(optionObject.value);
         }
+
 
         $scope.backButtonHandler = function() {
             ons.navigator.popPage();
