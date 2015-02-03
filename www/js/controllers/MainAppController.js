@@ -32,17 +32,8 @@
         $scope.genericSelect.options = [];
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
-        $scope.sarasa = {};
-        $scope.sarasaOptions = [{
-            label: "Opcion 1",
-            value: "0"
-        }, {
-            label: "Opcion 2",
-            value: "1"
-        }, {
-            label: "Opcion 3",
-            value: "2"
-        }];
+
+        $scope.talle = {};
 
 
 
