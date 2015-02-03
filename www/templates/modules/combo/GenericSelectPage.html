@@ -4,7 +4,7 @@
         <ons-row style="margin-top: 0px;">
             <ons-col>
                 <ons-list-header>{{genericSelectLabel}}</ons-list-header>
-                <ons-list-item modifier="tappable" ng-repeat="selectOption in genericSelect.options" ng-click="genericSelectOptionClick(selectOption)">{{selectOption.label}}</ons-list-item>
+                <ons-list-item modifier="tappable" ng-repeat="selectOption in genericSelect.options" ng-click="genericSelectOptionClick(selectOption)">{{selectOption[genericSelect.labelFieldName]}}</ons-list-item>
                 </ons-list>
             </ons-col>
         </ons-row>
