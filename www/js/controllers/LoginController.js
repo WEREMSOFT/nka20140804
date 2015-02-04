@@ -255,7 +255,7 @@
 
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
                 $scope.isWorking = false;
-                if(data.result.code)
+                if(data.result)
                 {
                     if(data.result.code == 9)
                     {
