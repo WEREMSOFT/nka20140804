@@ -33,7 +33,12 @@
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
 
-
+        $scope.findInArrayById =  function(pArray, pValueToSearch, pIndexName, pValueName)
+        {
+            if(!pArray) return '';
+            var value =  $.grep(pArray, function (e) {return e[pIndexName] == pValueToSearch})[0][pValueName];
+            return value;
+        }
 
         $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope) {
             if (!pLabelFieldName) {
@@ -52,7 +57,6 @@
             $scope.genericSelect.childScope = pChildScope;
             ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
         }
-
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
             /* $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable[$scope.genericSelect.labelFieldName];

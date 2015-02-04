@@ -41,9 +41,8 @@
                 <input type="text" ng-model="userData.profileData.direccion" class="text-input--underbar" placeholder="dirección" value="">
 
                 <label>Provincia:</label>
-                <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.provincia_id" ng-options="province.id as province.name for province in buyOptions.provinces">
-                    <option value="">-- Seleccionar provincia --</option>
-                </select>
+                <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
+                    <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
 
                 <label>Terminal de envío:</label>
                 <input type="text" ng-model="userData.profileData.terminal" class="text-input--underbar" placeholder="Terminal" value="">
@@ -65,9 +64,10 @@
             <div class="panel-heading">Datos de Facturación (no obl.)</div>
             <div class="panel-body">
                 <label>Tipo de factura {{userData.profileData.iva_facturacion}}:</label>
-                <select required type="text" class="text-input--underbar select-combo" ng-model="userData.profileData.iva_facturacion" ng-options="billing_option.id as billing_option.name for billing_option in buyOptions.billing_options">
-                    <option value="">-- Seleccionar tipo de factura --</option>
-                </select>
+                <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_name', 'name', 'id', null, this)">
+                    <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
+
+
                 <div ng-show="userData.profileData.iva_facturacion === 1 || userData.profileData.iva_facturacion === 3">
                     <label>Razón social:</label>
                     <input type="text" ng-model="userData.profileData.razon_social" class="text-input--underbar" placeholder="razón social" value="">
