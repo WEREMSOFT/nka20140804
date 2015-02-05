@@ -27,13 +27,18 @@
 
         $scope.currentCategory = 0;
 
-        //--Esto es para los selects
+       //--Esto es para los selects
         $scope.genericSelect = {};
         $scope.genericSelect.options = [];
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
 
-
+        $scope.findInArrayById =  function(pArray, pValueToSearch, pIndexName, pValueName)
+        {
+            if(!pArray) return '';
+            var value =  $.grep(pArray, function (e) {return e[pIndexName] == pValueToSearch})[0][pValueName];
+            return value;
+        }
 
         $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope) {
             if (!pLabelFieldName) {
@@ -52,7 +57,6 @@
             $scope.genericSelect.childScope = pChildScope;
             ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
         }
-
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
             /* $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable[$scope.genericSelect.labelFieldName];
@@ -78,6 +82,7 @@
             console.log(optionObject.value);
         }
 
+
         $scope.backButtonHandler = function() {
             ons.navigator.popPage();
             $scope.$apply();
@@ -99,7 +104,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/ofertas.json?max=15&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/ofertas.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -129,12 +134,9 @@
 
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
-            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
-                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
-            }
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=15&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
             this.httpError = function(data, status, headers, config) {
                 console.log('Error al cargar datos');
@@ -154,7 +156,9 @@
             request.success(this.httpSuccess);
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-
+            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
+                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
+            }
         }
 
         $scope.getCategory = function(categoryID) {
@@ -163,7 +167,7 @@
             $scope.loading = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=15&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
@@ -223,7 +227,7 @@
                 $scope.connectionFail = false;
                 $scope.product = data.result;
                 if ($scope.product.code === 3) {
-                    messageWindow('Atículo no encontrado');
+                    prompt('Atículo no encontrado');
                     $scope.loading = false;
                     ons.navigator.popPage();
                     return;
@@ -290,7 +294,7 @@
         $scope.getDestacados = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json?max=15&offset=1&order=1',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json?max=9999&offset=1&order=1',
             });
 
             this.httpGetDestacadosDetailsError = function(data, status, headers, config) {
@@ -326,13 +330,6 @@
         }
 
         $scope.search = function(strSearchString, pPage, pCount) {
-            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
-                ons.navigator.pushPage("templates/forms/FormSearch.html");
-            }
-            if(!strSearchString)
-            {
-                return;
-            }
             $scope.searchString = strSearchString;
             if (gaPlugin) {
                 gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);
@@ -368,7 +365,9 @@
             // Store the data-dump of the FORM scope.
             request.error($scope.httpError);
 
-            
+            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
+                ons.navigator.pushPage("templates/forms/FormSearch.html");
+            }
 
         }
 
@@ -393,12 +392,12 @@
         }
 
         $scope.barCodeScanSuccess = function(result) {
-            /*           messageWindow("We got a barcode\n" +
+            /*           prompt("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
             if (result.cancelled) {
-                messageWindow('Lectura Cancelada');
+                prompt('Lectura Cancelada');
             } else {
                 $scope.showProduct(result.text, true);
             }
@@ -406,7 +405,7 @@
         }
 
         $scope.barCodeScanError = function(error) {
-            messageWindowError("Scanning failed: " + error);
+            promptError("Scanning failed: " + error);
         }
 
         $scope.categoryPageInit = function() {
@@ -424,8 +423,6 @@
         $scope.init = function() {
             $scope.categoryPageInit();
             $scope.getCarrouselData();
-
-            /* $scope.selectedLoginOption = cloneObject($scope.loginOptions[0]);*/
 
             $scope.userData.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
 
