@@ -48,7 +48,7 @@
                             </select> -->
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_types, 'tipoDeEnvio.id','tipoDeEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp
-                                <ons-icon icon="lock"></ons-icon>&nbsp{{tipoDeEnvio.id?tipoDeEnvio.name:'-- Seleccionar tipo de envío --'}}</ons-button>
+                                <ons-icon icon="lock"></ons-icon>&nbsp{{tipoDeEnvio.id?findInArrayById(buyOptions.shipping_types, tipoDeEnvio.id, 'id', 'name'):'-- Seleccionar tipo de envío --'}}</ons-button>
                             <br>
                         </ons-col>
                     </ons-row>
@@ -114,10 +114,10 @@
                             <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="Codigo Postal" value="" required>
                             <label>Provincia:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
-                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_name?userData.profileData.provincia_name:'-- Seleccionar provincia --'}}</ons-button>
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_facturacion_name', 'name', 'id', null, this)">
-                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion_name?userData.profileData.iva_facturacion_name:'-- Seleccionar tipo de factura --'}}</ons-button>
+                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
 
 
                             <div ng-show="opcionesDePago === 1 || opcionesDePago === 3">
@@ -177,7 +177,7 @@
         <ons-row style="margin-top: 10px;">
             <ons-col align="center">
                 <div style="text-align: center" class="content-padded">
-                     <ons-button modifier="large" ng-click="enviarPedido()" should-spin="{{isWorking}}">Enviar Pedido</ons-button>
+                    <ons-button modifier="large" ng-click="enviarPedido()" should-spin="{{isWorking}}">Enviar Pedido</ons-button>
                 </div>
             </ons-col>
         </ons-row>
