@@ -114,10 +114,10 @@
                             <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="Codigo Postal" value="" required>
                             <label>Provincia:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
-                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_facturacion_name', 'name', 'id', null, this)">
-                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
+                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Tipo de factura --'}}</ons-button>
 
 
                             <div ng-show="opcionesDePago === 1 || opcionesDePago === 3">
@@ -135,7 +135,7 @@
 
                     <label>Tipo de pago:</label>
                     <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.pay_options, 'formaDePago','formaDePago_name', 'name', 'id', null, this)">
-                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Seleccionar tipo de pago --'}}</ons-button>
+                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Tipo de pago --'}}</ons-button>
 
                     <ons-row style="margin-top: 10px;" ng-if="formaDePago === 0">
                         <ons-col>
