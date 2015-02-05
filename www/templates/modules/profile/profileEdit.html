@@ -65,7 +65,7 @@
             <div class="panel-body">
                 <label>Tipo de factura {{userData.profileData.iva_facturacion}}:</label>
                 <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_name', 'name', 'id', null, this)">
-                    <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
+                    <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
 
 
                 <div ng-show="userData.profileData.iva_facturacion === 1 || userData.profileData.iva_facturacion === 3">
