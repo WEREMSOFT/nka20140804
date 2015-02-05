@@ -43,9 +43,6 @@
                     <ons-row style="margin-top: 10px;">
                         <ons-col>
                             <label>Tipo de envío:</label>
-                            <!-- <select required type="text" class="text-input--underbar select-combo" ng-model="tipoDeEnvio" ng-options="shippingType.id as shippingType.name for shippingType in buyOptions.shipping_types">
-                                <option value="">-- Seleccionar tipo de envío --</option>
-                            </select> -->
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_types, 'tipoDeEnvio.id','tipoDeEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp
                                 <ons-icon icon="lock"></ons-icon>&nbsp{{tipoDeEnvio.id?findInArrayById(buyOptions.shipping_types, tipoDeEnvio.id, 'id', 'name'):'-- Seleccionar tipo de envío --'}}</ons-button>

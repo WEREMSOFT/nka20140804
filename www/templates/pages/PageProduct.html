@@ -34,7 +34,10 @@
                                 <ons-button ng-click="quantityIncrement()">
                                     <ons-icon icon="plus"></ons-icon>
                                 </ons-button>
-                                <br>
+                            </ons-col>
+                        </ons-row>
+                        <ons-row style="margin-top: 10px;">
+                            <ons-col>
                                 <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this)">
                                     {{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
                             </ons-col>
