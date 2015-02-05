@@ -84,7 +84,7 @@
 
 
         $scope.onPrePop = function(event) {
-            if ($scope.editMode) {
+            if ($scope.editMode && ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 if ($scope.shouldAskForConfirmationBeforeLeave) {
                     $scope.shouldAskForConfirmationBeforeLeave = false;
                     return;
@@ -254,8 +254,17 @@
         }
 
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
-                $scope.editMode = false;
                 $scope.isWorking = false;
+                if(data.result)
+                {
+                    if(data.result.code == 9)
+                    {
+                        messageWindowError(data.result.messagge);
+                        return;
+                    }
+
+                }
+                $scope.editMode = false;
                 window.localStorage.setItem('user', userData.userName);
                 window.localStorage.setItem('password', userData.password);
                 $scope.userData.refreshUserDetails();
