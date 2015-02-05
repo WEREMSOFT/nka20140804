@@ -22,17 +22,9 @@
         </ons-toolbar-button>
     </div>
 </ons-toolbar> -->
-<style>
-#myToolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    border-bottom: 1px solid #000000;
-    background-color: #ffffff;
-}
-</style>
+
+ <ons-button modifier="large--cta" ng-click="backButtonHandler()" ng-hide="ons.navigator.getPages().length <= 1">Volver</ons-button>
+ <br>
 <!-- <div id="myToolbar">
     <ons-row>
         <ons-col>
