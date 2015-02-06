@@ -677,7 +677,8 @@ input.tiny {
     background-color: #337ab7;
 }
 .boton_select {
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    color: black;
+    background-color: #5cb85c;
+    /*border: 2px solid #000000;
+    color: black;*/
 }
+
