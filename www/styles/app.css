@@ -669,3 +669,15 @@ input.tiny {
 /*.page__content {
     top: 44px;
 }*/
+}
+.boton_agregar_al_carrito {
+    background-color: #c9131b;
+}
+.boton_solicitar_informacion {
+    background-color: #337ab7;
+}
+.boton_select {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: black;
+}
