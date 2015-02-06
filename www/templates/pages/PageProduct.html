@@ -34,8 +34,12 @@
                                 <ons-button ng-click="quantityIncrement()">
                                     <ons-icon icon="plus"></ons-icon>
                                 </ons-button>
-                                <br>
-                                <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this)"><ons-icon icon="male"></ons-icon>&nbsp:{{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
+                            </ons-col>
+                        </ons-row>
+                        <ons-row style="margin-top: 10px;">
+                            <ons-col>
+                                <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this, compareProductOptionsForSort, 'templates/modules/combo/TalleSelectPage.html')">
+                                    {{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
                             </ons-col>
                         </ons-row>
                         <ons-row style="margin-top: 10px;margin-bottom:10px">
@@ -48,21 +52,21 @@
                     <ons-list-header>
                         <ons-row>
                             <ons-col align="center">
-                                <i class="fa fa-credit-card"></i> 
+                                <i class="fa fa-credit-card"></i>
                                 <span class="product-debit-credit-label">Débito/Crédito :</span>
                                 <span class="product-debit-credit-price">${{product.credit_price}}</span>
                             </ons-col>
                         </ons-row>
                         <ons-row>
                             <ons-col align="center">
-                                <i class="fa fa-money"></i> 
+                                <i class="fa fa-money"></i>
                                 <span class="product-contado-label">Efectivo -10% :</span>
                                 <span class="product-contado-price" ng-class="{'stryke-trough': (product.offer > 0)}">${{product.price}}</span>
                             </ons-col>
                         </ons-row>
                         <ons-row>
                             <ons-col align="center" ng-if="product.offer > 0">
-                                <i class="fa fa-certificate"></i> 
+                                <i class="fa fa-certificate"></i>
                                 <span class="product-contado-label">Oferta -{{product.offer}}% :</span>
                                 <span class="product-contado-price">${{product.offer_price}}</span>
                             </ons-col>
@@ -73,8 +77,8 @@
                             </ons-col>
                             <ons-col align="center">
                                 <!-- NUEVO -->
-                                <ons-icon ng-if="product.nuevo==1" icon="certificate" style="color:red"></ons-icon>
-                                {{product.nuevo=='1'?'Nuevo!':''}}
+                                <!-- <ons-icon ng-if="product.new==1" icon="certificate" style="color:red"></ons-icon>
+                                {{product.new=='1'?'Nuevo!':''}} -->
                             </ons-col>
                         </ons-row>
                     </ons-list-header>
@@ -85,7 +89,7 @@
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
 
                     <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductQuestions.html', {productQuestions: product.questions})">
-                        <ons-icon icon="comments-o"></ons-icon>{{product.questions_count == 0?'Sé el primero en dejar una consulta.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
+                        <ons-icon icon="comments-o"></ons-icon>{{product.questions_count == 0?'Sea el primero en consultar.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
 
                     <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductsRatings.html', {productQuestions: product.questions})">
 
