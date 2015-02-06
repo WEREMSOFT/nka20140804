@@ -38,13 +38,18 @@
                         </ons-row>
                         <ons-row style="margin-top: 10px;">
                             <ons-col>
-                                <ons-button ng-show="product.options" modifier="large--cta" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this, compareProductOptionsForSort, 'templates/modules/combo/TalleSelectPage.html')">
-                                    {{talle.id?talle.name:'-- Elija una opción --'}}</ons-button>
+                                <ons-button modifier="large" class="boton_solicitar_informacion" ng-click="ons.navigator.pushPage('templates/forms/FormQuestionOnProduct.html')">Solicitar Información</ons-button>
+                            </ons-col>
+                        </ons-row>
+                        <ons-row style="margin-top: 10px;">
+                            <ons-col>
+                                <ons-button ng-show="product.options" modifier="large--cta" class="boton_select" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this, compareProductOptionsForSort, 'templates/modules/combo/TalleSelectPage.html')">
+                                    {{talle.id?talle.name:' Elija una opción '}}<ons-icon ng-hide="talle.id" icon="caret-square-o-down"></ons-icon></ons-button>
                             </ons-col>
                         </ons-row>
                         <ons-row style="margin-top: 10px;margin-bottom:10px">
                             <ons-col align="center">
-                                <ons-button modifier="large" should-spin="{{isWorking}}" ng-click="addToCart()">Agregar al Carrito</ons-button>
+                                <ons-button modifier="large" class="boton_agregar_al_carrito" should-spin="{{isWorking}}" ng-click="addToCart()">Agregar al Carrito</ons-button>
                             </ons-col>
                         </ons-row>
 
