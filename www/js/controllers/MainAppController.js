@@ -27,20 +27,26 @@
 
         $scope.currentCategory = 0;
 
-       //--Esto es para los selects
+        //--Esto es para los selects
         $scope.genericSelect = {};
         $scope.genericSelect.options = [];
         $scope.genericSelect.returnVariable = null;
         $scope.genericSelectLabel = 'Seleccióne una opción';
 
-        $scope.findInArrayById =  function(pArray, pValueToSearch, pIndexName, pValueName)
-        {
-            if(!pArray) return '';
-            var value =  $.grep(pArray, function (e) {return e[pIndexName] == pValueToSearch})[0][pValueName];
+        $scope.findInArrayById = function(pArray, pValueToSearch, pIndexName, pValueName) {
+            if (!pArray) return '';
+            var value = $.grep(pArray, function(e) {
+                return e[pIndexName] == pValueToSearch
+            })[0][pValueName];
             return value;
         }
 
-        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope) {
+        $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope, pSortCallback, pTemplateToUse) {
+            if(pSortCallback)
+            {
+                pSelectOptions.sort(pSortCallback)
+            }
+
             if (!pLabelFieldName) {
                 pLabelFieldName = 'label';
             }
@@ -55,7 +61,11 @@
             $scope.genericSelect.returnVariable = pReturnVariable;
             $scope.genericSelect.returnDescription = pReturnDescription;
             $scope.genericSelect.childScope = pChildScope;
-            ons.navigator.pushPage('templates/modules/combo/GenericSelectPage.html');
+            if(!pTemplateToUse)
+            {
+                pTemplateToUse = 'templates/modules/combo/GenericSelectPage.html';
+            }
+            ons.navigator.pushPage(pTemplateToUse);
         }
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
@@ -74,6 +84,16 @@
                 $scope.genericSelect.callBackFunction(pReturnVariable);
             }
         }
+
+        $scope.compareProductOptionsForSort = function(a, b) {
+            if (a.stock < b.stock)
+                return -1;
+            if (a.stock > b.stock)
+                return 1;
+            return 0;
+        }
+
+
 
         $scope.onSelectTestButton = function(optionObject)
 

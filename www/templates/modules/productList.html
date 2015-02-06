@@ -81,7 +81,7 @@
                     <span class="list-item-text" style="margin-top:16px;">
                         <!--- STOCK -->
                         <ons-icon icon="circle" style="color:{{product.stock==1?'green':product.stock==2?'yellow':product.stock==3?'red':'grey'}}"></ons-icon>
-                        {{product.stock==1?'En Stock':product.stock==2?'Consultar':product.stock==3?'Sin Stock':'Proximamente'}}
+                        {{product.stock==1?'En Stock':product.stock==2?'Consultar Stock':product.stock==3?'Sin Stock':'Proximamente'}}
                         <!-- NUEVO -->
                         <ons-icon ng-if="product.new==1" icon="certificate" style="color:red"></ons-icon>
                         {{product.new=='1'?'Nuevo!':''}}
