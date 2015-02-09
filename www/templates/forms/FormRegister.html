@@ -10,6 +10,8 @@
                 <select required type="text" class="text-input--underbar select-combo" ng-model="provincia" ng-options="province.id as province.name for province in buyOptions.provinces">
                     <option value="">-- Seleccionar provincia --</option>
                 </select>
+                <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'provincia','provincia_name', 'name', 'id', null, this)">
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{provincia?findInArrayById(buyOptions.provinces, provincia, 'id', 'name'):'-- Provincia --'}}</ons-button>
                 <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="" required>
                 <input type="password" ng-model="password" class="text-input--underbar" placeholder="Password" value="" required>
                 <input type="password" ng-model="passwordVerification" class="text-input--underbar" placeholder="Password Verification" value="" required>
