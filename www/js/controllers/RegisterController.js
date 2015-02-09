@@ -43,7 +43,7 @@
                 messageWindow($scope.result.messagge);
                 $scope.goBack();
             } else {
-                messageWindowError($scope.result.message);
+                messageWindowError($scope.result.messagge);
             }
         }
 
@@ -52,7 +52,6 @@
         }
 
         $scope.submitRegister = function() {
-            messageWindow("registrando");
             if ($scope.formRegister.$invalid) {
                 messageWindow("Debe completar todos los campos marcados en rojo");
                 return;

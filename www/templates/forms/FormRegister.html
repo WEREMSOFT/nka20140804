@@ -7,9 +7,6 @@
                 <input type="text" ng-model="nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
                 <input type="text" ng-model="apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
                 <input type="email" ng-model="email" class="text-input--underbar" placeholder="Email" value="" required>
-                <select required type="text" class="text-input--underbar select-combo" ng-model="provincia" ng-options="province.id as province.name for province in buyOptions.provinces">
-                    <option value="">-- Seleccionar provincia --</option>
-                </select>
                 <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'provincia','provincia_name', 'name', 'id', null, this)">
                                 <ons-icon icon="globe"></ons-icon>&nbsp{{provincia?findInArrayById(buyOptions.provinces, provincia, 'id', 'name'):'-- Provincia --'}}</ons-button>
                 <input type="text" ng-model="userName" class="text-input--underbar" placeholder="Nombre de usuario" value="" required>
