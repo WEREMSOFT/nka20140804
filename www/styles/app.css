@@ -557,7 +557,11 @@ input[type=text], input[type=email], input[type=password] {
 }*/
 
 .question_response {
-    padding-left: 55px !important;
+    padding-left: 20px !important;
+}
+.question_response .list-item-main .list-item-left .thumbnail {
+    max-width: 50px;
+    height: 50px;
 }
 .stryke-trough {
     text-decoration: line-through;
