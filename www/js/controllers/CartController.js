@@ -123,7 +123,7 @@
 
         $scope.enviarPedido = function() {
             if ($scope.formPedido.$invalid) {
-                messageWindow("Debe completar todos los campos marcados en rojo");
+                messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
             $scope.isWorking = true;

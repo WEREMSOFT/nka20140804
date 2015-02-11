@@ -6,13 +6,13 @@
             <div class="panel">
                 <div class="panel-heading">Ingrese sus datos para finalizar su pedido</div>
                 <div class="panel-body">
-                    <label>Nombre:</label>
+                    <label>Nombre(*):</label>
                     <input type="text" ng-model="userData.profileData.nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
 
-                    <label>Apellido:</label>
+                    <label>Apellido(*):</label>
                     <input type="text" ng-model="userData.profileData.apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
 
-                    <label>e-mail:</label>
+                    <label>e-mail(*):</label>
                     <input type="email" ng-model="userData.profileData.mail" class="text-input--underbar" placeholder="Email" value="" required>
 
                     <label>Telefono:</label>
@@ -42,7 +42,7 @@
 
                     <ons-row style="margin-top: 10px;">
                         <ons-col>
-                            <label>Tipo de envío:</label>
+                            <label>Tipo de envío(*):</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_types, 'tipoDeEnvio.id','tipoDeEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp
                                 <ons-icon icon="lock"></ons-icon>&nbsp{{tipoDeEnvio.id?findInArrayById(buyOptions.shipping_types, tipoDeEnvio.id, 'id', 'name'):'-- Seleccionar tipo de envío --'}}</ons-button>
@@ -80,7 +80,7 @@
 
                     <ons-row style="margin-top: 10px;" ng-show="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3">
                         <ons-col>
-                            <label>Forma de envío:</label>
+                            <label>Forma de envío(*):</label>
                             <!-- <select ng-required="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3" type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" ng-options="shipping_way.id as shipping_way.name for shipping_way in buyOptions.shipping_ways">
                                 <option value="">-- Seleccionar forma de envío --</option>
                             </select>
