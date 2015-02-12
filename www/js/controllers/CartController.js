@@ -123,7 +123,7 @@
 
         $scope.enviarPedido = function() {
             if ($scope.formPedido.$invalid) {
-                messageWindow("Debe completar todos los campos marcados en rojo");
+                messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
             $scope.isWorking = true;
@@ -162,7 +162,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_del.json?rnd=' + Math.random().toString().split('.')[1] + '&id=' + id,
+                url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_del.json?id=' + id,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -199,7 +199,7 @@
         $scope.getBuyOptions = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json?rnd=' + Math.random().toString().split('.')[1],
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
