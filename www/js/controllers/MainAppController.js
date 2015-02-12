@@ -124,7 +124,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/ofertas.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/ofertas.json?rnd=' + Math.random().toString().split('.')[1] + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -156,7 +156,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/nuevos.json?rnd=' + Math.random().toString().split('.')[1] + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
             this.httpError = function(data, status, headers, config) {
                 console.log('Error al cargar datos');
@@ -187,7 +187,7 @@
             $scope.loading = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?rnd=' + Math.random().toString().split('.')[1] + '&id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
@@ -233,7 +233,7 @@
 
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/producto.json?' + searchVariable + '=' + productID,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/producto.json?rnd=' + Math.random().toString().split('.')[1] + '&' + searchVariable + '=' + productID,
             });
 
             this.httpGetProductDetailsError = function(data, status, headers, config) {
@@ -314,7 +314,7 @@
         $scope.getDestacados = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json?max=9999&offset=1&order=1',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/destacados.json?rnd=' + Math.random().toString().split('.')[1] + 'max=9999&offset=1&order=1',
             });
 
             this.httpGetDestacadosDetailsError = function(data, status, headers, config) {
@@ -453,7 +453,7 @@
         $scope.getCarrouselData = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/slide.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/slide.json?rnd=' + Math.random().toString().split('.')[1],
             });
 
             this.getCarrouselDataError = function(data, status, headers, config) {

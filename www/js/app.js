@@ -22,7 +22,7 @@
         returnValue.refreshCartDetails = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/carrito.json?bypassCache=' + Math.random(),
+                url: 'http://www.nakaoutdoors.com.ar/webservices/carrito.json?rnd=' + Math.random().toString().split('.')[1],
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -66,7 +66,7 @@
         returnValue.refreshSortOptions = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/order_options.json',
+                url: 'http://www.nakaoutdoors.com.ar/webservices/order_options.json?rnd=' + Math.random().toString().split('.')[1],
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -166,7 +166,7 @@
         returnValue.getPendingCalifications = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/client/articulos/valoraciones_pendientes_index.json',
+                url: 'http://www.nakaoutdoors.com.ar/client/articulos/valoraciones_pendientes_index.json?rnd=' + Math.random().toString().split('.')[1],
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

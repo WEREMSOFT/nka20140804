@@ -122,7 +122,7 @@
         $scope.getBuyOptions = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json?rnd=' + Math.random().toString().split('.')[1],
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
