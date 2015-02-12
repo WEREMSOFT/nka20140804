@@ -6,17 +6,17 @@
             <div class="panel">
                 <div class="panel-heading">Ingrese sus datos para finalizar su pedido</div>
                 <div class="panel-body">
-                    <label>Nombre:</label>
+                    <label>Nombre(*):</label>
                     <input type="text" ng-model="userData.profileData.nombre" class="text-input--underbar" placeholder="Nombre" value="" required>
 
-                    <label>Apellido:</label>
+                    <label>Apellido(*):</label>
                     <input type="text" ng-model="userData.profileData.apellido" class="text-input--underbar" placeholder="Apellido" value="" required>
 
-                    <label>e-mail:</label>
+                    <label>e-mail(*):</label>
                     <input type="email" ng-model="userData.profileData.mail" class="text-input--underbar" placeholder="Email" value="" required>
 
-                    <label>Telefono:</label>
-                    <input type="text" ng-model="userData.profileData.telefono" class="text-input--underbar" placeholder="telefono" value="">
+                    <label>Telefono(*):</label>
+                    <input type="text" ng-model="userData.profileData.telefono" class="text-input--underbar" placeholder="telefono" value="" required>
 
                     <label>Código de área:</label>
                     <input type="text" ng-model="userData.profileData.cod_area" class="text-input--underbar" placeholder="código de área" value="">
@@ -42,10 +42,7 @@
 
                     <ons-row style="margin-top: 10px;">
                         <ons-col>
-                            <label>Tipo de envío:</label>
-                            <!-- <select required type="text" class="text-input--underbar select-combo" ng-model="tipoDeEnvio" ng-options="shippingType.id as shippingType.name for shippingType in buyOptions.shipping_types">
-                                <option value="">-- Seleccionar tipo de envío --</option>
-                            </select> -->
+                            <label>Tipo de envío(*):</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_types, 'tipoDeEnvio.id','tipoDeEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp
                                 <ons-icon icon="lock"></ons-icon>&nbsp{{tipoDeEnvio.id?findInArrayById(buyOptions.shipping_types, tipoDeEnvio.id, 'id', 'name'):'-- Seleccionar tipo de envío --'}}</ons-button>
@@ -83,7 +80,7 @@
 
                     <ons-row style="margin-top: 10px;" ng-show="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3">
                         <ons-col>
-                            <label>Forma de envío:</label>
+                            <label>Forma de envío(*):</label>
                             <!-- <select ng-required="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3" type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" ng-options="shipping_way.id as shipping_way.name for shipping_way in buyOptions.shipping_ways">
                                 <option value="">-- Seleccionar forma de envío --</option>
                             </select>
@@ -114,10 +111,10 @@
                             <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="Codigo Postal" value="" required>
                             <label>Provincia:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
-                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Provincia --'}}</ons-button>
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_facturacion_name', 'name', 'id', null, this)">
-                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Tipo de factura --'}}</ons-button>
+                                <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
 
 
                             <div ng-show="opcionesDePago === 1 || opcionesDePago === 3">
@@ -135,7 +132,7 @@
 
                     <label>Tipo de pago:</label>
                     <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.pay_options, 'formaDePago','formaDePago_name', 'name', 'id', null, this)">
-                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Tipo de pago --'}}</ons-button>
+                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Seleccionar tipo de pago --'}}</ons-button>
 
                     <ons-row style="margin-top: 10px;" ng-if="formaDePago === 0">
                         <ons-col>
