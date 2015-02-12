@@ -3515,6 +3515,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   }
 }
 .alert-dialog-mask {
+  position: fixed;
   padding: 0;
   margin: 0;
   font: inherit;
