@@ -667,8 +667,10 @@ input.tiny {
     background-color: transparent;
     border-bottom: 2px solid #cc181e;
 }
-.tab-bar {
+.fixed-on-top {
     position: fixed;
+    top: 0;
+    z-index: 2000;
 }
 /*.page__content {
     top: 44px;
