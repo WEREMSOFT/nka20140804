@@ -18,7 +18,8 @@ function messageWindow(strMessage, fnctCallBaclFunction, strTitle, strButtonLabe
     }
     ons.notification.alert({
         message: strMessage,
-        title: strTitle
+        title: strTitle,
+        animation: 'none'
     });
     //navigator.notification.alert(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel);
     if (fnctCallBaclFunction)

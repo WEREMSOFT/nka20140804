@@ -92,6 +92,7 @@
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Atención!',
+                    animation: 'none',
                     message: '¿Desea salir sin guardar los cambios?',
                     callback: function(idx) {
                         switch (idx) {
@@ -148,6 +149,7 @@
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Información',
+                    animation: 'none',
                     message: '¿Desea Salir?',
                     callback: function(idx) {
                         switch (idx) {
@@ -171,6 +173,7 @@
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Contacto',
+                    animation: 'none',
                     message: '¿Desea llamar a soporte?',
                     callback: function(idx) {
                         switch (idx) {
@@ -255,10 +258,8 @@
 
         $scope.httpSaveProfileSuccess = function(data, status, headers, config) {
                 $scope.isWorking = false;
-                if(data.result)
-                {
-                    if(data.result.code == 9)
-                    {
+                if (data.result) {
+                    if (data.result.code == 9) {
                         messageWindowError(data.result.messagge);
                         return;
                     }

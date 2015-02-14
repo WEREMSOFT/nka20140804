@@ -687,7 +687,7 @@ input.tiny {
     /*border: 2px solid #000000;
     color: black;*/
 }
-.alert-dialog-mask {
+/*.alert-dialog-mask {
     position: fixed;
     top: 0;
     z-index: 2000;
@@ -695,3 +695,4 @@ input.tiny {
 .alert-dialog {
     position: fixed;
 }
+*/

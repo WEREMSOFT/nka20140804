@@ -81,6 +81,7 @@
             ons.notification.confirm({
                 buttonLabel: 'Sí',
                 title: 'Información',
+                animation: 'none',
                 message: strConfirmationText,
                 buttonLabels: ['Seguir', 'Ver Carrito'],
                 callback: function(idx) {

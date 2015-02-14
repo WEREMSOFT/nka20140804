@@ -110,6 +110,7 @@
             $scope.cod_sucursal = cod_sucursal;
             ons.notification.confirm({
                 title: 'Contacto',
+                animation: 'none',
                 buttonLabels: ['Llamar ahora', 'Tal vez mas tarde'],
                 message: '¿Desea llamar a la sucursal?',
                 callback: function(idx) {
