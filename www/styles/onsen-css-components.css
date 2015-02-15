@@ -3304,7 +3304,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
