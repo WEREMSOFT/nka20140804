@@ -4,7 +4,7 @@ var raiseDebugErrors = false;
 
 function messageWindow(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
 
-
+    window.scrollTo(0, 0);
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }
@@ -27,7 +27,7 @@ function messageWindow(strMessage, fnctCallBaclFunction, strTitle, strButtonLabe
 }
 
 function messageWindowError(strMessage, fnctCallBaclFunction, strTitle, strButtonLabel) {
-
+    window.scrollTo(0, 0);
     if (!fnctCallBaclFunction) {
         fnctCallBaclFunction = messageDefaultCallBackFunction;
     }

@@ -89,6 +89,7 @@
                     $scope.shouldAskForConfirmationBeforeLeave = false;
                     return;
                 }
+                window.scrollTo(0, 0);
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Atención!',
@@ -146,6 +147,7 @@
 
         $scope.logout = function(pConfirm) {
             if (pConfirm) {
+                window.scrollTo(0, 0);
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Información',
@@ -170,6 +172,7 @@
 
         $scope.askCallSoporte = function(cod_sucursal) {
             try {
+                window.scrollTo(0, 0);
                 ons.notification.confirm({
                     buttonLabel: 'Sí',
                     title: 'Contacto',

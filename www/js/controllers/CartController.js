@@ -77,7 +77,7 @@
                             'Éxito', // title
                             ['Ver Carrito', 'Seguir'] // buttonLabels
                         );*/
-
+            window.scrollTo(0, 0);
             ons.notification.confirm({
                 buttonLabel: 'Sí',
                 title: 'Información',

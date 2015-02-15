@@ -780,13 +780,3 @@ input.tiny {
     /*border: 2px solid #000000;
     color: black;*/
 }
-
-.alert-dialog {
-  position: fixed;
-  top: 20%;
-  left: 10%;
-}
-
-.alert-dialog-mask {
-  position: fixed;
-}

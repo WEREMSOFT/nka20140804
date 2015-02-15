@@ -108,6 +108,7 @@
 
         $scope.askCallSucursal = function(cod_sucursal) {
             $scope.cod_sucursal = cod_sucursal;
+            window.scrollTo(0, 0);
             ons.notification.confirm({
                 title: 'Contacto',
                 animation: 'none',
