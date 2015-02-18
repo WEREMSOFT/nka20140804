@@ -54,6 +54,15 @@
             ons.navigator.popPage();
         }
 
+        $scope.submitContact = function() {
+            if ($scope.formQuestionOnProduct.$invalid) {
+                messageWindow("Debe completar todos los campos.");
+                return;
+            }
+
+            $scope.getHash();
+        }
+
         $scope.getHash = function() {
             if ($scope.isWorking === true) return;
             $scope.isWorking = true;
@@ -89,7 +98,7 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             messageWindow('Su consulta ha sido enviada con éxito');
-            var image = userData.logedIn == 'true'?userData.profileData.imagen:'http://www.nakaoutdoors.com.ar/img/avatar/sin_avatar_thumb.jpg';
+            var image = userData.logedIn == 'true' ? userData.profileData.imagen : 'http://www.nakaoutdoors.com.ar/img/avatar/sin_avatar_thumb.jpg';
             $scope.product.questions.unshift({
                 user: {
                     name: $scope.nombre,
