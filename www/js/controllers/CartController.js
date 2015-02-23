@@ -6,6 +6,7 @@
     module.controller('CartController', function($scope, $http, shoppingCart, userData) {
         $scope.shoppingCart = shoppingCart;
         $scope.cantidad = 1;
+        $scope.Math = window.Math;
         $scope.talle = {
             id: null,
             name: null
@@ -30,7 +31,11 @@
         $scope.observaciones = "";
 
         $scope.tipoDeEnvio = {};
+        $scope.tipoSeguro = {};
         $scope.buyOptions = {};
+        //---Este valor esta hardcodeado hasta que se incorpore en el webservice buy_options.json
+        $scope.sucursal_options =  [{id:"1", name:"Casa Central - STOCKS DE LA WEB"}, {id: "2", name : "Sucursal Capital - CONSULTAR STOCK"}];
+        $scope.sucursal = {};
 
 
         $scope.selectCallback = function(pObj) {
@@ -77,10 +82,11 @@
                             'Éxito', // title
                             ['Ver Carrito', 'Seguir'] // buttonLabels
                         );*/
-
+            window.scrollTo(0, 0);
             ons.notification.confirm({
                 buttonLabel: 'Sí',
                 title: 'Información',
+                animation: 'none',
                 message: strConfirmationText,
                 buttonLabels: ['Seguir', 'Ver Carrito'],
                 callback: function(idx) {
@@ -134,7 +140,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
 
-                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro + '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
+                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro.id + '&data[Pedido][sucursal]=' + $scope.sucursal.id + '&data[Pedido][dni]=' + $scope.userData.profileData.DNI + '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
 
@@ -162,7 +168,7 @@
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_del.json?id=' + id,
+                url: 'http://www.nakaoutdoors.com.ar/articulos/carrito_del.json?rnd=' + Math.random().toString().split('.')[1] + '&id=' + id,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -199,7 +205,7 @@
         $scope.getBuyOptions = function() {
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json',
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/buy_options.json?rnd=' + Math.random().toString().split('.')[1],
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -214,6 +220,7 @@
 
         $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
             $scope.buyOptions = data.result;
+            $scope.buyOptions.sucursal_options = $scope.sucursal_options;
         }
 
         $scope.httpGetBuyOptiondError = function() {
