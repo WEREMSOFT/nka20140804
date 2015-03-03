@@ -23,6 +23,9 @@
         $scope.consulta = "";
         $scope.isWorking = false;
 
+
+
+
         $scope.sendContact = function() {
             var hashMail = $scope.hashMail;
             var hashAnt = $scope.hashAnt;
@@ -100,11 +103,34 @@
         }
     });
 
-    module.controller('ContactController', function($scope) {
+    module.controller('ContactController', ['$scope', '$window', function($scope, $window) {
         $scope.cods_sucursal = {
             VICENTE_LOPEZ: 0,
             CAPITAL: 1
         };
+
+        $scope.openInGoogleMaps = function(strURL) {
+
+            var onConfirm = function() {
+                $window.open(strURL, '_blank');
+            };
+            ons.notification.confirm({
+                title: 'Contacto',
+                animation: 'none',
+                buttonLabels: ['Abrir', 'Tal vez mas tarde'],
+                message: '¿Desea abrir google maps? Saldrá de la aplicación',
+                callback: function(idx) {
+                    switch (idx) {
+                        case 0:
+                            onConfirm();
+                            break;
+                        case 1:
+                            //do nothing
+                            break;
+                    }
+                }
+            });
+        }
 
         $scope.askCallSucursal = function(cod_sucursal) {
             $scope.cod_sucursal = cod_sucursal;
@@ -150,7 +176,7 @@
                     break;
                 case this.cods_sucursal.CAPITAL:
                     phonedialer.dial(
-                        "45462853",
+                        "01145462853",
                         function(err) {
                             if (err == "empty") alert("Unknown phone number");
                             else alert("Dialer Error:" + err);
@@ -177,5 +203,5 @@
 
 
 
-    });
+    }]);
 })();
