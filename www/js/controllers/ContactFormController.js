@@ -114,6 +114,7 @@
             var onConfirm = function() {
                 $window.open(strURL, '_blank');
             };
+            window.scrollTo(0, 0);
             ons.notification.confirm({
                 title: 'Contacto',
                 animation: 'none',
