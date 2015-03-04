@@ -181,38 +181,41 @@
             }
         }
 
-        $scope.getCategory = function(categoryID) {
+                $scope.getCategory = function(categoryID) {
             $scope.searchString = "";
             $scope.currentCategory = categoryID;
             $scope.loading = true;
             var request = $http({
                 method: "get",
-                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?rnd=' + Math.random().toString().split('.')[1] + '&id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
+                url: 'http://www.nakaoutdoors.com.ar/webservices/categoria.json?id=' + categoryID + '&max=9999&offset=1&order=' + sortOptions.selectedSortOption,
             });
 
             this.httpGetCategoryDetailsError = function(data, status, headers, config) {
-                $scope.loading = false;
-                $scope.connectionFail = true;
+                if ($scope.currentCategory == 0) {
+                    $scope.currentCategory == 0;
+                    data = JSON.parse(window.localStorage.getItem('homeData'));
+                    if (data) {
+                        $scope.processcategoryData(data);
+                    } else {
+                        $scope.loading = false;
+                        $scope.connectionFail = true;
+                    }
+                } else {
+                    $scope.loading = false;
+                    $scope.connectionFail = true;
+                }
             }
 
             this.httpGetCategoryDetailsSuccess = function(data, status, headers, config) {
-                if (data.result.child_categories) {
-                    var categoryID = 0;
-                    if (ons.navigator) {
-                        if (ons.navigator.getCurrentPage().options.categoryID) {
-                            categoryID = ons.navigator.getCurrentPage().options.categoryID;
-                        }
-                    }
-                    $scope.categories[categoryID] = data.result.child_categories;
-                    $scope.isCategory = true;
-                } else if (data.result.child_products) {
-                    $scope.products = data.result.child_products;
-                    $scope.isCategory = false;
+                if ($scope.currentCategory == 0) {
+                    window.localStorage.setItem('homeData', JSON.stringify(data));
                 }
+                $scope.processcategoryData(data);
                 $scope.loading = false;
                 $scope.connectionFail = false;
                 $scope.checkForPushNotificationData();
             }
+
 
             // Store the data-dump of the FORM scope.
             request.success(this.httpGetCategoryDetailsSuccess);
@@ -220,6 +223,22 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpGetCategoryDetailsError);
+        }
+
+        $scope.processcategoryData = function(data) {
+            if (data.result.child_categories) {
+                var categoryID = 0;
+                if (ons.navigator) {
+                    if (ons.navigator.getCurrentPage().options.categoryID) {
+                        categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                    }
+                }
+                $scope.categories[categoryID] = data.result.child_categories;
+                $scope.isCategory = true;
+            } else if (data.result.child_products) {
+                $scope.products = data.result.child_products;
+                $scope.isCategory = false;
+            }
         }
 
         $scope.showCategory = function(categoryID) {
