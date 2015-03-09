@@ -89,17 +89,23 @@
                     <ons-row style="margin-top: 10px;" ng-show="tipoSeguro.id === 2 || tipoSeguro.id === 3">
                         <ons-col>
                             <label>Forma de envío(*):</label>
-                            <!-- <select ng-required="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3" type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" ng-options="shipping_way.id as shipping_way.name for shipping_way in buyOptions.shipping_ways">
-                                <option value="">-- Seleccionar forma de envío --</option>
-                            </select>
-                            {{formaEnvio.id}}-{{formaEnvio.name}} -->
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_ways, 'formaEnvio.id','formaEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp{{formaEnvio.id?formaEnvio.name:'-- Seleccionar forma de envío --'}}</ons-button>
                         </ons-col>
                     </ons-row>
+
+                    <ons-row style="margin-top: 10px;" ng-if="formaEnvio.id === 5">
+                        <ons-col>
+                            <label>Envío por C.A.:</label>
+                            <ons-button modifier="large--cta" ng-click="genericSelectStart(metodo_ca_options, 'metodo_ca.id','metodo_ca.name', 'name', 'id', null, this)">
+                                <ons-icon icon="building-o"></ons-icon>&nbsp{{metodo_ca.id?metodo_ca.name:'-- Seleccionar destino de envío --'}}</ons-button>
+                        </ons-col>
+                    </ons-row>
+
                     <ons-col style="margin-top: 10px;" ng-if="formaEnvio.id === 5">
                         <ons-row>
                             <label>DNI:</label>
+                            <label>Obligatorio para envío por Correo Argentino.</label>
                             <input type="text" ng-model="userData.profileData.DNI" req class="text-input--underbar" placeholder="DNI" value="" required>
                         </ons-row>
                     </ons-col>
