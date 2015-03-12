@@ -67,14 +67,11 @@
                             </ons-col>
                         </ons-row>
                     </div>
-
                     <ons-row style="margin-top: 10px;" ng-if="tipoSeguro.id === 2">
                         <ons-col>
                             <div class="alert-b alert-b-info" role="alert">
                                 Su envío se encuentra asegurado, la suma total será de ${{shoppingCart.cartData.summary.amount}} (importe de la compra) + ${{Math.round(shoppingCart.cartData.summary.amount * 0.02)}} (importe del seguro), con un total de ${{Math.round(shoppingCart.cartData.summary.amount * 1.02)}} a depositar. Los costos de envío son abonados al retirar en terminal y dependen de la empresa de transportes. Importante: La caja será cerrada con una faja de seguridad impresa que dice "Nakaoutdoors - Faja de seguridad, verifique que no haya sido violada". Si cuando usted recibe el paquete en terminal observa signos de que la faja fue cortada o la caja violada, no retire el paquete, realice el reclamo y avísenos inmediatamente. Si usted retira la caja y luego descubre que hay faltantes, el seguro pierde validez.
                             </div>
-
-
                         </ons-col>
                     </ons-row>
 
@@ -89,20 +86,42 @@
                     <ons-row style="margin-top: 10px;" ng-show="tipoSeguro.id === 2 || tipoSeguro.id === 3">
                         <ons-col>
                             <label>Forma de envío(*):</label>
-                            <!-- <select ng-required="tipoDeEnvio.id === 2 || tipoDeEnvio.id === 3" type="text" class="text-input--underbar select-combo" ng-model="formaEnvio" ng-options="shipping_way.id as shipping_way.name for shipping_way in buyOptions.shipping_ways">
-                                <option value="">-- Seleccionar forma de envío --</option>
-                            </select>
-                            {{formaEnvio.id}}-{{formaEnvio.name}} -->
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_ways, 'formaEnvio.id','formaEnvio.name', 'name', 'id', null, this)">
                                 <ons-icon icon="truck"></ons-icon>&nbsp{{formaEnvio.id?formaEnvio.name:'-- Seleccionar forma de envío --'}}</ons-button>
                         </ons-col>
                     </ons-row>
+
+                    <ons-row style="margin-top: 10px;" ng-if="formaEnvio.id === 5">
+                        <ons-col>
+                            <label>Envío por C.A.:</label>
+                            <ons-button modifier="large--cta" ng-click="genericSelectStart(metodo_ca_options, 'metodo_ca.id','metodo_ca.name', 'name', 'id', null, this)">
+                                <ons-icon icon="building-o"></ons-icon>&nbsp{{metodo_ca.id?metodo_ca.name:'-- Seleccionar destino de envío --'}}</ons-button>
+                        </ons-col>
+                    </ons-row>
+
                     <ons-col style="margin-top: 10px;" ng-if="formaEnvio.id === 5">
                         <ons-row>
                             <label>DNI:</label>
+                            <label>Obligatorio para envío por Correo Argentino.</label>
                             <input type="text" ng-model="userData.profileData.DNI" req class="text-input--underbar" placeholder="DNI" value="" required>
                         </ons-row>
                     </ons-col>
+                    <ons-col style="margin-top: 10px;" ng-if="formaEnvio.id === 5 && metodo_ca.id === 4">
+                        <ons-row>
+                        <label>Sucursal Correo Argentino:</label>
+                            <ons-button modifier="large--cta" ng-click="genericSelectStart(sucursal_CA_options, 'sucursal_CA.id','sucursal_CA.name', 'name', 'code', getDireccionSucursalesCA, this)">
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{sucursal_CA.id?sucursal_CA.name:'-- Seleccionar Sucursal --'}}</ons-button>
+                        </ons-row>
+                    </ons-col>
+
+                    <ons-col style="margin-top: 10px;" ng-if="formaEnvio.id === 5 && metodo_ca.id === 4 && sucursal_CA.id">
+                        <ons-row>
+                        <label>Dirección Sucursal Correo Argentino:</label>
+                            <ons-button modifier="large--cta" ng-click="genericSelectStart(sucursal_CA_direccion_options, 'sucursal_CA_direccion.id','sucursal_CA_direccion.name', 'description', 'id', null, this)">
+                                <ons-icon icon="globe"></ons-icon>&nbsp{{sucursal_CA_direccion.id?sucursal_CA_direccion.name:'-- Seleccionar Dirección Sucursal --'}}</ons-button>
+                        </ons-row>
+                    </ons-col>
+
                     <ons-row style="margin-top: 10px;" ng-if="tipoDeEnvio.id === 4">
                         <ons-col>
                             <div class="alert-b alert-b-info" role="alert">
@@ -122,14 +141,12 @@
 
                             <label>Código postal:</label>
                             <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="Codigo Postal" value="" required>
-                            <label>Provincia:</label>
-                            <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', null, this)">
+                            <label>Provincia: {{userData.profileData.provincia_id}}</label>
+                            <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', getSucursalesCA, this)">
                                 <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.billing_options, 'userData.profileData.iva_facturacion','userData.profileData.iva_facturacion_name', 'name', 'id', null, this)">
                                 <ons-icon icon="file-text-o"></ons-icon>&nbsp{{userData.profileData.iva_facturacion?findInArrayById(buyOptions.billing_options, userData.profileData.iva_facturacion, 'id', 'name'):'-- Seleccionar tipo de factura --'}}</ons-button>
-
-
                             <div ng-show="opcionesDePago === 1 || opcionesDePago === 3">
                                 <input ng-required="opcionesDePago === 1 || opcionesDePago === 3" type="text" ng-model="cuit" class="text-input--underbar" placeholder="C.U.I.T" value="">
                             </div>
