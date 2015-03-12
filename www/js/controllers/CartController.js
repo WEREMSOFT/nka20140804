@@ -33,8 +33,30 @@
         $scope.tipoDeEnvio = {};
         $scope.tipoSeguro = {};
         $scope.buyOptions = {};
+        $scope.sucursal_CA_options = [];
+        $scope.sucursal_CA = {};
+
+        $scope.sucursal_CA_direccion_options = [];
+        $scope.sucursal_CA_direccion = {};
+
+
+
+        $scope.metodo_ca_options = [{
+            id: 4,
+            name: "A Sucursal"
+        }, {
+            id: 5,
+            name: "A Domicilio"
+        }];
+        $scope.metodo_ca = {};
         //---Este valor esta hardcodeado hasta que se incorpore en el webservice buy_options.json
-        $scope.sucursal_options =  [{id:"1", name:"Casa Central - STOCKS DE LA WEB"}, {id: "2", name : "Sucursal Capital - CONSULTAR STOCK"}];
+        $scope.sucursal_options = [{
+            id: "1",
+            name: "Casa Central - STOCKS DE LA WEB"
+        }, {
+            id: "2",
+            name: "Sucursal Capital - CONSULTAR STOCK"
+        }];
         $scope.sucursal = {};
 
 
@@ -43,6 +65,63 @@
             console.log($scope.talle);
         }
 
+        //------------------------[CADORNA]
+        $scope.getDireccionSucursalesCA = function() {
+                var request = $http({
+                    method: "get",
+                    url: 'http://www.nakaoutdoors.com.ar/envios/getDireccionesCA.json?code=' + $scope.sucursal_CA.id + '&rnd=' + Math.random().toString().split('.')[1],
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                // Store the data-dump of the FORM scope.
+                request.success($scope.httpGetDireccionSucursalesCASuccess);
+
+                // Store the data-dump of the FORM scope.
+                request.error($scope.httpDireccionSucursalesCAError);
+        }
+
+        $scope.httpGetDireccionSucursalesCASuccess = function(data, status, headers, config) {
+            $scope.sucursal_CA_direccion_options = data.result.address;
+            console.log($scope.sucursal_CA_options);
+        }
+
+        $scope.httpDireccionSucursalesCAError = function() {
+
+        }
+        //------------------------[CADORNA]
+
+
+        $scope.getSucursalesCA = function(pSucursal) {
+            if (pSucursal) {
+                pSucursal = userData.profileData.provincia_id;
+            }
+            if (pSucursal) {
+                var request = $http({
+                    method: "get",
+                    url: 'http://www.nakaoutdoors.com.ar/envios/getLocalidadesCA.json?province_id=' + pSucursal + '&rnd=' + Math.random().toString().split('.')[1],
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                // Store the data-dump of the FORM scope.
+                request.success(this.httpGetSucursalesCASuccess);
+
+                // Store the data-dump of the FORM scope.
+                request.error(this.httpSucursalesCAError);
+            }
+        }
+
+        $scope.httpGetSucursalesCASuccess = function(data, status, headers, config) {
+            $scope.sucursal_CA_options = data.result.location;
+            console.log($scope.sucursal_CA_options);
+        }
+
+        $scope.httpSucursalesCAError = function() {
+
+        }
 
         $scope.addToCart = function() {
             if ($scope.product.options && !$scope.talle.id) {
@@ -116,6 +195,7 @@
         $scope.init = function() {
             $scope.shoppingCart.refreshCartDetails();
             $scope.getBuyOptions();
+            $scope.getSucursalesCA(userData.profileData.provincia_id);
         }
 
         $scope.completarDatosEnvio = function() {
@@ -132,15 +212,55 @@
                 messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
+
+            if ($scope.formaEnvio.id === 5 && $scope.metodo_ca.id == null) {
+                messageWindow("Debe indicar si se envía a una sucursal de correo argentino o a su domicilio");
+                return;
+            }
+
+            if ($scope.formaEnvio.id === 5 && $scope.metodo_ca.id == 4 && !$scope.sucursal_CA.id) {
+                messageWindow("Debe indicar a que sucursal de Correo Argentino envía su pedido");
+                return;
+            }
+
+
             $scope.isWorking = true;
             var request = $http({
-                method: "put",
-                url: 'http://www.nakaoutdoors.com.ar/pedidos/carrito_index',
+                method: "post",
+                url: 'http://www.nakaoutdoors.com.ar/pedidos/carrito_index.json',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
+                data: 'data[Pedido][nombre]=' + userData.profileData.nombre +
+                    '&data[Pedido][apellido]=' + userData.profileData.apellido +
+                    '&data[Pedido][mail]=' + userData.profileData.mail +
+                    '&data[Pedido][cod_area]=' + userData.profileData.cod_area +
+                    '&data[Pedido][celular]=' + userData.profileData.celular +
 
-                data: '_method=PUT&data[Pedido][nombre]=' + userData.profileData.nombre + '&data[Pedido][apellido]=' + userData.profileData.apellido + '&data[Pedido][mail]=' + userData.profileData.mail + '&data[Pedido][cod_area]=' + userData.profileData.cod_area + '&data[Pedido][celular]=' + userData.profileData.celular + '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro.id + '&data[Pedido][sucursal]=' + $scope.sucursal.id + '&data[Pedido][dni]=' + $scope.userData.profileData.DNI + '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id + '&data[Pedido][direccion]=' + userData.profileData.direccion + '&data[Pedido][terminal]=' + userData.profileData.terminal + '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal + '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id + '&data[Pedido][forma_pago]=' + $scope.formaDePago + '&data[Pedido][telefono]=' + userData.profileData.telefono + '&data[Pedido][observaciones]=' + $scope.observaciones + '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion + '&data[Pedido][razon_social]=' + userData.profileData.razon_social + '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
+                    '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro.id +
+                    '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id +
+
+                    /*data[Pedido][envioa] => [ 1 si es OCA a domicilio / 2 si es OCA a sucursal ]
+                    data['Pedido'][envio_prioridad] => [ 1 si es OCA envio normal / 2 si es OCA prioritario ]*/
+
+
+                    '&data[Pedido][metodo_ca]=' + $scope.metodo_ca.id +
+                    '&data[Pedido][provincia_ca_id]=' + userData.profileData.provincia_id +
+                    '&data[Pedido][sucursal_ca]=' + $scope.sucursal_CA.id +
+                    '&data[Pedido][dni]=' + userData.profileData.DNI +
+
+                    '&data[Pedido][sucursal]=' + $scope.sucursal.id +
+                    '&data[Pedido][dni]=' + $scope.userData.profileData.DNI +
+                    '&data[Pedido][direccion]=' + userData.profileData.direccion +
+                    '&data[Pedido][terminal]=' + userData.profileData.terminal +
+                    '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal +
+                    '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id +
+                    '&data[Pedido][forma_pago]=' + $scope.formaDePago +
+                    '&data[Pedido][telefono]=' + userData.profileData.telefono +
+                    '&data[Pedido][observaciones]=' + $scope.observaciones +
+                    '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion +
+                    '&data[Pedido][razon_social]=' + userData.profileData.razon_social +
+                    '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
 
