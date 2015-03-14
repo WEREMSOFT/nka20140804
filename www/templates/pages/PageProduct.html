@@ -43,7 +43,8 @@
                         </ons-row>
                         <ons-row style="margin-top: 10px;">
                             <ons-col>
-                                <ons-button ng-show="product.options" modifier="large--cta" class="boton_select" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'stock', null, this, compareProductOptionsForSort, 'templates/modules/combo/TalleSelectPage.html')">
+                                <label>{{talle.id}}</label>
+                                <ons-button ng-show="product.options" modifier="large--cta" class="boton_select" ng-click="genericSelectStart(product.options, 'talle.id','talle.name', 'name', 'id', null, this, compareProductOptionsForSort, 'templates/modules/combo/TalleSelectPage.html')">
                                     {{talle.id?talle.name:' Elija una opción '}}<ons-icon ng-hide="talle.id" icon="caret-square-o-down"></ons-icon></ons-button>
                             </ons-col>
                         </ons-row>
