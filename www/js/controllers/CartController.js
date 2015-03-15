@@ -223,6 +223,11 @@
                 return;
             }
 
+            if (!$scope.formaDePago) {
+                messageWindow("Debe indicar el tipo de pago");
+                return;
+            }
+
 
             $scope.isWorking = true;
             var request = $http({
