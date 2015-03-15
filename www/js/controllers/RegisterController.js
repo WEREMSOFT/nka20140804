@@ -40,7 +40,7 @@
             $scope.result = data.result;
             $scope.isWorking = false;
             if ($scope.result.code === 0) {
-                messageWindow($scope.result.messagge);
+                messageWindow(decodeHtml($scope.result.messagge.replace(/<\/?[^>]+(>|$)/g, "")));
                 $scope.goBack();
             } else {
                 messageWindowError($scope.result.messagge);
@@ -56,6 +56,12 @@
                 messageWindow("Debe completar todos los campos marcados en rojo");
                 return;
             }
+
+            if (!$scope.provincia) {
+                messageWindow("Debe indicar su provincia de residencia, esto facilitará las compras a travez de la aplicación");
+                return;
+            }
+
             if ($scope.password != $scope.passwordVerification) {
                 messageWindow("Las passwords no coinciden");
                 return;
