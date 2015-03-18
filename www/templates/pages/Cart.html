@@ -6,10 +6,6 @@
             <module-loading-spinner ng-show="isWorking"></module-loading-spinner>
         </ons-col>
     </ons-row>
-    <ons-row style="margin-top: 0px;">
-        <ons-col align="center">
-            <ons-li </ons-col>
-    </ons-row>
     <ons-row style="margin-top: 30px">
         <ons-col align="center">
             <i class="fa fa-credit-card"></i> 
@@ -19,12 +15,12 @@
         <ons-col align="center">
             <i class="fa fa-money"></i> 
             <span class="product-contado-label">Efectivo:</span>
-            <span class="product-contado-price" >${{shoppingCart.cartData.summary.amount}}</span>
+            <span class="product-contado-price" ><strike ng-show="shoppingCart.cartData.summary.off_amount != shoppingCart.cartData.summary.amount">${{shoppingCart.cartData.summary.amount}}</strike><cadorn ng-hide="shoppingCart.cartData.summary.off_amount != shoppingCart.cartData.summary.amount">${{shoppingCart.cartData.summary.amount}}</cadorn></span>
         </ons-col>
-        <ons-col align="center" ng-if="product.offer > 0">
+        <ons-col align="center" ng-if="shoppingCart.cartData.summary.off_amount != shoppingCart.cartData.summary.amount">
             <i class="fa fa-certificate"></i> 
-            <span class="product-contado-label">Oferta -{{product.offer}}% :</span>
-            <span class="product-contado-price">${{product.offer_price}}</span>
+            <span class="product-contado-label">Oferta :</span>
+            <span class="product-contado-price">${{shoppingCart.cartData.summary.off_amount}}</span>
         </ons-col>
     </ons-row>
 
