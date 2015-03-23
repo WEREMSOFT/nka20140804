@@ -54,7 +54,7 @@
                             <ons-col>
                                 <label>Sucursal(*):</label>
                                 <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.sucursal_options, 'sucursal.id','sucursal.name', 'name', 'id', null, this)">
-                                    <ons-icon icon="map-marker"></ons-icon>&nbsp{{sucursal.id?findInArrayById(buyOptions.sucursal_options, sucursal.id, 'id', 'name'):'-- Seleccionar sucursal --'}}</ons-button>
+                                    <ons-icon icon="map-marker"></ons-icon>&nbsp{{sucursal.id?findInArrayById(buyOptions.sucursal_options, sucursal.id, 'id', 'name'):'-- Seleccionar sucursal (*) --'}}</ons-button>
                                 <br>
                             </ons-col>
                         </ons-row>
@@ -87,7 +87,7 @@
                         <ons-col>
                             <label>Forma de envío(*):</label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.shipping_ways, 'formaEnvio.id','formaEnvio.name', 'name', 'id', null, this)">
-                                <ons-icon icon="truck"></ons-icon>&nbsp{{formaEnvio.id?formaEnvio.name:'-- Seleccionar forma de envío --'}}</ons-button>
+                                <ons-icon icon="truck"></ons-icon>&nbsp{{formaEnvio.id?formaEnvio.name:'-- Seleccionar forma de envío (*) --'}}</ons-button>
                         </ons-col>
                     </ons-row>
 
@@ -160,9 +160,9 @@
                 <div class="panel-heading">Forma de pago</div>
                 <div class="panel-body">
 
-                    <label>Tipo de pago:</label>
+                    <label>Tipo de pago(*):</label>
                     <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.pay_options, 'formaDePago','formaDePago_name', 'name', 'id', null, this)">
-                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Seleccionar tipo de pago --'}}</ons-button>
+                        <ons-icon icon="credit-card"></ons-icon>&nbsp{{formaDePago_name?formaDePago_name:'-- Seleccionar tipo de pago (*) --'}}</ons-button>
 
                     <ons-row style="margin-top: 10px;" ng-if="formaDePago === 0">
                         <ons-col>
