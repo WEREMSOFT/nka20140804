@@ -35,7 +35,9 @@
                     <ons-row style="margin-top: 10px;">
                         <ons-col>
                             <div class="alert-b alert-b-info" role="alert">
-                                Le recomendamos asegurar el envío. Hemos experimentado robos en cajas a las empresas de transporte. Si usted decide no asegurar la compra, Nakaoutdoors no se hace responsable una vez despachada la caja en la empresa de encomiendas y usted está aceptando estas condiciones. El valor para el seguro del envío, será el 2% de la suma asegurada: $ {{Math.round(shoppingCart.cartData.summary.amount * 0.02)}}.- para su compra.
+                                Le recomendamos asegurar el envío. Hemos experimentado robos en cajas a las empresas de transporte. Si usted decide no asegurar la compra, Nakaoutdoors no se hace responsable una vez despachada la caja en la empresa de encomiendas y usted está aceptando estas condiciones. El valor para el seguro del envío, será el 2% de la suma asegurada:<br>
+                                $ {{Math.round(Math.min(shoppingCart.cartData.summary.off_amount,shoppingCart.cartData.summary.amount) * 0.02)}} para pago en efectivo.<br>
+                                $ {{Math.round(shoppingCart.cartData.summary.credit_amount * 0.02)}} para el pago con tarjeta de crédito.
                             </div>
                         </ons-col>
                     </ons-row>
@@ -70,7 +72,14 @@
                     <ons-row style="margin-top: 10px;" ng-if="tipoSeguro.id === 2">
                         <ons-col>
                             <div class="alert-b alert-b-info" role="alert">
-                                Su envío se encuentra asegurado, la suma total será de ${{shoppingCart.cartData.summary.amount}} (importe de la compra) + ${{Math.round(shoppingCart.cartData.summary.amount * 0.02)}} (importe del seguro), con un total de ${{Math.round(shoppingCart.cartData.summary.amount * 1.02)}} a depositar. Los costos de envío son abonados al retirar en terminal y dependen de la empresa de transportes. Importante: La caja será cerrada con una faja de seguridad impresa que dice "Nakaoutdoors - Faja de seguridad, verifique que no haya sido violada". Si cuando usted recibe el paquete en terminal observa signos de que la faja fue cortada o la caja violada, no retire el paquete, realice el reclamo y avísenos inmediatamente. Si usted retira la caja y luego descubre que hay faltantes, el seguro pierde validez.
+                                Su envío se encuentra asegurado, la suma total será de:<br><br>
+
+                                ${{Math.min(shoppingCart.cartData.summary.off_amount,shoppingCart.cartData.summary.amount)}} (importe de la compra) + ${{Math.round(Math.min(shoppingCart.cartData.summary.off_amount,shoppingCart.cartData.summary.amount) * 0.02)}} (importe del seguro) para pago en efectivo.<br><br>
+
+                                ${{shoppingCart.cartData.summary.credit_amount}} (importe de la compra) + ${{Math.round(shoppingCart.cartData.summary.credit_amount * 0.02)}} (importe del seguro) para pago con tarjeta.<br><br>
+
+
+                                Los costos de envío son abonados al retirar en terminal y dependen de la empresa de transportes. Importante: La caja será cerrada con una faja de seguridad impresa que dice "Nakaoutdoors - Faja de seguridad, verifique que no haya sido violada". Si cuando usted recibe el paquete en terminal observa signos de que la faja fue cortada o la caja violada, no retire el paquete, realice el reclamo y avísenos inmediatamente. Si usted retira la caja y luego descubre que hay faltantes, el seguro pierde validez.
                             </div>
                         </ons-col>
                     </ons-row>
