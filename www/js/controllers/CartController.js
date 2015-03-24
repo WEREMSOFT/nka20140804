@@ -65,21 +65,21 @@
             console.log($scope.talle);
         }
 
-        //------------------------[CADORNA]
         $scope.getDireccionSucursalesCA = function() {
-                var request = $http({
-                    method: "get",
-                    url: 'http://www.nakaoutdoors.com.ar/envios/getDireccionesCA.json?code=' + $scope.sucursal_CA.id + '&rnd=' + Math.random().toString().split('.')[1],
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                });
+            $scope.sucursal_CA_direccion = {};
+            var request = $http({
+                method: "get",
+                url: 'http://www.nakaoutdoors.com.ar/envios/getDireccionesCA.json?code=' + $scope.sucursal_CA.id + '&rnd=' + Math.random().toString().split('.')[1],
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
 
-                // Store the data-dump of the FORM scope.
-                request.success($scope.httpGetDireccionSucursalesCASuccess);
+            // Store the data-dump of the FORM scope.
+            request.success($scope.httpGetDireccionSucursalesCASuccess);
 
-                // Store the data-dump of the FORM scope.
-                request.error($scope.httpDireccionSucursalesCAError);
+            // Store the data-dump of the FORM scope.
+            request.error($scope.httpDireccionSucursalesCAError);
         }
 
         $scope.httpGetDireccionSucursalesCASuccess = function(data, status, headers, config) {
@@ -89,8 +89,8 @@
 
         $scope.httpDireccionSucursalesCAError = function() {
 
-        }
-        //------------------------[CADORNA]
+            }
+            //------------------------[CADORNA]
 
 
         $scope.getSucursalesCA = function(pSucursal) {
@@ -227,7 +227,7 @@
                 messageWindow("Debe indicar el tipo de pago");
                 return;
             }
-            
+
             $scope.isWorking = true;
             var request = $http({
                 method: "post",
