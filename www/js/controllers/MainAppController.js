@@ -425,7 +425,8 @@
         }
 
         $scope.barCodeScan = function() {
-            cordova.plugins.barcodeScanner.scan($scope.barCodeScanSuccess, $scope.barCodeScanError);
+            scanner.startScanning(null, $scope.barCodeScanSuccess);
+            //cordova.plugins.barcodeScanner.scan($scope.barCodeScanSuccess, $scope.barCodeScanError);
         }
 
         $scope.barCodeScanSuccess = function(result) {
@@ -434,15 +435,15 @@
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/
             if (result.cancelled) {
-                prompt('Lectura Cancelada');
+                messageWindow('Lectura Cancelada');
             } else {
-                $scope.showProduct(result.text, true);
+                $scope.showProduct(result.code, true);
             }
 
         }
 
         $scope.barCodeScanError = function(error) {
-            promptError("Scanning failed: " + error);
+            messageWindowError("Scanning failed: " + error);
         }
 
         $scope.categoryPageInit = function() {
