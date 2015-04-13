@@ -1,9 +1,10 @@
 <ons-row style="margin-top: 0px;" ng-if="!isCart">
     <ons-col align="center">
-        <ons-button modifier="large--cta" class="boton_select" ng-click="genericSelectStart(sortOptions.options, 'sortOptions.selectedSortOption','sortOptions.selectedSortDescription', 'description', 'id', refreshCurrentProductList)">Ordenado por : {{ sortOptions.selectedSortDescription}}</ons-button>
+        <ons-button modifier="large--cta" class="boton_select" ng-click="genericSelectStart(sortOptions.options, 'sortOptions.selectedSortOption','sortOptions.selectedSortDescription', 'description', 'id', refreshCurrentProductList)">Ordenado por : {{ sortOptions.selectedSortDescription}}
+            <ons-icon ng-hide="talle.id" icon="caret-square-o-down"></ons-icon>
+        </ons-button>
     </ons-col>
 </ons-row>
-
 <!-- Solo se muestra si es un listado de productos -->
 <ul class="list list-top" ng-if="!isCart">
     <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
@@ -21,14 +22,12 @@
                     <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
                     <span style="color: red">$ {{product.offer_price}}</span>
                     </span>
-
                     <span ng-if="product.offer == 0">
                             <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}<br>
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>
                     </span>
                     </span>
-
                     <br/>
                     <span class="list-item-text" style="margin-top:16px;">
                         <module-stock-color-codes></module-stock-color-codes>
@@ -56,7 +55,6 @@
         <div class="list-item-main">
             <div class="list-item-left">
                 <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
-
             </div>
             <div class="list-item-right">
                 <div class="list-item-content">
@@ -65,16 +63,23 @@
                         <span>
                             <ons-icon icon="credit-card" style="color: black"></ons-icon>&nbsp; $ {{product.credit_price}}
                             <br> 
+                             <span ng-if="product.offer > 0">
+                            <ons-icon icon="money" style="color: green;"></ons-icon>&nbsp;
+                            <span class="stryke-trough">$ {{product.price}}</span>&nbsp;&nbsp;
+                    <ons-icon icon="certificate" style="color: red"></ons-icon>&nbsp;
+                    <span style="color: red">$ {{product.offer_price}}</span>
+                    </span>
+                    <span ng-if="product.offer == 0">
                             <ons-icon icon="money" style="color: green"></ons-icon>&nbsp;
                             <span style="color: red">$ {{product.price}}</span>
-                    <br>
+                    </span>
+                    </span>
+                    <br/>
                     <div ng-if="product.option != 'null'">
-                    <ons-icon  icon="bookmark" style="color: black"></ons-icon><span> {{product.option}}</span>
-                    <br>
+                        <ons-icon icon="bookmark" style="color: black"></ons-icon><span> {{product.option}}</span>
+                        <br>
                     </div>
                     </span>
-                    </span>
-
                     <br/>
                     <span class="list-item-text" style="margin-top:16px;">
                         <!--- STOCK -->
@@ -98,7 +103,6 @@
         </ons-button>
         <br>
     </li>
-
 </ul>
 <ons-row style="padding:20px" ng-if="(shoppingCart.cartData.items.length === 0 && isCart) || (products.length === 0 && !isCart)" style="margin-top: 0px;">
     <ons-col align="center">
