@@ -430,7 +430,7 @@
         }
 
         $scope.barCodeScanSuccess = function(result) {
-            /*           prompt("We got a barcode\n" +
+            /*           messageWindow("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);*/

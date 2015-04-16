@@ -53,7 +53,7 @@
 
         $scope.submitContact = function() {
             if ($scope.formContact.$invalid) {
-                prompt("Debe completar todos los campos.");
+                messageWindow("Debe completar todos los campos.");
                 return;
             }
 

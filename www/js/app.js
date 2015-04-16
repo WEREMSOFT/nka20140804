@@ -133,7 +133,7 @@
                 returnValue.sendPushNotificationToken(window.localStorage.getItem("pushNotificationToken"));
                 returnValue.logedIn = true;
             } else if (data.result.logedIn === -2) {
-                prompt('Nombre de usuario o contraseña inválidas.', alertDismissed, 'Opa!', 'Aceptar');
+                messageWindow('Nombre de usuario o contraseña inválidas.', alertDismissed, 'Opa!', 'Aceptar');
                 returnValue.logout();
             }
         }
@@ -331,7 +331,7 @@ function tokenHandler(result) {
 function successHandler(result) {}
 
 function errorHandler(error) {
-    promptError(error);
+    messageWindowError(error);
 }
 
 function onNotificationGCM(e) {
