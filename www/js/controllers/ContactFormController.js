@@ -141,7 +141,7 @@
             switch ($scope.cod_sucursal) {
                 case this.cods_sucursal.VICENTE_LOPEZ:
                     phonedialer.dial(
-                        "01147979435",
+                        "01139657794",
                         function(err) {
                             if (err == "empty") alert("Unknown phone number");
                             else alert("Dialer Error:" + err);
