@@ -27,9 +27,8 @@
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-installLocation" value="auto" />
-    
 
-    <plugin name="com.adobe.plugins.gaplugin" source="pgb" spec="n/a" />
+
     <plugin name="com.phonegap.plugins.barcodescanner" source="pgb" spec="2.2.0" />
     <plugin name="com.phonegap.plugins.pushplugin" source="pgb" spec="n/a" />
     <plugin name="com.teamnemitoff.phonedialer" source="pgb" spec="0.3.0" />
