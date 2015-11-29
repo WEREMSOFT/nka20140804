@@ -9,6 +9,8 @@
     </author>
     <allow-navigation href="data:*" />
     <access origin="*" />
+    <platform name="ios|android" />
+
     <preference name="android-targetSdkVersion" value="19" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="permissions" value="none" />
