@@ -7,14 +7,10 @@
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
     </author>
-    <allow-navigation href="data:*" />
-    <access origin="*" />
-    <platform name="ios|android" />
-
     <preference name="android-targetSdkVersion" value="19" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="cli-5.1.1" />
+    <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
@@ -27,27 +23,32 @@
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-installLocation" value="auto" />
-
-
-    <plugin name="com.adobe.plugins.gaplugin" source="pgb"/>
-    <plugin name="com.phonegap.plugins.barcodescanner" source="pgb"/>
-    <plugin name="com.phonegap.plugins.pushplugin" source="pgb"  />
-    <plugin name="com.teamnemitoff.phonedialer" source="pgb" />
-    <plugin name="cordova-plugin-whitelist" spec="n/a" />
-    <plugin name="nl.x-services.plugins.launchmyapp" source="pgb" />
-    <plugin name="org.apache.cordova.camera" source="pgb" />
-    <plugin name="org.apache.cordova.device" source="pgb" />
-    <plugin name="org.apache.cordova.device-motion" source="pgb"/>
-    <plugin name="org.apache.cordova.device-orientation" source="pgb"  />
-    <plugin name="org.apache.cordova.dialogs" source="pgb" />
-    <plugin name="org.apache.cordova.file" source="pgb"  />
-    <plugin name="org.apache.cordova.file-transfer" source="pgb" />
-    <plugin name="org.apache.cordova.inappbrowser" source="pgb" />
-    <plugin name="org.apache.cordova.media-capture" source="pgb"  />
-    <plugin name="org.apache.cordova.splashscreen" source="pgb"  />
-
-
-
+    <!--<gap:plugin name="org.apache.cordova.battery-status" />-->
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <!--<gap:plugin name="org.apache.cordova.console" />-->
+    <!--<gap:plugin name="org.apache.cordova.contacts" />-->
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <!--<gap:plugin name="org.apache.cordova.geolocation" />-->
+    <!--<gap:plugin name="org.apache.cordova.globalization" />-->
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <!--<gap:plugin name="org.apache.cordova.media" />-->
+    <!--<gap:plugin name="org.apache.cordova.network-information" />-->
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <!--<gap:plugin name="org.apache.cordova.vibration" />-->
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
+    <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner"  />
+    <!-- <gap:plugin name="com.manateeworks.barcodescanner" version="1.5.1" /> -->
+    <gap:plugin name="com.adobe.plugins.gaplugin" />
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+        <param name="URL_SCHEME" value="nakaoutdoors" />
+    </gap:plugin>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.Notification" />
     </feature>
