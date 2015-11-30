@@ -105,7 +105,7 @@
 
     module.controller('ContactController', ['$scope', '$window', function($scope, $window) {
         $scope.cods_sucursal = {
-            VICENTE_LOPEZ: 0,
+            NUNEZ: 0,
             CAPITAL: 1
         };
 
@@ -163,7 +163,7 @@
 
         $scope.callSucursal = function() {
             switch ($scope.cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
+                case this.cods_sucursal.NUNEZ:
                     phonedialer.dial(
                         "01147979435",
                         function(err) {
@@ -191,7 +191,7 @@
         }
         $scope.emailSucursal = function(cod_sucursal) {
             switch (cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
+                case this.cods_sucursal.NUNEZ:
                     var link = "mailto:info@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
                     window.open(link, 'silentFrame');
                     break;
