@@ -52,10 +52,10 @@
         //---Este valor esta hardcodeado hasta que se incorpore en el webservice buy_options.json
         $scope.sucursal_options = [{
             id: "1",
-            name: "Casa Central - STOCKS DE LA WEB"
+            name: "Casa Central - Núñez"
         }, {
             id: "2",
-            name: "Sucursal Capital - CONSULTAR STOCK"
+            name: "Sucursal - Villa Urquiza"
         }];
         $scope.sucursal = {};
 
@@ -222,8 +222,7 @@
                 messageWindow("Debe indicar a que sucursal de Correo Argentino envía su pedido");
                 return;
             }
-
-            if (!$scope.formaDePago) {
+            if ($scope.formaDePago === undefined) {
                 messageWindow("Debe indicar el tipo de pago");
                 return;
             }
