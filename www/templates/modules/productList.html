@@ -6,7 +6,7 @@
     </ons-col>
 </ons-row>
 <!-- Solo se muestra si es un listado de productos -->
-<ul class="list list-top" ng-if="!isCart">
+<ul class="list list-top" ng-if="!isCart" >
     <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
         <div class="list-item-main">
             <div class="list-item-left">

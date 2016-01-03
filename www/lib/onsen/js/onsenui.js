@@ -1255,7 +1255,9 @@ if (typeof define !== 'undefined' && define.amd) {
 
 			// no need to loop when only one touch
 			if(touches.length === 1) {
+				console.log('toucheado');
 				return {
+
 					pageX: touches[0].pageX,
 					pageY: touches[0].pageY,
 					clientX: touches[0].clientX,
