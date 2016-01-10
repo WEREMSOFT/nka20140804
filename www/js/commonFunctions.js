@@ -55,7 +55,7 @@ function androidCloseApp() {
 }
 
 function goBackOnePage() {
-    ons.navigator.popPage();
+    mainNavigator.popPage();
 }
 
 if (raiseDebugErrors) {

@@ -48,7 +48,7 @@
 
         $scope.goBack = function() {
             if ($scope.isWorking === true) return;
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
 
         $scope.submitContact = function() {
@@ -96,7 +96,7 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             messageWindow('Su consulta ha sido enviada con éxito');
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
     });
 

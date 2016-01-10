@@ -91,7 +91,7 @@
 
         $scope.goBack = function() {
             if ($scope.isWorking === true) return;
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
 
         $scope.httpGetHashSuccess = function(data) {

@@ -9002,7 +9002,7 @@ window.ons = (function(){
 			 * Get current page's navigator item.
 			 *
 			 * Use this method to access options passed by pushPage() or resetToPage() method.
-			 * eg. ons.navigator.getCurrentPage().options
+			 * eg. mainNavigator.getCurrentPage().options
 			 *
 			 * @return {Object}
 			 */
@@ -14240,13 +14240,13 @@ window.ons = (function(){
 							pageElement = null;
 						}
 
-						$onsen.aliasStack.register('ons.navigator', navigator);
+						$onsen.aliasStack.register('mainNavigator', navigator);
 						element.data('ons-navigator', navigator);
 
 						scope.$on('$destroy', function() {
 							navigator._events = undefined;
 							element.data('ons-navigator', undefined);
-							$onsen.aliasStack.unregister('ons.navigator', navigator);
+							$onsen.aliasStack.unregister('mainNavigator', navigator);
 							element = null;
 						});
 
@@ -16588,7 +16588,7 @@ window.ons = (function(){
 			/**
 			 * Global object stack manager.
 			 *
-			 * e.g. "ons.screen", "ons.navigator"
+			 * e.g. "ons.screen", "mainNavigator"
 			 */
 			return {
 				_stackDict : {},

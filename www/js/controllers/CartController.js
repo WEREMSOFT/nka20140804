@@ -186,10 +186,10 @@
         $scope.onPromtAddToCartOk = function(buttonIndex) {
             switch (buttonIndex) {
                 case 1:
-                    ons.navigator.pushPage('templates/pages/Cart.html');
+                    mainNavigator.pushPage('templates/pages/Cart.html');
                     break;
             }
-            //ons.navigator.popPage();
+            //mainNavigator.popPage();
         }
 
         $scope.init = function() {
@@ -203,7 +203,7 @@
                 messageWindow("Su carrito de compras esta vacío");
                 return;
             }
-            ons.navigator.pushPage('templates/forms/CartDatosEnvio.html')
+            mainNavigator.pushPage('templates/forms/CartDatosEnvio.html')
         }
 
 

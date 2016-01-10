@@ -282,7 +282,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         deviceReadyWasFired = true;
-        navigator.splashscreen.hide();
+
+        if(typeof mainNavigator.splashscreen !== 'undefined'){
+            mainNavigator.splashscreen.hide();
+        }
+
         if (device.platform == 'Android') {
             subscriveToPushNotificationsAndroid();
         } else {
