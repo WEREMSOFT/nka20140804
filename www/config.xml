@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<widget id="com.weremsoft.nakaoutdoors" version="1.0.10" android-versionCode="7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.weremsoft.nakaoutdoors" version="1.0.11" android-versionCode="7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Naka Outdoors</name>
     <description>
         Tienda especializada en equipo de escalada y montaña. Las mejores marcas, Petzl, Edelrid, Mammut, Edelweiss, Beal, Salewa, Marmot, Lowe Alpine, Wild Country, Altus y muchas mas.
