@@ -7,7 +7,7 @@
                 <div>{{product.title}}</div>
                 <div ng-repeat="slide in product.images">
                     <div class="frame-for-featured-image" ng-show="$first">
-                        <img class="featured-image" ng-click="ons.navigator.pushPage('templates/pages/PageProductImageDetail.html')" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
+                        <img class="featured-image" ng-click="mainNavigator.pushPage('templates/pages/PageProductImageDetail.html')" src="{{'http://www.nakaoutdoors.com.ar/img/articulos/'+ currentSlide}}" />
                     </div>
                 </div>
             </ons-col>
@@ -38,7 +38,7 @@
                         </ons-row>
                         <ons-row style="margin-top: 10px;">
                             <ons-col>
-                                <ons-button modifier="large" class="boton_solicitar_informacion" ng-click="ons.navigator.pushPage('templates/forms/FormQuestionOnProduct.html')">Solicitar Información</ons-button>
+                                <ons-button modifier="large" class="boton_solicitar_informacion" ng-click="mainNavigator.pushPage('templates/forms/FormQuestionOnProduct.html')">Solicitar Información</ons-button>
                             </ons-col>
                         </ons-row>
                         <ons-row style="margin-top: 10px;">
@@ -89,26 +89,26 @@
                     <ons-list-header style="padding-left: 0px;">
                         <img style="width:100%; height:auto" src="http://imgmp.mlstatic.com/org-img/banners/ar/medios/online/575X40.jpg">
                     </ons-list-header>
-                    <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductDetail.html', {productDetails: product.body})">
+                    <ons-list-item modifier="chevron" ng-click="mainNavigator.pushPage('templates/pages/PageProductDetail.html', {productDetails: product.body})">
                         <ons-icon icon="info-circle"></ons-icon>Detalles del Producto</ons-list-item>
 
-                    <ons-list-item modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductQuestions.html', {productQuestions: product.questions})">
+                    <ons-list-item modifier="chevron" ng-click="mainNavigator.pushPage('templates/pages/PageProductQuestions.html', {productQuestions: product.questions})">
                         <ons-icon icon="comments-o"></ons-icon>{{product.questions_count == 0?'Sea el primero en consultar.':'Consultas (' + product.questions_count + ')' }}</ons-list-item>
 
-                    <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductsRatings.html', {productQuestions: product.questions})">
+                    <ons-list-item ng-if="product.reviews_count > 0" modifier="chevron" ng-click="mainNavigator.pushPage('templates/pages/PageProductsRatings.html', {productQuestions: product.questions})">
 
                         <ons-icon ng-repeat="star in product.stars" ng-class="'dark-orange'" icon="{{star.value==1?'star':'star-o'}}"></ons-icon>({{product.reviews_count}})</ons-list-item>
 
                     <ons-list-item ng-if="product.reviews_count == 0" modifier="chevron">
                         <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>Sin calificaciones aún.</ons-list-item>
 
-                    <ons-list-item ng-if="product.video" modifier="chevron" ng-click="ons.navigator.pushPage('templates/pages/PageProductViewVideo.html')">
+                    <ons-list-item ng-if="product.video" modifier="chevron" ng-click="mainNavigator.pushPage('templates/pages/PageProductViewVideo.html')">
                         <ons-icon icon="youtube-play" ng-class="'youtube-red'"></ons-icon>Ver video del producto</ons-list-item>
                 </ons-list>
 
                 <br>
                 <!--<div style="margin-top: 10px;">
-                    <ons-button modifier="large" ng-click="ons.navigator.pushPage('templates/pages/PageProductAddToCart.html')">Agregar al Carrito</ons-button>
+                    <ons-button modifier="large" ng-click="mainNavigator.pushPage('templates/pages/PageProductAddToCart.html')">Agregar al Carrito</ons-button>
                 </div>-->
             </ons-col>
         </ons-row>

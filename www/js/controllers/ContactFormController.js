@@ -48,7 +48,7 @@
 
         $scope.goBack = function() {
             if ($scope.isWorking === true) return;
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
 
         $scope.submitContact = function() {
@@ -96,13 +96,13 @@
 
         $scope.httpSuccess = function(data, status, headers, config) {
             messageWindow('Su consulta ha sido enviada con éxito');
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
     });
 
     module.controller('ContactController', function($scope) {
         $scope.cods_sucursal = {
-            VICENTE_LOPEZ: 0,
+            NUNEZ: 0,
             CAPITAL: 1
         };
 
@@ -139,7 +139,7 @@
 
         $scope.callSucursal = function() {
             switch ($scope.cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
+                case this.cods_sucursal.NUNEZ:
                     phonedialer.dial(
                         "01139657794",
                         function(err) {
@@ -167,7 +167,7 @@
         }
         $scope.emailSucursal = function(cod_sucursal) {
             switch (cod_sucursal) {
-                case this.cods_sucursal.VICENTE_LOPEZ:
+                case this.cods_sucursal.NUNEZ:
                     var link = "mailto:info@nakaoutdoors.com.ar" + "?subject=" + escape("Consulta") + "&body=" + escape("Estimados Naka Outdoors:\n");
                     window.open(link, 'silentFrame');
                     break;

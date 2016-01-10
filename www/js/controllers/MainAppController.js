@@ -63,7 +63,7 @@
             if (!pTemplateToUse) {
                 pTemplateToUse = 'templates/modules/combo/GenericSelectPage.html';
             }
-            ons.navigator.pushPage(pTemplateToUse);
+            mainNavigator.pushPage(pTemplateToUse);
         }
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
@@ -77,7 +77,7 @@
                 eval('$scope.' + $scope.genericSelect.returnVariable + ' = pReturnVariable[$scope.genericSelect.valueFieldName]');
                 eval('$scope.' + $scope.genericSelect.returnDescription + ' = pReturnVariable[$scope.genericSelect.labelFieldName]');
             }
-            ons.navigator.popPage();
+            mainNavigator.popPage();
             if ($scope.genericSelect.callBackFunction) {
                 $scope.genericSelect.callBackFunction(pReturnVariable);
             }
@@ -102,18 +102,18 @@
 
 
         $scope.backButtonHandler = function() {
-            ons.navigator.popPage();
+            mainNavigator.popPage();
             $scope.$apply();
         }
 
         $scope.refreshCurrentProductList = function() {
-            if (ons.navigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
+            if (mainNavigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
                 $scope.getCategory($scope.currentCategory);
-            } else if (ons.navigator.getCurrentPage().page == "templates/forms/FormSearch.html") {
+            } else if (mainNavigator.getCurrentPage().page == "templates/forms/FormSearch.html") {
                 $scope.search($scope.searchString);
-            } else if (ons.navigator.getCurrentPage().page == "templates/pages/PageNewProducts.html") {
+            } else if (mainNavigator.getCurrentPage().page == "templates/pages/PageNewProducts.html") {
                 $scope.getNewProducts();
-            } else if (ons.navigator.getCurrentPage().page == 'templates/pages/PageOfertas.html') {
+            } else if (mainNavigator.getCurrentPage().page == 'templates/pages/PageOfertas.html') {
                 $scope.getOfertas();
             }
         }
@@ -144,8 +144,8 @@
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
 
-            if (ons.navigator.getCurrentPage().page != 'templates/pages/PageOfertas.html') {
-                ons.navigator.pushPage('templates/pages/PageOfertas.html');
+            if (mainNavigator.getCurrentPage().page != 'templates/pages/PageOfertas.html') {
+                mainNavigator.pushPage('templates/pages/PageOfertas.html');
             }
 
         }
@@ -174,8 +174,8 @@
             request.success(this.httpSuccess);
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
-            if (ons.navigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
-                ons.navigator.pushPage('templates/pages/PageNewProducts.html')
+            if (mainNavigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
+                mainNavigator.pushPage('templates/pages/PageNewProducts.html')
             }
         }
 
@@ -226,9 +226,9 @@
         $scope.processcategoryData = function(data) {
             if (data.result.child_categories) {
                 var categoryID = 0;
-                if (ons.navigator) {
-                    if (ons.navigator.getCurrentPage().options.categoryID) {
-                        categoryID = ons.navigator.getCurrentPage().options.categoryID;
+                if (mainNavigator) {
+                    if (mainNavigator.getCurrentPage().options.categoryID) {
+                        categoryID = mainNavigator.getCurrentPage().options.categoryID;
                     }
                 }
                 $scope.categories[categoryID] = data.result.child_categories;
@@ -240,7 +240,7 @@
         }
 
         $scope.showCategory = function(categoryID) {
-            ons.navigator.pushPage('templates/pages/PageCategory.html', {
+            mainNavigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
         }
@@ -266,7 +266,7 @@
                 if ($scope.product.code === 3) {
                     messageWindowError('Atículo no encontrado');
                     $scope.loading = false;
-                    ons.navigator.popPage();
+                    mainNavigator.popPage();
                     return;
                 }
 
@@ -324,7 +324,7 @@
         $scope.showProduct = function(productID, pCodebar) {
             console.log("llamando a producto");
             $scope.loading = true;
-            ons.navigator.pushPage('templates/pages/PageProduct.html');
+            mainNavigator.pushPage('templates/pages/PageProduct.html');
             $scope.getProduct(productID, pCodebar);
         }
 
@@ -402,8 +402,8 @@
             // Store the data-dump of the FORM scope.
             request.error($scope.httpError);
 
-            if (ons.navigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
-                ons.navigator.pushPage("templates/forms/FormSearch.html");
+            if (mainNavigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
+                mainNavigator.pushPage("templates/forms/FormSearch.html");
             }
 
         }
@@ -449,9 +449,9 @@
         $scope.categoryPageInit = function() {
             $scope.connectionFail = false;
             var categoryID = 0;
-            if (ons.navigator) {
-                if (ons.navigator.getCurrentPage().options.categoryID) {
-                    categoryID = ons.navigator.getCurrentPage().options.categoryID;
+            if (typeof mainNavigator !== "undefined") {
+                if (mainNavigator.getCurrentPage().options.categoryID) {
+                    categoryID = mainNavigator.getCurrentPage().options.categoryID;
                 }
             }
             $scope.getCategory(categoryID);

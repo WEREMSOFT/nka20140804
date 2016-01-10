@@ -51,7 +51,7 @@
 
         $scope.goBack = function() {
             if ($scope.isWorking === true) return;
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
 
         $scope.getHash = function() {
@@ -99,7 +99,7 @@
                 message: $scope.consulta,
                 response: null
             });
-            ons.navigator.popPage();
+            mainNavigator.popPage();
         }
     });
 })();

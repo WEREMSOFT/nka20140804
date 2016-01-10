@@ -55,7 +55,7 @@
                 $scope.userData.profileData.iva_facturacion = parseInt($scope.userData.profileData.iva_facturacion);
                 window.localStorage.setItem("profileData", JSON.stringify(data.result.Usuario));
                 $scope.userData.logedIn = true;
-                ons.navigator.resetToPage('templates/pages/PageHome.html');
+                mainNavigator.resetToPage('templates/pages/PageHome.html');
             } else if (data.result.logedIn === -2) {
                 messageWindowError('Nombre de usuario o contraseña inválidas');
                 $scope.logout(false);
@@ -65,14 +65,14 @@
 
 
         $scope.init = function() {
-            if (ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
+            if (mainNavigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 $scope.userData.refreshUserDetails();
-                ons.navigator.on('prepop', $scope.onPrePop)
-                    //$scope.userData = ons.navigator.getCurrentPage().options.userData; 
+                mainNavigator.on('prepop', $scope.onPrePop)
+                    //$scope.userData = mainNavigator.getCurrentPage().options.userData;
                 return;
             }
             if ($scope.userData.logedIn === true) {
-                ons.navigator.resetToPage('templates/forms/FormProfile.html');
+                mainNavigator.resetToPage('templates/forms/FormProfile.html');
             } else {
                 $scope.userData.userName = window.localStorage.getItem('user');
                 $scope.userData.password = window.localStorage.getItem('password');
@@ -84,7 +84,7 @@
 
 
         $scope.onPrePop = function(event) {
-            if ($scope.editMode && ons.navigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
+            if ($scope.editMode && mainNavigator.getCurrentPage().name === 'templates/forms/FormProfile.html') {
                 if ($scope.shouldAskForConfirmationBeforeLeave) {
                     $scope.shouldAskForConfirmationBeforeLeave = false;
                     return;
@@ -114,7 +114,7 @@
         $scope.onPrePopConfirm = function(buttonIndex) {
             if (buttonIndex == 1) {
                 $scope.shouldAskForConfirmationBeforeLeave = true;
-                ons.navigator.popPage();
+                mainNavigator.popPage();
                 $scope.editMode = false;
             }
         }
