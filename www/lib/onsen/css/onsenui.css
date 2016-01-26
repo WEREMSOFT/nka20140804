@@ -648,7 +648,7 @@ ons-carousel[disabled] {
   -webkit-align-self: center;
   -moz-align-self: center;
   -ms-flex-item-align: center;
-  text-align: inherit;
+  align-self: center;
 }
 
 /* Column Offsets */

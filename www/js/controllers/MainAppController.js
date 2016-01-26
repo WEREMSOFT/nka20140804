@@ -243,6 +243,12 @@
             mainNavigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
+            menu.close();
+        }
+
+        $scope.pushPageAndCloseMenu = function (pStringPage){
+            mainNavigator.pushPage(pStringPage);
+            menu.close();
         }
 
         $scope.getProduct = function(productID, pIsCodebar) {
