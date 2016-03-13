@@ -124,6 +124,7 @@
         }
 
         $scope.addToCart = function() {
+            mixpanel.track('click-add-to-cart-' + $scope.product.title);
             if ($scope.product.options && !$scope.talle.id) {
                 messageWindow('Debe elegir una opción');
                 return;

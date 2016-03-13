@@ -1,5 +1,5 @@
 <ul class="list list-top" >
-    <li ng-repeat="category in categories[mainNavigator.getCurrentPage().options.categoryID]" class="list__item  list__item__line-height list-item-container" ng-click="showCategory(category.id)">
+    <li ng-repeat="category in categories[mainNavigator.getCurrentPage().options.categoryID]" class="list__item  list__item__line-height list-item-container" ng-click="showCategory(category.id, true, category.title)">
         <div class="list-item-main">
             <div class="list-item-left">
                 <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{category.thumb}}" class="avator">

@@ -119,6 +119,7 @@
         }
 
         $scope.getOfertas = function() {
+            mixpanel.track('click-ofertas');
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
@@ -239,7 +240,8 @@
             }
         }
 
-        $scope.showCategory = function(categoryID) {
+        $scope.showCategory = function(categoryID, misteriousBoolean, categoryName) {
+            mixpanel.track('click-category-' + categoryName);
             mainNavigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
@@ -327,8 +329,8 @@
             request.error(this.httpGetProductDetailsError);
         }
 
-        $scope.showProduct = function(productID, pCodebar) {
-            console.log("llamando a producto");
+        $scope.showProduct = function(productID, pCodebar, productName) {
+            mixpanel.track('click-product-' + productName);
             $scope.loading = true;
             mainNavigator.pushPage('templates/pages/PageProduct.html');
             $scope.getProduct(productID, pCodebar);
@@ -373,6 +375,7 @@
         }
 
         $scope.search = function(strSearchString, pPage, pCount) {
+            mixpanel.track('search-' + strSearchString);
             $scope.searchString = strSearchString;
             if (gaPlugin) {
                 gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);
