@@ -11,7 +11,7 @@
         $scope.showDetail = function(index) {
             var selectedItem = $data.items[index];
             $data.selectedItem = selectedItem;
-            $scope.mainNavigator.pushPage('templates/detail.html', {
+            $scope.navigateToPage('templates/detail.html', {
                 title: selectedItem.title
             });
         }

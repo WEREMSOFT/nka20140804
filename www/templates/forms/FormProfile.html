@@ -7,7 +7,7 @@
             <ons-list>
                 <ons-list-item ng-if="userData.pendingCalifications.length === 0" modifier="chevron">
                     <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>Sin calificaciones aún.</ons-list-item>
-                <ons-list-item ng-if="userData.pendingCalifications.length > 0" modifier="chevron" ng-click="mainNavigator.pushPage('templates/modules/profile/pendingCalifications.html')">
+                <ons-list-item ng-if="userData.pendingCalifications.length > 0" modifier="chevron" ng-click="navigateToPage('templates/modules/profile/pendingCalifications.html')">
                     <ons-icon ng-class="'dark-orange'" icon="star-o"></ons-icon>{{userData.pendingCalifications.length}} calificaciones pendientes.</ons-list-item>
 
 

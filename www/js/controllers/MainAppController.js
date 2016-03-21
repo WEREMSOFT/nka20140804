@@ -39,7 +39,7 @@
                 return e[pIndexName] == pValueToSearch
             })[0][pValueName];
             return value;
-        }
+        };
 
         $scope.genericSelectStart = function(pSelectOptions, pReturnVariable, pReturnDescription, pLabelFieldName, pValueFieldName, pCallBackFunction, pChildScope, pSortCallback, pTemplateToUse) {
             if (pSortCallback) {
@@ -63,8 +63,8 @@
             if (!pTemplateToUse) {
                 pTemplateToUse = 'templates/modules/combo/GenericSelectPage.html';
             }
-            mainNavigator.pushPage(pTemplateToUse);
-        }
+            $scope.navigateToPage(pTemplateToUse);
+        };
 
         $scope.genericSelectOptionClick = function(pReturnVariable) {
             /* $scope.genericSelect.returnVariable[$scope.genericSelect.labelFieldName] = pReturnVariable[$scope.genericSelect.labelFieldName];
@@ -81,7 +81,7 @@
             if ($scope.genericSelect.callBackFunction) {
                 $scope.genericSelect.callBackFunction(pReturnVariable);
             }
-        }
+        };
 
         $scope.compareProductOptionsForSort = function(a, b) {
             if (a.stock < b.stock)
@@ -89,22 +89,19 @@
             if (a.stock > b.stock)
                 return 1;
             return 0;
-        }
-
-
+        };
 
         $scope.onSelectTestButton = function(optionObject)
 
         {
             console.log(optionObject.label);
             console.log(optionObject.value);
-        }
-
+        };
 
         $scope.backButtonHandler = function() {
             mainNavigator.popPage();
             $scope.$apply();
-        }
+        };
 
         $scope.refreshCurrentProductList = function() {
             if (mainNavigator.getCurrentPage().page == "templates/pages/PageCategory.html") {
@@ -116,7 +113,7 @@
             } else if (mainNavigator.getCurrentPage().page == 'templates/pages/PageOfertas.html') {
                 $scope.getOfertas();
             }
-        }
+        };
 
         $scope.getOfertas = function() {
             mixpanel.track('click-ofertas');
@@ -146,10 +143,10 @@
             request.error(this.httpError);
 
             if (mainNavigator.getCurrentPage().page != 'templates/pages/PageOfertas.html') {
-                mainNavigator.pushPage('templates/pages/PageOfertas.html');
+                $scope.navigateToPage('templates/pages/PageOfertas.html');
             }
 
-        }
+        };
 
         $scope.getNewProducts = function() {
             $scope.isWorking = true;
@@ -176,9 +173,9 @@
             // Store the data-dump of the FORM scope.
             request.error(this.httpError);
             if (mainNavigator.getCurrentPage().page != "templates/pages/PageNewProducts.html") {
-                mainNavigator.pushPage('templates/pages/PageNewProducts.html')
+                $scope.navigateToPage('templates/pages/PageNewProducts.html')
             }
-        }
+        };
 
         $scope.getCategory = function(categoryID) {
             $scope.searchString = "";
@@ -222,36 +219,41 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpGetCategoryDetailsError);
-        }
+        };
 
         $scope.processcategoryData = function(data) {
             if (data.result.child_categories) {
                 var categoryID = 0;
-                if (mainNavigator) {
-                    if (mainNavigator.getCurrentPage().options.categoryID) {
-                        categoryID = mainNavigator.getCurrentPage().options.categoryID;
+                try{
+                    if (mainNavigator != null) {
+                        if (mainNavigator.getCurrentPage().options.categoryID) {
+                            categoryID = mainNavigator.getCurrentPage().options.categoryID;
+                        }
                     }
+                    $scope.categories[categoryID] = data.result.child_categories;
+                    $scope.isCategory = true;
+                }catch(e)
+                {
+                    console.log('navigator structure is not yet initialized');
                 }
-                $scope.categories[categoryID] = data.result.child_categories;
-                $scope.isCategory = true;
             } else if (data.result.child_products) {
                 $scope.products = data.result.child_products;
                 $scope.isCategory = false;
             }
-        }
+        };
 
         $scope.showCategory = function(categoryID, misteriousBoolean, categoryName) {
             mixpanel.track('click-category-' + categoryName);
-            mainNavigator.pushPage('templates/pages/PageCategory.html', {
+            $scope.navigateToPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
             menu.close();
-        }
+        };
 
         $scope.pushPageAndCloseMenu = function (pStringPage){
-            mainNavigator.pushPage(pStringPage);
+            $scope.navigateToPage(pStringPage);
             menu.close();
-        }
+        };
 
         $scope.getProduct = function(productID, pIsCodebar) {
             var searchVariable = pIsCodebar ? 'barcode' : 'id';
@@ -327,14 +329,14 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpGetProductDetailsError);
-        }
+        };
 
         $scope.showProduct = function(productID, pCodebar, productName) {
             mixpanel.track('click-product-' + productName);
             $scope.loading = true;
-            mainNavigator.pushPage('templates/pages/PageProduct.html');
+            $scope.navigateToPage('templates/pages/PageProduct.html');
             $scope.getProduct(productID, pCodebar);
-        }
+        };
 
         $scope.getDestacados = function() {
             var request = $http({
@@ -356,13 +358,11 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.httpGetDestacadosDetailsError);
-        }
-
-
+        };
 
         $scope.setCurrentSlide = function(pSlide) {
             $scope.currentSlide = pSlide;
-        }
+        };
 
         $scope.checkForPushNotificationData = function() {
             if (gcmProductID) {
@@ -372,7 +372,22 @@
                 $scope.showCategory(gcmCategoryID);
                 gcmCategoryID = null;
             }
-        }
+        };
+
+        $scope.navigateToPage = function(pPage, pParameters){
+            trackPage(pPage);
+            $scope.mainNavigator.pushPage(pPage, pParameters);
+        };
+
+        function trackPage(pPage)
+        {
+            //TODO: Terminar el tracking
+            var trackTag = '';
+            var page = pPage.split('/');
+            page = page[page.length - 1];
+            page = page.split('.')[0].toLowerCase();
+            mixpanel.track('navigate-' + page);
+        };
 
         $scope.search = function(strSearchString, pPage, pCount) {
             mixpanel.track('search-' + strSearchString);
@@ -412,14 +427,14 @@
             request.error($scope.httpError);
 
             if (mainNavigator.getCurrentPage().name != "templates/forms/FormSearch.html") {
-                mainNavigator.pushPage("templates/forms/FormSearch.html");
+                $scope.navigateToPage("templates/forms/FormSearch.html");
             }
 
-        }
+        };
 
         $scope.httpError = function(data, status, headers, config) {
             $scope.connectionFail = true;
-        }
+        };
 
         $scope.httpSuccess = function(data, status, headers, config) {
             $scope.connectionFail = false;
@@ -431,12 +446,12 @@
 
             $scope.isWorking = false;
             $scope.searchTotal = data.result.count;
-        }
+        };
 
         $scope.barCodeScan = function() {
             //scanner.startScanning(null, $scope.barCodeScanSuccess);
             cordova.plugins.barcodeScanner.scan($scope.barCodeScanSuccess, $scope.barCodeScanError);
-        }
+        };
 
         $scope.barCodeScanSuccess = function(result) {
             /*           messageWindow("We got a barcode\n" +
@@ -449,11 +464,11 @@
                 $scope.showProduct(result.text, true);
             }
 
-        }
+        };
 
         $scope.barCodeScanError = function(error) {
             messageWindowError("Error al leer código de barras: " + error);
-        }
+        };
 
         $scope.categoryPageInit = function() {
             $scope.connectionFail = false;
@@ -465,7 +480,7 @@
             }
             $scope.getCategory(categoryID);
 
-        }
+        };
 
         $scope.init = function() {
             $scope.categoryPageInit();
@@ -475,7 +490,7 @@
 
 
 
-        }
+        };
 
         $scope.getCarrouselData = function() {
             var request = $http({
@@ -485,7 +500,7 @@
 
             this.getCarrouselDataError = function(data, status, headers, config) {
                 console.log(data);
-            }
+            };
 
             this.getCarrouselDataSuccess = function(data, status, headers, config) {
                 if (data.result.slide.length > 0) {
@@ -500,7 +515,7 @@
                     }
                 }
 
-            }
+            };
 
             // Store the data-dump of the FORM scope.
             request.success(this.getCarrouselDataSuccess);
@@ -508,14 +523,10 @@
 
             // Store the data-dump of the FORM scope.
             request.error(this.getCarrouselDataError);
-        }
-
-
+        };
 
         document.addEventListener("resume", $scope.checkForPushNotificationData, false);
         document.addEventListener("deviceready", $scope.init, false);
-
-
     });
 
 
@@ -558,10 +569,4 @@
             templateUrl: 'templates/modules/carrousel.html'
         };
     });
-
-
-
-
-
-
 })();

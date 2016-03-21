@@ -7,7 +7,7 @@
         </div>
     </ons-toolbar>
 
-    <ons-list-item modifier="chevron" ng-hide="userData.logedIn" onclick="mainNavigator.pushPage('templates/forms/FormLogin.html')">
+    <ons-list-item modifier="chevron" ng-hide="userData.logedIn" onclick="navigateToPage('templates/forms/FormLogin.html')">
         Login
     </ons-list-item>
 
@@ -17,7 +17,7 @@
     <ons-list-item modifier="chevron" ng-controller="LoginController" ng-show="userData.logedIn" ng-click="logout()">
         Logout
     </ons-list-item>
-    <ons-list-item modifier="chevron" onclick="mainNavigator.pushPage('templates/pages/PageContacto.html')">
+    <ons-list-item modifier="chevron" onclick="navigateToPage('templates/pages/PageContacto.html')">
         Contacto
     </ons-list-item>
     <ons-list-item ng-hide="categories.length == 0" ng-repeat="category in categories[0]" modifier="chevron" ng-click="showCategory(category.id, true, category.title)">

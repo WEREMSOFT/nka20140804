@@ -16,10 +16,10 @@
         </form>
     </div>
     <div class="right">
-        <!--<ons-toolbar-button ng-if="mainNavigator.getCurrentPage().name != 'templates/pages/PageContacto.html'" ng-click="mainNavigator.pushPage('templates/pages/PageContacto.html');">
+        <!--<ons-toolbar-button ng-if="mainNavigator.getCurrentPage().name != 'templates/pages/PageContacto.html'" ng-click="navigateToPage('templates/pages/PageContacto.html');">
             <ons-icon icon="phone"></ons-icon>
         </ons-toolbar-button>-->
-        <ons-toolbar-button ng-if="mainNavigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="mainNavigator.pushPage('templates/pages/Cart.html')">
+        <ons-toolbar-button ng-if="mainNavigator.getCurrentPage().name != 'templates/pages/Cart.html'" ng-click="navigateToPage('templates/pages/Cart.html')">
             <ons-icon icon="shopping-cart"></ons-icon>
             <span class="notification" ng-show="shoppingCart.cartData.summary.quantity" style="margin-left: -12px">{{shoppingCart.cartData.summary.quantity}}</span>
         </ons-toolbar-button>

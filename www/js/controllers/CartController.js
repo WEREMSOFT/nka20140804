@@ -187,7 +187,7 @@
         $scope.onPromtAddToCartOk = function(buttonIndex) {
             switch (buttonIndex) {
                 case 1:
-                    mainNavigator.pushPage('templates/pages/Cart.html');
+                    $scope.navigateToPage('templates/pages/Cart.html');
                     break;
             }
             //mainNavigator.popPage();
@@ -204,17 +204,20 @@
                 messageWindow("Su carrito de compras esta vacío");
                 return;
             }
-            mainNavigator.pushPage('templates/forms/CartDatosEnvio.html')
+            $scope.navigateToPage('templates/forms/CartDatosEnvio.html')
         }
 
 
         $scope.enviarPedido = function() {
+
             if ($scope.formPedido.$invalid) {
+                mixpanel.track('pedido rechazado - campos no competados');
                 messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
 
             if ($scope.formaEnvio.id === 5 && $scope.metodo_ca.id == null) {
+                mixpanel.track('pedido rechazado - falta sucursal');
                 messageWindow("Debe indicar si se envía a una sucursal de correo argentino o a su domicilio");
                 return;
             }
@@ -268,7 +271,7 @@
                     '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
-
+            mixpanel.track('Enviar Pedido');
 
             // Store the data-dump of the FORM scope.
             request.success(this.httpEnviarPedidoSuccess);
@@ -290,6 +293,7 @@
         }
 
         $scope.eliminarDelCarrito = function(id) {
+            mixpanel.track('item eliminado del carrito. Id' + id);
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
