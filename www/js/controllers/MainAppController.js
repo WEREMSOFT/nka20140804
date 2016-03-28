@@ -121,6 +121,7 @@
         }
 
         $scope.getOfertas = function() {
+            mixpanel.track('click-ofertas');
             $scope.isWorking = true;
             var request = $http({
                 method: "get",
@@ -241,7 +242,8 @@
             }
         }
 
-        $scope.showCategory = function(categoryID) {
+        $scope.showCategory = function(categoryID, categoryName) {
+            mixpanel.track('click-category-' + categoryName);
             ons.navigator.pushPage('templates/pages/PageCategory.html', {
                 'categoryID': categoryID
             });
@@ -323,8 +325,8 @@
             request.error(this.httpGetProductDetailsError);
         }
 
-        $scope.showProduct = function(productID, pCodebar) {
-            console.log("llamando a producto");
+        $scope.showProduct = function(productID, pCodebar, productName) {
+            mixpanel.track('click-product-' + productName);
             $scope.loading = true;
             ons.navigator.pushPage('templates/pages/PageProduct.html');
             $scope.getProduct(productID, pCodebar);
@@ -366,9 +368,25 @@
                 $scope.showCategory(gcmCategoryID);
                 gcmCategoryID = null;
             }
-        }
+        };
+
+        $scope.navigateToPage = function(pPage, pParameters){
+            trackPage(pPage);
+            ons.navigator.pushPage(pPage, pParameters);
+        };
+
+        function trackPage(pPage)
+        {
+            //TODO: Terminar el tracking
+            var trackTag = '';
+            var page = pPage.split('/');
+            page = page[page.length - 1];
+            page = page.split('.')[0].toLowerCase();
+            mixpanel.track('navigate-' + page);
+        };
 
         $scope.search = function(strSearchString, pPage, pCount) {
+            mixpanel.track('search-' + strSearchString);
             $scope.searchString = strSearchString;
             if (gaPlugin) {
                 gaPlugin.trackEvent(googleAnalyticsTrackEventSuccess, googleAnalyticsTrakEventError, "Application", "SearchString", strSearchString, 1);

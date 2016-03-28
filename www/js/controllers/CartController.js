@@ -124,6 +124,7 @@
         }
 
         $scope.addToCart = function() {
+            mixpanel.track('click-add-to-cart-' + $scope.product.title);
             if ($scope.product.options && !$scope.talle.id) {
                 messageWindow('Debe elegir una opción');
                 return;
@@ -199,8 +200,10 @@
         }
 
         $scope.completarDatosEnvio = function() {
+            mixpanel.track('click-completar-datos-de-pago');
             if (!$scope.shoppingCart.cartData.items.length) {
                 messageWindow("Su carrito de compras esta vacío");
+                mixpanel.track('pedido-rechazado-carrito-vacio');
                 return;
             }
             ons.navigator.pushPage('templates/forms/CartDatosEnvio.html')
@@ -209,11 +212,13 @@
 
         $scope.enviarPedido = function() {
             if ($scope.formPedido.$invalid) {
+                mixpanel.track('pedido rechazado - campos no competados');
                 messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
 
             if ($scope.formaEnvio.id === 5 && $scope.metodo_ca.id == null) {
+                mixpanel.track('pedido rechazado - falta sucursal');
                 messageWindow("Debe indicar si se envía a una sucursal de correo argentino o a su domicilio");
                 return;
             }
@@ -267,7 +272,7 @@
                     '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
-
+            mixpanel.track('Enviar Pedido');
 
             // Store the data-dump of the FORM scope.
             request.success(this.httpEnviarPedidoSuccess);
@@ -283,6 +288,7 @@
         }
 
         $scope.httpEnviarPedidoSuccess = function(data, status, headers, config) {
+            mixpanel.track('pedido-enviado-con-exito');
             messageWindow('Su pedido ha sido enviado con éxito.', goBackOnePage);
             $scope.shoppingCart.refreshCartDetails();
             $scope.isWorking = false;

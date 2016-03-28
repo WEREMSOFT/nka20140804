@@ -7,7 +7,7 @@
 </ons-row>
 <!-- Solo se muestra si es un listado de productos -->
 <ul class="list list-top" ng-if="!isCart">
-    <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id)">
+    <li ng-repeat="product in products" class="list__item list__item__line-height list-item-container" ng-click="showProduct(product.id, null, product.title)">
         <div class="list-item-main">
             <div class="list-item-left">
                 <img src="http://www.nakaoutdoors.com.ar/img/articulos/{{product.thumb}}" class="thumbnail">
