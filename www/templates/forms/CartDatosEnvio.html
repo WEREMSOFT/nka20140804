@@ -150,7 +150,7 @@
 
                             <label>Código postal:</label>
                             <input type="text" ng-model="userData.profileData.codigo_postal" class="text-input--underbar" placeholder="Codigo Postal" value="" required>
-                            <label>Provincia: {{userData.profileData.provincia_id}}</label>
+                            <label>Provincia: </label>
                             <ons-button modifier="large--cta" ng-click="genericSelectStart(buyOptions.provinces, 'userData.profileData.provincia_id','userData.profileData.provincia_name', 'name', 'id', getSucursalesCA, this)">
                                 <ons-icon icon="globe"></ons-icon>&nbsp{{userData.profileData.provincia_id?findInArrayById(buyOptions.provinces, userData.profileData.provincia_id, 'id', 'name'):'-- Seleccionar provincia --'}}</ons-button>
                             <label>Tipo de factura:</label>

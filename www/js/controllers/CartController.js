@@ -94,9 +94,15 @@
 
 
         $scope.getSucursalesCA = function(pSucursal) {
-            if (pSucursal) {
+            if (!pSucursal) {
                 pSucursal = userData.profileData.provincia_id;
             }
+
+            if(pSucursal.id)
+            {
+                pSucursal = pSucursal.id
+            }
+
             if (pSucursal) {
                 var request = $http({
                     method: "get",
@@ -107,15 +113,18 @@
                 });
 
                 // Store the data-dump of the FORM scope.
-                request.success(this.httpGetSucursalesCASuccess);
+                request.success($scope.httpGetSucursalesCASuccess);
 
                 // Store the data-dump of the FORM scope.
-                request.error(this.httpSucursalesCAError);
+                request.error($scope.httpSucursalesCAError);
             }
         }
 
         $scope.httpGetSucursalesCASuccess = function(data, status, headers, config) {
             $scope.sucursal_CA_options = data.result.location;
+            $scope.sucursal_CA = {};
+            $scope.sucursal_CA_direccion = {};
+
             console.log($scope.sucursal_CA_options);
         }
 
@@ -196,7 +205,6 @@
         $scope.init = function() {
             $scope.shoppingCart.refreshCartDetails();
             $scope.getBuyOptions();
-            $scope.getSucursalesCA(userData.profileData.provincia_id);
         }
 
         $scope.completarDatosEnvio = function() {
@@ -211,7 +219,7 @@
         $scope.enviarPedido = function() {
 
             if ($scope.formPedido.$invalid) {
-                mixpanel.track('pedido rechazado - campos no competados');
+                mixpanel.track('pedido rechazado - campos no completados');
                 messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
@@ -350,6 +358,12 @@
         $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
             $scope.buyOptions = data.result;
             $scope.buyOptions.sucursal_options = $scope.sucursal_options;
+            if(!userData.profileData)
+            {
+                userData.profileData = {provincia_id: $scope.buyOptions.provinces[0].id, provincia_name: $scope.buyOptions.provinces[0].name};
+            }
+            $scope.getSucursalesCA(userData.profileData.provincia_id);
+
         }
 
         $scope.httpGetBuyOptiondError = function() {
