@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<widget id="com.weremsoft.nakaoutdoors" version="2.0.5" android-versionCode="1680" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget id="com.weremsoft.nakaoutdoors" version="2.0.6" android-versionCode="1680" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Naka Outdoors</name>
     <description>
         Tienda especializada en equipo de escalada y montaña. Las mejores marcas, Petzl, Edelrid, Mammut, Edelweiss, Beal, Salewa, Marmot, Lowe Alpine, Wild Country, Altus y muchas mas.
@@ -113,7 +113,7 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>138</string>
+        <string>139</string>
     </gap:config-file>
     <gap:config-file platform="android" parent="/manifest">
         <uses-feature android:name="android.hardware.telephony" android:required="false" />
