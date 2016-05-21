@@ -89,14 +89,20 @@
 
         $scope.httpDireccionSucursalesCAError = function() {
 
-            }
-            //------------------------[CADORNA]
+        }
+        //------------------------[CADORNA]
 
 
         $scope.getSucursalesCA = function(pSucursal) {
-            if (pSucursal) {
+            if (!pSucursal) {
                 pSucursal = userData.profileData.provincia_id;
             }
+
+            if(pSucursal.id)
+            {
+                pSucursal = pSucursal.id
+            }
+
             if (pSucursal) {
                 var request = $http({
                     method: "get",
@@ -107,15 +113,18 @@
                 });
 
                 // Store the data-dump of the FORM scope.
-                request.success(this.httpGetSucursalesCASuccess);
+                request.success($scope.httpGetSucursalesCASuccess);
 
                 // Store the data-dump of the FORM scope.
-                request.error(this.httpSucursalesCAError);
+                request.error($scope.httpSucursalesCAError);
             }
         }
 
         $scope.httpGetSucursalesCASuccess = function(data, status, headers, config) {
             $scope.sucursal_CA_options = data.result.location;
+            $scope.sucursal_CA = {};
+            $scope.sucursal_CA_direccion = {};
+
             console.log($scope.sucursal_CA_options);
         }
 
@@ -157,11 +166,11 @@
             $scope.isWorking = false;
             var strConfirmationText = ' ' + $scope.cantidad + ' item' + ($scope.cantidad > 1 ? 's' : '') + ' agregado' + ($scope.cantidad > 1 ? 's' : '') + ' al carrito.';
             /*            navigator.notification.confirm(
-                            strConfirmationText, // message
-                            $scope.onPromtAddToCartOk, // callback to invoke with index of button pressed
-                            'Éxito', // title
-                            ['Ver Carrito', 'Seguir'] // buttonLabels
-                        );*/
+             strConfirmationText, // message
+             $scope.onPromtAddToCartOk, // callback to invoke with index of button pressed
+             'Éxito', // title
+             ['Ver Carrito', 'Seguir'] // buttonLabels
+             );*/
             window.scrollTo(0, 0);
             ons.notification.confirm({
                 buttonLabel: 'Sí',
@@ -196,7 +205,6 @@
         $scope.init = function() {
             $scope.shoppingCart.refreshCartDetails();
             $scope.getBuyOptions();
-            $scope.getSucursalesCA(userData.profileData.provincia_id);
         }
 
         $scope.completarDatosEnvio = function() {
@@ -211,7 +219,7 @@
         $scope.enviarPedido = function() {
 
             if ($scope.formPedido.$invalid) {
-                mixpanel.track('pedido rechazado - campos no competados');
+                mixpanel.track('pedido rechazado - campos no completados');
                 messageWindow("Debe completar todos los campos marcados con asterisco (*)");
                 return;
             }
@@ -240,35 +248,35 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 data: 'data[Pedido][nombre]=' + userData.profileData.nombre +
-                    '&data[Pedido][apellido]=' + userData.profileData.apellido +
-                    '&data[Pedido][mail]=' + userData.profileData.mail +
-                    '&data[Pedido][cod_area]=' + userData.profileData.cod_area +
-                    '&data[Pedido][celular]=' + userData.profileData.celular +
+                '&data[Pedido][apellido]=' + userData.profileData.apellido +
+                '&data[Pedido][mail]=' + userData.profileData.mail +
+                '&data[Pedido][cod_area]=' + userData.profileData.cod_area +
+                '&data[Pedido][celular]=' + userData.profileData.celular +
 
-                    '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro.id +
-                    '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id +
+                '&data[Pedido][tipo_seguro]=' + $scope.tipoSeguro.id +
+                '&data[Pedido][forma_envio]=' + $scope.formaEnvio.id +
 
-                    /*data[Pedido][envioa] => [ 1 si es OCA a domicilio / 2 si es OCA a sucursal ]
-                    data['Pedido'][envio_prioridad] => [ 1 si es OCA envio normal / 2 si es OCA prioritario ]*/
+                /*data[Pedido][envioa] => [ 1 si es OCA a domicilio / 2 si es OCA a sucursal ]
+                 data['Pedido'][envio_prioridad] => [ 1 si es OCA envio normal / 2 si es OCA prioritario ]*/
 
 
-                    '&data[Pedido][metodo_ca]=' + $scope.metodo_ca.id +
-                    '&data[Pedido][provincia_ca_id]=' + userData.profileData.provincia_id +
-                    '&data[Pedido][sucursal_ca]=' + $scope.sucursal_CA.id +
-                    '&data[Pedido][dni]=' + userData.profileData.DNI +
+                '&data[Pedido][metodo_ca]=' + $scope.metodo_ca.id +
+                '&data[Pedido][provincia_ca_id]=' + userData.profileData.provincia_id +
+                '&data[Pedido][sucursal_ca]=' + $scope.sucursal_CA.id +
+                '&data[Pedido][dni]=' + userData.profileData.DNI +
 
-                    '&data[Pedido][sucursal]=' + $scope.sucursal.id +
-                    '&data[Pedido][dni]=' + $scope.userData.profileData.DNI +
-                    '&data[Pedido][direccion]=' + userData.profileData.direccion +
-                    '&data[Pedido][terminal]=' + userData.profileData.terminal +
-                    '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal +
-                    '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id +
-                    '&data[Pedido][forma_pago]=' + $scope.formaDePago +
-                    '&data[Pedido][telefono]=' + userData.profileData.telefono +
-                    '&data[Pedido][observaciones]=' + $scope.observaciones +
-                    '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion +
-                    '&data[Pedido][razon_social]=' + userData.profileData.razon_social +
-                    '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
+                '&data[Pedido][sucursal]=' + $scope.sucursal.id +
+                '&data[Pedido][dni]=' + $scope.userData.profileData.DNI +
+                '&data[Pedido][direccion]=' + userData.profileData.direccion +
+                '&data[Pedido][terminal]=' + userData.profileData.terminal +
+                '&data[Pedido][codigo_postal]=' + userData.profileData.codigo_postal +
+                '&data[Pedido][provincia_id]=' + userData.profileData.provincia_id +
+                '&data[Pedido][forma_pago]=' + $scope.formaDePago +
+                '&data[Pedido][telefono]=' + userData.profileData.telefono +
+                '&data[Pedido][observaciones]=' + $scope.observaciones +
+                '&data[Pedido][iva_facturacion]=' + userData.profileData.iva_facturacion +
+                '&data[Pedido][razon_social]=' + userData.profileData.razon_social +
+                '&data[Pedido][cuit]=' + userData.profileData.cuit + '&'
             });
 
             mixpanel.track('Enviar Pedido');
@@ -350,6 +358,12 @@
         $scope.httpGetBuyOptiondSuccess = function(data, status, headers, config) {
             $scope.buyOptions = data.result;
             $scope.buyOptions.sucursal_options = $scope.sucursal_options;
+            if(!userData.profileData)
+            {
+                userData.profileData = {provincia_id: $scope.buyOptions.provinces[0].id, provincia_name: $scope.buyOptions.provinces[0].name};
+            }
+            $scope.getSucursalesCA(userData.profileData.provincia_id);
+
         }
 
         $scope.httpGetBuyOptiondError = function() {
