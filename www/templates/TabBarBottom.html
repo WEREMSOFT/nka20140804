@@ -8,7 +8,7 @@
     <ons-tabbar-item ng-hide="userData.logedIn" label="Login" icon="user" ng-click="navigateToPage('templates/forms/FormLogin.html')">
     </ons-tabbar-item>
 
-    <ons-tabbar-item ng-show="userData.logedIn" label="Ver Carrito" icon="shopping-cart" ng-controller="LoginController" ng-click="navigateToPage('templates/pages/Cart.html')">
+    <ons-tabbar-item  label="Ver Carrito" icon="shopping-cart" ng-controller="LoginController" ng-click="navigateToPage('templates/pages/Cart.html')">
     </ons-tabbar-item>
 
     <ons-tabbar-item ng-show="userData.logedIn" label="Logout" icon="sign-out" ng-controller="LoginController" ng-click="logout(true)">
