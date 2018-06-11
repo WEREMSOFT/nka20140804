@@ -10,7 +10,7 @@
     <preference name="android-targetSdkVersion" value="19" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="cli-6.4.0" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
@@ -48,7 +48,7 @@
     <!-- Don't block any requests -->
     <access origin="*" />
     <!--<gap:plugin name="org.apache.cordova.vibration" />-->
-    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
+    <!-- <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" /> -->
     <!-- <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" /> -->
     <gap:plugin name="com.phonegap.plugins.barcodescanner"  />
     <!-- <gap:plugin name="com.manateeworks.barcodescanner" version="1.5.1" /> -->
