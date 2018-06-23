@@ -49,11 +49,11 @@
     <access origin="*" />
     <gap:plugin name="org.apache.cordova.vibration" source="npm"/>
     <!-- <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" /> -->
-    <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
-    <gap:plugin name="com.phonegap.plugins.barcodescanner"  />
-    <gap:plugin name="com.manateeworks.barcodescanner" version="1.5.1" />
-    <gap:plugin name="com.adobe.plugins.gaplugin" />
-    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+    <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" source="npm"/>
+    <gap:plugin name="com.phonegap.plugins.barcodescanner"  source="npm"/>
+    <gap:plugin name="com.manateeworks.barcodescanner" version="1.5.1" source="npm"/>
+    <gap:plugin name="com.adobe.plugins.gaplugin" source="npm"/>
+    <gap:plugin name="nl.x-services.plugins.launchmyapp" source="npm">
         <param name="URL_SCHEME" value="nakaoutdoors" />
     </gap:plugin>
     <feature name="Notification">
