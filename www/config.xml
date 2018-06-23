@@ -25,15 +25,15 @@
     <preference name="android-installLocation" value="auto" />
     <!-- <gap:plugin name="org.apache.cordova.battery-status" source="npm"/> -->
     <gap:plugin name="cordova-plugin-camera" source="npm"/>
-    <gap:plugin name="org.apache.cordova.media-capture" source="npm"/>
-    <gap:plugin name="org.apache.cordova.console" source="npm"/>
-    <gap:plugin name="org.apache.cordova.contacts" source="npm"/>
-    <gap:plugin name="org.apache.cordova.device" source="npm"/>
-    <gap:plugin name="org.apache.cordova.device-motion" source="npm"/>
-    <gap:plugin name="org.apache.cordova.device-orientation" source="npm"/>
-    <gap:plugin name="org.apache.cordova.dialogs" source="npm"/>
-    <gap:plugin name="org.apache.cordova.file" source="npm"/>
-    <gap:plugin name="org.apache.cordova.file-transfer" source="npm"/>
+    <gap:plugin name="cordova-plugin-media-capture" source="npm"/>
+    <gap:plugin name="cordova-plugin-console" source="npm"/>
+    <gap:plugin name="cordova-plugin-contacts" source="npm"/>
+    <gap:plugin name="cordova-plugin-device" source="npm"/>
+    <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
+    <gap:plugin name="cordova-plugin-device-orientation" source="npm"/>
+    <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
+    <gap:plugin name="cordova-plugin-file" source="npm"/>
+    <gap:plugin name="cordova-plugin-file-transfer" source="npm"/>
 
 
 
